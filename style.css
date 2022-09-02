@@ -13,7 +13,7 @@
 /* hero background image */
 .bgimage {
     height:100vh;
-    background: url('images/Facebook\ group-cover-1640x859.jpg');
+    background: url('images/main.jpg');
     background-size:cover;
     position:relative;
 }
