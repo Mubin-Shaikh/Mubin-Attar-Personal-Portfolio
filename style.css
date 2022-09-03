@@ -1,15 +1,17 @@
 *{
     
-    color: #0f292f;
+    color: #332D2D;
 }
 .container-fluid{
-    background-color: #cccccc;
+    background-color: whitesmoke;
 }
 /* display background color black on navbar scroll */
 .navbarScroll.navbarDark {
-    background-color: #cb2d6f;
+    background-color: #0d6efd;
 }
-
+.active a{
+    color: red !important;
+}
 /* hero background image */
 .bgimage {
     height:100vh;
@@ -20,11 +22,11 @@
 /* text css above hero image*/
 .hero_title {
     font-size: 4.5rem;
-    color: white;
+    color: #ffffff;
 }
 .hero_desc {
     font-size: 2rem;
-    color: white;
+    color: #ffffff;
 }
 .hero-text {
     text-align: center;
@@ -32,22 +34,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: #ffffff;
 }
 
-button.btn:hover{
-    background-color: #cb2d6f;
-}
 /* spacing on all sections */
 /* #about, #services, #portfolio, #contact {
     margin-top: 4rem;
     padding-top: 4rem;
 } */
 h1, h2, h3, h4, h5, h6{
-    color: #cb2d6f;
+    color: #332D2D;
 }
 p{
-    color: #000000;
+    color: #332D2D;
 }
 #contact {
     padding-bottom: 4rem;
@@ -59,7 +58,7 @@ p{
 
 /* card body */
 .card-body{
-    background-color: #14a098;
+    background-color: #12a8e0;
 }
 /* services section css */
 .servicesText.card {
@@ -75,10 +74,10 @@ p{
     text-align: center;
 }
 .card:hover .servicesIcon {
-    color: #cb2d6f;
+    color: #ffffff;
 }
 .servicesText:hover {
-    border: 1px solid #cb2d6f;
+    border: 1px solid #ffffff;
 }
 
 /* social media icons styling */
@@ -87,10 +86,13 @@ p{
     cursor: pointer;
 }
 .fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover, .fa-github:hover {
-    color: #cb2d6f;
+    color: #ffffff;
 }
 .fab {
-    color: #000000;
+    color: #0d6efd;
+}
+.fa-google, .fa-google-drive{
+    color: #ffffff;
 }
 /* footer styling */
 #footer {
