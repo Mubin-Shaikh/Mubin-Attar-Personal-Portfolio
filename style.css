@@ -1,17 +1,15 @@
-*{
-    
-    color: #332D2D;
-}
 .container-fluid{
-    background-color: whitesmoke;
+    background-color: #066ac91a;
 }
 /* display background color black on navbar scroll */
 .navbarScroll.navbarDark {
-    background-color: #0d6efd;
+    /* background-color: #0d6efd; */
+    background-color: #0dba4b;
 }
 .active a{
-    color: red !important;
+    color: #0dba4b;
 }
+
 /* hero background image */
 .bgimage {
     height:100vh;
@@ -22,11 +20,11 @@
 /* text css above hero image*/
 .hero_title {
     font-size: 4.5rem;
-    color: #ffffff;
+    color: #0dba4b;
 }
 .hero_desc {
     font-size: 2rem;
-    color: #ffffff;
+    color: #0dba4b;
 }
 .hero-text {
     text-align: center;
@@ -34,19 +32,34 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ffffff;
+    /* color: #0dba4b; */
 }
 
 /* spacing on all sections */
 /* #about, #services, #portfolio, #contact {
-    margin-top: 4rem;
-    padding-top: 4rem;
+     
 } */
-h1, h2, h3, h4, h5, h6{
-    color: #332D2D;
+a .btn-one {
+    /* color: #0dba4b; */
+    background-color: #0dba4b;
+}
+a .btn-one:hover {
+    color: white;
+    background-color: #009637;
+}
+a .btn-two{
+    color: #0dba4b;
+    border-color: #0dba4b;
+}
+a .btn-two:hover {
+    color: white;
+    background-color: #009637;
+}
+h1, h3{
+    color: #0dba4b;
 }
 p{
-    color: #332D2D;
+    color: #313131;
 }
 #contact {
     padding-bottom: 4rem;
@@ -58,7 +71,8 @@ p{
 
 /* card body */
 .card-body{
-    background-color: #12a8e0;
+    
+    background-color: #dddddd;
 }
 /* services section css */
 .servicesText.card {
@@ -74,10 +88,10 @@ p{
     text-align: center;
 }
 .card:hover .servicesIcon {
-    color: #ffffff;
+    color: #009637;
 }
 .servicesText:hover {
-    border: 1px solid #ffffff;
+    border: 1px solid #009637;
 }
 
 /* social media icons styling */
@@ -85,17 +99,22 @@ p{
     font-size: 36px;
     cursor: pointer;
 }
+
 .fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover, .fa-github:hover {
-    color: #ffffff;
+    color:#009637;
 }
 .fab {
-    color: #0d6efd;
+    color: #0dba4b;
+
 }
 .fa-google, .fa-google-drive{
-    color: #ffffff;
+    color: white;
 }
+
 /* footer styling */
 #footer {
     /* color: blueviolet; */
+    background-color: #dddddd;
     text-align: center;
+    
 }
