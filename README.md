@@ -1,9 +1,7 @@
-Personal Portfolio Website
+This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5, JavaScript.
 
----------------------------------------------------------------------------------
-HTML, CSS, JavaScript and Bootstrap 5 
+---------------------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------
 # Tools used #
 * HTML, CSS and JavaScript
 * [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
