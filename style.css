@@ -1,5 +1,5 @@
 .container-fluid{
-    background-color: #066ac91a;
+    /* background-color: #066ac91a; */
 }
 /* display background color black on navbar scroll */
 .navbarScroll.navbarDark {
@@ -35,10 +35,7 @@
     /* color: #0dba4b; */
 }
 
-/* spacing on all sections */
-/* #about, #services, #portfolio, #contact {
-     
-} */
+
 a .btn-one {
     /* color: #0dba4b; */
     background-color: #0dba4b;
@@ -72,7 +69,7 @@ p{
 /* card body */
 .card-body{
     
-    background-color: #dddddd;
+    background-color: #066ac91a;
 }
 /* services section css */
 .servicesText.card {
@@ -107,7 +104,7 @@ p{
     color: #0dba4b;
 
 }
-.fa-google, .fa-google-drive{
+.fa-envelope, .fa-download{
     color: white;
 }
 
