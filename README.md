@@ -10,21 +10,20 @@ This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5
 
 
 #HOME
-![image](https://user-images.githubusercontent.com/73256167/191413524-803c06ea-b9ec-470d-a32b-5924998c3fe0.png)
+![home](https://user-images.githubusercontent.com/73256167/191413941-da32f8ef-d366-4c0f-8c28-7a8e6814180b.png)
 
 #ABOUT
-![image](https://user-images.githubusercontent.com/73256167/191413600-c73acd6f-2c94-498e-a57b-698aa863b335.png)
+![about](https://user-images.githubusercontent.com/73256167/191413957-ecb3a9cc-b510-4ca6-ab04-33b727083493.png)
 
 #SKILLS
-![image](https://user-images.githubusercontent.com/73256167/191413651-95e83d60-4c10-4a1c-962c-799c0cd6fabd.png)
-
+![skills](https://user-images.githubusercontent.com/73256167/191414014-c1fb0566-1a57-4719-a634-bd91542cf1b4.png)
 
 #PROJECTS
-![image](https://user-images.githubusercontent.com/73256167/191413701-b15348e4-726b-4c4e-a06b-c45b0a590207.png)
+![project](https://user-images.githubusercontent.com/73256167/191413986-f5a2f54b-f0a0-454a-98c9-cc470573e7f9.png)
 
 #CONTACT
-![image](https://user-images.githubusercontent.com/73256167/191413750-7b87e0b4-a5a7-4ce9-9095-ec8b401f0576.png)
 
+![contact](https://user-images.githubusercontent.com/73256167/191414019-201aa6cc-5825-4556-b593-d641c3b10b4c.png)
 
 ----------------------------------------------------------------------------------
 This is the [live demo](https://mubinattar.netlify.app/) of the project . 
