@@ -92,6 +92,7 @@ p{
 
 }
 .card:hover .servicesIcon, .card:hover .card-title, .card:hover li{
+    
     color: #008832;
 }
 
