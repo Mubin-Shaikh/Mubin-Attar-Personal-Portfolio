@@ -1,27 +1,30 @@
-.container-fluid{
+.container-fluid {
     background-color: #E7E9EB;
 }
-.navbar-brand{
+
+.navbar-brand {
     color: #04AA6D;
 }
-.navbar-brand:hover{
+
+.navbar-brand:hover {
     color: #008832;
 }
-.navbar-nav li a{
+
+.navbar-nav li a {
     color: #04AA6D !important;
     font-size: large;
 }
 
-    .navbarScroll.navbarDark {
+.navbarScroll.navbarDark {
     background-color: #282A35;
 }
 
 /* hero background image */
 .bgimage {
-    height:100vh;
+    height: 100vh;
     /* background: url('images/main.jpg');
     background-size:cover; */
-    position:relative;
+    position: relative;
 }
 
 /* text css above hero image*/
@@ -29,10 +32,12 @@
     font-size: 4.5rem;
     color: #04AA6D;
 }
+
 .hero_desc {
     font-size: 2rem;
     color: #04AA6D;
 }
+
 .hero-text {
     text-align: center;
     position: absolute;
@@ -43,26 +48,32 @@
 }
 
 /* Button */
-a.btn{
+a.btn {
     color: #282A35;
     background-color: #04AA6D;
 }
+
 a .one {
     color: #282A35;
     background-color: #04AA6D;
 }
-a .two{
+
+a .two {
     color: #282A35;
     border-color: #04AA6D;
 }
-a .one:hover, a .two:hover {
+
+a .one:hover,
+a .two:hover {
     background-color: #059862;
 }
 
-h1, h3{
+h1,
+h3 {
     color: #04AA6D;
 }
-p{
+
+p {
     color: #282A35;
 }
 
@@ -80,19 +91,24 @@ p{
     height: 280px;
     cursor: pointer;
 
-  }
+}
+
 .servicesIcon {
     font-size: 36px;
     text-align: center;
     width: 100%;
     color: #282A35;
 }
+
 .card-title {
     text-align: center;
 
 }
-.card:hover .servicesIcon, .card:hover .card-title, .card:hover li{
-    
+
+.card:hover .servicesIcon,
+.card:hover .card-title,
+.card:hover li {
+
     color: #008832;
 }
 
@@ -105,10 +121,18 @@ p{
 .fab {
     color: #04AA6D;
 }
-.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover, .fa-github:hover {
-    color:#008832;
-}   
-.fa-envelope, .fa-download{
+
+.fa-facebook:hover,
+.fa-instagram:hover,
+.fa-twitter:hover,
+.fa-linkedin:hover,
+.fa-twitch:hover,
+.fa-github:hover {
+    color: #008832;
+}
+
+.fa-envelope,
+.fa-download {
     color: #282A35;
 }
 
@@ -117,5 +141,5 @@ p{
     /* color: blueviolet; */
     background-color: #282A35;
     text-align: center;
-    
+
 }
