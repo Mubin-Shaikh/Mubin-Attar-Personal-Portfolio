@@ -1,41 +1,45 @@
-.container-fluid {
-    background-color: #E7E9EB;
+.container-fluid{
+    background-color: #fffddd;
 }
-
 .navbar-brand {
-    color: #04AA6D;
+    color:  #FDA913;
 }
 
 .navbar-brand:hover {
-    color: #008832;
+    color:#F79D00;
 }
 
 .navbar-nav li a {
-    color: #04AA6D !important;
-    font-size: large;
+    color: #282A35 !important;
+    /* font-size: large; */
 }
+/* 
+.navbar-nav li a:hover {
+    color:#008832;
+} */
 
 .navbarScroll.navbarDark {
-    background-color: #282A35;
+    background-color: #9C6137;
 }
 
 /* hero background image */
 .bgimage {
     height: 100vh;
-    /* background: url('images/main.jpg');
-    background-size:cover; */
+    background: url('/images/main.jpg');
+    /* opacity: 0.8; */
+    background-size:cover;
     position: relative;
 }
 
 /* text css above hero image*/
 .hero_title {
     font-size: 4.5rem;
-    color: #04AA6D;
+    color: #282A35;
 }
 
 .hero_desc {
     font-size: 2rem;
-    color: #04AA6D;
+    color: #282A35;
 }
 
 .hero-text {
@@ -44,35 +48,37 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #04AA6D;
 }
 
 /* Button */
 a.btn {
+    border-color: #282A35;
     color: #282A35;
-    background-color: #04AA6D;
+    background-color: #B37A4C;
 }
-
+a.btn:hover{
+    color: #282A35;
+    background-color: #9C6137;
+}
 a .one {
     color: #282A35;
-    background-color: #04AA6D;
+    background-color: #B37A4C;
 }
 
 a .two {
     color: #282A35;
-    border-color: #04AA6D;
+    border-color: #B37A4C;
 }
 
 a .one:hover,
-a .two:hover {
-    background-color: #059862;
+a .two:hover,a .fa-download,a .fa-envelope {
+    color: #ffffff;
+    background-color: #9C6137;
 }
 
-h1,
-h3 {
-    color: #04AA6D;
+h1, h3 {
+    color: #282A35;
 }
-
 p {
     color: #282A35;
 }
@@ -82,26 +88,30 @@ p {
     width: 100%;
 }
 
+#about {
+    /* background-color: #D9EEE1; */
+}
+
 /* card body */
-/* .card-body{        
-    background-color:#D9EEE1;
-} */
+.card-body{        
+    background-color:#FFF4C2;
+}
 /* services section css */
 .servicesText.card {
     height: 280px;
     cursor: pointer;
-
 }
 
 .servicesIcon {
     font-size: 36px;
     text-align: center;
     width: 100%;
-    color: #282A35;
+    color: #9C6137;
 }
 
 .card-title {
     text-align: center;
+    color: #9C6137;
 
 }
 
@@ -109,7 +119,7 @@ p {
 .card:hover .card-title,
 .card:hover li {
 
-    color: #008832;
+    color: #512407;
 }
 
 /* social media icons styling */
@@ -119,27 +129,28 @@ p {
 }
 
 .fab {
-    color: #04AA6D;
+    color: #9C6137;
 }
-
+.fa-envelope,
+.fa-download,
 .fa-facebook:hover,
 .fa-instagram:hover,
 .fa-twitter:hover,
 .fa-linkedin:hover,
 .fa-twitch:hover,
 .fa-github:hover {
-    color: #008832;
+    color: #512407;
 }
 
-.fa-envelope,
-.fa-download {
-    color: #282A35;
-}
 
 /* footer styling */
 #footer {
     /* color: blueviolet; */
-    background-color: #282A35;
+    background-color: #FFF4C2;
     text-align: center;
 
+}
+#footer a{
+    color: #282A35;
+    text-decoration: none;
 }
