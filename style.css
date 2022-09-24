@@ -1,48 +1,54 @@
+/* body */
 .container-fluid{
     background-color: #fffddd;
+    font-family: roboto;
 }
+
+/* nabar */
 .navbar-brand {
     color:  #FDA913;
 }
-
 .navbar-brand:hover {
     color:#F79D00;
+    font-weight: bold;
 }
-
 .navbar-nav li a {
     color: #282A35 !important;
-    /* font-size: large; */
 }
-/* 
-.navbar-nav li a:hover {
-    color:#008832;
-} */
-
+.navbar-nav > li > a:hover,.navbar-nav > li > a:focus {
+    font-weight: bold;
+    color: #512407 !important;
+}
 .navbarScroll.navbarDark {
     background-color: #9C6137;
+}
+.navbar-nav > .active{
+    color: #FDA913 !important ;
 }
 
 /* hero background image */
 .bgimage {
     height: 100vh;
     background: url('/images/main.jpg');
-    /* opacity: 0.8; */
+    /* opacity: .9; */
     background-size:cover;
     position: relative;
 }
 
 /* text css above hero image*/
 .hero_title {
-    font-size: 4.5rem;
-    color: #282A35;
+    font-size:5rem;
+    color:#282A35;
 }
-
+.name{
+    color: #00b7ff;
+}
 .hero_desc {
     font-size: 2rem;
-    color: #282A35;
+    color:#282A35;
 }
-
 .hero-text {
+    
     text-align: center;
     position: absolute;
     top: 50%;
@@ -52,32 +58,37 @@
 
 /* Button */
 a.btn {
-    border-color: #282A35;
+    border-color: #9C6137;
     color: #282A35;
     background-color: #B37A4C;
 }
-a.btn:hover{
+a .one{
+    border-color: #00b7ff;
     color: #282A35;
-    background-color: #9C6137;
+    background-color: #2fc4ff;
 }
-a .one {
-    color: #282A35;
-    background-color: #B37A4C;
-}
-
 a .two {
     color: #282A35;
-    border-color: #B37A4C;
+    border-color: #2fc4ff;
 }
-
-a .one:hover,
-a .two:hover,a .fa-download,a .fa-envelope {
+a .one:hover,a .two:hover,a .fa-download,a .fa-envelope {
     color: #ffffff;
-    background-color: #9C6137;
+    background-color: #00abee;
 }
+a.btn:hover{
+    color: #ffffff;
+    background-color: #512407;
+}
+.top-icons .fa-linkedin, .top-icons .fa-twitter, .top-icons .fa-github{
+    color:#282A35;
+} 
+.top-icons .fa-linkedin:hover, .top-icons .fa-twitter:hover, .top-icons .fa-github:hover{
+    color:#00abee;
+} 
 
+/* text format */
 h1, h3 {
-    color: #282A35;
+    color:#512407;
 }
 p {
     color: #282A35;
@@ -86,15 +97,21 @@ p {
 /* about section image css */
 .imageAboutPage {
     width: 100%;
+    border-radius:10%;
 }
-
-#about {
-    /* background-color: #D9EEE1; */
+#about .container{
+    background-color:#FFF4C2;
+    border-radius: 10%;
 }
 
 /* card body */
-.card-body{        
+.servicesText.card,.servicesText.card-body{        
     background-color:#FFF4C2;
+    border-radius: 10%;
+}
+.projectText.card,.projectText.card-body{        
+    background-color:#FFF4C2;
+    border-radius: 10%;
 }
 /* services section css */
 .servicesText.card {
