@@ -37,11 +37,13 @@
 
 /* text css above hero image*/
 .hero_title {
+    color: #00abee;
     font-size:5rem;
-    color:#282A35;
+    
 }
-.name{
-    color: #00b7ff;
+.hero_sub{
+    font-size:4rem;
+    color:#282A35;
 }
 .hero_desc {
     font-size: 2rem;
