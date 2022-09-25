@@ -1,6 +1,9 @@
 This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5, JavaScript.
 
----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#This is the [live demo](https://mubinattar.netlify.app/) of the project.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Tools used #
 
 * HTML, CSS and JavaScript
@@ -8,6 +11,8 @@ This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5
 * [Font Awesome 5](https://fontawesome.com/)
 * [google map](https://www.embed-map.com/)
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+#ScreenShorts
 
 #HOME
 ![home](https://user-images.githubusercontent.com/73256167/191413941-da32f8ef-d366-4c0f-8c28-7a8e6814180b.png)
@@ -25,7 +30,6 @@ This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5
 
 ![contact](https://user-images.githubusercontent.com/73256167/191414019-201aa6cc-5825-4556-b593-d641c3b10b4c.png)
 
-----------------------------------------------------------------------------------
-This is the [live demo](https://mubinattar.netlify.app/) of the project . 
+--------------------------------------------------------------------------------------------------------------- 
 
 
