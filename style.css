@@ -1,3 +1,6 @@
+
+font-family: 'PT Serif', serif;
+
 /* body */
 .container-fluid{
     background-color: #fffddd;
@@ -36,18 +39,20 @@
 }
 
 /* text css above hero image*/
-.hero_title {
+.title {
     color: #00abee;
     font-size:5rem;
-    
+    font-family: 'Pacifico', cursive;
 }
-.hero_sub{
+.sub_title{
     font-size:4rem;
     color:#282A35;
+    font-family: 'Pacifico', cursive;
 }
-.hero_desc {
+.title_desc {
     font-size: 2rem;
     color:#282A35;
+    font-family: 'Pacifico', cursive;
 }
 .hero-text {   
     text-align: center;
