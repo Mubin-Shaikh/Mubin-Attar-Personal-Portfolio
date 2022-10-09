@@ -15,19 +15,20 @@ This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5
 #ScreenShorts
 
 #HOME
+![image](https://user-images.githubusercontent.com/73256167/194745378-bf201757-5287-4e48-975f-56674b4bdc7c.png)
 
 #ABOUT
-![about](https://user-images.githubusercontent.com/73256167/191413957-ecb3a9cc-b510-4ca6-ab04-33b727083493.png)
+![image](https://user-images.githubusercontent.com/73256167/194745392-76006947-1ce5-45c7-b636-3e6f6c2bd46f.png)
+
 
 #SKILLS
-![skills](https://user-images.githubusercontent.com/73256167/191414014-c1fb0566-1a57-4719-a634-bd91542cf1b4.png)
+![image](https://user-images.githubusercontent.com/73256167/194745406-8c284966-240c-423f-8725-a486e5fcf3db.png)
 
 #PROJECTS
-![project](https://user-images.githubusercontent.com/73256167/191413986-f5a2f54b-f0a0-454a-98c9-cc470573e7f9.png)
+![image](https://user-images.githubusercontent.com/73256167/194745421-7693ceec-c3a8-49b2-b516-9d634d0853de.png)
 
 #CONTACT
-
-![contact](https://user-images.githubusercontent.com/73256167/191414019-201aa6cc-5825-4556-b593-d641c3b10b4c.png)
+![image](https://user-images.githubusercontent.com/73256167/194745432-dbc12c8e-0532-44ef-8c23-15c7381ad7ae.png)
 
 --------------------------------------------------------------------------------------------------------------- 
 
