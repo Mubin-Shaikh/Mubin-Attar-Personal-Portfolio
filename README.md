@@ -15,7 +15,12 @@ This is my Personal Portfolio Website developed using HTML 5, CSS 3, Bootstrap 5
 #ScreenShorts
 
 #HOME
+![image](https://user-images.githubusercontent.com/73256167/194745071-42c69ab2-4bba-4624-94c2-09073251d960.png)
+
 ![home](https://user-images.githubusercontent.com/73256167/191413941-da32f8ef-d366-4c0f-8c28-7a8e6814180b.png)
+
+![Home](https://user-images.githubusercontent.com/73256167/194745098-cebd061a-994d-4114-ac11-cb9fb7b42962.png)
+
 
 #ABOUT
 ![about](https://user-images.githubusercontent.com/73256167/191413957-ecb3a9cc-b510-4ca6-ab04-33b727083493.png)
