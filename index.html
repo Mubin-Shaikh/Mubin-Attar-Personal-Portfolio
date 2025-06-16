@@ -1,417 +1,321 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-    <title>Mubin Attar</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="HandheldFriendly" content="true">
-    <!-- css file -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-
-    <!-- bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!--favicon style -->
-    <link rel="icon" type="image/x-icon" href="/images/favicon-32x32.png">
-
-    <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mubin Attar - Python Django Software Engineer Portfolio">
+    <meta name="keywords" content="Python, Django, Software Engineer, Portfolio, Mubin Attar">
+    <meta name="author" content="Mubin Attar">
+    <title>Mubin Attar | Python Django Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#306998', // Python Blue
+                        accent: '#FFD43B',  // Python Yellow
+                        neutral: {
+                            100: '#f8f8f8',
+                            200: '#e8e8e8',
+                            300: '#d3d3d3',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717',
+                            950: '#0a0a0a',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+    <style>
+        body { background-color: #0a0a0a; font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        .code-block { font-family: 'Courier New', Courier, monospace; }
+    </style>
 </head>
-
-<body>
-    <div class="container-fluid p-0">
-        <!-- navbar start-->
-
-        <nav class="navbar navbar-expand-lg navbar-light navbar-expand-md fixed-top navbarScroll py-0">
-            <div class="container">
-                <a class="navbar-brand" href="/"><img src="/images/apple-touch-icon.png" width="70" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#skills">Expertise</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#portfolio">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-
-                </div>
+<body class="text-neutral-100">
+    <!-- Header & Navigation -->
+    <header x-data="{ open: false }" class="fixed w-full bg-neutral-900 z-50 shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-snake text-accent"></i> Mubin Attar
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-neutral-300 hover:text-accent">About</a>
+                <a href="#expertise" class="text-neutral-300 hover:text-accent">Expertise</a>
+                <a href="#projects" class="text-neutral-300 hover:text-accent">Projects</a>
+                <a href="#experience" class="text-neutral-300 hover:text-accent">Experience</a>
+                <a href="#education" class="text-neutral-300 hover:text-accent">Education</a>
+                <a href="#contact" class="text-neutral-300 hover:text-accent">Contact</a>
             </div>
+            <button @click="open = !open" class="md:hidden text-neutral-300">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-neutral-800">
+            <a href="#about" class="block px-4 py-2 text-neutral-300 hover:bg-neutral-700">About</a>
+            <a href="#expertise" class="block px-4 py-2 text-neutral-300 hover:bg-neutral-700">Expertise</a>
+            <a href="#projects" class="block px-4 py-2 text-neutral-300 hover:bg-neutral-700">Projects</a>
+            <a href="#experience" class="block px-4 py-2 text-neutral-300 hover:bg-neutral-700">Experience</a>
+            <a href="#education" class="block px-4 py-2 text-neutral-300 hover:bg-neutral-700">Education</a>
+            <a href="#contact" class="block px-4 py-2 text-neutral-300 hover:bg-neutral-700">Contact</a>
+        </div>
+    </header>
 
-        <!-- main banner -->
-
-        <section class="bgimage" id="home">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-md-6 col-12 order-md-1 order-2 hero-text">
-                        <div class="text-container">
-                            <h1 class="title">Hey,</h1>
-                            <h1 class="title">I'm <span class="name">Mubin</span></h1>
-                            <h6 class="title-desc">Software Development Engineer</h6>
-                            <div class="w-md-75 w-100">
-                                <a href="mailto:sk.mubinattar@gmail.com" target="_blank"><button type="button"
-                                        class="btn one"><i class="fas fa-envelope"></i> Hire Me</button></a>
-                                <a href="/docs/Mubin_Attar_Resume.pdf" target="_blank"><button type="button"
-                                        class="btn two"><i class="fas fa-download"></i> Download CV</button></a>
-                                <div class="social-icons mt-4">
-                                    <p>
-                                        <a href="https://www.linkedin.com/in/mubin-attar-53223716a/" target="_blank"><i
-                                                class="fab fa-linkedin"></i></a>
-                                        <a href="https://twitter.com/skmubin313" target="_blank"><i
-                                                class="fab fa-twitter"></i></a>
-                                        <a href="https://github.com/Mubin-Shaikh" target="_blank"><i
-                                                class="fab fa-github"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-neutral-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="animate-pulse absolute top-20 left-10 w-64 h-64 bg-primary rounded-full filter blur-3xl"></div>
+            <div class="animate-pulse absolute bottom-20 right-10 w-64 h-64 bg-accent rounded-full filter blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center z-10">
+            <h1 class="text-5xl md:text-6xl font-bold text-white animate-fade-in">Mubin Attar</h1>
+            <p class="text-2xl text-accent mt-2 animate-fade-in" style="animation-delay: 0.2s;">Python Django Engineer</p>
+            <p class="text-neutral-400 mt-4 animate-fade-in" style="animation-delay: 0.4s;">Crafting scalable, AI-driven solutions with Python and modern technologies.</p>
+            <div class="mt-8 flex justify-center space-x-4 animate-fade-in" style="animation-delay: 0.6s;">
+                <a href="#projects" class="bg-primary text-white px-6 py-3 rounded hover:bg-primary/80">View My Work</a>
+                <a href="#contact" class="bg-accent text-neutral-900 px-6 py-3 rounded hover:bg-accent/80">Get in Touch</a>
+            </div>
+            <div class="mt-8 flex justify-center space-x-8 animate-fade-in" style="animation-delay: 0.8s;">
+                <div>
+                    <p class="text-3xl font-bold text-accent">2+</p>
+                    <p class="text-neutral-400">Years Experience</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-accent">5+</p>
+                    <p class="text-neutral-400">Projects Completed</p>
                 </div>
             </div>
-        </section>
-
-        <!-- about section-->
-        <section id="about">
-            <div class="container mt-4">
-                <h1 class="text-center">About</h1>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <img src="images/mubin.jpeg" class="imageAboutPage" alt="selfy">
-                    </div>
-
-                    <div class="col-lg-8">
-                        <strong>
-                            <span style="font-size:x-large;">H</span>ello...
-                            <p>&emsp;&emsp;&emsp;I am a passionate Software Engineer. I bring a strong skill set and
-                                expertise in Python, Django, Django REST
-                                Framework, Agile methodologies, HTML, CSS, JavaScript, Bootstrap, Git, PostgreSQL, and
-                                AWS</p>
-                        </strong>
-                        <p>Currently, I am working at Linescripts Software Pvt Ltd, Gaining valuable experience in
-                            software development methodologies and best practices, allowing me to deliver impactful
-                            contributions.</p>
-                        <p>Moreover, I am actively exploring DevOps tools and techniques, such as implementing CI/CD
-                            pipelines,
-                            utilizing Docker and Kubernetes for containerization and orchestration, leveraging Ansible
-                            for configuration management, employing Jenkins for continuous integration, and harnessing
-                            the power of AWS for cloud-based solutions.</p>
-                        <div class="row mt-3">
-                            <h4><i class="fas fa-graduation-cap">Education:-</i></h4>
-                            <div class="col-md-6">
-                                <ul style="list-style-type: none;line-height: 1.8">
-                                    <li><i class="fa fa-university"></i> AES's Institute of Management and Research,
-                                        Pune</li>
-                                    <li><strong><i class="fas fa-user-graduate"></i> MCA-OCT 2021 </strong></li>
-                                    <li><strong><i class="fas fa-award"></i> A' GRADE</strong></li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul style="list-style-type: none; line-height: 1.8;">
-                                    <li><i class="fa fa-university"></i> MGTSM' S Arts, Science & Commerce College,
-                                        Chopda</li>
-                                    <li><strong><i class="fas fa-user-graduate"></i> BCA-Apr 2018 </strong></li>
-                                    <li><strong><i class="fas fa-award"></i> O' GRADE</strong></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <!-- skills section-->
-        <section id="skills">
-            <div class="container mt-4">
-                <h1 class="text-center">Expertise</h1>
-                <div class="row">
-                    <div class="col-lg-4 mt-4">
-                        <div class="card servicesText">
-                            <div class="card-body">
-                                <i class="fas servicesIcon fa-paint-brush"></i>
-                                <h4 class="card-title mt-3">Front-End Technologies</h4>
-                                <div class="skill-item">
-                                    <ul>
-                                        <li>HTML5</li>
-                                        <li>CSS3</li>
-                                        <li>JAVASCRIPT</li>
-                                        <li>BOOTSTRAP5</li>
-                                        <li>REACT</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mt-4">
-                        <div class="card servicesText">
-                            <div class="card-body">
-                                <i class='fas servicesIcon fa-code'></i>
-                                <h4 class="card-title mt-3">Back-End Technologies</h4>
-                                <div class="skill-item">
-                                    <ul>
-                                        <li>C++</li>
-                                        <li>PYTHON</li>
-                                        <li>OOPs</li>
-                                        <li>ORM</li>
-                                        <li>DATA STRUCTURES & ALGORITHMS</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4">
-                        <div class="card servicesText">
-                            <div class="card-body">
-                                <i class='far servicesIcon fa-check-circle'></i>
-                                <h4 class="card-title mt-3">Framewors & Libraries</h4>
-                                <div class="skill-item">
-                                    <ul>
-                                        <li>DJANGO</li>
-                                        <li>DRF</li>
-                                        <li>FLASK</li>
-                                        <li>FAST-API</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 mt-4">
-                        <div class="card servicesText">
-                            <div class="card-body">
-                                <i class='fas servicesIcon fa-tools'></i>
-                                <h4 class="card-title mt-3">Tools & Technologies</h4>
-                                <div class="skill-item">
-                                    <ul>
-                                        <li>GIT / GITHUB</li>
-                                        <li>WEB-SCRAPPING</li>
-                                        <li>WEB-CRAWLING</li>
-                                        <li>SSH/SSL</li>
-                                        <li>HTTP / HTTPS</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4">
-                        <div class="card servicesText">
-                            <div class="card-body">
-                                <i class='fas servicesIcon fa-database'></i>
-                                <h4 class="card-title mt-3">Database Technologies</h4>
-                                <div class="skill-item">
-                                    <ul>
-                                        <li>SQL / NoSQL</li>
-                                        <li>PostgreSQL</li>
-                                        <li>MYSQL</li>
-                                        <li>MONGODB</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mt-4">
-                        <div class="card servicesText">
-                            <div class="card-body">
-                                <i class='fas servicesIcon fa-plus-circle'></i>
-                                <h4 class="card-title mt-3">Familier With</h4>
-                                <div class="skill-item">
-                                    <ul>
-                                        <li>CLOUD COMPUTING-AWS</li>
-                                        <li>NETWORK STRUCTURE & SECURITY</li>
-                                        <li>DEBUGGING</li>
-                                        <li>AGILE / SCRUM METHODLOGY</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-8 bg-neutral-800 p-4 rounded max-w-md mx-auto animate-fade-in code-block" style="animation-delay: 1s;">
+                <pre class="text-left text-sm"><code><span class="text-primary">print</span><span class="text-white">(</span><span class="text-accent">"Welcome to my portfolio!"</span><span class="text-white">)</span></code></pre>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- portfolio section-->
-        <section id="portfolio">
-            <div class="container mt-3">
-                <h1 class="text-center">Project</h1>
-                <div class="row">
-                    <div class="col-lg-4 mt-4">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img class="card-img-top" src="/images/ecom_ss.png" alt="Card image" style="width: 100%">
-                            <div class="card-body">
-                                <h5 class="card-title">FlipKart-CLONE-FlipKart Clone</h5>
-                                <p class="card-text">This project deals with developing a Virtual website 'E-commerce
-                                    Website'. It provides the user with a list of the various products available for
-                                    purchase in the store.</p>
-                                <a href="https://github.com/Mubin-Shaikh/FlipKart-CLONE.git"
-                                    class="btn btn-primary">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mt-4">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img class="card-img-top" src="/images/ecom_ss.png" alt="Card image" style="width: 100%">
-                            <div class="card-body">
-                                <h5 class="card-title">FlipKart-CLONE-FlipKart Clone</h5>
-                                <p class="card-text">This project deals with developing a Virtual website 'E-commerce
-                                    Website'. It provides the user with a list of the various products available for
-                                    purchase in the store.</p>
-                                <a href="https://github.com/Mubin-Shaikh/FlipKart-CLONE.git"
-                                    class="btn btn-primary">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mt-4">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img class="card-img-top" src="/images/ecom_ss.png" alt="Card image" style="width: 100%">
-                            <div class="card-body">
-                                <h5 class="card-title">FlipKart-CLONE-FlipKart Clone</h5>
-                                <p class="card-text">This project deals with developing a Virtual website 'E-commerce
-                                    Website'. It provides the user with a list of the various products available for
-                                    purchase in the store.</p>
-                                <a href="https://github.com/Mubin-Shaikh/FlipKart-CLONE.git"
-                                    class="btn btn-primary">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- contact section-->
-
-        <section id="contact">
-            <div class="container mt-5">
-
-                <h1 class="h1-responsive font-weight-bold text-center my-4">Contact Me</h1>
-
-                <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to
-                    contact me directly.</p>
-
-                <div class="row">
-                    <div class="col-md-9 mb-md-0 mb-5">
-                        <form id="contact-form" name="contact-form" method="POST" data-netlify="true">
-
-                            <div class="row">
-                                <div class="col-md-6 my-2">
-                                    <div class="md-form mb-0">
-                                        <label for="name" class="">Name</label>
-                                        <input type="text" id="name" name="name" class="form-control"
-                                            placeholder="John Doe" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 my-2">
-                                    <div class="md-form mb-0">
-                                        <label for="email" class="">Your email</label>
-                                        <input type="text" id="email" name="email" class="form-control"
-                                            placeholder="johndoe@gmail.com" required>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12 my-2">
-                                    <div class="md-form mb-0">
-                                        <label for="subject" class="">Subject</label>
-                                        <input type="text" id="subject" name="subject" class="form-control"
-                                            placeholder="..." required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-15 my-3">
-                                    <div class="md-form">
-                                        <label for="message">Your message</label>
-                                        <textarea type="text" id="message" name="message" rows="5"
-                                            class="form-control md-textarea" placeholder="..." required></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-
-                        <div class="text-center text-md-left">
-                            <a class="btn btn-success"
-                                onclick="document.getElementById('contact-form').submit();">Send</a>
-                        </div>
-
-                    </div>
-                    <!--Grid column-->
-                    <div class="col-md-3 text-center">
-                        <ul class="list-unstyled mb-0">
-                            <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                                <p>Pune-411014, Maharashtra</p>
-                            </li>
-
-                            <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                                <p>+91 7038770374</p>
-                            </li>
-
-                            <li><i class="fas fa-mail-bulk mt-4 fa-2x"></i>
-                                <p>sk.mubinattar@gmail.com</p>
-                            </li>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-neutral-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12 animate-slide-up">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="animate-slide-up">
+                    <p class="text-neutral-300">I’m Mubin Attar, a dedicated Software Engineer with a Master’s in Computer Applications, specializing in Python, Django, and machine learning. I focus on building full-stack applications and AI-powered solutions that solve real-world problems.</p>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-bold text-accent">Highlights</h3>
+                        <ul class="list-disc list-inside text-neutral-400">
+                            <li>Full-Stack Developer with 2+ years of experience</li>
+                            <li>AI Enthusiast with expertise in ML and predictive modeling</li>
+                            <li>Skilled in cloud platforms like AWS (EC2, S3)</li>
                         </ul>
                     </div>
-                    <!--Grid column-->
-
+                    <div class="mt-4">
+                        <h3 class="text-xl font-bold text-accent">Credentials</h3>
+                        <ul class="list-disc list-inside text-neutral-400">
+                            <li>🎓 MCA, Savitribai Phule University</li>
+                            <li>💼 2+ Years Experience</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 p-6 rounded animate-slide-up code-block" style="animation-delay: 0.2s;">
+                    <pre class="text-sm"><code><span class="text-primary">def</span> <span class="text-white">about_me</span>():<br>    <span class="text-primary">return</span> {<br>        <span class="text-accent">"name"</span>: <span class="text-accent">"Mubin Attar"</span>,<br>        <span class="text-accent">"role"</span>: <span class="text-accent">"Python Django Engineer"</span>,<br>        <span class="text-accent">"passion"</span>: <span class="text-accent">"Building AI-driven solutions"</span><br>    }</code></pre>
                 </div>
             </div>
+        </div>
+    </section>
 
-        </section>
-
-        <!-- footer section-->
-
-        <footer id="footer">
-            <div class="social-icons mt-4">
-                <p><a href="https://www.linkedin.com/in/mubin-attar-53223716a/" target="_blank"><i
-                            class="fab fa-linkedin"></i></a></a>
-                    <a href="https://twitter.com/skmubin313" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://github.com/Mubin-Shaikh" target="_blank"><i class="fab fa-github"></i></a>
-                </p>
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-20 bg-neutral-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12 animate-slide-up">Technical Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-neutral-800 p-6 rounded shadow animate-slide-up">
+                    <h3 class="text-xl font-bold text-accent">Full-Stack Development</h3>
+                    <ul class="list-disc list-inside text-neutral-400 mt-2">
+                        <li>Python, Django, DRF</li>
+                        <li>React, JavaScript</li>
+                        <li>RESTful APIs, PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral-800 p-6 rounded shadow animate-slide-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-accent">Machine Learning</h3>
+                    <ul class="list-disc list-inside text-neutral-400 mt-2">
+                        <li>XGBoost, Neural Networks</li>
+                        <li>Predictive Modeling</li>
+                        <li>Pandas, NumPy</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral-800 p-6 rounded shadow animate-slide-up" style="animation-delay: 0.4s;">
+                    <h3 class="text-xl font-bold text-accent">Tools & Platforms</h3>
+                    <ul class="list-disc list-inside text-neutral-400 mt-2">
+                        <li>AWS (EC2, S3, RDS)</li>
+                        <li>GitHub, Git</li>
+                        <li>Linux, Docker</li>
+                    </ul>
+                </div>
             </div>
-            <a href="/">Blog</a>
-            |
-            <a href="/">Contact</a>
-            |
-            <a href="/">About</a>
-            |
-            <a href="/">Privacy</a>
-            <p>©</span> 2022 mubinattar.netlify.app Some Rights Reserved. <br> Attribution: Work illustrations by
-                freepik/author/ongwow.</p>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <!-- load javascript after loading all html content -->
-    <script src="script/script.js"></script>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-neutral-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12 animate-slide-up">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-neutral-900 p-6 rounded shadow animate-slide-up">
+                    <h3 class="text-xl font-bold text-white">AI-Powered Sports Betting Bot</h3>
+                    <p class="text-neutral-400 mt-2">A backend system for ML-based sports predictions using XGBoost and neural networks. Integrated with Django and PostgreSQL for real-time data processing.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white rounded">Python</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">Django</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">XGBoost</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">PostgreSQL</span>
+                    </div>
+                    <div class="mt-4 flex gap-4">
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 p-6 rounded shadow animate-slide-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">Hospital Management System</h3>
+                    <p class="text-neutral-400 mt-2">A modular full-stack system with features like appointment scheduling, patient records, and admin dashboards, built with Django and PostgreSQL.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white rounded">Python</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">Django</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">PostgreSQL</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">JavaScript</span>
+                    </div>
+                    <div class="mt-4 flex gap-4">
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 p-6 rounded shadow animate-slide-up">
+                    <h3 class="text-xl font-bold text-white">E-commerce Platform</h3>
+                    <p class="text-neutral-400 mt-2">A B2B e-commerce web platform with payment integration, user authentication, and product management, developed using Django and React.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white rounded">Python</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">Django</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">React</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">AWS</span>
+                    </div>
+                    <div class="mt-4 flex gap-4">
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 p-6 rounded shadow animate-slide-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">Predictive Analytics Dashboard</h3>
+                    <p class="text-neutral-400 mt-2">A dashboard for visualizing predictive analytics, leveraging Python, Pandas, and machine learning models to provide actionable insights.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white rounded">Python</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">Pandas</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">ML</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">Django</span>
+                    </div>
+                    <div class="mt-4 flex gap-4">
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-accent hover:text-accent/80"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-neutral-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12 animate-slide-up">Professional Experience</h2>
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <div class="bg-neutral-800 p-6 rounded shadow animate-slide-up">
+                    <h3 class="text-xl font-bold text-white">Software Engineer</h3>
+                    <p class="text-neutral-400">Sevina Technologies | Apr 2024 - Present</p>
+                    <p class="text-neutral-300 mt-2">Building a full-stack sports betting platform with Django, DRF, React, and PostgreSQL. Implemented ML models for predictive analytics and optimized backend performance.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white rounded">Django</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">React</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">ML</span>
+                    </div>
+                </div>
+                <div class="bg-neutral-800 p-6 rounded shadow animate-slide-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">Junior Python Developer</h3>
+                    <p class="text-neutral-400">Linescripts Software Pvt Ltd | Nov 2022 - Apr 2024</p>
+                    <p class="text-neutral-300 mt-2">Developed 3+ B2B web platforms in healthcare and e-commerce using Django. Designed RESTful APIs, integrated cloud services, and collaborated with cross-functional teams.</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-primary text-white rounded">Python</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">Django</span>
+                        <span class="px-2 py-1 bg-primary text-white rounded">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-neutral-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12 animate-slide-up">Education</h2>
+            <div class="space-y-8 max-w-3xl mx-auto">
+                <div class="bg-neutral-900 p-6 rounded shadow animate-slide-up">
+                    <h3 class="text-xl font-bold text-white">Master of Computer Applications (MCA)</h3>
+                    <p class="text-neutral-400">Savitribai Phule University, Pune | 2020 - 2022</p>
+                    <p class="text-neutral-300 mt-2">Specialized in software development and data science, with a focus on Python and machine learning.</p>
+                </div>
+                <div class="bg-neutral-900 p-6 rounded shadow animate-slide-up" style="animation-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">Bachelor of Computer Applications (BCA)</h3>
+                    <p class="text-neutral-400">Savitribai Phule University, Pune | 2017 - 2020</p>
+                    <p class="text-neutral-300 mt-2">Gained foundational knowledge in programming, web development, and database systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-neutral-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12 animate-slide-up">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="animate-slide-up">
+                    <p class="text-neutral-300">Email: <a href="mailto:sk.mubinattar@gmail.com" class="text-accent">sk.mubinattar@gmail.com</a></p>
+                    <p class="text-neutral-300">Phone: 7038770374</p>
+                    <p class="text-neutral-300">Location: Chopda, Maharashtra</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="https://www.linkedin.com/in/mubin-attar-597b26226" class="text-accent hover:text-accent/80"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/mubinattar" class="text-accent hover:text-accent/80"><i class="fab fa-github"></i></a>
+                        <a href="https://www.hackerrank.com/profile/mubinattar2002" class="text-accent hover:text-accent/80"><i class="fab fa-hackerrank"></i></a>
+                        <a href="https://leetcode.com/u/mubinattar2002" class="text-accent hover:text-accent/80"><i class="fab fa-leetcode"></i></a>
+                    </div>
+                </div>
+                <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-4 animate-slide-up" style="animation-delay: 0.2s;">
+                    <input type="text" name="name" placeholder="Name" class="w-full p-2 bg-neutral-900 text-white rounded" required>
+                    <input type="email" name="email" placeholder="Email" class="w-full p-2 bg-neutral-900 text-white rounded" required>
+                    <textarea name="message" placeholder="Message" rows="4" class="w-full p-2 bg-neutral-900 text-white rounded" required></textarea>
+                    <button type="submit" class="w-full bg-primary text-white p-2 rounded hover:bg-primary/80">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 py-4 text-center text-neutral-400">
+        <p>© 2025 Mubin Attar | Python Django Engineer</p>
+    </footer>
 </body>
-
 </html>
