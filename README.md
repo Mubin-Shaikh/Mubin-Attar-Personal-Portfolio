@@ -1,6 +1,6 @@
 # Mubin Attar - Software Engineer & AI/ML Enthusiast Portfolio
 
-This is a modern, dark-themed portfolio website for **Mubin Attar**, a Software Engineer specializing in Python, Django, and AI/ML. It showcases my skills, projects, and experience with a professional, Python-inspired design using blue (`#306998`) and yellow (`#FFD43B`) accents.
+This is a modern, dark-themed portfolio website for a Software Engineer. It showcases my skills, projects, and experience with a professional, Python-inspired design using blue (`#306998`) and yellow (`#FFD43B`) accents.
 
 **Live Demo:** [**mubinattar.netlify.app**](http://mubinattar.netlify.app/)
 
@@ -26,7 +26,6 @@ To run this project locally, follow these steps:
     ```sh
     git clone https://github.com/Mubin-Shaikh/portfolio.git
     ```
-    *(Note: This uses your actual GitHub username and a suggested repo name. Adjust if needed.)*
 
 2.  **Navigate to the Directory:**
     ```sh
