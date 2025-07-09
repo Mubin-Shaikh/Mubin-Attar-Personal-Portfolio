@@ -1,0 +1,103 @@
+/* Custom Focus State for Accessibility & Style */
+:focus-visible {
+    outline: 2px solid #FFD43B;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Hero Section Gradient Text */
+.text-gradient { 
+    background: linear-gradient(90deg, #FFD43B, #FFE873, #FFD43B); 
+    background-size: 200% auto; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    animation: text-gradient-flow 3s linear infinite; 
+}
+@keyframes text-gradient-flow { to { background-position: 200% center; } }
+
+/* Hero Section Typing Cursor */
+.typing-cursor { 
+    display: inline-block; 
+    width: 8px; 
+    height: 1.2rem; 
+    background-color: #FFD43B; 
+    animation: blink 0.7s infinite; 
+    margin-left: 4px; 
+}
+@keyframes blink { 
+    50% { opacity: 0; } 
+}
+
+/* Animated Background */
+body { 
+    background-color: #0a0a0a; 
+    background-image: radial-gradient(rgba(31, 41, 55, 0.5) 1px, transparent 1px); 
+    background-size: 40px 40px; 
+    animation: bg-pan 30s linear infinite; 
+}
+@keyframes bg-pan { 
+    0% { background-position: 0% 0%; } 
+    100% { background-position: 100% 100%; } 
+}
+
+/* Hero Section Aurora Effect */
+.hero-aurora {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(48, 105, 152, 0.15), transparent 30%);
+    transition: background 0.2s ease-out;
+    z-index: 0;
+}
+
+/* Card Glow Effect */
+.card-glow:hover { 
+    box-shadow: 0 0 20px rgba(48, 105, 152, 0.5); 
+}
+
+/* Swiper Slider Customization */
+.swiper-button-next, 
+.swiper-button-prev { 
+    width: 44px; 
+    height: 44px; 
+    background-color: rgba(0,0,0,0.3); 
+    backdrop-filter: blur(4px); 
+    border-radius: 50%; 
+    color: #FFD43B !important; 
+    transition: all 0.3s ease; 
+}
+.swiper-button-next:hover, 
+.swiper-button-prev:hover { 
+    background-color: #306998; 
+    color: #FFFFFF !important; 
+    box-shadow: 0 0 15px #306998; 
+}
+.swiper-button-next::after, 
+.swiper-button-prev::after { 
+    font-size: 1.25rem !important; 
+}
+.swiper-pagination-bullet-active { 
+    background: #FFD43B !important; 
+}
+
+/* Shine Effect for Buttons */
+.shine-button { 
+    position: relative; 
+    overflow: hidden; 
+}
+.shine-button::after { 
+    content: ''; 
+    position: absolute; 
+    top: -50%; 
+    left: -50%; 
+    width: 20%; 
+    height: 200%; 
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%); 
+    transform: rotate(20deg); 
+    transition: left 0.8s ease; 
+}
+.shine-button:hover::after { 
+    left: 130%; 
+}
