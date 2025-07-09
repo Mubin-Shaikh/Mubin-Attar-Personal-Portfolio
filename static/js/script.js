@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     // Initialize all components
     initMobileMenu();
     initNavScroll();
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function initScrollToTop() {
         const button = document.getElementById('scroll-to-top');
         if (!button) return;
-        
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 button.classList.remove('opacity-0', '-translate-y-4');
