@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initHeroAuroraEffect();
     initScrollToTop();
     initContactForm();
+    initExperienceTimeline();
 
     // --- COMPONENT INITIALIZATIONS ---
 
@@ -68,13 +69,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const codeEl = document.getElementById('code-snippet');
         if (!codeEl) return;
 
+        // Your new, improved code lines!
         const codeLines = [
             '<span class="text-brand-blue-dark">def</span> <span class="text-brand-yellow">ignite_vision</span>(<span class="text-brand-yellow-light">idea</span>):',
-            '    <span class="text-gray-500"># Crafting intelligent web solutions with Python, Django & ML</span>',
-            '    insights = <span class="text-white">weave_ml_magic</span>(idea)',
-            '    app = <span class="text-white">sculpt_django_platform</span>(insights)',
-            '    <span class="text-brand-blue-dark">return</span> <span class="text-green-400">f"{app}: Where ideas meet innovation!"</span>'
+            '    <span class="text-green-400">"""</span>',
+            '    <span class="text-gray-400">🔍 From concept to code.</span>',
+            '    <span class="text-gray-400">💡 Powered by Python.</span>',
+            '    <span class="text-gray-400">🧠 Enhanced by ML.</span>',
+            '    <span class="text-green-400">"""</span>',
+            '    <span class="text-white">model</span> = <span class="text-brand-blue">infuse_with_intelligence</span>(idea)',
+            '    <span class="text-white">app</span> = <span class="text-brand-blue">deploy_with_django</span>(model)',
+            '    <span class="text-brand-blue-dark">return</span> <span class="text-green-400">f"{app} — Where smart ideas become real products."</span>'
         ];
+
         let currentLine = 0, currentChar = 0;
 
         function typeCode() {
@@ -233,5 +240,31 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 5000);
                 });
         });
+    }
+    
+    /**
+     * IDEA 3 (FIXED): "Drawing" Experience Timeline Animation.
+     * Uses an Intersection Observer to detect when the 'Experience' section is
+     * visible, then adds a class to trigger the CSS animation that "draws" the
+     * vertical timeline bar.
+     */
+    function initExperienceTimeline() {
+        const experienceSection = document.getElementById('experience');
+        if (!experienceSection) return;
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the trigger class to the section
+                    experienceSection.classList.add('timeline-in-view');
+                    // We only need to do this once, so we can unobserve
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 20% of the section is visible
+        });
+
+        timelineObserver.observe(experienceSection);
     }
 });

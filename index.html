@@ -39,7 +39,7 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        heading: ['Fira Code', 'Montserrat', 'monospace'], // <-- UPDATED to Monospace Font
+                        heading: ['Fira Code', 'Montserrat', 'monospace'],
                     },
                 },
             },
@@ -154,28 +154,21 @@
                             <div class="h-1 w-12 bg-brand-blue rounded"></div>
                         </div>
                     </div>
-                    
-                    <!-- This is the parent grid container. It creates 2 columns on large screens. -->
+
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-                        <!-- Left Column: Image -->
-                        <!-- 
-                        FIX: The problematic 'md:col-span-2' class has been REMOVED from this line.
-                        This ensures the image column only takes up 1 of the 2 available columns on large screens,
-                        restoring the side-by-side layout.
-                        -->
-                        <div class="flex justify-center items-center" data-observer-target data-animation-classes="animate__animated animate__fadeInLeft">
-                            <!-- The outer container provides the glow effect -->
-                            <div class="profile-picture-glow w-64 h-72 lg:w-72 lg:h-80 relative">
-                                <!-- This inner container is clipped into a hexagon shape by the CSS -->
+                        <div class="flex justify-center items-center" data-observer-target
+                            data-animation-classes="animate__animated animate__fadeInLeft">
+                            <div class="profile-picture-glow w-64 h-72 lg:w-72 lg:h-80">
                                 <div class="tech-hexagon w-full h-full">
-                                    <img src="./static/img/Mubin_Attar.jpg" alt="Mubin Attar" class="w-full h-full object-cover">
+                                    <img src="./static/img/Mubin_Attar.jpg" alt="Mubin Attar"
+                                        class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Right Column: Text Content (This part was already correct) -->
-                        <div class="space-y-6" data-observer-target data-animation-classes="animate__animated animate__fadeInRight">
+                        <div class="space-y-6" data-observer-target
+                            data-animation-classes="animate__animated animate__fadeInRight">
                             <h3 class="text-3xl font-bold text-brand-yellow font-heading">A Passion for Code and
                                 Intelligent Systems</h3>
                             <p class="text-gray-300 leading-relaxed">
@@ -184,17 +177,18 @@
                                 transforming complex problems into clean, efficient code.
                             </p>
 
-                            <!-- Key Highlights / Stats -->
+                            <!-- NEW: Key Highlights / Stats with card-glow effect -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
-                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700">
+                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700 card-glow">
                                     <p class="text-2xl font-bold text-white">2.6+</p>
                                     <p class="text-sm text-gray-400">Years Experience</p>
                                 </div>
-                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700">
+                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700 card-glow">
                                     <p class="text-2xl font-bold text-white">10+</p>
                                     <p class="text-sm text-gray-400">Projects Shipped</p>
                                 </div>
-                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700 col-span-2 sm:col-span-1">
+                                <div
+                                    class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700 col-span-2 sm:col-span-1 card-glow">
                                     <p class="text-2xl font-bold text-white">AI/ML</p>
                                     <p class="text-sm text-gray-400">Core Focus</p>
                                 </div>
@@ -232,9 +226,8 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
 
-                    <!-- 1. Programming & Backend -->
-                    <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
-                        data-observer-target data-animation-classes="animate__animated animate__fadeInUp">
+                    <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
+                        data-animation-classes="animate__animated animate__fadeInUp">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-code fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">Programming & Backend</h3>
                         <ul class="space-y-2 text-gray-300">
@@ -244,9 +237,7 @@
                             <li>PostgreSQL, MySQL, SQLite</li>
                         </ul>
                     </div>
-                    <!-- 4. Frontend & UI Basics -->
-                    <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
-                        data-observer-target
+                    <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-laptop-code fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">Frontend & UI Basics</h3>
@@ -258,30 +249,19 @@
                         </ul>
                     </div>
 
-                    <!-- 2. AI / ML & Data Science -->
-                    <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
-                        data-observer-target
+                    <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp animate__delay-2s">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-brain fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">AI / ML & Data Science</h3>
                         <ul class="space-y-2 text-gray-300">
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>TensorFlow, PyTorch,
-                                Scikit-learn</li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>XGBoost, Neural Networks</li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Pandas, NumPy, Matplotlib
-                            </li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Model Deployment, Feature
-                                Engineering</li>
+                            <li>TensorFlow, PyTorch, Scikit-learn</li>
+                            <li>XGBoost, Neural Networks</li>
+                            <li>Pandas, NumPy, Matplotlib</li>
+                            <li>Model Deployment, Feature Engineering</li>
                         </ul>
                     </div>
 
-                    <!-- 3. DevOps & Cloud -->
-                    <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
-                        data-observer-target
+                    <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp animate__delay-3s">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-tools fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">DevOps & Cloud</h3>
@@ -311,179 +291,173 @@
                     data-animation-classes="animate__animated animate__fadeInUp">
                     <div class="swiper px-4">
                         <div class="swiper-wrapper pb-16 pt-5">
+                            
+                            <!-- Project Card 1 -->
                             <div class="swiper-slide h-auto">
-                                <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
-                                    <div class="relative overflow-hidden"><img
-                                            src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
-                                            alt="AI Sports Betting Bot"
-                                            class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        <div
-                                            class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <a href="https://github.com/Mubin-Shaikh" target="_blank"
-                                                rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a><a href="#"
-                                                aria-label="Live Demo"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fas fa-external-link-alt fa-2x"></i></a>
+                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                    <div class="h-full flex flex-col group">
+                                        <div class="relative overflow-hidden">
+                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
+                                                alt="AI Sports Betting Bot"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer" aria-label="Project on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                <a href="#" aria-label="Live Demo"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fas fa-external-link-alt fa-2x"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-white mb-2 font-heading">AI Sports Betting Bot
-                                        </h3>
-                                        <p class="text-gray-400 mb-4 text-sm flex-grow">Backend for ML predictions using
-                                            XGBoost & neural networks. Built RESTful APIs for serving results.</p>
-                                        <div class="flex flex-wrap gap-2 mt-auto"><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">RESTful
-                                                APIs</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide h-auto">
-                                <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
-                                    <div class="relative overflow-hidden"><img
-                                            src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System"
-                                            alt="Hospital Management System"
-                                            class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        <div
-                                            class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <a href="https://github.com/Mubin-Shaikh" target="_blank"
-                                                rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Hospital Management
-                                            System</h3>
-                                        <p class="text-gray-400 mb-4 text-sm flex-grow">Contributed to a modular,
-                                            enterprise-scale system for a healthcare provider, covering scheduling,
-                                            records, and reporting.</p>
-                                        <div class="flex flex-wrap gap-2 mt-auto"><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web
-                                                Dev</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide h-auto">
-                                <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
-                                    <div class="relative overflow-hidden"><img
-                                            src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform"
-                                            alt="B2B Platforms"
-                                            class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        <div
-                                            class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <a href="https://github.com/Mubin-Shaikh" target="_blank"
-                                                rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-white mb-2 font-heading">B2B Web Platforms
-                                        </h3>
-                                        <p class="text-gray-400 mb-4 text-sm flex-grow">Developed features for 3+ B2B
-                                            platforms in healthcare & e-commerce. Built responsive UIs and integrated
-                                            third-party APIs.</p>
-                                        <div class="flex flex-wrap gap-2 mt-auto"><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">JavaScript</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Bootstrap</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">API
-                                                Integration</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide h-auto">
-                                <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
-                                    <div class="relative overflow-hidden"><img
-                                            src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API"
-                                            alt="E-commerce API"
-                                            class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        <div
-                                            class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <a href="https://github.com/Mubin-Shaikh" target="_blank"
-                                                rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-white mb-2 font-heading">E-commerce Backend
-                                            API</h3>
-                                        <p class="text-gray-400 mb-4 text-sm flex-grow">Designed a RESTful API with DRF
-                                            for an e-commerce site, handling users, products, and orders.</p>
-                                        <div class="flex flex-wrap gap-2 mt-auto"><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">DRF</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">PostgreSQL</span>
+                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900">
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">AI Sports Betting Bot</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Backend for ML predictions using XGBoost & neural networks. Built RESTful APIs for serving results.</p>
+                                            <div class="flex flex-wrap gap-2 mt-auto">
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">RESTful APIs</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Project Card 2 -->
                             <div class="swiper-slide h-auto">
-                                <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
-                                    <div class="relative overflow-hidden"><img
-                                            src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation"
-                                            alt="Cloud Automation"
-                                            class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        <div
-                                            class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <a href="https://github.com/Mubin-Shaikh" target="_blank"
-                                                rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a>
+                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                    <div class="h-full flex flex-col group">
+                                        <div class="relative overflow-hidden">
+                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System"
+                                                alt="Hospital Management System"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer" aria-label="Project on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Cloud Deployment
-                                            Automation</h3>
-                                        <p class="text-gray-400 mb-4 text-sm flex-grow">Scripts to automate deploying
-                                            Django apps to AWS EC2, including S3 integration for static files.</p>
-                                        <div class="flex flex-wrap gap-2 mt-auto"><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">AWS</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Boto3</span>
+                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900">
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Hospital Management System</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Contributed to a modular, enterprise-scale system for a healthcare provider, covering scheduling, records, and reporting.</p>
+                                            <div class="flex flex-wrap gap-2 mt-auto">
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web Dev</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- ... Repeat this corrected structure for the other 4 project cards ... -->
+
+                            <!-- Project Card 3 -->
                             <div class="swiper-slide h-auto">
-                                <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
-                                    <div class="relative overflow-hidden"><img
-                                            src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline"
-                                            alt="Data Analysis Pipeline"
-                                            class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        <div
-                                            class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <a href="https://github.com/Mubin-Shaikh" target="_blank"
-                                                rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a>
+                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                    <div class="h-full flex flex-col group">
+                                        <div class="relative overflow-hidden">
+                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform"
+                                                alt="B2B Platforms"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer" aria-label="Project on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="p-6 flex-grow flex flex-col">
-                                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Data Analysis
-                                            Pipeline</h3>
-                                        <p class="text-gray-400 mb-4 text-sm flex-grow">Web scraping tool to gather
-                                            data, processed with Pandas, and visualized to highlight key trends.</p>
-                                        <div class="flex flex-wrap gap-2 mt-auto"><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Pandas</span><span
-                                                class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web
-                                                Scraping</span></div>
+                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900">
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">B2B Web Platforms</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Developed features for 3+ B2B platforms in healthcare & e-commerce. Built responsive UIs and integrated third-party APIs.</p>
+                                            <div class="flex flex-wrap gap-2 mt-auto">
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">JavaScript</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Bootstrap</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">API Integration</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- Project Card 4 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                    <div class="h-full flex flex-col group">
+                                        <div class="relative overflow-hidden">
+                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API"
+                                                alt="E-commerce API"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer" aria-label="Project on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900">
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">E-commerce Backend API</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Designed a RESTful API with DRF for an e-commerce site, handling users, products, and orders.</p>
+                                            <div class="flex flex-wrap gap-2 mt-auto">
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">DRF</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">PostgreSQL</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Card 5 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                    <div class="h-full flex flex-col group">
+                                        <div class="relative overflow-hidden">
+                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation"
+                                                alt="Cloud Automation"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer" aria-label="Project on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900">
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Cloud Deployment Automation</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Scripts to automate deploying Django apps to AWS EC2, including S3 integration for static files.</p>
+                                            <div class="flex flex-wrap gap-2 mt-auto">
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">AWS</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Boto3</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Card 6 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                    <div class="h-full flex flex-col group">
+                                        <div class="relative overflow-hidden">
+                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline"
+                                                alt="Data Analysis Pipeline"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer" aria-label="Project on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900">
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Data Analysis Pipeline</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Web scraping tool to gather data, processed with Pandas, and visualized to highlight key trends.</p>
+                                            <div class="flex flex-wrap gap-2 mt-auto">
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Pandas</span>
+                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web Scraping</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="swiper-pagination mt-12 relative"></div>
@@ -504,8 +478,9 @@
                         <div class="h-1 w-12 bg-brand-blue rounded"></div>
                     </div>
                 </div>
-                <div class="max-w-4xl mx-auto relative space-y-12">
-                    <div class="absolute left-4 md:left-1/2 h-full w-0.5 bg-neutral-700 -translate-x-1/2"></div>
+                <div id="timeline-container" class="max-w-4xl mx-auto relative space-y-12">
+                    <div id="timeline-bar"
+                        class="absolute left-4 md:left-1/2 h-full w-0.5 bg-neutral-700 -translate-x-1/2"></div>
                     <div class="relative flex items-start md:space-x-8" data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp">
                         <div class="hidden md:block w-1/2 text-right pt-1">
@@ -518,8 +493,7 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 md:pl-8 ml-12 md:ml-0">
-                            <div
-                                class="p-6 bg-neutral-800 rounded-lg shadow-md card-glow transition-shadow duration-300">
+                            <div class="p-6 bg-neutral-800 rounded-lg card-glow">
                                 <h3 class="text-xl font-bold text-white font-heading">Software Engineer</h3>
                                 <p class="text-brand-blue-dark font-semibold">Sevina Technologies</p>
                                 <p class="text-gray-400 text-sm mt-2">Engineering a full-stack sports betting platform.
@@ -539,8 +513,7 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 md:pr-8 ml-12 md:ml-0 md:text-right">
-                            <div
-                                class="p-6 bg-neutral-800 rounded-lg shadow-md card-glow transition-shadow duration-300">
+                            <div class="p-6 bg-neutral-800 rounded-lg card-glow">
                                 <h3 class="text-xl font-bold text-white font-heading">Junior Python Developer</h3>
                                 <p class="text-brand-blue-dark font-semibold">Linescripts Software Pvt Ltd</p>
                                 <p class="text-gray-400 text-sm mt-2">Contributed to 3+ B2B platforms. Built responsive
@@ -560,8 +533,7 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 md:pl-8 ml-12 md:ml-0">
-                            <div
-                                class="p-6 bg-neutral-800 rounded-lg shadow-md card-glow transition-shadow duration-300">
+                            <div class="p-6 bg-neutral-800 rounded-lg card-glow">
                                 <h3 class="text-xl font-bold text-white font-heading">Master of Computer Application
                                 </h3>
                                 <p class="text-brand-blue-dark font-semibold">Savitribai Phule University of Pune</p>
@@ -587,42 +559,48 @@
                     </div>
                 </div>
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div data-observer-target data-animation-classes="animate__animated animate__fadeInLeft">
+                    <!-- NEW: "Let's Connect" card now has card-glow effect -->
+                    <div data-observer-target data-animation-classes="animate__animated animate__fadeInLeft"
+                        class="bg-neutral-900/50 p-8 rounded-lg">
                         <h3 class="text-2xl font-bold text-white mb-6 font-heading">Let's Connect</h3>
                         <p class="text-gray-400 mb-8">I'm currently seeking new opportunities and am open to
                             collaboration. If you have a project in mind or just want to connect, feel free to reach
                             out.</p>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center"><i
-                                        class="fas fa-envelope fa-lg text-brand-yellow"></i></div>
+                        <div class="space-y-4">
+                            <!-- NEW: Each contact item is now a card-glow item -->
+                            <a href="mailto:sk.mubinattar@gmail.com"
+                                class="flex items-center gap-4 p-4 rounded-lg bg-neutral-900/50 card-glow">
+                                <div
+                                    class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope fa-lg text-brand-yellow"></i></div>
                                 <div>
-                                    <p class="text-gray-400">Email</p><a href="mailto:sk.mubinattar@gmail.com"
-                                        class="text-brand-yellow hover:underline">sk.mubinattar@gmail.com</a>
+                                    <p class="text-gray-400">Email</p><span
+                                        class="text-brand-yellow hover:underline">sk.mubinattar@gmail.com</span>
                                 </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center"><i
-                                        class="fab fa-linkedin fa-lg text-brand-yellow"></i></div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-4 p-4 rounded-lg bg-neutral-900/50 card-glow">
+                                <div
+                                    class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fab fa-linkedin fa-lg text-brand-yellow"></i></div>
                                 <div>
-                                    <p class="text-gray-400">LinkedIn</p><a
-                                        href="https://www.linkedin.com/in/mubin-attar/" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-brand-yellow hover:underline">linkedin.com/in/mubin-attar</a>
+                                    <p class="text-gray-400">LinkedIn</p><span
+                                        class="text-brand-yellow hover:underline">linkedin.com/in/mubin-attar</span>
                                 </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center"><i
-                                        class="fab fa-github fa-lg text-brand-yellow"></i></div>
+                            </a>
+                            <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-4 p-4 rounded-lg bg-neutral-900/50 card-glow">
+                                <div
+                                    class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fab fa-github fa-lg text-brand-yellow"></i></div>
                                 <div>
-                                    <p class="text-gray-400">GitHub</p><a href="https://github.com/Mubin-Shaikh"
-                                        target="_blank" rel="noopener noreferrer"
-                                        class="text-brand-yellow hover:underline">github.com/Mubin-Shaikh</a>
+                                    <p class="text-gray-400">GitHub</p><span
+                                        class="text-brand-yellow hover:underline">github.com/Mubin-Shaikh</span>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
-                    <form id="contact-form" data-netlify="true" method="POST" class="space-y-6"
+                    <form id="contact-form" name="contact-form" data-netlify="true" method="POST" class="space-y-6"
                         data-observer-target data-animation-classes="animate__animated animate__fadeInRight">
 
                         <input type="hidden" name="form-name" value="contact-form" />
