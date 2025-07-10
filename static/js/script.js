@@ -192,48 +192,42 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!form || !submitButton || !resultDiv) return;
 
         form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submission (page reload)
+            e.preventDefault(); // Prevent the default form submission
 
-            // Gather the form data
             const formData = new FormData(form);
 
-            // Provide immediate feedback to the user
+            // Provide user feedback
             resultDiv.innerHTML = '<p class="text-brand-yellow">Sending...</p>';
             submitButton.disabled = true;
             submitButton.classList.add('opacity-50', 'cursor-not-allowed');
 
-            // Prepare the data for Netlify. It needs to be URL-encoded, not JSON.
+            // Prepare data for Netlify
             const urlEncodedData = new URLSearchParams(formData).toString();
 
-            // Send the data to Netlify. The endpoint is the current page's path.
-            fetch("/", { // The fetch endpoint is the same page for Netlify forms
+            // ** THIS IS THE CORRECTED PART FOR NETLIFY **
+            // The request is sent to the current page's path ("/").
+            fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: urlEncodedData
             })
                 .then((response) => {
-                    // Check if the submission was successful
                     if (response.ok) {
-                        // On success, show a custom success message and clear the form
                         resultDiv.innerHTML = `<p class="text-green-400">Thanks! Your message has been sent.</p>`;
                         form.reset();
                     } else {
-                        // If the server responds with an error, show a generic error message
+                        // If the server responds with an error
                         throw new Error('Form submission failed.');
                     }
                 })
                 .catch(error => {
-                    // Handle network errors or submission failures
                     console.error(error);
                     resultDiv.innerHTML = '<p class="text-red-400">Oops! Something went wrong.</p>';
                 })
                 .finally(() => {
-                    // This block runs regardless of success or failure
-                    // Re-enable the button
+                    // Re-enable the button and clear the message
                     submitButton.disabled = false;
                     submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
-
-                    // Clear the result message after 5 seconds
                     setTimeout(() => {
                         resultDiv.innerHTML = '';
                     }, 5000);
