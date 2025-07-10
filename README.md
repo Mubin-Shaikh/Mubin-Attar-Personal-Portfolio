@@ -1,6 +1,6 @@
 # Mubin Attar - Software Engineer & AI/ML Enthusiast Portfolio
 
-This is a modern, dark-themed portfolio website for a Software Engineer. It showcases my skills, projects, and experience with a professional, Python-inspired design using blue (`#306998`) and yellow (`#FFD43B`) accents.
+This is a modern, dark-themed my personal portfolio website as a Software Engineer. It showcases my skills, projects, and experience with a professional, Python-inspired design using blue (`#306998`) and yellow (`#FFD43B`) accents.
 
 **Live Demo:** [**mubinattar.netlify.app**](http://mubinattar.netlify.app/)
 
