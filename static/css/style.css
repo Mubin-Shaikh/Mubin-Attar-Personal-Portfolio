@@ -54,21 +54,33 @@ body {
     }
 }
 
-/* Hero Section Aurora Effect */
+/* --- ENHANCEMENT: Hero Section "Breathing" Aurora Effect --- */
 .hero-aurora {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(48, 105, 152, 0.15), transparent 30%);
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(48, 105, 152, 0.15), transparent 40%);
     transition: background 0.2s ease-out;
     z-index: 0;
+    animation: aurora-pulse 8s infinite alternate;
 }
 
-/* Card Glow Effect */
-.card-glow:hover {
-    box-shadow: 0 0 20px rgba(48, 105, 152, 0.5);
+@keyframes aurora-pulse {
+    0% {
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(48, 105, 152, 0.1), transparent 40%);
+    }
+
+    100% {
+        background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(48, 105, 152, 0.2), transparent 40%);
+    }
+}
+
+/* --- ENHANCEMENT: Profile Picture Glow Effect --- */
+.profile-picture-glow {
+    background: radial-gradient(circle, #306998, #0a0a0a 70%);
+    box-shadow: 0 0 25px rgba(48, 105, 152, 0.6);
 }
 
 /* Swiper Slider Customization */
@@ -119,4 +131,73 @@ body {
 
 .shine-button:hover::after {
     left: 130%;
+}
+
+/* Enhanced Card Glow Effect */
+.card-glow {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-glow:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+        0 0 10px rgba(48, 105, 152, 0.3),
+        0 0 20px rgba(48, 105, 152, 0.4),
+        0 0 30px rgba(48, 105, 152, 0.5);
+}
+
+/* --- ENHANCEMENT: Pythonic List Bullets --- */
+#technical_expertise ul li {
+    position: relative;
+    padding-left: 20px;
+    /* Make space for the new bullet */
+}
+
+#technical_expertise ul li::before {
+    content: '>';
+    /* The classic prompt/REPL symbol */
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #4B8BBE;
+    /* brand-blue-dark */
+    font-weight: bold;
+    font-family: 'Fira Code', monospace;
+    /* Use the code font! */
+}
+
+/* --- ENHANCEMENT: Tech Hexagon Profile Picture --- */
+.tech-hexagon {
+    /* Creates the hexagon shape. The values are coordinates for each point of the polygon. */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: clip-path 0.3s ease-in-out; /* Smooth transition for the hover effect */
+}
+
+.tech-hexagon:hover {
+    /* On hover, we slightly expand the hexagon for a subtle, interactive "breathing" effect. */
+    clip-path: polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%);
+}
+
+.tech-hexagon img {
+    /* Ensures the image itself is clipped along with its container */
+    clip-path: inherit; 
+}
+
+
+/* --- ENHANCEMENT: Repositioned Swiper Navigation Buttons --- */
+.swiper-button-next,
+.swiper-button-prev {
+    /* This moves the buttons up to be vertically centered with the cards, not the entire container (which includes pagination) */
+    top: 45%; 
+    transform: translateY(-50%);
+}
+
+/* Position the "Next" button just outside the swiper container on the right */
+.swiper-button-next {
+    right: 0px; 
+}
+
+/* Position the "Prev" button just outside the swiper container on the left */
+.swiper-button-prev {
+    left: 0px;
 }

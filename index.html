@@ -11,19 +11,24 @@
     <meta name="robots" content="index, follow">
     <title>Mubin Attar | Software Engineer & AI/ML Enthusiast</title>
 
+    <!-- External CSS Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="./static/css/style.css">
 
+    <!-- Tailwind CSS & Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -33,7 +38,8 @@
                         'brand-blue': '#306998', 'brand-blue-dark': '#4B8BBE', 'brand-yellow': '#FFD43B', 'brand-yellow-light': '#FFE873',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'], heading: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        heading: ['Fira Code', 'Montserrat', 'monospace'], // <-- UPDATED to Monospace Font
                     },
                 },
             },
@@ -106,7 +112,8 @@
                         <h1
                             class="text-4xl sm:text-5xl md:text-7xl font-bold font-heading mb-6 animate__animated animate__fadeInDown">
                             <span class="text-white">Software Engineer &</span><br /><span class="text-gradient">AI/ML
-                                Enthusiast</span></h1>
+                                Enthusiast</span>
+                        </h1>
                         <p
                             class="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
                             Engineering full-stack web platforms and intelligent solutions with Python, Django, and
@@ -121,7 +128,8 @@
                                 class="bg-brand-blue text-white px-8 py-4 rounded-lg hover:bg-brand-blue-dark transition-all duration-300 transform hover:scale-105 shine-button">View
                                 My Work</a><a href="#contact"
                                 class="bg-transparent border-2 border-brand-yellow text-brand-yellow px-8 py-4 rounded-lg hover:bg-brand-yellow hover:text-neutral-900 transition-all duration-300 transform hover:scale-105">Let's
-                                Connect</a></div>
+                                Connect</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,44 +147,72 @@
             <div class="container mx-auto px-4">
                 <div class="max-w-6xl mx-auto">
                     <div class="text-center mb-16" data-observer-target>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">About <span
-                                class="text-brand-yellow">Me</span></h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">About Me</h2>
                         <div class="flex justify-center items-center gap-2 mb-6">
                             <div class="h-1 w-12 bg-brand-blue rounded"></div>
                             <div class="h-1 w-12 bg-brand-yellow rounded"></div>
                             <div class="h-1 w-12 bg-brand-blue rounded"></div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-                        <div class="md:col-span-2" data-observer-target
-                            data-animation-classes="animate__animated animate__fadeInLeft">
-                            <div
-                                class="w-48 h-48 lg:w-64 lg:h-64 mx-auto rounded-full overflow-hidden border-4 border-brand-blue shadow-lg">
-                                <img src="../static/img/Mubin_Attar.jpg" alt="Mubin Attar"
-                                    class="w-full h-full object-cover">
+                    
+                    <!-- This is the parent grid container. It creates 2 columns on large screens. -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                        <!-- Left Column: Image -->
+                        <!-- 
+                        FIX: The problematic 'md:col-span-2' class has been REMOVED from this line.
+                        This ensures the image column only takes up 1 of the 2 available columns on large screens,
+                        restoring the side-by-side layout.
+                        -->
+                        <div class="flex justify-center items-center" data-observer-target data-animation-classes="animate__animated animate__fadeInLeft">
+                            <!-- The outer container provides the glow effect -->
+                            <div class="profile-picture-glow w-64 h-72 lg:w-72 lg:h-80 relative">
+                                <!-- This inner container is clipped into a hexagon shape by the CSS -->
+                                <div class="tech-hexagon w-full h-full">
+                                    <img src="./static/img/Mubin_Attar.jpg" alt="Mubin Attar" class="w-full h-full object-cover">
+                                </div>
                             </div>
                         </div>
-                        <div class="md:col-span-3 space-y-6" data-observer-target
-                            data-animation-classes="animate__animated animate__fadeInRight">
-                            <div
-                                class="bg-neutral-900 p-6 rounded-lg border border-neutral-700 card-glow transition-shadow duration-300">
-                                <h3 class="text-xl font-semibold text-brand-yellow mb-4 font-heading">Who I Am</h3>
-                                <p class="text-gray-300 leading-relaxed">I’m a results-driven Software Engineer with 2.6+
-                                    years of professional experience, specializing in backend development, AI/ML, and
-                                    building scalable full-stack platforms. My core expertise lies in Python, Django,
-                                    REST APIs, and AI-ML applications, with hands-on contributions to high-impact
-                                    domains such as sports analytics, financial trading systems, and healthcare
-                                    tools.<br><br>
-                                    I’m passionate about solving real-world problems with clean, efficient code, and I
-                                    thrive in fast-paced environments where creativity and precision meet. Whether it's
-                                    crafting intelligent automation, architecting backend systems, or integrating
-                                    machine learning models into production, I bring a problem-solving mindset, a love
-                                    for clean architecture, and a commitment to continuous learning.</p>
+
+                        <!-- Right Column: Text Content (This part was already correct) -->
+                        <div class="space-y-6" data-observer-target data-animation-classes="animate__animated animate__fadeInRight">
+                            <h3 class="text-3xl font-bold text-brand-yellow font-heading">A Passion for Code and
+                                Intelligent Systems</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                I'm a results-driven Software Engineer with 2.6+ years of experience specializing in
+                                Python, Django, and the art of building intelligent, scalable web platforms. I thrive on
+                                transforming complex problems into clean, efficient code.
+                            </p>
+
+                            <!-- Key Highlights / Stats -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700">
+                                    <p class="text-2xl font-bold text-white">2.6+</p>
+                                    <p class="text-sm text-gray-400">Years Experience</p>
+                                </div>
+                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700">
+                                    <p class="text-2xl font-bold text-white">10+</p>
+                                    <p class="text-sm text-gray-400">Projects Shipped</p>
+                                </div>
+                                <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700 col-span-2 sm:col-span-1">
+                                    <p class="text-2xl font-bold text-white">AI/ML</p>
+                                    <p class="text-sm text-gray-400">Core Focus</p>
+                                </div>
                             </div>
-                            <a href="../static/asset/MubinAttarResume_2025.pdf" download
-                                class="inline-block bg-brand-yellow text-neutral-900 font-bold px-6 py-3 rounded-lg hover:bg-brand-yellow-light transition-all duration-300 transform hover:scale-105 shine-button">
-                                <i class="fas fa-download mr-2"></i> Download CV
-                            </a>
+
+                            <p class="text-gray-300 leading-relaxed">
+                                My journey has taken me through sports analytics, financial trading, and healthcare,
+                                where I've architected backends, integrated machine learning models, and built robust
+                                APIs. I believe in the power of a problem-solving mindset and a love for clean
+                                architecture.
+                            </p>
+
+                            <div>
+                                <a href="./static/asset/MubinAttarResume_2025.pdf" download
+                                    class="inline-block bg-brand-yellow text-neutral-900 font-bold px-6 py-3 rounded-lg hover:bg-brand-yellow-light transition-all duration-300 transform hover:scale-105 shine-button">
+                                    <i class="fas fa-download mr-2"></i> Download CV
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,58 +223,73 @@
         <section id="technical_expertise" class="py-20 bg-neutral-900">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Technical <span
-                            class="text-brand-yellow">Expertise</span></h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Technical Expertise</h2>
                     <div class="flex justify-center items-center gap-2 mb-6">
                         <div class="h-1 w-12 bg-brand-blue rounded"></div>
                         <div class="h-1 w-12 bg-brand-yellow rounded"></div>
                         <div class="h-1 w-12 bg-brand-blue rounded"></div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+
+                    <!-- 1. Programming & Backend -->
                     <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
                         data-observer-target data-animation-classes="animate__animated animate__fadeInUp">
-                        <div class="text-brand-yellow mb-4"><i class="fas fa-brain fa-2x"></i></div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading">AI & Machine Learning</h3>
+                        <div class="text-brand-yellow mb-4"><i class="fas fa-code fa-2x"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Programming & Backend</h3>
                         <ul class="space-y-2 text-gray-300">
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>XGBoost & Neural Networks
-                            </li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Sports Prediction Models</li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Data-driven Insights</li>
+                            <li>Python, JavaScript, SQL</li>
+                            <li>Django, DRF, Flask, FastAPI</li>
+                            <li>REST APIs, Web Scraping</li>
+                            <li>PostgreSQL, MySQL, SQLite</li>
                         </ul>
                     </div>
+                    <!-- 4. Frontend & UI Basics -->
                     <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
                         data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp animate__delay-1s">
-                        <div class="text-brand-yellow mb-4"><i class="fas fa-server fa-2x"></i></div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Backend Development</h3>
+                        <div class="text-brand-yellow mb-4"><i class="fas fa-laptop-code fa-2x"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Frontend & UI Basics</h3>
                         <ul class="space-y-2 text-gray-300">
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Django & Django Rest
-                                Framework</li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>RESTful APIs & Web Scraping
-                            </li>
-                            <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>PostgreSQL, MySQL, SQLite
-                            </li>
+                            <li> HTML5, CSS3, JavaScript</li>
+                            <li> Bootstrap, Tailwind CSS</li>
+                            <li> Responsive UI Design</li>
+                            <li> Basic DOM Manipulation</li>
                         </ul>
                     </div>
+
+                    <!-- 2. AI / ML & Data Science -->
                     <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
                         data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp animate__delay-2s">
-                        <div class="text-brand-yellow mb-4"><i class="fas fa-desktop fa-2x"></i></div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Frontend & Cloud</h3>
+                        <div class="text-brand-yellow mb-4"><i class="fas fa-brain fa-2x"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">AI / ML & Data Science</h3>
                         <ul class="space-y-2 text-gray-300">
                             <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>HTML5, CSS3, JavaScript</li>
+                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>TensorFlow, PyTorch,
+                                Scikit-learn</li>
                             <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Tailwind CSS & Bootstrap</li>
+                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>XGBoost, Neural Networks</li>
                             <li class="flex items-center"><span
-                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>AWS (EC2/S3) & Linux</li>
+                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Pandas, NumPy, Matplotlib
+                            </li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-brand-blue rounded-full mr-3"></span>Model Deployment, Feature
+                                Engineering</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. DevOps & Cloud -->
+                    <div class="bg-neutral-800 rounded-lg p-6 hover:transform hover:-translate-y-2 transition-transform duration-300 card-glow"
+                        data-observer-target
+                        data-animation-classes="animate__animated animate__fadeInUp animate__delay-3s">
+                        <div class="text-brand-yellow mb-4"><i class="fas fa-tools fa-2x"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">DevOps & Cloud</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li> Git, GitHub, GitHub Actions</li>
+                            <li> Docker, Jenkins, CI/CD</li>
+                            <li> AWS (EC2, S3), Linux</li>
+                            <li> VSCode, PyCharm</li>
                         </ul>
                     </div>
                 </div>
@@ -249,8 +300,7 @@
         <section id="featured_projects" class="py-20 bg-neutral-800">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Featured <span
-                            class="text-brand-yellow">Projects</span></h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Featured Projects</h2>
                     <div class="flex justify-center items-center gap-2 mb-6">
                         <div class="h-1 w-12 bg-brand-blue rounded"></div>
                         <div class="h-1 w-12 bg-brand-yellow rounded"></div>
@@ -259,12 +309,11 @@
                 </div>
                 <div class="max-w-6xl mx-auto relative" data-observer-target
                     data-animation-classes="animate__animated animate__fadeInUp">
-                    <div class="swiper">
-                        <div class="swiper-wrapper pb-16">
-                            <!-- Project 1 -->
+                    <div class="swiper px-4">
+                        <div class="swiper-wrapper pb-16 pt-5">
                             <div class="swiper-slide h-auto">
                                 <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 hover:border-brand-blue transition-all duration-300">
+                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
                                     <div class="relative overflow-hidden"><img
                                             src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
                                             alt="AI Sports Betting Bot"
@@ -277,7 +326,8 @@
                                                     class="fab fa-github fa-2x"></i></a><a href="#"
                                                 aria-label="Live Demo"
                                                 class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fas fa-external-link-alt fa-2x"></i></a></div>
+                                                    class="fas fa-external-link-alt fa-2x"></i></a>
+                                        </div>
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col">
                                         <h3 class="text-xl font-bold text-white mb-2 font-heading">AI Sports Betting Bot
@@ -292,10 +342,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Project 2 -->
                             <div class="swiper-slide h-auto">
                                 <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 hover:border-brand-blue transition-all duration-300">
+                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
                                     <div class="relative overflow-hidden"><img
                                             src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System"
                                             alt="Hospital Management System"
@@ -305,7 +354,8 @@
                                             <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                 rel="noopener noreferrer" aria-label="Project on GitHub"
                                                 class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a></div>
+                                                    class="fab fa-github fa-2x"></i></a>
+                                        </div>
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col">
                                         <h3 class="text-xl font-bold text-white mb-2 font-heading">Hospital Management
@@ -321,10 +371,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Project 3 -->
                             <div class="swiper-slide h-auto">
                                 <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 hover:border-brand-blue transition-all duration-300">
+                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
                                     <div class="relative overflow-hidden"><img
                                             src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform"
                                             alt="B2B Platforms"
@@ -334,7 +383,8 @@
                                             <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                 rel="noopener noreferrer" aria-label="Project on GitHub"
                                                 class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a></div>
+                                                    class="fab fa-github fa-2x"></i></a>
+                                        </div>
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col">
                                         <h3 class="text-xl font-bold text-white mb-2 font-heading">B2B Web Platforms
@@ -350,10 +400,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Project 4 -->
                             <div class="swiper-slide h-auto">
                                 <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 hover:border-brand-blue transition-all duration-300">
+                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
                                     <div class="relative overflow-hidden"><img
                                             src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API"
                                             alt="E-commerce API"
@@ -363,7 +412,8 @@
                                             <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                 rel="noopener noreferrer" aria-label="Project on GitHub"
                                                 class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a></div>
+                                                    class="fab fa-github fa-2x"></i></a>
+                                        </div>
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col">
                                         <h3 class="text-xl font-bold text-white mb-2 font-heading">E-commerce Backend
@@ -378,10 +428,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Project 5 -->
                             <div class="swiper-slide h-auto">
                                 <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 hover:border-brand-blue transition-all duration-300">
+                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
                                     <div class="relative overflow-hidden"><img
                                             src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation"
                                             alt="Cloud Automation"
@@ -391,7 +440,8 @@
                                             <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                 rel="noopener noreferrer" aria-label="Project on GitHub"
                                                 class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a></div>
+                                                    class="fab fa-github fa-2x"></i></a>
+                                        </div>
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col">
                                         <h3 class="text-xl font-bold text-white mb-2 font-heading">Cloud Deployment
@@ -406,10 +456,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Project 6 -->
                             <div class="swiper-slide h-auto">
                                 <div
-                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 hover:border-brand-blue transition-all duration-300">
+                                    class="bg-neutral-900 rounded-lg overflow-hidden group h-full flex flex-col border border-neutral-800 card-glow transition-all duration-300">
                                     <div class="relative overflow-hidden"><img
                                             src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline"
                                             alt="Data Analysis Pipeline"
@@ -419,7 +468,8 @@
                                             <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                 rel="noopener noreferrer" aria-label="Project on GitHub"
                                                 class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
-                                                    class="fab fa-github fa-2x"></i></a></div>
+                                                    class="fab fa-github fa-2x"></i></a>
+                                        </div>
                                     </div>
                                     <div class="p-6 flex-grow flex flex-col">
                                         <h3 class="text-xl font-bold text-white mb-2 font-heading">Data Analysis
@@ -447,8 +497,7 @@
         <section id="experience" class="py-20 bg-neutral-900">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Professional <span
-                            class="text-brand-yellow">Experience</span></h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Professional Experience</h2>
                     <div class="flex justify-center items-center gap-2 mb-6">
                         <div class="h-1 w-12 bg-brand-blue rounded"></div>
                         <div class="h-1 w-12 bg-brand-yellow rounded"></div>
@@ -465,7 +514,8 @@
                         <div class="absolute left-4 top-1 md:left-1/2 -translate-x-1/2 z-10">
                             <div
                                 class="bg-brand-blue rounded-full w-8 h-8 flex items-center justify-center ring-8 ring-neutral-900">
-                                <i class="fas fa-briefcase text-white"></i></div>
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
                         </div>
                         <div class="w-full md:w-1/2 md:pl-8 ml-12 md:ml-0">
                             <div
@@ -485,7 +535,8 @@
                         <div class="absolute left-4 top-1 md:left-1/2 -translate-x-1/2 z-10">
                             <div
                                 class="bg-brand-blue rounded-full w-8 h-8 flex items-center justify-center ring-8 ring-neutral-900">
-                                <i class="fas fa-code text-white"></i></div>
+                                <i class="fas fa-code text-white"></i>
+                            </div>
                         </div>
                         <div class="w-full md:w-1/2 md:pr-8 ml-12 md:ml-0 md:text-right">
                             <div
@@ -505,7 +556,8 @@
                         <div class="absolute left-4 top-1 md:left-1/2 -translate-x-1/2 z-10">
                             <div
                                 class="bg-brand-yellow rounded-full w-8 h-8 flex items-center justify-center ring-8 ring-neutral-900">
-                                <i class="fas fa-graduation-cap text-neutral-900"></i></div>
+                                <i class="fas fa-graduation-cap text-neutral-900"></i>
+                            </div>
                         </div>
                         <div class="w-full md:w-1/2 md:pl-8 ml-12 md:ml-0">
                             <div
@@ -570,21 +622,38 @@
                             </div>
                         </div>
                     </div>
-                    <form class="space-y-6" data-observer-target
-                        data-animation-classes="animate__animated animate__fadeInRight">
-                        <div><label class="block text-white mb-2" for="name">Name</label><input type="text" id="name"
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6"
+                        data-observer-target data-animation-classes="animate__animated animate__fadeInRight">
+
+                        <input type="hidden" name="access_key" value="9786892e-989b-4b36-8608-78abbd1ac698">
+
+                        <div>
+                            <label class="block text-white mb-2" for="name">Name</label>
+                            <input type="text" id="name" name="name"
                                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg focus:outline-none focus:border-brand-yellow text-white transition-all duration-300 focus:shadow-[0_0_15px_rgba(255,212,59,0.3)]"
-                                required></div>
-                        <div><label class="block text-white mb-2" for="email">Email</label><input type="email"
-                                id="email"
+                                required>
+                        </div>
+
+                        <div>
+                            <label class="block text-white mb-2" for="email">Email</label>
+                            <input type="email" id="email" name="email"
                                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg focus:outline-none focus:border-brand-yellow text-white transition-all duration-300 focus:shadow-[0_0_15px_rgba(255,212,59,0.3)]"
-                                required></div>
-                        <div><label class="block text-white mb-2" for="message">Message</label><textarea id="message"
-                                rows="5"
+                                required>
+                        </div>
+
+                        <div>
+                            <label class="block text-white mb-2" for="message">Message</label>
+                            <textarea id="message" name="message" rows="5"
                                 class="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg focus:outline-none focus:border-brand-yellow text-white transition-all duration-300 focus:shadow-[0_0_15px_rgba(255,212,59,0.3)]"
-                                required></textarea></div><button type="submit"
-                            class="w-full py-3 bg-brand-blue text-white rounded-lg hover:bg-brand-blue-dark transition-colors duration-300 transform hover:scale-105 shine-button">Send
-                            Message</button>
+                                required></textarea>
+                        </div>
+
+                        <div id="form-result" class="text-center h-6"></div>
+
+                        <button type="submit" id="submit-button"
+                            class="w-full py-3 bg-brand-blue text-white rounded-lg hover:bg-brand-blue-dark transition-colors duration-300 transform hover:scale-105 shine-button">
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
@@ -619,7 +688,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
 
     <!-- Your Custom Script -->
-    <script src="../static/js/script.js" defer></script>
+    <script src="./static/js/script.js" defer></script>
 </body>
 
 </html>
