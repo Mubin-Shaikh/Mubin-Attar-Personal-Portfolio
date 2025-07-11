@@ -26,6 +26,8 @@
         rel="stylesheet">
 
     <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
     <link rel="stylesheet" href="./static/css/style.css">
 
     <!-- Tailwind CSS & Configuration -->
@@ -102,7 +104,7 @@
         </nav>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" class="pt-16">
         <!-- Hero Section -->
         <section id="hero" class="min-h-screen bg-neutral-900 relative overflow-hidden flex items-center">
             <div class="hero-aurora"></div>
@@ -110,24 +112,113 @@
                 <div class="max-w-4xl mx-auto text-center">
                     <div class="space-y-6">
                         <h1
-                            class="text-4xl sm:text-5xl md:text-7xl font-bold font-heading mb-6 animate__animated animate__fadeInDown">
+                            class="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading mb-6 animate__animated animate__fadeInDown">
                             <span class="text-white">Software Engineer &</span><br /><span class="text-gradient">AI/ML
                                 Enthusiast</span>
                         </h1>
                         <p
-                            class="text-lg md:text-xl mb-8 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+                            class="text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
                             Engineering full-stack web platforms and intelligent solutions with Python, Django, and
                             Machine Learning.</p>
-                        <div
-                            class="bg-neutral-800 p-6 rounded-lg text-left max-w-3xl mx-auto mb-8 animate__animated animate__fadeInUp animate__delay-2s">
-                            <pre id="code-snippet" class="font-mono text-sm md:text-base whitespace-pre-wrap"></pre>
+
+                        <!-- REPLACE this entire block in your Hero Section -->
+                        <div id="game-container"
+                            class="bg-neutral-800 p-2 sm:p-4 rounded-lg text-left max-w-2xl mx-auto mb-8 animate__animated animate__fadeInUp animate__delay-1s relative">
+
+                            <!-- In-Game UI -->
+                            <div id="ingame-score-display"
+                                class="absolute top-2 left-3 sm:top-4 sm:left-5 text-brand-yellow font-mono z-20 hidden">
+                                Score: <span id="score">0</span>
+                            </div>
+                            <div
+                                class="absolute top-2 right-3 sm:top-4 sm:right-5 text-gray-400 font-mono z-20 text-sm">
+                                High Score: <span id="high-score-ingame">0</span>
+                            </div>
+
+                            <!-- The canvas where the game will be drawn -->
+                            <canvas id="snake-canvas" class="rounded-md"></canvas>
+
+                            <!-- Overlays -->
+                            <div id="game-instructions"
+                                class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-900/90 backdrop-blur-sm rounded-md z-10 text-center p-4">
+                                <h3 class="text-xl sm:text-2xl font-bold font-heading text-white mb-4">Snake Xenzia</h3>
+                                <p class="text-gray-400 font-mono text-sm mb-4">High Score: <span
+                                        id="high-score-instructions">0</span></p>
+                                <p id="loading-message" class="text-gray-300 mt-2 text-sm sm:text-base animate-pulse">
+                                    Loading Python Engine...</p>
+                                <div id="game-controls" class="hidden">
+                                    <p class="text-gray-300 mt-2 text-sm sm:text-base">Press <kbd
+                                            class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Enter</kbd>
+                                        to Start.</p>
+                                    <p class="text-gray-300 mt-2 text-sm sm:text-base">Use <kbd
+                                            class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Arrow
+                                            Keys</kbd> to Move.</p>
+                                    <p class="text-gray-300 mt-2 text-sm sm:text-base">Press <kbd
+                                            class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Space</kbd>
+                                        to Pause.</p>
+                                </div>
+                            </div>
+
+                            <div id="game-paused-screen"
+                                class="hidden absolute inset-0 flex flex-col items-center justify-center bg-neutral-900/90 backdrop-blur-sm rounded-md z-10">
+                                <h3 class="text-2xl sm:text-3xl font-bold font-heading text-brand-yellow">Paused</h3>
+                                <p class="text-gray-300 mt-2 font-mono">Press Space to Resume</p>
+                            </div>
+
+                            <div id="game-over-screen"
+                                class="hidden absolute inset-0 flex flex-col items-center justify-center bg-neutral-900/90 backdrop-blur-sm rounded-md z-10">
+                                <p id="new-high-score-message"
+                                    class="hidden text-brand-yellow font-bold text-lg animate-pulse">New High Score!</p>
+                                <h3 class="text-xl sm:text-2xl font-bold font-heading text-red-500">Game Over</h3>
+                                <p class="text-white mt-2 font-mono text-base sm:text-lg">Final Score: <span
+                                        id="final-score" class="text-brand-yellow">0</span></p>
+                                <button id="restart-button"
+                                    class="mt-4 bg-brand-blue text-white w-12 h-12 rounded-full hidden md:flex items-center justify-center hover:bg-brand-blue-dark transition-colors duration-300 text-lg"><i class="fas fa-sync-alt"></i>
+                            </div>
+
+                            <!-- REPLACE this entire block in your index.html -->
+                            <div id="mobile-controls"
+                                class="absolute bottom-4 left-0 w-full flex md:hidden justify-around items-center z-20">
+                                <!-- D-Pad for Movement -->
+                                <div class="grid grid-cols-3 grid-rows-2 gap-2 text-white text-xl">
+                                    <div class="col-start-2 row-start-1 flex justify-center"><button id="up-btn"
+                                            class="bg-neutral-700/50 w-12 h-12 rounded-lg flex items-center justify-center"><i
+                                                class="fas fa-arrow-up"></i></button></div>
+                                    <div class="col-start-1 row-start-2 flex justify-center"><button id="left-btn"
+                                            class="bg-neutral-700/50 w-12 h-12 rounded-lg flex items-center justify-center"><i
+                                                class="fas fa-arrow-left"></i></button></div>
+                                    <div class="col-start-3 row-start-2 flex justify-center"><button id="right-btn"
+                                            class="bg-neutral-700/50 w-12 h-12 rounded-lg flex items-center justify-center"><i
+                                                class="fas fa-arrow-right"></i></button></div>
+                                    <div class="col-start-2 row-start-2 flex justify-center"><button id="down-btn"
+                                            class="bg-neutral-700/50 w-12 h-12 rounded-lg flex items-center justify-center"><i
+                                                class="fas fa-arrow-down"></i></button></div>
+                                </div>
+                                <!-- NEW: Action Button for Start/Pause/Resume -->
+                                <div class="text-white text-2xl">
+                                    <button id="action-btn"
+                                        class="bg-brand-blue/80 w-16 h-16 rounded-full flex items-center justify-center">
+                                        <!-- Icon will be changed by the script -->
+                                        <i id="action-btn-icon" class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PyScript and Audio -->
+                            <py-config> packages = ["numpy"] </py-config>
+                            <py-script src="./static/py/snake_game.py"></py-script>
+
+                            <audio id="start-sound" src="./static/audio/game_start.mp3" preload="auto"></audio>
+                            <audio id="eat-sound" src="./static/audio/snake_eat.wav" preload="auto"></audio>
+                            <audio id="gameover-sound" src="./static/audio/game_end.mp3" preload="auto"></audio>
                         </div>
+
                         <div
-                            class="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-3s">
+                            class="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
                             <a href="#featured_projects"
-                                class="bg-brand-blue text-white px-8 py-4 rounded-lg hover:bg-brand-blue-dark transition-all duration-300 transform hover:scale-105 shine-button">View
+                                class="bg-brand-blue text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-brand-blue-dark transition-all duration-300 transform hover:scale-105 shine-button">View
                                 My Work</a><a href="#contact"
-                                class="bg-transparent border-2 border-brand-yellow text-brand-yellow px-8 py-4 rounded-lg hover:bg-brand-yellow hover:text-neutral-900 transition-all duration-300 transform hover:scale-105">Let's
+                                class="bg-transparent border-2 border-brand-yellow text-brand-yellow px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-brand-yellow hover:text-neutral-900 transition-all duration-300 transform hover:scale-105">Let's
                                 Connect</a>
                         </div>
                     </div>
@@ -143,7 +234,7 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 bg-neutral-800">
+        <section id="about" class="py-16 sm:py-20 bg-neutral-800">
             <div class="container mx-auto px-4">
                 <div class="max-w-6xl mx-auto">
                     <div class="text-center mb-16" data-observer-target>
@@ -159,7 +250,8 @@
 
                         <div class="flex justify-center items-center" data-observer-target
                             data-animation-classes="animate__animated animate__fadeInLeft">
-                            <div class="profile-picture-glow w-64 h-72 lg:w-72 lg:h-80">
+                            <!-- CHANGE: Made image slightly smaller on mobile for better balance -->
+                            <div class="profile-picture-glow w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80">
                                 <div class="tech-hexagon w-full h-full">
                                     <img src="./static/img/Mubin_Attar.jpg" alt="Mubin Attar"
                                         class="w-full h-full object-cover">
@@ -177,7 +269,6 @@
                                 transforming complex problems into clean, efficient code.
                             </p>
 
-                            <!-- NEW: Key Highlights / Stats with card-glow effect -->
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
                                 <div class="bg-neutral-900/50 p-4 rounded-lg border border-neutral-700 card-glow">
                                     <p class="text-2xl font-bold text-white">2.6+</p>
@@ -202,7 +293,7 @@
                             </p>
 
                             <div>
-                                <a href="./static/asset/MubinAttarResume_2025.pdf" download
+                                <a href="./static/docs/MubinAttarResume_2025.pdf" download
                                     class="inline-block bg-brand-yellow text-neutral-900 font-bold px-6 py-3 rounded-lg hover:bg-brand-yellow-light transition-all duration-300 transform hover:scale-105 shine-button">
                                     <i class="fas fa-download mr-2"></i> Download CV
                                 </a>
@@ -214,7 +305,8 @@
         </section>
 
         <!-- Technical Expertise Section -->
-        <section id="technical_expertise" class="py-20 bg-neutral-900">
+        <!-- CHANGE: Reduced vertical padding on mobile -->
+        <section id="technical_expertise" class="py-16 sm:py-20 bg-neutral-900">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Technical Expertise</h2>
@@ -225,7 +317,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-
+                    <!-- CHANGE: Removed excessive animation delays for a faster, smoother experience on all devices -->
                     <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
                         data-animation-classes="animate__animated animate__fadeInUp">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-code fa-2x"></i></div>
@@ -238,7 +330,7 @@
                         </ul>
                     </div>
                     <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
-                        data-animation-classes="animate__animated animate__fadeInUp animate__delay-1s">
+                        data-animation-classes="animate__animated animate__fadeInUp">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-laptop-code fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">Frontend & UI Basics</h3>
                         <ul class="space-y-2 text-gray-300">
@@ -250,7 +342,7 @@
                     </div>
 
                     <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
-                        data-animation-classes="animate__animated animate__fadeInUp animate__delay-2s">
+                        data-animation-classes="animate__animated animate__fadeInUp">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-brain fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">AI / ML & Data Science</h3>
                         <ul class="space-y-2 text-gray-300">
@@ -262,7 +354,7 @@
                     </div>
 
                     <div class="bg-neutral-800 rounded-lg p-6 card-glow" data-observer-target
-                        data-animation-classes="animate__animated animate__fadeInUp animate__delay-3s">
+                        data-animation-classes="animate__animated animate__fadeInUp">
                         <div class="text-brand-yellow mb-4"><i class="fas fa-tools fa-2x"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3 font-heading">DevOps & Cloud</h3>
                         <ul class="space-y-2 text-gray-300">
@@ -277,7 +369,8 @@
         </section>
 
         <!-- Featured Projects Section -->
-        <section id="featured_projects" class="py-20 bg-neutral-800">
+        <!-- CHANGE: Reduced vertical padding on mobile -->
+        <section id="featured_projects" class="py-16 sm:py-20 bg-neutral-800">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Featured Projects</h2>
@@ -291,30 +384,41 @@
                     data-animation-classes="animate__animated animate__fadeInUp">
                     <div class="swiper px-4">
                         <div class="swiper-wrapper pb-16 pt-5">
-                            
+
                             <!-- Project Card 1 -->
                             <div class="swiper-slide h-auto">
-                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                <div
+                                    class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
                                     <div class="h-full flex flex-col group">
                                         <div class="relative overflow-hidden">
                                             <img src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
                                                 alt="AI Sports Betting Bot"
                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fab fa-github fa-2x"></i></a>
                                                 <a href="#" aria-label="Live Demo"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fas fa-external-link-alt fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fas fa-external-link-alt fa-2x"></i></a>
                                             </div>
                                         </div>
                                         <div class="p-6 flex-grow flex flex-col bg-neutral-900">
-                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">AI Sports Betting Bot</h3>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Backend for ML predictions using XGBoost & neural networks. Built RESTful APIs for serving results.</p>
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">AI Sports Betting
+                                                Bot</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Backend for ML predictions
+                                                using XGBoost & neural networks. Built RESTful APIs for serving results.
+                                            </p>
                                             <div class="flex flex-wrap gap-2 mt-auto">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">RESTful APIs</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">RESTful
+                                                    APIs</span>
                                             </div>
                                         </div>
                                     </div>
@@ -323,108 +427,143 @@
 
                             <!-- Project Card 2 -->
                             <div class="swiper-slide h-auto">
-                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                <div
+                                    class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
                                     <div class="h-full flex flex-col group">
                                         <div class="relative overflow-hidden">
                                             <img src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System"
                                                 alt="Hospital Management System"
                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fab fa-github fa-2x"></i></a>
                                             </div>
                                         </div>
                                         <div class="p-6 flex-grow flex flex-col bg-neutral-900">
-                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Hospital Management System</h3>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Contributed to a modular, enterprise-scale system for a healthcare provider, covering scheduling, records, and reporting.</p>
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Hospital
+                                                Management System</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Contributed to a modular,
+                                                enterprise-scale system for a healthcare provider, covering scheduling,
+                                                records, and reporting.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web Dev</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web
+                                                    Dev</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- ... Repeat this corrected structure for the other 4 project cards ... -->
 
                             <!-- Project Card 3 -->
                             <div class="swiper-slide h-auto">
-                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                <div
+                                    class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
                                     <div class="h-full flex flex-col group">
                                         <div class="relative overflow-hidden">
                                             <img src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform"
                                                 alt="B2B Platforms"
                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fab fa-github fa-2x"></i></a>
                                             </div>
                                         </div>
                                         <div class="p-6 flex-grow flex flex-col bg-neutral-900">
-                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">B2B Web Platforms</h3>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Developed features for 3+ B2B platforms in healthcare & e-commerce. Built responsive UIs and integrated third-party APIs.</p>
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">B2B Web Platforms
+                                            </h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Developed features for 3+
+                                                B2B platforms in healthcare & e-commerce. Built responsive UIs and
+                                                integrated third-party APIs.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">JavaScript</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Bootstrap</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">API Integration</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">JavaScript</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Bootstrap</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">API
+                                                    Integration</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Project Card 4 -->
                             <div class="swiper-slide h-auto">
-                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                <div
+                                    class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
                                     <div class="h-full flex flex-col group">
                                         <div class="relative overflow-hidden">
                                             <img src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API"
                                                 alt="E-commerce API"
                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fab fa-github fa-2x"></i></a>
                                             </div>
                                         </div>
                                         <div class="p-6 flex-grow flex flex-col bg-neutral-900">
-                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">E-commerce Backend API</h3>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Designed a RESTful API with DRF for an e-commerce site, handling users, products, and orders.</p>
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">E-commerce
+                                                Backend API</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Designed a RESTful API with
+                                                DRF for an e-commerce site, handling users, products, and orders.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">DRF</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">PostgreSQL</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Django</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">DRF</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">PostgreSQL</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Project Card 5 -->
                             <div class="swiper-slide h-auto">
-                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                <div
+                                    class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
                                     <div class="h-full flex flex-col group">
                                         <div class="relative overflow-hidden">
                                             <img src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation"
                                                 alt="Cloud Automation"
                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fab fa-github fa-2x"></i></a>
                                             </div>
                                         </div>
                                         <div class="p-6 flex-grow flex flex-col bg-neutral-900">
-                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Cloud Deployment Automation</h3>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Scripts to automate deploying Django apps to AWS EC2, including S3 integration for static files.</p>
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Cloud Deployment
+                                                Automation</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Scripts to automate
+                                                deploying Django apps to AWS EC2, including S3 integration for static
+                                                files.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">AWS</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Boto3</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">AWS</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Boto3</span>
                                             </div>
                                         </div>
                                     </div>
@@ -433,25 +572,34 @@
 
                             <!-- Project Card 6 -->
                             <div class="swiper-slide h-auto">
-                                <div class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
+                                <div
+                                    class="bg-neutral-900 rounded-lg overflow-hidden h-full border border-neutral-800 card-glow">
                                     <div class="h-full flex flex-col group">
                                         <div class="relative overflow-hidden">
                                             <img src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline"
                                                 alt="Data Analysis Pipeline"
                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer" aria-label="Project on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i class="fab fa-github fa-2x"></i></a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-transform"><i
+                                                        class="fab fa-github fa-2x"></i></a>
                                             </div>
                                         </div>
                                         <div class="p-6 flex-grow flex flex-col bg-neutral-900">
-                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Data Analysis Pipeline</h3>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Web scraping tool to gather data, processed with Pandas, and visualized to highlight key trends.</p>
+                                            <h3 class="text-xl font-bold text-white mb-2 font-heading">Data Analysis
+                                                Pipeline</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Web scraping tool to gather
+                                                data, processed with Pandas, and visualized to highlight key trends.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Pandas</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web Scraping</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Pandas</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full">Web
+                                                    Scraping</span>
                                             </div>
                                         </div>
                                     </div>
@@ -468,7 +616,8 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-neutral-900">
+        <!-- CHANGE: Reduced vertical padding on mobile -->
+        <section id="experience" class="py-16 sm:py-20 bg-neutral-900">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Professional Experience</h2>
@@ -492,12 +641,15 @@
                                 <i class="fas fa-briefcase text-white"></i>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2 md:pl-8 ml-12 md:ml-0">
+                        <!-- CHANGE: Reduced left margin on mobile for more content space -->
+                        <div class="w-full md:w-1/2 md:pl-8 ml-10 sm:ml-12 md:ml-0">
                             <div class="p-6 bg-neutral-800 rounded-lg card-glow">
                                 <h3 class="text-xl font-bold text-white font-heading">Software Engineer</h3>
                                 <p class="text-brand-blue-dark font-semibold">Sevina Technologies</p>
-                                <p class="text-gray-400 text-sm mt-2">Engineering a full-stack sports betting platform.
-                                    Implementing ML models and optimizing backend efficiency by ~20%.</p>
+                                <p class="text-gray-400 text-sm mt-2">Designing and building end-to-end AI/ML-powered
+                                    systems for sports and financial prediction platforms, achieving up to 65% accuracy
+                                    in NBA/MLB sports models and 60% in binary stock trading signals, while actively
+                                    exploring new GenAI use cases.</p>
                             </div>
                         </div>
                     </div>
@@ -512,12 +664,15 @@
                                 <i class="fas fa-code text-white"></i>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2 md:pr-8 ml-12 md:ml-0 md:text-right">
+                        <!-- CHANGE: Reduced left margin on mobile for more content space -->
+                        <div class="w-full md:w-1/2 md:pr-8 ml-10 sm:ml-12 md:ml-0 md:text-right">
                             <div class="p-6 bg-neutral-800 rounded-lg card-glow">
                                 <h3 class="text-xl font-bold text-white font-heading">Junior Python Developer</h3>
                                 <p class="text-brand-blue-dark font-semibold">Linescripts Software Pvt Ltd</p>
-                                <p class="text-gray-400 text-sm mt-2">Contributed to 3+ B2B platforms. Built responsive
-                                    frontends, integrated APIs, and implemented backend modules in Django.</p>
+                                <p class="text-gray-400 text-sm mt-2">Contributed to development of scalable
+                                    Django-based applications across domains like e-commerce, healthcare, and aviation
+                                    management, handling API integrations, backend logic, and responsive UI workflows.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -532,7 +687,8 @@
                                 <i class="fas fa-graduation-cap text-neutral-900"></i>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2 md:pl-8 ml-12 md:ml-0">
+                        <!-- CHANGE: Reduced left margin on mobile for more content space -->
+                        <div class="w-full md:w-1/2 md:pl-8 ml-10 sm:ml-12 md:ml-0">
                             <div class="p-6 bg-neutral-800 rounded-lg card-glow">
                                 <h3 class="text-xl font-bold text-white font-heading">Master of Computer Application
                                 </h3>
@@ -547,7 +703,8 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-neutral-800">
+        <!-- CHANGE: Reduced vertical padding on mobile -->
+        <section id="contact" class="py-16 sm:py-20 bg-neutral-800">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16" data-observer-target>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">Get in <span
@@ -559,43 +716,44 @@
                     </div>
                 </div>
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- NEW: "Let's Connect" card now has card-glow effect -->
                     <div data-observer-target data-animation-classes="animate__animated animate__fadeInLeft"
-                        class="bg-neutral-900/50 p-8 rounded-lg">
+                        class="bg-neutral-900/50 p-6 md:p-8 rounded-lg">
                         <h3 class="text-2xl font-bold text-white mb-6 font-heading">Let's Connect</h3>
                         <p class="text-gray-400 mb-8">I'm currently seeking new opportunities and am open to
                             collaboration. If you have a project in mind or just want to connect, feel free to reach
                             out.</p>
                         <div class="space-y-4">
-                            <!-- NEW: Each contact item is now a card-glow item -->
                             <a href="mailto:sk.mubinattar@gmail.com"
                                 class="flex items-center gap-4 p-4 rounded-lg bg-neutral-900/50 card-glow">
                                 <div
                                     class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-envelope fa-lg text-brand-yellow"></i></div>
+                                    <i class="fas fa-envelope fa-lg text-brand-yellow"></i>
+                                </div>
                                 <div>
                                     <p class="text-gray-400">Email</p><span
-                                        class="text-brand-yellow hover:underline">sk.mubinattar@gmail.com</span>
+                                        class="text-brand-yellow hover:underline break-all">sk.mubinattar@gmail.com</span>
                                 </div>
                             </a>
                             <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer"
                                 class="flex items-center gap-4 p-4 rounded-lg bg-neutral-900/50 card-glow">
                                 <div
                                     class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fab fa-linkedin fa-lg text-brand-yellow"></i></div>
+                                    <i class="fab fa-linkedin fa-lg text-brand-yellow"></i>
+                                </div>
                                 <div>
                                     <p class="text-gray-400">LinkedIn</p><span
-                                        class="text-brand-yellow hover:underline">linkedin.com/in/mubin-attar</span>
+                                        class="text-brand-yellow hover:underline break-all">linkedin.com/in/mubin-attar</span>
                                 </div>
                             </a>
                             <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer"
                                 class="flex items-center gap-4 p-4 rounded-lg bg-neutral-900/50 card-glow">
                                 <div
                                     class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fab fa-github fa-lg text-brand-yellow"></i></div>
+                                    <i class="fab fa-github fa-lg text-brand-yellow"></i>
+                                </div>
                                 <div>
                                     <p class="text-gray-400">GitHub</p><span
-                                        class="text-brand-yellow hover:underline">github.com/Mubin-Shaikh</span>
+                                        class="text-brand-yellow hover:underline break-all">github.com/Mubin-Shaikh</span>
                                 </div>
                             </a>
                         </div>

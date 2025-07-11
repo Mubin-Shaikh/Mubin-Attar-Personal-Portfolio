@@ -77,11 +77,12 @@ body {
     }
 }
 
-/* Swiper Slider Customization */
+/* --- CHANGE: Swiper Slider Customization (Made Responsive) --- */
+/* Mobile-first styles for smaller buttons */
 .swiper-button-next,
 .swiper-button-prev {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
     border-radius: 50%;
@@ -98,8 +99,23 @@ body {
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important; /* Smaller icon for mobile */
 }
+
+/* Larger buttons for tablets and desktops */
+@media (min-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 44px;
+        height: 44px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 1.25rem !important; /* Original size for larger screens */
+    }
+}
+
 
 .swiper-pagination-bullet-active {
     background: #FFD43B !important;
@@ -164,11 +180,10 @@ body {
 
 /* --- IDEA 1 (FIXED): "Breathing" Hexagon & Dynamic Glow --- */
 .profile-picture-glow {
-    /* FIX: The base background is essential for the glow to appear behind the image */
     background: radial-gradient(circle, #306998, #0a0a0a 70%);
     box-shadow: 0 0 25px rgba(48, 105, 152, 0.6);
     position: relative;
-    overflow: hidden; /* Hide the parts of the glow that spin outside the hexagon */
+    overflow: hidden;
 }
 
 .tech-hexagon {
@@ -182,7 +197,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200%; /* Make it large enough to cover the area when rotated */
+    width: 200%;
     height: 200%;
     z-index: 0;
     background: conic-gradient(from 180deg at 50% 50%, #FFD43B 0%, #306998 50%, #FFD43B 100%);
@@ -191,7 +206,7 @@ body {
 }
 
 .tech-hexagon {
-    position: relative; /* Lifts the hexagon above the ::after glow */
+    position: relative; 
     z-index: 1;
 }
 
@@ -224,7 +239,7 @@ body {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 1; /* Sits on top of the card's base content but below its children */
+    z-index: 1;
     border-radius: inherit;
     padding: 2px;
     background: linear-gradient(120deg, var(--start-color), var(--end-color));
@@ -258,7 +273,26 @@ body {
     transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* The class our JS will add when the section is in view */
 #experience.timeline-in-view #timeline-bar {
-    transform: scaleY(1); /* Animate to full height */
+    transform: scaleY(1); 
+}
+
+/* --- NEW: Snake Game Styles --- */
+#snake-canvas {
+    display: block; /* Removes any extra space below the canvas */
+    width: 100%;
+    height: auto;
+    background-color: #171717; /* A slightly darker background for the game area */
+    border: 1px solid #404040; /* A subtle border */
+}
+
+/* Add this to the end of your style.css */
+@keyframes screen-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+.shake { 
+  animation: screen-shake 0.25s linear; 
 }
