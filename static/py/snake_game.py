@@ -1,5 +1,3 @@
-# This is the entire content for snake_game.py
-
 import asyncio
 import random
 from pyscript import document, window
@@ -222,3 +220,4 @@ def main():
     asyncio.ensure_future(game_loop())
 
 main()
+

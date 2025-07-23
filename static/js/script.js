@@ -1,552 +1,827 @@
-document.addEventListener('DOMContentLoaded', function () {
+/**
+ * Modern Portfolio JavaScript - 2025 Edition
+ * Enhanced with scroll animations, smooth interactions, and accessibility
+ */
 
-    // This is the main entry point. Once the HTML document is fully loaded and parsed,
-    // this function runs and calls all the initialization functions for the different
-    // interactive components on the page.
-    initMobileMenu();
-    initNavScroll();
-    // initTypingEffect();
-    // initSnakeGame();
-    initSwiper();
-    initScrollAnimations();
-    initHeroAuroraEffect();
-    initScrollToTop();
-    initContactForm();
-    initExperienceTimeline();
+// ===== UTILITY FUNCTIONS =====
+const utils = {
+  // Debounce function for performance optimization
+  debounce(func, wait, immediate) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        timeout = null;
+        if (!immediate) func(...args);
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func(...args);
+    };
+  },
 
-    // --- COMPONENT INITIALIZATIONS ---
+  // Throttle function for scroll events
+  throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  },
 
-    /**
-     * Handles the logic for the mobile navigation menu.
-     * It toggles the menu's visibility and swaps the open/close icons when the
-     * menu button is clicked. It also ensures the menu closes when a link is clicked.
-     */
-    function initMobileMenu() {
-        const button = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        const openIcon = document.getElementById('menu-open-icon');
-        const closeIcon = document.getElementById('menu-close-icon');
+  // Check if element is in viewport
+  isInViewport(element, threshold = 0.1) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+    
+    return (
+      rect.top <= windowHeight * (1 - threshold) &&
+      rect.bottom >= windowHeight * threshold &&
+      rect.left <= windowWidth * (1 - threshold) &&
+      rect.right >= windowWidth * threshold
+    );
+  },
 
-        if (!button || !menu || !openIcon || !closeIcon) return; // Defensive check
+  // Smooth scroll to element
+  smoothScrollTo(element, offset = 0) {
+    const targetPosition = element.offsetTop - offset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = Math.min(Math.abs(distance) / 2, 1000);
+    let start = null;
 
-        const toggleMenu = () => {
-            menu.classList.toggle('hidden');
-            openIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        };
-
-        button.addEventListener('click', toggleMenu);
-
-        // Add event listener to each link inside the mobile menu
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                // If the menu is open, close it
-                if (!menu.classList.contains('hidden')) {
-                    toggleMenu();
-                }
-            });
-        });
+    function animation(currentTime) {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
     }
 
-    /**
-     * Adds a subtle shadow to the main navigation bar when the user scrolls down.
-     * This adds depth and visually separates the sticky nav from the page content.
-     */
-    function initNavScroll() {
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (nav) {
-                // Toggles the 'shadow-lg' class if scrollY is greater than 50, removes it otherwise.
-                nav.classList.toggle('shadow-lg', window.scrollY > 50);
-            }
-        });
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
     }
 
-    /**
-     * Creates a typewriter animation for the code snippet in the hero section.
-     * It types out each line of code character by character for a dynamic effect.
-     */
-    // function initTypingEffect() {
-    //     const codeEl = document.getElementById('code-snippet');
-    //     if (!codeEl) return;
+    requestAnimationFrame(animation);
+  },
 
-    //     // Your new, improved code lines!
-    //     const codeLines = [
-    //         '<span class="text-brand-blue-dark">def</span> <span class="text-brand-yellow">ignite_vision</span>(<span class="text-brand-yellow-light">idea</span>):',
-    //         '    <span class="text-green-400">"""</span>',
-    //         '    <span class="text-gray-400">🔍 From concept to code.</span>',
-    //         '    <span class="text-gray-400">💡 Powered by Python.</span>',
-    //         '    <span class="text-gray-400">🧠 Enhanced by ML.</span>',
-    //         '    <span class="text-green-400">"""</span>',
-    //         '    <span class="text-white">model</span> = <span class="text-brand-blue">infuse_with_intelligence</span>(idea)',
-    //         '    <span class="text-white">app</span> = <span class="text-brand-blue">deploy_with_django</span>(model)',
-    //         '    <span class="text-brand-blue-dark">return</span> <span class="text-green-400">f"{app} — Where smart ideas become real products."</span>'
-    //     ];
+  // Announce to screen readers
+  announceToScreenReader(message) {
+    const liveRegion = document.getElementById('live-region');
+    if (liveRegion) {
+      liveRegion.textContent = message;
+      setTimeout(() => {
+        liveRegion.textContent = '';
+      }, 1000);
+    }
+  }
+};
 
-    //     let currentLine = 0, currentChar = 0;
+// ===== NAVIGATION CONTROLLER =====
+class NavigationController {
+  constructor() {
+    this.nav = document.querySelector('.nav-backdrop');
+    this.mobileMenuButton = document.getElementById('mobile-menu-button');
+    this.mobileMenu = document.getElementById('mobile-menu');
+    this.menuOpenIcon = document.getElementById('menu-open-icon');
+    this.menuCloseIcon = document.getElementById('menu-close-icon');
+    this.navLinks = document.querySelectorAll('.nav-link');
+    this.sections = document.querySelectorAll('section[id]');
+    this.isMenuOpen = false;
+    
+    this.init();
+  }
 
-    //     function typeCode() {
-    //         if (currentLine >= codeLines.length) {
-    //             // Animation finished, show the full code with a blinking cursor
-    //             codeEl.innerHTML = codeLines.join('<br>') + '<span class="typing-cursor"></span>';
-    //             return;
-    //         }
-    //         if (currentChar < codeLines[currentLine].length) {
-    //             // Type the next character
-    //             codeEl.innerHTML = codeLines.slice(0, currentLine).join('<br>') + '<br>' + codeLines[currentLine].substring(0, currentChar + 1);
-    //             currentChar++;
-    //             setTimeout(typeCode, 25); // Speed of typing
-    //         } else {
-    //             // Finished a line, move to the next one
-    //             currentLine++;
-    //             currentChar = 0;
-    //             setTimeout(typeCode, 200); // Pause between lines
-    //         }
-    //     }
-    //     typeCode();
-    // }
+  init() {
+    this.setupEventListeners();
+    this.setupScrollSpy();
+    this.setupSmoothScroll();
+  }
 
+  setupEventListeners() {
+    // Mobile menu toggle
+    if (this.mobileMenuButton) {
+      this.mobileMenuButton.addEventListener('click', () => this.toggleMobileMenu());
+    }
 
-// static/js/script.js
+    // Close mobile menu when clicking on links
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (this.isMenuOpen) {
+          this.toggleMobileMenu();
+        }
+      });
+    });
 
-    /**
-     * Initializes and runs the enhanced interactive Snake game.
-     */
-    // function initSnakeGame() {
-    //     // --- DOM Elements ---
-    //     const canvas = document.getElementById('snake-canvas');
-    //     if (!canvas) return;
-    //     const ctx = canvas.getContext('2d');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (this.isMenuOpen && !this.mobileMenu.contains(e.target) && !this.mobileMenuButton.contains(e.target)) {
+        this.toggleMobileMenu();
+      }
+    });
+
+    // Escape key to close mobile menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isMenuOpen) {
+        this.toggleMobileMenu();
+      }
+    });
+
+    // Scroll event for navbar styling
+    window.addEventListener('scroll', utils.throttle(() => {
+      this.updateNavbarOnScroll();
+    }, 16));
+  }
+
+  toggleMobileMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    
+    if (this.isMenuOpen) {
+      this.mobileMenu.classList.remove('hidden');
+      this.menuOpenIcon.classList.add('hidden');
+      this.menuCloseIcon.classList.remove('hidden');
+      this.mobileMenuButton.setAttribute('aria-expanded', 'true');
+      utils.announceToScreenReader('Menu opened');
+    } else {
+      this.mobileMenu.classList.add('hidden');
+      this.menuOpenIcon.classList.remove('hidden');
+      this.menuCloseIcon.classList.add('hidden');
+      this.mobileMenuButton.setAttribute('aria-expanded', 'false');
+      utils.announceToScreenReader('Menu closed');
+    }
+  }
+
+  updateNavbarOnScroll() {
+    if (window.scrollY > 100) {
+      this.nav.classList.add('scrolled');
+    } else {
+      this.nav.classList.remove('scrolled');
+    }
+  }
+
+  setupScrollSpy() {
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '-100px 0px -50% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.updateActiveNavLink(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    this.sections.forEach(section => {
+      observer.observe(section);
+    });
+  }
+
+  updateActiveNavLink(activeId) {
+    this.navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${activeId}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  setupSmoothScroll() {
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
         
-    //     const instructionsEl = document.getElementById('game-instructions');
-    //     const gameOverEl = document.getElementById('game-over-screen');
-    //     const pausedEl = document.getElementById('game-paused-screen');
-    //     const restartButton = document.getElementById('restart-button');
-    //     const scoreEl = document.getElementById('score');
-    //     const finalScoreEl = document.getElementById('final-score');
-    //     const inGameScoreDisplay = document.getElementById('ingame-score-display');
+        if (targetElement) {
+          utils.smoothScrollTo(targetElement, 80);
+          utils.announceToScreenReader(`Navigated to ${targetElement.querySelector('h1, h2, h3')?.textContent || targetId}`);
+        }
+      });
+    });
+  }
+}
 
+// ===== SCROLL ANIMATION CONTROLLER =====
+class ScrollAnimationController {
+  constructor() {
+    this.observerTargets = document.querySelectorAll('[data-observer-target]');
+    this.init();
+  }
 
-    //     // --- Game Theming and Configuration ---
-    //     const THEME_COLORS = {
-    //         background: '#171717',
-    //         food: '#4ade80', // Tailwind green-400
-    //         snakeHead: '#FFD43B', // brand-yellow
-    //         snakeBody: '#4B8BBE', // brand-blue-dark
-    //         snakeEye: '#171717',
-    //     };
-    //     const GameState = {
-    //         INSTRUCTIONS: 'instructions',
-    //         RUNNING: 'running',
-    //         PAUSED: 'paused',
-    //         GAMEOVER: 'gameover',
-    //     };
-    //     let tileSize = 20;
+  init() {
+    this.setupIntersectionObserver();
+  }
 
-    //     // --- Responsive Sizing ---
-    //     let tileCountX, tileCountY;
-    //     function setCanvasSize() {
-    //         const container = canvas.parentElement;
-    //         const style = getComputedStyle(container);
-    //         const containerWidth = container.clientWidth - (parseInt(style.paddingLeft) + parseInt(style.paddingRight));
-            
-    //         tileCountX = Math.floor(containerWidth / tileSize);
-    //         const aspectRatio = window.innerWidth < 640 ? (3/4) : (1/2); 
-    //         tileCountY = Math.floor(tileCountX * aspectRatio);
+  setupIntersectionObserver() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    //         canvas.width = tileCountX * tileSize;
-    //         canvas.height = tileCountY * tileSize;
-    //     }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.animateElement(entry.target);
+        }
+      });
+    }, observerOptions);
 
-    //     // --- Game State ---
-    //     let gameState, snake, food, direction, score, gameSpeed, lastUpdateTime, foodBlinkState;
+    this.observerTargets.forEach(target => {
+      observer.observe(target);
+    });
+  }
 
-    //     function resetGame() {
-    //         // NEW: Initialize snake with a length of 3
-    //         const startX = Math.floor(tileCountX / 2);
-    //         const startY = Math.floor(tileCountY / 2);
-    //         snake = [
-    //             { x: startX, y: startY },
-    //             { x: startX - 1, y: startY },
-    //             { x: startX - 2, y: startY },
-    //         ];
-            
-    //         spawnFood();
-    //         direction = { x: 0, y: 0 }; // Start stationary
-    //         score = 0;
-    //         gameSpeed = 150; 
-    //         lastUpdateTime = 0;
-    //         foodBlinkState = true;
-            
-    //         updateUI(GameState.INSTRUCTIONS);
-    //     }
-        
-    //     function gameLoop(currentTime) {
-    //         window.requestAnimationFrame(gameLoop); 
-    //         if (gameState !== GameState.RUNNING) return;
-    //         const elapsed = currentTime - lastUpdateTime;
-    //         if (elapsed > gameSpeed) {
-    //             lastUpdateTime = currentTime;
-    //             update();
-    //             draw();
-    //         }
-    //     }
+  animateElement(element) {
+    const animationClasses = element.dataset.animationClasses;
+    const delay = element.dataset.animationDelay || 0;
 
-    //     function update() {
-    //         if (direction.x === 0 && direction.y === 0) return;
+    setTimeout(() => {
+      if (animationClasses) {
+        element.classList.add(...animationClasses.split(' '));
+      } else {
+        element.classList.add('animate-fade-in-up');
+      }
+    }, delay);
+  }
+}
 
-    //         const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+// ===== PROJECTS SWIPER CONTROLLER =====
+class ProjectsSwiperController {
+  constructor() {
+    this.swiperContainer = document.querySelector('.swiper');
+    this.init();
+  }
 
-    //         if (head.x < 0 || head.x >= tileCountX || head.y < 0 || head.y >= tileCountY) {
-    //             return updateUI(GameState.GAMEOVER);
-    //         }
+  init() {
+    if (this.swiperContainer && typeof Swiper !== 'undefined') {
+      this.initializeSwiper();
+    }
+  }
 
-    //         for (let i = 1; i < snake.length; i++) {
-    //             if (head.x === snake[i].x && head.y === snake[i].y) {
-    //                 return updateUI(GameState.GAMEOVER);
-    //             }
-    //         }
-            
-    //         snake.unshift(head);
+  initializeSwiper() {
+    new Swiper('.swiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      a11y: {
+        prevSlideMessage: 'Previous project',
+        nextSlideMessage: 'Next project',
+        paginationBulletMessage: 'Go to project {{index}}',
+      },
+    });
+  }
+}
 
-    //         if (head.x === food.x && head.y === food.y) {
-    //             score++;
-    //             scoreEl.textContent = score;
-    //             spawnFood();
-    //             if (score % 5 === 0 && gameSpeed > 60) {
-    //                 gameSpeed -= 10;
-    //             }
-    //         } else {
-    //             snake.pop();
-    //         }
-    //     }
+// ===== CONTACT FORM CONTROLLER =====
+class ContactFormController {
+  constructor() {
+    this.form = document.getElementById('contact-form');
+    this.submitButton = document.getElementById('submit-button');
+    this.resultDiv = document.getElementById('form-result');
+    this.init();
+  }
 
-    //     // --- Advanced Drawing Functions ---
-    //     function draw() {
-    //         ctx.fillStyle = THEME_COLORS.background;
-    //         ctx.fillRect(0, 0, canvas.width, canvas.height);
-    //         drawFood();
-    //         drawSnake();
-    //     }
+  init() {
+    if (this.form) {
+      this.setupEventListeners();
+    }
+  }
 
-    //     function drawFood() {
-    //         foodBlinkState = !foodBlinkState;
-    //         if (!foodBlinkState) return;
-    //         ctx.fillStyle = THEME_COLORS.food;
-    //         ctx.beginPath();
-    //         ctx.arc(food.x * tileSize + tileSize / 2, food.y * tileSize + tileSize / 2, tileSize / 2.5, 0, 2 * Math.PI);
-    //         ctx.fill();
-    //     }
-        
-    //     function drawSnake() {
-    //         for (let i = 0; i < snake.length; i++) {
-    //             const segment = snake[i];
-    //             const prev = snake[i + 1] || segment;
-                
-    //             // NEW: Alternating color logic for snake body
-    //             if (i === 0) {
-    //                 ctx.fillStyle = THEME_COLORS.snakeHead;
-    //             } else {
-    //                 // Odd segments are blue, even segments are yellow (head color)
-    //                 ctx.fillStyle = (i % 2 !== 0) ? THEME_COLORS.snakeBody : THEME_COLORS.snakeHead;
-    //             }
-                
-    //             ctx.beginPath();
-    //             ctx.moveTo(segment.x * tileSize, segment.y * tileSize + tileSize / 2);
-    //             ctx.arcTo(segment.x * tileSize, segment.y * tileSize, segment.x * tileSize + tileSize / 2, segment.y * tileSize, tileSize / 2);
-    //             ctx.arcTo(segment.x * tileSize + tileSize, segment.y * tileSize, segment.x * tileSize + tileSize, segment.y * tileSize + tileSize / 2, tileSize / 2);
-    //             ctx.arcTo(segment.x * tileSize + tileSize, segment.y * tileSize + tileSize, segment.x * tileSize + tileSize / 2, segment.y * tileSize + tileSize, tileSize / 2);
-    //             ctx.arcTo(segment.x * tileSize, segment.y * tileSize + tileSize, segment.x * tileSize, segment.y * tileSize + tileSize / 2, tileSize / 2);
-    //             ctx.closePath();
-    //             ctx.fill();
+  setupEventListeners() {
+    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    
+    // Real-time validation
+    const inputs = this.form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', () => this.validateField(input));
+      input.addEventListener('input', () => this.clearFieldError(input));
+    });
+  }
 
-    //             if (i < snake.length - 1) {
-    //                 ctx.fillRect(
-    //                     (segment.x + prev.x) / 2 * tileSize, 
-    //                     (segment.y + prev.y) / 2 * tileSize, 
-    //                     tileSize, 
-    //                     tileSize
-    //                 );
-    //             }
-    //         }
-            
-    //         const head = snake[0];
-    //         const eyeSize = tileSize / 5;
-    //         ctx.fillStyle = THEME_COLORS.snakeEye;
-    //         let eyeDir = (direction.x === 0 && direction.y === 0) ? {x: 1, y: 0} : direction; // Default look right
+  async handleSubmit(e) {
+    e.preventDefault();
+    
+    if (!this.validateForm()) {
+      return;
+    }
 
-    //         if (eyeDir.x === 1) { // Right
-    //             ctx.fillRect(head.x * tileSize + tileSize/2, head.y * tileSize + eyeSize, eyeSize, eyeSize);
-    //             ctx.fillRect(head.x * tileSize + tileSize/2, head.y * tileSize + 3 * eyeSize, eyeSize, eyeSize);
-    //         } else if (eyeDir.x === -1) { // Left
-    //             ctx.fillRect(head.x * tileSize + eyeSize, head.y * tileSize + eyeSize, eyeSize, eyeSize);
-    //             ctx.fillRect(head.x * tileSize + eyeSize, head.y * tileSize + 3 * eyeSize, eyeSize, eyeSize);
-    //         } else if (eyeDir.y === 1) { // Down
-    //             ctx.fillRect(head.x * tileSize + eyeSize, head.y * tileSize + tileSize/2, eyeSize, eyeSize);
-    //             ctx.fillRect(head.x * tileSize + 3*eyeSize, head.y * tileSize + tileSize/2, eyeSize, eyeSize);
-    //         } else if (eyeDir.y === -1) { // Up
-    //             ctx.fillRect(head.x * tileSize + eyeSize, head.y * tileSize + eyeSize, eyeSize, eyeSize);
-    //             ctx.fillRect(head.x * tileSize + 3*eyeSize, head.y * tileSize + eyeSize, eyeSize, eyeSize);
-    //         }
-    //     }
+    this.setSubmitState(true);
+    
+    try {
+      const formData = new FormData(this.form);
+      
+      // Simulate form submission (replace with actual endpoint)
+      await this.simulateFormSubmission(formData);
+      
+      this.showResult('success', 'Message sent successfully! I\'ll get back to you soon.');
+      this.form.reset();
+      utils.announceToScreenReader('Message sent successfully');
+      
+    } catch (error) {
+      console.error('Form submission error:', error);
+      this.showResult('error', 'Failed to send message. Please try again or contact me directly.');
+      utils.announceToScreenReader('Failed to send message');
+    } finally {
+      this.setSubmitState(false);
+    }
+  }
 
-    //     function spawnFood() {
-    //         food = {
-    //             x: Math.floor(Math.random() * tileCountX),
-    //             y: Math.floor(Math.random() * tileCountY)
-    //         };
-    //         for (const segment of snake) {
-    //             if (segment.x === food.x && segment.y === food.y) {
-    //                 return spawnFood();
-    //             }
-    //         }
-    //     }
+  validateForm() {
+    const inputs = this.form.querySelectorAll('input[required], textarea[required]');
+    let isValid = true;
 
-    //     function updateUI(newState) {
-    //         gameState = newState;
-    //         instructionsEl.classList.add('hidden');
-    //         gameOverEl.classList.add('hidden');
-    //         pausedEl.classList.add('hidden');
-    //         inGameScoreDisplay.classList.add('hidden');
+    inputs.forEach(input => {
+      if (!this.validateField(input)) {
+        isValid = false;
+      }
+    });
 
-    //         switch (newState) {
-    //             case GameState.INSTRUCTIONS:
-    //                 instructionsEl.classList.remove('hidden');
-    //                 break;
-    //             case GameState.RUNNING:
-    //                 inGameScoreDisplay.classList.remove('hidden');
-    //                 scoreEl.textContent = score;
-    //                 break;
-    //             case GameState.PAUSED:
-    //                 pausedEl.classList.remove('hidden');
-    //                 break;
-    //             case GameState.GAMEOVER:
-    //                 gameOverEl.classList.remove('hidden');
-    //                 finalScoreEl.textContent = score;
-    //                 break;
-    //         }
-    //     }
+    return isValid;
+  }
 
-    //     function handleKeydown(e) {
-    //         if (e.code === 'Space') {
-    //             e.preventDefault();
-    //             if (gameState === GameState.RUNNING) updateUI(GameState.PAUSED);
-    //             else if (gameState === GameState.PAUSED) updateUI(GameState.RUNNING);
-    //             return;
-    //         }
+  validateField(field) {
+    const value = field.value.trim();
+    const fieldName = field.name;
+    let isValid = true;
+    let errorMessage = '';
 
-    //         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-    //             e.preventDefault();
-                
-    //             // Prevent setting direction if snake is stationary to avoid reversing on first move
-    //             if (direction.x === 0 && direction.y === 0) {
-    //                 if (e.key === 'ArrowLeft') return; // Can't start by going into its own body
-    //             }
+    // Required field validation
+    if (field.hasAttribute('required') && !value) {
+      errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
+      isValid = false;
+    }
 
-    //             if (gameState === GameState.PAUSED || gameState === GameState.INSTRUCTIONS) {
-    //                 updateUI(GameState.RUNNING);
-    //             }
-    //             if (gameState === GameState.GAMEOVER) return;
+    // Email validation
+    if (fieldName === 'email' && value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        errorMessage = 'Please enter a valid email address';
+        isValid = false;
+      }
+    }
 
-    //             const key = e.key;
-    //             if (key === 'ArrowUp' && direction.y === 0) direction = { x: 0, y: -1 };
-    //             if (key === 'ArrowDown' && direction.y === 0) direction = { x: 0, y: 1 };
-    //             if (key === 'ArrowLeft' && direction.x === 0) direction = { x: -1, y: 0 };
-    //             if (key === 'ArrowRight' && direction.x === 0) direction = { x: 1, y: 0 };
-    //         }
-    //     }
+    // Name validation
+    if (fieldName === 'name' && value && value.length < 2) {
+      errorMessage = 'Name must be at least 2 characters long';
+      isValid = false;
+    }
 
-    //     document.addEventListener('keydown', handleKeydown);
-    //     restartButton.addEventListener('click', () => {
-    //         resetGame();
-    //         draw();
-    //     });
-    //     window.addEventListener('resize', () => {
-    //         setCanvasSize();
-    //         resetGame();
-    //         draw();
-    //     });
-        
-    //     // --- Initial Setup ---
-    //     setCanvasSize();
-    //     resetGame();
-    //     draw();
-    //     window.requestAnimationFrame(gameLoop); 
+    // Message validation
+    if (fieldName === 'message' && value && value.length < 10) {
+      errorMessage = 'Message must be at least 10 characters long';
+      isValid = false;
+    }
+
+    this.showFieldError(field, errorMessage);
+    return isValid;
+  }
+
+  showFieldError(field, message) {
+    const errorId = `${field.name}-error`;
+    let errorElement = document.getElementById(errorId);
+    
+    if (!errorElement) {
+      errorElement = document.createElement('div');
+      errorElement.id = errorId;
+      errorElement.className = 'text-red-400 text-sm mt-1';
+      errorElement.setAttribute('aria-live', 'polite');
+      field.parentNode.appendChild(errorElement);
+    }
+
+    errorElement.textContent = message;
+    errorElement.classList.toggle('sr-only', !message);
+    
+    if (message) {
+      field.classList.add('border-red-400');
+      field.setAttribute('aria-describedby', errorId);
+    } else {
+      field.classList.remove('border-red-400');
+      field.removeAttribute('aria-describedby');
+    }
+  }
+
+  clearFieldError(field) {
+    const errorId = `${field.name}-error`;
+    const errorElement = document.getElementById(errorId);
+    
+    if (errorElement) {
+      errorElement.textContent = '';
+      errorElement.classList.add('sr-only');
+    }
+    
+    field.classList.remove('border-red-400');
+    field.removeAttribute('aria-describedby');
+  }
+
+  setSubmitState(isSubmitting) {
+    const buttonText = this.submitButton.querySelector('span:not(.opacity-60)') || this.submitButton;
+    const icon = this.submitButton.querySelector('i');
+    
+    if (isSubmitting) {
+      this.submitButton.disabled = true;
+      this.submitButton.classList.add('opacity-75', 'cursor-not-allowed');
+      buttonText.textContent = 'Sending...';
+      if (icon) {
+        icon.className = 'fas fa-spinner fa-spin mr-2';
+      }
+      document.getElementById('submit-status').textContent = 'Sending message...';
+    } else {
+      this.submitButton.disabled = false;
+      this.submitButton.classList.remove('opacity-75', 'cursor-not-allowed');
+      buttonText.textContent = 'Send Message';
+      if (icon) {
+        icon.className = 'fas fa-paper-plane mr-2 group-hover:translate-x-1 transition-transform duration-300';
+      }
+      document.getElementById('submit-status').textContent = '';
+    }
+  }
+
+  showResult(type, message) {
+    this.resultDiv.className = `text-center h-auto p-3 rounded ${
+      type === 'success' ? 'text-green-400 bg-green-400/10' : 'text-red-400 bg-red-400/10'
+    }`;
+    this.resultDiv.textContent = message;
+    
+    setTimeout(() => {
+      this.resultDiv.className = 'text-center h-6';
+      this.resultDiv.textContent = '';
+    }, 5000);
+  }
+
+  async simulateFormSubmission(formData) {
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // In a real implementation, you would send the data to your backend
+    // const response = await fetch('/api/contact', {
+    //   method: 'POST',
+    //   body: formData
+    // });
+    // 
+    // if (!response.ok) {
+    //   throw new Error('Network response was not ok');
     // }
     
+    console.log('Form data:', Object.fromEntries(formData));
+  }
+}
 
+// ===== SCROLL TO TOP CONTROLLER =====
+class ScrollToTopController {
+  constructor() {
+    this.button = document.getElementById('scroll-to-top');
+    this.init();
+  }
 
-    /**
-     * Initializes the Swiper.js library for the featured projects carousel.
-     * Configures the slider to be responsive, autoplay, and include navigation/pagination.
-     */
-    function initSwiper() {
-        if (typeof Swiper === 'undefined') {
-            console.error('Swiper library is not loaded.');
-            return;
-        };
-        new Swiper('.swiper', {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 30,
-            autoplay: { delay: 4000, disableOnInteraction: false },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-            // Responsive breakpoints
-            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-        });
+  init() {
+    if (this.button) {
+      this.setupEventListeners();
+    }
+  }
+
+  setupEventListeners() {
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', utils.throttle(() => {
+      this.toggleButtonVisibility();
+    }, 100));
+
+    // Scroll to top when clicked
+    this.button.addEventListener('click', () => {
+      utils.smoothScrollTo(document.body, 0);
+      utils.announceToScreenReader('Scrolled to top of page');
+    });
+  }
+
+  toggleButtonVisibility() {
+    if (window.scrollY > 500) {
+      this.button.classList.remove('hidden');
+    } else {
+      this.button.classList.add('hidden');
+    }
+  }
+}
+
+// ===== GAME HIGH SCORE CONTROLLER =====
+class GameHighScoreController {
+  constructor() {
+    this.storageKey = 'snake-game-high-score';
+    this.init();
+  }
+
+  init() {
+    // Make functions available globally for PyScript
+    window.getHighScore = () => this.getHighScore();
+    window.setHighScore = (score) => this.setHighScore(score);
+  }
+
+  getHighScore() {
+    try {
+      return parseInt(localStorage.getItem(this.storageKey)) || 0;
+    } catch (error) {
+      console.warn('Could not access localStorage:', error);
+      return 0;
+    }
+  }
+
+  setHighScore(score) {
+    try {
+      const currentHigh = this.getHighScore();
+      if (score > currentHigh) {
+        localStorage.setItem(this.storageKey, score.toString());
+        utils.announceToScreenReader(`New high score: ${score}`);
+      }
+    } catch (error) {
+      console.warn('Could not save to localStorage:', error);
+    }
+  }
+}
+
+// ===== PERFORMANCE MONITOR =====
+class PerformanceMonitor {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.monitorPageLoad();
+    this.monitorScrollPerformance();
+  }
+
+  monitorPageLoad() {
+    window.addEventListener('load', () => {
+      // Use Performance API if available
+      if ('performance' in window) {
+        const loadTime = performance.now();
+        console.log(`Page loaded in ${Math.round(loadTime)}ms`);
+        
+        // Report Core Web Vitals if available
+        if ('web-vital' in window) {
+          this.reportWebVitals();
+        }
+      }
+    });
+  }
+
+  monitorScrollPerformance() {
+    let scrollCount = 0;
+    let lastScrollTime = performance.now();
+
+    window.addEventListener('scroll', utils.throttle(() => {
+      scrollCount++;
+      const currentTime = performance.now();
+      
+      // Log if scroll performance seems poor
+      if (currentTime - lastScrollTime > 50) {
+        console.warn('Slow scroll detected:', currentTime - lastScrollTime, 'ms');
+      }
+      
+      lastScrollTime = currentTime;
+    }, 16));
+  }
+
+  reportWebVitals() {
+    // This would integrate with web-vitals library if included
+    // getCLS(console.log);
+    // getFID(console.log);
+    // getFCP(console.log);
+    // getLCP(console.log);
+    // getTTFB(console.log);
+  }
+}
+
+// ===== ACCESSIBILITY ENHANCEMENTS =====
+class AccessibilityController {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.setupKeyboardNavigation();
+    this.setupFocusManagement();
+    this.setupReducedMotion();
+  }
+
+  setupKeyboardNavigation() {
+    // Enhanced keyboard navigation for interactive elements
+    document.addEventListener('keydown', (e) => {
+      // Skip to main content with Ctrl+/
+      if (e.ctrlKey && e.key === '/') {
+        e.preventDefault();
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+          mainContent.focus();
+          mainContent.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  }
+
+  setupFocusManagement() {
+    // Ensure focus is visible and properly managed
+    document.addEventListener('focusin', (e) => {
+      // Add focus indicator class if needed
+      e.target.classList.add('focus-visible');
+    });
+
+    document.addEventListener('focusout', (e) => {
+      // Remove focus indicator class
+      e.target.classList.remove('focus-visible');
+    });
+  }
+
+  setupReducedMotion() {
+    // Respect user's motion preferences
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    if (prefersReducedMotion.matches) {
+      document.body.classList.add('reduce-motion');
     }
 
-    /**
-     * Uses the Intersection Observer API to trigger CSS animations on elements
-     * as they scroll into the viewport. This is a performant way to handle scroll-based animations.
-     */
-    function initScrollAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Get animation classes from data attribute, or use a default
-                    const animationClasses = entry.target.dataset.animationClasses || 'animate__animated animate__fadeInUp';
-                    entry.target.classList.add(...animationClasses.split(' '));
-                    // Stop observing the element once it has been animated
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+    prefersReducedMotion.addEventListener('change', (e) => {
+      if (e.matches) {
+        document.body.classList.add('reduce-motion');
+      } else {
+        document.body.classList.remove('reduce-motion');
+      }
+    });
+  }
+}
 
-        // Observe all elements with the 'data-observer-target' attribute
-        document.querySelectorAll('[data-observer-target]').forEach(el => observer.observe(el));
+// ===== THEME CONTROLLER =====
+class ThemeController {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.setupColorSchemeDetection();
+  }
+
+  setupColorSchemeDetection() {
+    // Detect and respond to system color scheme changes
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    darkModeQuery.addEventListener('change', (e) => {
+      if (e.matches) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    });
+
+    // Set initial state
+    if (darkModeQuery.matches) {
+      document.body.classList.add('dark-mode');
     }
+  }
+}
 
-    /**
-     * Creates an interactive aurora/spotlight effect in the hero section that follows the mouse.
-     * It updates CSS Custom Properties, which are used by the CSS to position the background gradient.
-     */
-    function initHeroAuroraEffect() {
-        const hero = document.getElementById('hero');
-        if (!hero) return;
+// ===== MAIN APPLICATION CONTROLLER =====
+class PortfolioApp {
+  constructor() {
+    this.controllers = {};
+    this.init();
+  }
 
-        hero.addEventListener('mousemove', e => {
-            const rect = hero.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            hero.style.setProperty('--mouse-x', `${x}px`);
-            hero.style.setProperty('--mouse-y', `${y}px`);
-        });
+  init() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.initializeControllers());
+    } else {
+      this.initializeControllers();
     }
+  }
 
-    /**
-     * Manages the "Scroll to Top" button.
-     * The button appears when the user scrolls down a certain amount and, when clicked,
-     * smoothly scrolls the page back to the top.
-     */
-    function initScrollToTop() {
-        const button = document.getElementById('scroll-to-top');
-        if (!button) return;
+  initializeControllers() {
+    try {
+      // Initialize all controllers
+      this.controllers.navigation = new NavigationController();
+      this.controllers.scrollAnimation = new ScrollAnimationController();
+      this.controllers.projectsSwiper = new ProjectsSwiperController();
+      this.controllers.contactForm = new ContactFormController();
+      this.controllers.scrollToTop = new ScrollToTopController();
+      this.controllers.gameHighScore = new GameHighScoreController();
+      this.controllers.performance = new PerformanceMonitor();
+      this.controllers.accessibility = new AccessibilityController();
+      this.controllers.theme = new ThemeController();
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                button.classList.remove('opacity-0', '-translate-y-4');
-            } else {
-                button.classList.add('opacity-0', '-translate-y-4');
-            }
-        });
-
-        button.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+      console.log('Portfolio app initialized successfully');
+      utils.announceToScreenReader('Portfolio loaded successfully');
+      
+    } catch (error) {
+      console.error('Error initializing portfolio app:', error);
     }
+  }
 
-    /**
-     * Handles the contact form submission using AJAX for Netlify Forms.
-     * This prevents a page reload, provides instant user feedback, and leverages
-     * Netlify's built-in form handling.
-     */
-    function initContactForm() {
-        const form = document.getElementById('contact-form');
-        const submitButton = document.getElementById('submit-button');
-        const resultDiv = document.getElementById('form-result');
+  // Public method to get controller instances
+  getController(name) {
+    return this.controllers[name];
+  }
+}
 
-        if (!form || !submitButton || !resultDiv) return;
+// ===== INITIALIZE APPLICATION =====
+const portfolioApp = new PortfolioApp();
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submission
+// Make app available globally for debugging
+window.portfolioApp = portfolioApp;
 
-            const formData = new FormData(form);
+// ===== ADDITIONAL UTILITY FUNCTIONS =====
 
-            // Provide user feedback
-            resultDiv.innerHTML = '<p class="text-brand-yellow">Sending...</p>';
-            submitButton.disabled = true;
-            submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+// Lazy loading for images
+function setupLazyLoading() {
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
 
-            // Prepare data for Netlify
-            const urlEncodedData = new URLSearchParams(formData).toString();
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+}
 
-            // ** THIS IS THE CORRECTED PART FOR NETLIFY **
-            // The request is sent to the current page's path ("/").
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: urlEncodedData
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        resultDiv.innerHTML = `<p class="text-green-400">Thanks! Your message has been sent.</p>`;
-                        form.reset();
-                    } else {
-                        // If the server responds with an error
-                        throw new Error('Form submission failed.');
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    resultDiv.innerHTML = '<p class="text-red-400">Oops! Something went wrong.</p>';
-                })
-                .finally(() => {
-                    // Re-enable the button and clear the message
-                    submitButton.disabled = false;
-                    submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
-                    setTimeout(() => {
-                        resultDiv.innerHTML = '';
-                    }, 5000);
-                });
+// Service Worker registration for PWA capabilities
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('SW registered: ', registration);
+        })
+        .catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
         });
-    }
+    });
+  }
+}
 
-    /**
-     * IDEA 3 (FIXED): "Drawing" Experience Timeline Animation.
-     * Uses an Intersection Observer to detect when the 'Experience' section is
-     * visible, then adds a class to trigger the CSS animation that "draws" the
-     * vertical timeline bar.
-     */
-    function initExperienceTimeline() {
-        const experienceSection = document.getElementById('experience');
-        if (!experienceSection) return;
-
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Add the trigger class to the section
-                    experienceSection.classList.add('timeline-in-view');
-                    // We only need to do this once, so we can unobserve
-                    timelineObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2 // Trigger when 20% of the section is visible
-        });
-
-        timelineObserver.observe(experienceSection);
-    }
+// Initialize additional features
+document.addEventListener('DOMContentLoaded', () => {
+  setupLazyLoading();
+  // registerServiceWorker(); // Uncomment if you have a service worker
 });
 
+// ===== ERROR HANDLING =====
+window.addEventListener('error', (e) => {
+  console.error('Global error:', e.error);
+  // In production, you might want to send this to an error reporting service
+});
 
-// snake-game highscore
-function getHighScore() {
-    const score = localStorage.getItem('snakeHighScore') || '0';
-    return parseInt(score, 10);
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled promise rejection:', e.reason);
+  // In production, you might want to send this to an error reporting service
+});
+
+// ===== EXPORT FOR MODULE SYSTEMS =====
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { PortfolioApp, utils };
 }
 
-function setHighScore(score) {
-    localStorage.setItem('snakeHighScore', score);
-}
