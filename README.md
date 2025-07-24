@@ -1,6 +1,14 @@
-# Python Portfolio
+# Mubin Attar's Python Portfolio
 
 A professional and modern Python-themed portfolio showcasing enhanced visual appeal, responsiveness, performance, accessibility, and code quality. This portfolio includes a Snake game and a contact form, all designed with a consistent Python branding and developer aesthetic.
+
+## Live Demo
+
+Check out the live portfolio at: [https://mubinattar.netlify.app/](https://mubinattar.netlify.app/)
+
+## GitHub Repository
+
+Explore the source code and contribute at: [https://github.com/Mubin-Shaikh/mubinattar/tree/main](https://github.com/Mubin-Shaikh/mubinattar/tree/main)
 
 ## Features
 
@@ -15,11 +23,11 @@ A professional and modern Python-themed portfolio showcasing enhanced visual app
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/Mubin-Shaikh/mubinattar.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd your-repo-name/mubinattar
+   cd mubinattar
    ```
 3. Open `index.html` in your preferred web browser to view the portfolio.
 
@@ -39,8 +47,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or feedback, please contact Mubin Attar via email or visit the portfolio website.
+For questions or feedback, please contact me via email or visit the portfolio website.
 
 ---
 
-For a detailed summary of all enhancements and technical improvements, see the [ENHANCEMENT_SUMMARY.md](ENHANCEMENT_SUMMARY.md) file.
