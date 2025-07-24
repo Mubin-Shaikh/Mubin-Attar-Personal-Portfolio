@@ -180,6 +180,15 @@ def handle_action_btn_click(e):
     elif game_state == GameState["PAUSED"]: update_ui(GameState["RUNNING"])
 
 def handle_keydown(e):
+    # Check if event has 'key' attribute
+    if not hasattr(e, 'key'):
+        return
+    # Ignore keydown events if focus is on input or textarea elements
+    target = e.target
+    tag_name = target.tagName if hasattr(target, 'tagName') else ''
+    if tag_name in ['INPUT', 'TEXTAREA']:
+        return
+
     key,code=e.key,e.code
     
     if code=='Enter':
@@ -199,6 +208,7 @@ def handle_keydown(e):
         key_map={'ArrowUp':(0,-1),'ArrowDown':(0,1),'ArrowLeft':(-1,0),'ArrowRight':(1,0)}
         new_dir=key_map[key]
         set_direction(new_dir[0], new_dir[1])
+        
         
 def main():
     loading_message.classList.add("hidden")
