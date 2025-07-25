@@ -6,31 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Mubin Attar's Portfolio - Software Engineer & AI/ML Enthusiast specializing in Python, Django, and full-stack development. Explore my projects, experience, and technical expertise.">
-    <meta name="keywords" content="Python Developer, Django, AI/ML, Software Engineer, Full Stack Developer, Machine Learning, Web Development">
+    <meta name="keywords"
+        content="Python Developer, Django, AI/ML, Software Engineer, Full Stack Developer, Machine Learning, Web Development">
     <meta name="author" content="Mubin Attar">
     <meta name="theme-color" content="#306998">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Mubin Attar | Software Engineer & AI/ML Enthusiast">
-    <meta property="og:description" content="Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.">
+    <meta property="og:description"
+        content="Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mubinattar.dev">
     <meta property="og:image" content="./static/img/og-image.jpg">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mubin Attar | Software Engineer & AI/ML Enthusiast">
-    <meta name="twitter:description" content="Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.">
+    <meta name="twitter:description"
+        content="Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.">
     <meta name="twitter:image" content="./static/img/og-image.jpg">
-    
+
     <title>Mubin Attar | Software Engineer & AI/ML Enthusiast</title>
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" as="style">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+        as="style">
     <link rel="preload" href="./static/css/style.css" as="style">
-    
+
     <!-- External CSS Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -48,7 +53,9 @@
     <!-- PyScript for Snake Game -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    
+    <!-- ADD GSAP HERE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="./static/css/style.css">
 
@@ -84,7 +91,7 @@
             },
         }
     </script>
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -105,19 +112,24 @@
 
 <body class="bg-neutral-900 text-gray-300 antialiased">
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 p-4 bg-white text-black rounded-md">
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 p-4 bg-white text-black rounded-md">
         Skip to main content
     </a>
 
     <!-- Python-themed loading animation -->
-    <div id="loading-screen" class="fixed inset-0 bg-neutral-900 z-50 flex items-center justify-center" role="dialog" aria-labelledby="loading-title" aria-describedby="loading-description">
+    <div id="loading-screen" class="fixed inset-0 bg-neutral-900 z-50 flex items-center justify-center" role="dialog"
+        aria-labelledby="loading-title" aria-describedby="loading-description">
         <div class="text-center">
             <h2 id="loading-title" class="sr-only">Loading Portfolio</h2>
             <p id="loading-description" class="sr-only">Please wait while the portfolio loads</p>
             <div class="python-logo-animation mb-4">
-                <svg class="w-16 h-16 mx-auto animate-python-pulse" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Python logo">
-                    <path class="text-brand-blue" d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z"/>
-                    <path class="text-brand-yellow" d="M21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z"/>
+                <svg class="w-16 h-16 mx-auto animate-python-pulse" viewBox="0 0 24 24" fill="currentColor" role="img"
+                    aria-label="Python logo">
+                    <path class="text-brand-blue"
+                        d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z" />
+                    <path class="text-brand-yellow"
+                        d="M21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" />
                 </svg>
             </div>
             <div class="text-brand-yellow font-mono text-lg animate-pulse">
@@ -133,21 +145,29 @@
 
     <!-- Header & Navigation -->
     <header id="header" class="relative">
-        <nav class="nav-backdrop fixed w-full z-50 transition-all duration-300" role="navigation" aria-label="Main navigation">
+        <nav class="nav-backdrop fixed w-full z-50 transition-all duration-300" role="navigation"
+            aria-label="Main navigation">
             <div class="container">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo with Python-themed animation -->
                     <div class="flex-shrink-0">
-                        <a href="#hero" class="text-brand-blue font-bold text-xl flex items-center gap-2 font-heading group" aria-label="Mubin Attar - Home">
+                        <a href="#hero"
+                            class="text-brand-blue font-bold text-xl flex items-center gap-2 font-heading group"
+                            aria-label="Mubin Attar - Home">
                             <div class="relative">
-                                <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
-                                    <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" />
+                                <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
+                                    viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
+                                    <path
+                                        d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" />
                                 </svg>
-                                <div class="absolute inset-0 bg-brand-yellow opacity-0 group-hover:opacity-20 rounded-full blur-md transition-opacity duration-300" aria-hidden="true"></div>
+                                <div class="absolute inset-0 bg-brand-yellow opacity-0 group-hover:opacity-20 rounded-full blur-md transition-opacity duration-300"
+                                    aria-hidden="true"></div>
                             </div>
                             <span class="relative">
                                 Mubin Attar
-                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-yellow transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
+                                <span
+                                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-yellow transition-all duration-300 group-hover:w-full"
+                                    aria-hidden="true"></span>
                             </span>
                         </a>
                     </div>
@@ -155,20 +175,29 @@
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-1">
                         <a href="#about" class="nav-link" aria-label="About section">About</a>
-                        <a href="#technical_expertise" class="nav-link" aria-label="Technical expertise section">Expertise</a>
-                        <a href="#featured_projects" class="nav-link" aria-label="Featured projects section">Projects</a>
-                        <a href="#experience" class="nav-link" aria-label="Professional experience section">Experience</a>
+                        <a href="#technical_expertise" class="nav-link"
+                            aria-label="Technical expertise section">Expertise</a>
+                        <a href="#featured_projects" class="nav-link"
+                            aria-label="Featured projects section">Projects</a>
+                        <a href="#experience" class="nav-link"
+                            aria-label="Professional experience section">Experience</a>
                         <a href="#contact" class="btn btn-primary btn-shine" aria-label="Contact section">Contact</a>
                     </div>
 
                     <!-- Mobile Menu Button -->
                     <div class="md:hidden">
-                        <button id="mobile-menu-button" class="text-gray-300 hover:text-white transition-colors duration-300 p-2 rounded-md hover:bg-neutral-800" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-                            <svg id="menu-open-icon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <button id="mobile-menu-button"
+                            class="text-gray-300 hover:text-white transition-colors duration-300 p-2 rounded-md hover:bg-neutral-800"
+                            aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                            <svg id="menu-open-icon" class="w-6 h-6 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
-                            <svg id="menu-close-icon" class="w-6 h-6 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <svg id="menu-close-icon" class="w-6 h-6 hidden transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
@@ -176,13 +205,25 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-neutral-900/95 backdrop-blur-sm border-t border-neutral-800" aria-labelledby="mobile-menu-button">
+            <div id="mobile-menu"
+                class="hidden md:hidden bg-neutral-900/95 backdrop-blur-sm border-t border-neutral-800"
+                aria-labelledby="mobile-menu-button">
                 <div class="container py-4 space-y-2">
-                    <a href="#about" class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300" aria-label="About section">About</a>
-                    <a href="#technical_expertise" class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300" aria-label="Technical expertise section">Expertise</a>
-                    <a href="#featured_projects" class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300" aria-label="Featured projects section">Projects</a>
-                    <a href="#experience" class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300" aria-label="Professional experience section">Experience</a>
-                    <a href="#contact" class="block w-full text-center mt-4 px-4 py-3 bg-brand-blue text-white rounded-md hover:bg-brand-blue-dark transition-colors duration-300" aria-label="Contact section">Contact</a>
+                    <a href="#about"
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
+                        aria-label="About section">About</a>
+                    <a href="#technical_expertise"
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
+                        aria-label="Technical expertise section">Expertise</a>
+                    <a href="#featured_projects"
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
+                        aria-label="Featured projects section">Projects</a>
+                    <a href="#experience"
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
+                        aria-label="Professional experience section">Experience</a>
+                    <a href="#contact"
+                        class="block w-full text-center mt-4 px-4 py-3 bg-brand-blue text-white rounded-md hover:bg-brand-blue-dark transition-colors duration-300"
+                        aria-label="Contact section">Contact</a>
                 </div>
             </div>
         </nav>
@@ -209,21 +250,24 @@
                         <path class="neural-path" d="M30,70 Q60,60 85,20" />
                     </svg>
                 </div>
-                
+
                 <!-- Floating Python Code Snippets -->
                 <div class="absolute top-20 left-10 opacity-10 animate-float" aria-hidden="true">
                     <code class="text-brand-blue font-mono text-sm">import success</code>
                 </div>
-                <div class="absolute top-40 right-20 opacity-10 animate-float" style="animation-delay: 1s" aria-hidden="true">
+                <div class="absolute top-40 right-20 opacity-10 animate-float" style="animation-delay: 1s"
+                    aria-hidden="true">
                     <code class="text-brand-yellow font-mono text-sm">def innovate():</code>
                 </div>
-                <div class="absolute bottom-40 left-20 opacity-10 animate-float" style="animation-delay: 2s" aria-hidden="true">
+                <div class="absolute bottom-40 left-20 opacity-10 animate-float" style="animation-delay: 2s"
+                    aria-hidden="true">
                     <code class="text-brand-blue font-mono text-sm">return excellence</code>
                 </div>
-                <div class="absolute bottom-20 right-10 opacity-10 animate-float" style="animation-delay: 3s" aria-hidden="true">
+                <div class="absolute bottom-20 right-10 opacity-10 animate-float" style="animation-delay: 3s"
+                    aria-hidden="true">
                     <code class="text-brand-yellow font-mono text-sm">class Developer:</code>
                 </div>
-                
+
                 <!-- Data Flow Animation -->
                 <div class="data-particles" aria-hidden="true">
                     <div class="data-particle" style="top: 25%; left: 5%; animation-delay: 0s;"></div>
@@ -237,29 +281,27 @@
             <div class="container relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
                     <div class="space-y-8">
-                        <!-- Enhanced Hero Title with Python-themed Animation -->
+                        <!-- Enhanced Hero Title -->
                         <div class="relative">
-                            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading mb-6 animate-fade-in-down">
+                            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading mb-6">
                                 <span class="text-white block mb-2">Software Engineer &</span>
                                 <span class="text-gradient block">AI/ML Enthusiast</span>
                             </h1>
-                            <!-- Python syntax highlighting effect -->
-                            <div class="absolute -top-4 -left-4 text-brand-blue opacity-30 font-mono text-lg animate-fade-in" style="animation-delay: 0.5s" aria-hidden="true">
+                            <div class="absolute -top-4 -left-4 text-brand-blue opacity-30 font-mono text-lg" aria-hidden="true">
                                 <span class="text-brand-yellow">class</span> <span class="text-brand-blue">Developer</span><span class="text-white">:</span>
                             </div>
                         </div>
 
                         <!-- Enhanced Description -->
-                        <p class="text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.8s">
-                            Engineering full-stack web platforms and intelligent solutions with 
-                            <span class="text-brand-yellow font-semibold">Python</span>, 
-                            <span class="text-brand-blue font-semibold">Django</span>, and 
+                        <p class="text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                            Engineering full-stack web platforms and intelligent solutions with
+                            <span class="text-brand-yellow font-semibold">Python</span>,
+                            <span class="text-brand-blue font-semibold">Django</span>, and
                             <span class="text-brand-yellow font-semibold">Machine Learning</span>.
                         </p>
 
                         <!-- Enhanced Snake Game Container -->
-                        <div id="game-container" class="glassmorphism-card p-4 rounded-xl text-left max-w-2xl mx-auto mb-8 animate-fade-in-up" style="animation-delay: 1s" role="application" aria-label="Snake game">
-                            
+                        <div id="game-container" class="glassmorphism-card p-4 rounded-xl text-left max-w-2xl mx-auto mb-8" role="application" aria-label="Snake game">
                             <!-- Game UI Elements -->
                             <div id="ingame-score-display" class="absolute top-4 left-4 text-brand-yellow font-mono z-20 hidden" aria-live="polite">
                                 <span class="text-sm opacity-75">Score:</span> <span id="score" class="text-lg font-bold">0</span>
@@ -302,7 +344,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div id="game-paused-screen" class="game-overlay hidden" role="dialog" aria-labelledby="paused-title">
                                 <div class="text-center">
                                     <i class="fas fa-pause text-brand-yellow text-3xl mb-4" aria-hidden="true"></i>
@@ -310,14 +351,13 @@
                                     <p class="text-gray-300 mt-2 font-mono">Press Space to Resume</p>
                                 </div>
                             </div>
-
                             <div id="game-over-screen" class="game-overlay hidden" role="dialog" aria-labelledby="gameover-title">
                                 <div class="text-center space-y-4">
                                     <p id="new-high-score-message" class="hidden text-brand-yellow font-bold text-lg animate-glow-pulse" aria-live="assertive">
                                         🎉 New High Score! 🎉
                                     </p>
                                     <i class="fas fa-skull text-red-500 text-3xl" aria-hidden="true"></i>
-                                    <h3 id="gameover-title" class="text-xl font-bold font-heading text-red-500">Game Over</h3>
+                                    <h3 id="gameover-title" class="text-xl font-bold font-heading text-red-500">GameOverError: Collision Detected</h3>
                                     <p class="text-white font-mono text-lg">
                                         Final Score: <span id="final-score" class="text-brand-yellow font-bold">0</span>
                                     </p>
@@ -327,65 +367,60 @@
                                     </button>
                                 </div>
                             </div>
-
                             <!-- Enhanced Mobile Controls -->
                             <div id="mobile-controls" class="game-controls md:hidden" role="group" aria-label="Mobile game controls">
                                 <div class="mobile-dpad">
                                     <div></div>
-                                    <button id="up-btn" class="dpad-btn" aria-label="Move up">
-                                        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-                                    </button>
+                                    <button id="up-btn" class="dpad-btn" aria-label="Move up"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
                                     <div></div>
-                                    <button id="left-btn" class="dpad-btn" aria-label="Move left">
-                                        <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                                    </button>
-                                    <button id="down-btn" class="dpad-btn" aria-label="Move down">
-                                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
-                                    </button>
-                                    <button id="right-btn" class="dpad-btn" aria-label="Move right">
-                                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                                    </button>
+                                    <button id="left-btn" class="dpad-btn" aria-label="Move left"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+                                    <button id="down-btn" class="dpad-btn" aria-label="Move down"><i class="fas fa-arrow-down" aria-hidden="true"></i></button>
+                                    <button id="right-btn" class="dpad-btn" aria-label="Move right"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
                                 </div>
                                 <button id="action-btn" class="action-btn" aria-label="Start, pause, or restart game">
                                     <i id="action-btn-icon" class="fas fa-play" aria-hidden="true"></i>
                                 </button>
                             </div>
-
                             <!-- PyScript Configuration -->
                             <py-config>packages = ["numpy"]</py-config>
                             <py-script src="./static/py/snake_game.py"></py-script>
-
                             <!-- Audio Elements -->
                             <audio id="start-sound" src="./static/audio/game_start.mp3" preload="auto" aria-label="Game start sound"></audio>
                             <audio id="eat-sound" src="./static/audio/snake_eat.wav" preload="auto" aria-label="Snake eat sound"></audio>
                             <audio id="gameover-sound" src="./static/audio/game_end.mp3" preload="auto" aria-label="Game over sound"></audio>
                         </div>
 
-                        <!-- Enhanced CTA Buttons -->
-                        <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 1.2s">
-                            <a href="#featured_projects" class="btn btn-primary btn-shine group" aria-label="View my work and projects">
-                                <i class="fas fa-code mr-2 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true"></i>
-                                View My Work
-                            </a>
-                            <a href="#contact" class="btn btn-secondary group" aria-label="Get in touch with me">
-                                <i class="fas fa-handshake mr-2 group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
-                                Let's Connect
+                        <!-- NEW & CORRECTED: CTA Buttons and Scroll Indicator Wrapper -->
+                        <div class="hero-cta-and-scroll">
+                            <!-- CTA Buttons -->
+                            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                                <a href="#featured_projects" class="btn btn-primary btn-shine group"
+                                    aria-label="View my work and projects">
+                                    <i class="fas fa-code mr-2 group-hover:rotate-12 transition-transform duration-300"
+                                        aria-hidden="true"></i>
+                                    View My Work
+                                </a>
+                                <a href="#contact" class="btn btn-secondary group" aria-label="Get in touch with me">
+                                    <i class="fas fa-handshake mr-2 group-hover:scale-110 transition-transform duration-300"
+                                        aria-hidden="true"></i>
+                                    Let's Connect
+                                </a>
+                            </div>
+                        
+                            <!-- Scroll Indicator -->
+                            <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+                                <div class="flex flex-col items-center">
+                                    <span class="text-xs font-mono mb-2 opacity-75">scroll_down()</span>
+                                    <svg class="w-6 h-6" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                    </svg>
+                                </div>
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Enhanced Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <a href="#about" class="text-gray-400 hover:text-brand-yellow transition-colors duration-300 group" aria-label="Scroll to About section">
-                    <div class="flex flex-col items-center">
-                        <span class="text-xs font-mono mb-2 opacity-75 group-hover:opacity-100">scroll_down()</span>
-                        <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                        </svg>
-                    </div>
-                </a>
             </div>
         </section>
 
@@ -397,31 +432,41 @@
                     <header class="text-center mb-16" data-observer-target>
                         <div class="inline-block relative mb-6">
                             <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">About Me</h2>
-                            <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                                <span class="text-brand-yellow">#</span> <span class="text-gray-500">About section</span>
+                            <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm"
+                                aria-hidden="true">
+                                <span class="text-brand-yellow">#</span> <span class="text-gray-500">About
+                                    section</span>
                             </div>
                         </div>
                         <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
                             <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                            <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s"></div>
-                            <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s"></div>
+                            <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up"
+                                style="animation-delay: 0.2s"></div>
+                            <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right"
+                                style="animation-delay: 0.4s"></div>
                         </div>
                     </header>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Enhanced Profile Picture -->
-                        <div class="flex justify-center items-center" data-observer-target data-animation-classes="animate-fade-in-left">
+                        <div class="flex justify-center items-center" data-observer-target
+                            data-animation-classes="animate-fade-in-left">
                             <div class="profile-picture-container">
                                 <div class="profile-picture-glow w-64 h-72 lg:w-72 lg:h-80">
                                     <div class="tech-hexagon w-full h-full">
-                                        <img src="./static/img/Mubin_Attar.jpg" alt="Mubin Attar - Software Engineer and AI/ML Enthusiast" class="w-full h-full object-cover">
+                                        <img data-src="./static/img/temp.webp"
+                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            alt="Mubin Attar - Software Engineer and AI/ML Enthusiast"
+                                            class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <!-- Python-themed decorative elements -->
-                                <div class="absolute -top-4 -right-4 text-brand-yellow opacity-50 animate-float" aria-hidden="true">
+                                <div class="absolute -top-4 -right-4 text-brand-yellow opacity-50 animate-float"
+                                    aria-hidden="true">
                                     <i class="fab fa-python text-2xl"></i>
                                 </div>
-                                <div class="absolute -bottom-4 -left-4 text-brand-blue opacity-50 animate-float" style="animation-delay: 1s" aria-hidden="true">
+                                <div class="absolute -bottom-4 -left-4 text-brand-blue opacity-50 animate-float"
+                                    style="animation-delay: 1s" aria-hidden="true">
                                     <i class="fas fa-brain text-xl"></i>
                                 </div>
                             </div>
@@ -433,56 +478,76 @@
                                 <h3 class="text-3xl font-bold text-brand-yellow font-heading mb-4">
                                     A Passion for Code and Intelligent Systems
                                 </h3>
-                                <div class="absolute -top-3 -left-3 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                    <span class="text-brand-yellow">class</span> <span class="text-brand-blue">Passion</span><span class="text-white">:</span>
+                                <div class="absolute -top-3 -left-3 text-brand-blue opacity-20 font-mono text-xs"
+                                    aria-hidden="true">
+                                    <span class="text-brand-yellow">class</span> <span
+                                        class="text-brand-blue">Passion</span><span class="text-white">:</span>
                                 </div>
                             </div>
-                            
+
                             <p class="text-gray-300 leading-relaxed">
-                                I'm a results-driven Software Engineer with <span class="text-brand-yellow font-semibold">2.6+ years</span> of experience specializing in 
-                                <span class="text-brand-blue font-semibold">Python</span>, <span class="text-brand-blue font-semibold">Django</span>, and the art of building intelligent, scalable web platforms. 
+                                I'm a results-driven Software Engineer with <span
+                                    class="text-brand-yellow font-semibold">2.6+ years</span> of experience specializing
+                                in
+                                <span class="text-brand-blue font-semibold">Python</span>, <span
+                                    class="text-brand-blue font-semibold">Django</span>, and the art of building
+                                intelligent, scalable web platforms.
                                 I thrive on transforming complex problems into clean, efficient code.
                             </p>
 
                             <!-- Enhanced Stats Grid -->
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
-                                <div class="glassmorphism-card p-4 group">
-                                    <div class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">2.6+</div>
+                            <ul class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center" role="list">
+                                <li class="glassmorphism-card p-4 group">
+                                    <div
+                                        class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
+                                        2.6+</div>
                                     <div class="text-sm text-gray-400">Years Experience</div>
-                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                        aria-hidden="true">
                                         <i class="fas fa-calendar-alt text-brand-blue"></i>
                                     </div>
-                                </div>
-                                <div class="glassmorphism-card p-4 group">
-                                    <div class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">10+</div>
+                                </li>
+                                <li class="glassmorphism-card p-4 group">
+                                    <div
+                                        class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
+                                        10+</div>
                                     <div class="text-sm text-gray-400">Projects Shipped</div>
-                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                        aria-hidden="true">
                                         <i class="fas fa-rocket text-brand-blue"></i>
                                     </div>
-                                </div>
-                                <div class="glassmorphism-card p-4 group col-span-2 sm:col-span-1">
-                                    <div class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">AI/ML</div>
+                                </li>
+                                <li class="glassmorphism-card p-4 group col-span-2 sm:col-span-1">
+                                    <div
+                                        class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
+                                        AI/ML</div>
                                     <div class="text-sm text-gray-400">Core Focus</div>
-                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                        aria-hidden="true">
                                         <i class="fas fa-brain text-brand-blue"></i>
                                     </div>
-                                </div>
-                            </div>
-
+                                </li>
+                            </ul>
                             <p class="text-gray-300 leading-relaxed">
-                                My journey has taken me through <span class="text-brand-yellow">sports analytics</span>, 
-                                <span class="text-brand-yellow">financial trading</span>, and <span class="text-brand-yellow">healthcare</span>, 
-                                where I've architected backends, integrated machine learning models, and built robust APIs. 
+                                My journey has taken me through <span class="text-brand-yellow">sports analytics</span>,
+                                <span class="text-brand-yellow">financial trading</span>, and <span
+                                    class="text-brand-yellow">healthcare</span>,
+                                where I've architected backends, integrated machine learning models, and built robust
+                                APIs.
                                 I believe in the power of a problem-solving mindset and a love for clean architecture.
                             </p>
 
                             <!-- Enhanced Download Button -->
                             <div>
-                                <a href="./static/docs/MubinAttarResume_2025.pdf" download class="btn btn-secondary btn-shine group" aria-label="Download my CV as PDF">
-                                    <i class="fas fa-download mr-2 group-hover:animate-bounce" aria-hidden="true"></i>
-                                    Download CV
-                                    <span class="ml-2 opacity-60 font-mono text-sm">.pdf</span>
-                                </a>
+                                <div class="mt-8">
+                                    <a href="./static/docs/MubinAttarResume_2025.pdf" download
+                                        class="btn btn-secondary btn-shine group" aria-label="Download my CV as PDF">
+                                        <i class="fas fa-download mr-2 group-hover:animate-bounce"
+                                            aria-hidden="true"></i>
+                                        Download CV
+                                        <span class="ml-2 opacity-60 font-mono text-sm">.pdf</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -497,30 +562,37 @@
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Technical Expertise</h2>
-                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
+                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm"
+                            aria-hidden="true">
                             <span class="text-brand-yellow">import</span> <span class="text-brand-blue">skills</span>
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
                         <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s"></div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
+                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
+                        </div>
                     </div>
                 </header>
 
                 <!-- Enhanced Skills Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                     <!-- Backend & Programming -->
-                    <article class="glassmorphism-card group" data-observer-target data-animation-classes="animate-fade-in-up">
+                    <article class="glassmorphism-card group" data-observer-target
+                        data-animation-classes="animate-fade-in-up">
                         <div class="relative">
-                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
+                                aria-hidden="true">
                                 <i class="fas fa-code fa-2x"></i>
                             </div>
-                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                aria-hidden="true">
                                 <i class="fab fa-python text-brand-blue text-lg"></i>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                        <h3
+                            class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
                             Programming & Backend
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
@@ -544,16 +616,20 @@
                     </article>
 
                     <!-- Frontend & UI -->
-                    <article class="glassmorphism-card group" data-observer-target data-animation-classes="animate-fade-in-up" style="animation-delay: 0.1s">
+                    <article class="glassmorphism-card group" data-observer-target
+                        data-animation-classes="animate-fade-in-up" style="animation-delay: 0.1s">
                         <div class="relative">
-                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
+                                aria-hidden="true">
                                 <i class="fas fa-laptop-code fa-2x"></i>
                             </div>
-                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                aria-hidden="true">
                                 <i class="fab fa-html5 text-brand-blue text-lg"></i>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                        <h3
+                            class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
                             Frontend & UI Basics
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
@@ -577,16 +653,20 @@
                     </article>
 
                     <!-- AI/ML & Data Science -->
-                    <article class="glassmorphism-card group" data-observer-target data-animation-classes="animate-fade-in-up" style="animation-delay: 0.2s">
+                    <article class="glassmorphism-card group" data-observer-target
+                        data-animation-classes="animate-fade-in-up" style="animation-delay: 0.2s">
                         <div class="relative">
-                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
+                                aria-hidden="true">
                                 <i class="fas fa-brain fa-2x"></i>
                             </div>
-                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                aria-hidden="true">
                                 <i class="fas fa-robot text-brand-blue text-lg"></i>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                        <h3
+                            class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
                             AI / ML & Data Science
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
@@ -610,16 +690,20 @@
                     </article>
 
                     <!-- DevOps & Cloud -->
-                    <article class="glassmorphism-card group" data-observer-target data-animation-classes="animate-fade-in-up" style="animation-delay: 0.3s">
+                    <article class="glassmorphism-card group" data-observer-target
+                        data-animation-classes="animate-fade-in-up" style="animation-delay: 0.3s">
                         <div class="relative">
-                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                            <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
+                                aria-hidden="true">
                                 <i class="fas fa-tools fa-2x"></i>
                             </div>
-                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300" aria-hidden="true">
+                            <div class="absolute top-0 right-0 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                                aria-hidden="true">
                                 <i class="fab fa-aws text-brand-blue text-lg"></i>
                             </div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                        <h3
+                            class="text-xl font-bold text-white mb-3 font-heading group-hover:text-brand-yellow transition-colors duration-300">
                             DevOps & Cloud
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
@@ -652,64 +736,85 @@
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Featured Projects</h2>
-                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                            <span class="text-brand-yellow">for</span> <span class="text-brand-blue">project</span> <span class="text-brand-yellow">in</span> <span class="text-brand-blue">portfolio</span><span class="text-white">:</span>
+                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm"
+                            aria-hidden="true">
+                            <span class="text-brand-yellow">for</span> <span class="text-brand-blue">project</span>
+                            <span class="text-brand-yellow">in</span> <span
+                                class="text-brand-blue">portfolio</span><span class="text-white">:</span>
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
                         <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s"></div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
+                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
+                        </div>
                     </div>
                 </header>
 
                 <!-- Enhanced Swiper Container -->
-                <div class="max-w-6xl mx-auto relative" data-observer-target data-animation-classes="animate-fade-in-up">
+                <div class="max-w-7xl mx-auto relative" data-observer-target
+                    data-animation-classes="animate-fade-in-up">
                     <div class="swiper px-4" role="region" aria-label="Featured projects carousel">
                         <div class="swiper-wrapper pb-16 pt-5">
-                            <!-- Enhanced Project Cards with Python Theming -->
-                            
                             <!-- Project Card 1 - AI Sports Bot -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot" 
-                                                 alt="AI Sports Betting Bot Project - Machine learning prediction system"
-                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                                   aria-label="View AI Sports Bot source code on GitHub"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                alt="AI Sports Betting Bot Project - Machine learning prediction system"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+
+                                            <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                aria-label="Project links">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View AI Sports Bot source code on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="#" aria-label="View AI Sports Bot live demo"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fas fa-external-link-alt fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                            </div>
-                                            <!-- Python-themed overlay -->
-                                            <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
+                                            </nav>
+                                            <div
+                                                class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
                                                 <i class="fab fa-python mr-1" aria-hidden="true"></i>Python
                                             </div>
                                         </div>
-                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
+                                        <div
+                                            class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
                                             <div class="relative mb-3">
-                                                <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                                <h3
+                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                                     AI Sports Betting Bot
                                                 </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                                    <span class="text-brand-yellow">class</span> <span class="text-brand-blue">AIBot</span><span class="text-white">:</span>
+                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                                    aria-hidden="true">
+                                                    <span class="text-brand-yellow">class</span> <span
+                                                        class="text-brand-blue">AIBot</span><span
+                                                        class="text-white">:</span>
                                                 </div>
                                             </div>
                                             <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Backend for ML predictions using XGBoost & neural networks. Built RESTful APIs for serving results with high accuracy predictions.
+                                                Backend for ML predictions using XGBoost & neural networks. Built
+                                                RESTful APIs for serving results with high accuracy predictions.
                                             </p>
-                                            <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">RESTful APIs</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">XGBoost</span>
+                                            <div class="flex flex-wrap gap-2 mt-auto" role="list"
+                                                aria-label="Technologies used">
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">RESTful
+                                                    APIs</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">XGBoost</span>
                                             </div>
                                         </div>
                                     </div>
@@ -721,37 +826,55 @@
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System" 
-                                                 alt="Hospital Management System - Healthcare platform for patient and staff management"
-                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                                   aria-label="View Hospital Management System source code on GitHub"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                alt="Hospital Management System - Healthcare platform for patient and staff management"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+
+                                            <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                aria-label="Project links">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View Hospital Management System source code on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                            </div>
-                                            <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
+                                            </nav>
+                                            <div
+                                                class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
                                                 <i class="fas fa-hospital mr-1" aria-hidden="true"></i>Healthcare
                                             </div>
                                         </div>
-                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
+                                        <div
+                                            class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
                                             <div class="relative mb-3">
-                                                <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                                <h3
+                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                                     Hospital Management System
                                                 </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                                    <span class="text-brand-yellow">def</span> <span class="text-brand-blue">manage_hospital</span><span class="text-white">():</span>
+                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                                    aria-hidden="true">
+                                                    <span class="text-brand-yellow">def</span> <span
+                                                        class="text-brand-blue">manage_hospital</span><span
+                                                        class="text-white">():</span>
                                                 </div>
                                             </div>
                                             <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Contributed to a modular, enterprise-scale system for a healthcare provider, covering scheduling, records, and reporting.
+                                                Contributed to a modular, enterprise-scale system for a healthcare
+                                                provider, covering scheduling, records, and reporting.
                                             </p>
-                                            <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Web Dev</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">PostgreSQL</span>
+                                            <div class="flex flex-wrap gap-2 mt-auto" role="list"
+                                                aria-label="Technologies used">
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Web
+                                                    Dev</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">PostgreSQL</span>
                                             </div>
                                         </div>
                                     </div>
@@ -763,78 +886,110 @@
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform" 
-                                                 alt="B2B Platforms - Business-to-business web applications and integrations"
-                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                                   aria-label="View B2B Platforms source code on GitHub"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                alt="B2B Platforms - Business-to-business web applications and integrations"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+
+
+                                            <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                aria-label="Project links">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View B2B Platforms source code on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                            </div>
-                                            <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
+                                            </nav>
+                                            <div
+                                                class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
                                                 <i class="fas fa-building mr-1" aria-hidden="true"></i>B2B
                                             </div>
                                         </div>
-                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
+                                        <div
+                                            class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
                                             <div class="relative mb-3">
-                                                <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                                <h3
+                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                                     B2B Web Platforms
                                                 </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                                    <span class="text-brand-yellow">import</span> <span class="text-brand-blue">business_logic</span>
+                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                                    aria-hidden="true">
+                                                    <span class="text-brand-yellow">import</span> <span
+                                                        class="text-brand-blue">business_logic</span>
                                                 </div>
                                             </div>
                                             <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Developed features for 3+ B2B platforms in healthcare & e-commerce. Built responsive UIs and integrated third-party APIs.
+                                                Developed features for 3+ B2B platforms in healthcare & e-commerce.
+                                                Built responsive UIs and integrated third-party APIs.
                                             </p>
-                                            <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">JavaScript</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Bootstrap</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">API Integration</span>
+                                            <div class="flex flex-wrap gap-2 mt-auto" role="list"
+                                                aria-label="Technologies used">
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">JavaScript</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Bootstrap</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">API
+                                                    Integration</span>
                                             </div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
 
-                            <!-- Additional project cards following the same enhanced pattern... -->
                             <!-- Project Card 4 - E-commerce API -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API" 
-                                                 alt="E-commerce Backend API - RESTful API for online shopping platform"
-                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                                   aria-label="View E-commerce API source code on GitHub"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                alt="E-commerce Backend API - RESTful API for online shopping platform"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+
+                                            <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                aria-label="Project links">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View E-commerce API source code on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                            </div>
-                                            <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
+                                            </nav>
+                                            <div
+                                                class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
                                                 <i class="fas fa-shopping-cart mr-1" aria-hidden="true"></i>E-commerce
                                             </div>
                                         </div>
-                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
+                                        <div
+                                            class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
                                             <div class="relative mb-3">
-                                                <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                                <h3
+                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                                     E-commerce Backend API
                                                 </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                                    <span class="text-brand-yellow">class</span> <span class="text-brand-blue">EcommerceAPI</span><span class="text-white">:</span>
+                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                                    aria-hidden="true">
+                                                    <span class="text-brand-yellow">class</span> <span
+                                                        class="text-brand-blue">EcommerceAPI</span><span
+                                                        class="text-white">:</span>
                                                 </div>
                                             </div>
                                             <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Designed a RESTful API with DRF for an e-commerce site, handling users, products, and orders with secure authentication.
+                                                Designed a RESTful API with DRF for an e-commerce site, handling users,
+                                                products, and orders with secure authentication.
                                             </p>
-                                            <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">DRF</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">PostgreSQL</span>
+                                            <div class="flex flex-wrap gap-2 mt-auto" role="list"
+                                                aria-label="Technologies used">
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">DRF</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">PostgreSQL</span>
                                             </div>
                                         </div>
                                     </div>
@@ -846,36 +1001,50 @@
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation" 
-                                                 alt="Cloud Deployment Automation - DevOps scripts and CI/CD pipelines"
-                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                                   aria-label="View Cloud Automation source code on GitHub"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                alt="Cloud Deployment Automation - DevOps scripts and CI/CD pipelines"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                            <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                aria-label="Project links">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View Cloud Automation source code on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                            </div>
-                                            <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
+                                            </nav>
+                                            <div
+                                                class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
                                                 <i class="fas fa-cloud mr-1" aria-hidden="true"></i>DevOps
                                             </div>
                                         </div>
-                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
+                                        <div
+                                            class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
                                             <div class="relative mb-3">
-                                                <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                                <h3
+                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                                     Cloud Deployment Automation
                                                 </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                                    <span class="text-brand-yellow">def</span> <span class="text-brand-blue">deploy_to_cloud</span><span class="text-white">():</span>
+                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                                    aria-hidden="true">
+                                                    <span class="text-brand-yellow">def</span> <span
+                                                        class="text-brand-blue">deploy_to_cloud</span><span
+                                                        class="text-white">():</span>
                                                 </div>
                                             </div>
                                             <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Scripts to automate deploying Django apps to AWS EC2, including S3 integration for static files and CI/CD pipelines.
+                                                Scripts to automate deploying Django apps to AWS EC2, including S3
+                                                integration for static files and CI/CD pipelines.
                                             </p>
-                                            <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">AWS</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Boto3</span>
+                                            <div class="flex flex-wrap gap-2 mt-auto" role="list"
+                                                aria-label="Technologies used">
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">AWS</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Boto3</span>
                                             </div>
                                         </div>
                                     </div>
@@ -887,48 +1056,65 @@
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline" 
-                                                 alt="Data Analysis Pipeline - Web scraping and data visualization tools"
-                                                 class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                                   aria-label="View Data Pipeline source code on GitHub"
-                                                   class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
+                                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                alt="AI Sports Betting Bot Project - Machine learning prediction system"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+
+                                            <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                                aria-label="Project links">
+                                                <a href="https://github.com/Mubin-Shaikh" target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View Data Pipeline source code on GitHub"
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
                                                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                            </div>
-                                            <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
+                                            </nav>
+                                            <div
+                                                class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
                                                 <i class="fas fa-chart-line mr-1" aria-hidden="true"></i>Data Science
                                             </div>
                                         </div>
-                                        <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
+                                        <div
+                                            class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
                                             <div class="relative mb-3">
-                                                <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                                <h3
+                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                                     Data Analysis Pipeline
                                                 </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                                    <span class="text-brand-yellow">import</span> <span class="text-brand-blue">pandas</span> <span class="text-brand-yellow">as</span> <span class="text-brand-blue">pd</span>
+                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                                    aria-hidden="true">
+                                                    <span class="text-brand-yellow">import</span> <span
+                                                        class="text-brand-blue">pandas</span> <span
+                                                        class="text-brand-yellow">as</span> <span
+                                                        class="text-brand-blue">pd</span>
                                                 </div>
                                             </div>
                                             <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Web scraping tool to gather data, processed with Pandas, and visualized to highlight key trends and insights.
+                                                Web scraping tool to gather data, processed with Pandas, and visualized
+                                                to highlight key trends and insights.
                                             </p>
-                                            <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Pandas</span>
-                                                <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Web Scraping</span>
+                                            <div class="flex flex-wrap gap-2 mt-auto" role="list"
+                                                aria-label="Technologies used">
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Pandas</span>
+                                                <span
+                                                    class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Web
+                                                    Scraping</span>
                                             </div>
                                         </div>
                                     </div>
                                 </article>
                             </div>
                         </div>
+
+                        <!-- Correctly placed Swiper Controls -->
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next" aria-label="Next project"></div>
+                        <div class="swiper-button-prev" aria-label="Previous project"></div>
                     </div>
-                    
-                    <!-- Enhanced Swiper Controls -->
-                    <div class="swiper-pagination mt-12 relative"></div>
-                    <div class="swiper-button-next" aria-label="Next project"></div>
-                    <div class="swiper-button-prev" aria-label="Previous project"></div>
                 </div>
             </div>
         </section>
@@ -940,26 +1126,32 @@
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Professional Experience</h2>
-                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                            <span class="text-brand-yellow">while</span> <span class="text-brand-blue">career.growing</span><span class="text-white">:</span>
+                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm"
+                            aria-hidden="true">
+                            <span class="text-brand-yellow">while</span> <span
+                                class="text-brand-blue">career.growing</span><span class="text-white">:</span>
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
                         <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s"></div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
+                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
+                        </div>
                     </div>
                 </header>
 
                 <!-- Enhanced Timeline -->
                 <div class="timeline-container max-w-4xl mx-auto relative space-y-12">
                     <div class="timeline-bar" aria-hidden="true"></div>
-                    
+
                     <!-- Current Position -->
-                    <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target data-animation-classes="animate-fade-in-up">
+                    <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target
+                        data-animation-classes="animate-fade-in-up">
                         <div class="hidden md:block w-1/2 text-right pt-1">
                             <div class="inline-block bg-brand-blue/20 px-3 py-1 rounded-full">
-                                <time class="font-bold text-brand-yellow font-mono" datetime="2024-04">Apr 2024 - Present</time>
+                                <time class="font-bold text-brand-yellow font-mono" datetime="2024-04">Apr 2024 -
+                                    Present</time>
                             </div>
                         </div>
                         <div class="timeline-dot" aria-hidden="true">
@@ -968,39 +1160,54 @@
                         <div class="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
                             <div class="glassmorphism-card group">
                                 <div class="relative">
-                                    <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                    <h3
+                                        class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                         Software Engineer
                                     </h3>
-                                    <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                        <span class="text-brand-yellow">current_role</span> <span class="text-white">=</span> <span class="text-green-400">"Senior"</span>
+                                    <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                        aria-hidden="true">
+                                        <span class="text-brand-yellow">current_role</span> <span
+                                            class="text-white">=</span> <span class="text-green-400">"Senior"</span>
                                     </div>
                                 </div>
                                 <p class="text-brand-blue-dark font-semibold mb-2">Sevina Technologies</p>
                                 <div class="md:hidden mb-2">
-                                    <time class="inline-block bg-brand-blue/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono" datetime="2024-04">
+                                    <time
+                                        class="inline-block bg-brand-blue/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono"
+                                        datetime="2024-04">
                                         Apr 2024 - Present
                                     </time>
                                 </div>
                                 <p class="text-gray-400 text-sm">
-                                    Designing and building end-to-end AI/ML-powered systems for sports and financial prediction platforms, 
-                                    achieving up to <span class="text-brand-yellow font-semibold">65% accuracy</span> in NBA/MLB sports models 
-                                    and <span class="text-brand-yellow font-semibold">60%</span> in binary stock trading signals, while actively 
+                                    Designing and building end-to-end AI/ML-powered systems for sports and financial
+                                    prediction platforms,
+                                    achieving up to <span class="text-brand-yellow font-semibold">65% accuracy</span> in
+                                    NBA/MLB sports models
+                                    and <span class="text-brand-yellow font-semibold">60%</span> in binary stock trading
+                                    signals, while actively
                                     exploring new GenAI use cases.
                                 </p>
                                 <div class="flex flex-wrap gap-2 mt-3" role="list" aria-label="Skills used">
-                                    <span class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">AI/ML</span>
-                                    <span class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Python</span>
-                                    <span class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Sports Analytics</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">AI/ML</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Python</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Sports
+                                        Analytics</span>
                                 </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Previous Position -->
-                    <article class="timeline-item relative flex items-start md:flex-row-reverse md:space-x-reverse md:space-x-8" data-observer-target data-animation-classes="animate-fade-in-up">
+                    <article
+                        class="timeline-item relative flex items-start md:flex-row-reverse md:space-x-reverse md:space-x-8"
+                        data-observer-target data-animation-classes="animate-fade-in-up">
                         <div class="hidden md:block w-1/2 text-left pt-1 pl-8">
                             <div class="inline-block bg-brand-blue/20 px-3 py-1 rounded-full">
-                                <time class="font-bold text-brand-yellow font-mono" datetime="2022-11">Nov 2022 - Apr 2024</time>
+                                <time class="font-bold text-brand-yellow font-mono" datetime="2022-11">Nov 2022 - Apr
+                                    2024</time>
                             </div>
                         </div>
                         <div class="timeline-dot" aria-hidden="true">
@@ -1009,36 +1216,49 @@
                         <div class="w-full md:w-1/2 md:pr-8 ml-16 md:ml-0 md:text-right">
                             <div class="glassmorphism-card group">
                                 <div class="relative">
-                                    <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                    <h3
+                                        class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                         Junior Python Developer
                                     </h3>
-                                    <div class="absolute -top-2 -right-2 md:-right-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                        <span class="text-brand-yellow">experience</span><span class="text-white">++</span>
+                                    <div class="absolute -top-2 -right-2 md:-right-2 text-brand-blue opacity-20 font-mono text-xs"
+                                        aria-hidden="true">
+                                        <span class="text-brand-yellow">experience</span><span
+                                            class="text-white">++</span>
                                     </div>
                                 </div>
                                 <p class="text-brand-blue-dark font-semibold mb-2">Linescripts Software Pvt Ltd</p>
                                 <div class="md:hidden mb-2">
-                                    <time class="inline-block bg-brand-blue/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono" datetime="2022-11">
+                                    <time
+                                        class="inline-block bg-brand-blue/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono"
+                                        datetime="2022-11">
                                         Nov 2022 - Apr 2024
                                     </time>
                                 </div>
                                 <p class="text-gray-400 text-sm">
-                                    Contributed to development of scalable Django-based applications across domains like 
-                                    <span class="text-brand-yellow">e-commerce</span>, <span class="text-brand-yellow">healthcare</span>, 
-                                    and <span class="text-brand-yellow">aviation management</span>, handling API integrations, 
+                                    Contributed to development of scalable Django-based applications across domains like
+                                    <span class="text-brand-yellow">e-commerce</span>, <span
+                                        class="text-brand-yellow">healthcare</span>,
+                                    and <span class="text-brand-yellow">aviation management</span>, handling API
+                                    integrations,
                                     backend logic, and responsive UI workflows.
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-3 md:justify-end" role="list" aria-label="Skills used">
-                                    <span class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Django</span>
-                                    <span class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">APIs</span>
-                                    <span class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Full Stack</span>
+                                <div class="flex flex-wrap gap-2 mt-3 md:justify-end" role="list"
+                                    aria-label="Skills used">
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Django</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">APIs</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Full
+                                        Stack</span>
                                 </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Education -->
-                    <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target data-animation-classes="animate-fade-in-up">
+                    <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target
+                        data-animation-classes="animate-fade-in-up">
                         <div class="hidden md:block w-1/2 text-right pt-1">
                             <div class="inline-block bg-brand-yellow/20 px-3 py-1 rounded-full">
                                 <time class="font-bold text-brand-yellow font-mono" datetime="2018">2018 - 2021</time>
@@ -1050,27 +1270,42 @@
                         <div class="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
                             <div class="glassmorphism-card group">
                                 <div class="relative">
-                                    <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                    <h3
+                                        class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
                                         Master of Computer Application
                                     </h3>
-                                    <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                        <span class="text-brand-yellow">education</span><span class="text-white">.</span><span class="text-brand-blue">complete</span><span class="text-white">()</span>
+                                    <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                        aria-hidden="true">
+                                        <span class="text-brand-yellow">education</span><span
+                                            class="text-white">.</span><span
+                                            class="text-brand-blue">complete</span><span class="text-white">()</span>
                                     </div>
                                 </div>
-                                <p class="text-brand-blue-dark font-semibold mb-2">Savitribai Phule University of Pune</p>
+                                <p class="text-brand-blue-dark font-semibold mb-2">Savitribai Phule University of Pune
+                                </p>
                                 <div class="md:hidden mb-2">
-                                    <time class="inline-block bg-brand-yellow/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono" datetime="2018">
+                                    <time
+                                        class="inline-block bg-brand-yellow/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono"
+                                        datetime="2018">
                                         2018 - 2021
                                     </time>
                                 </div>
                                 <p class="text-gray-400 text-sm">
-                                    Graduated with a CGPA of <span class="text-brand-yellow font-semibold">8.01 (A Grade)</span>, 
-                                    building a strong foundation in computer science and software engineering principles.
+                                    Graduated with a CGPA of <span class="text-brand-yellow font-semibold">8.01 (A
+                                        Grade)</span>,
+                                    building a strong foundation in computer science and software engineering
+                                    principles.
                                 </p>
                                 <div class="flex flex-wrap gap-2 mt-3" role="list" aria-label="Academic focus">
-                                    <span class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">Computer Science</span>
-                                    <span class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">A Grade</span>
-                                    <span class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">Software Engineering</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">Computer
+                                        Science</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">A
+                                        Grade</span>
+                                    <span
+                                        class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">Software
+                                        Engineering</span>
                                 </div>
                             </div>
                         </div>
@@ -1088,14 +1323,18 @@
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
                             Get in <span class="text-brand-yellow">Touch</span>
                         </h2>
-                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                            <span class="text-brand-yellow">def</span> <span class="text-brand-blue">connect</span><span class="text-white">():</span>
+                        <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm"
+                            aria-hidden="true">
+                            <span class="text-brand-yellow">def</span> <span class="text-brand-blue">connect</span><span
+                                class="text-white">():</span>
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
                         <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s"></div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
+                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
+                        </div>
                     </div>
                 </header>
 
@@ -1105,50 +1344,66 @@
                         <div class="glassmorphism-card">
                             <div class="relative mb-6">
                                 <h3 class="text-2xl font-bold text-white font-heading">Let's Connect</h3>
-                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                    <span class="text-brand-yellow">contact_info</span> <span class="text-white">=</span> <span class="text-white">{</span>
+                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                    aria-hidden="true">
+                                    <span class="text-brand-yellow">contact_info</span> <span
+                                        class="text-white">=</span> <span class="text-white">{</span>
                                 </div>
                             </div>
                             <p class="text-gray-400 mb-8">
-                                I'm currently seeking new opportunities and am open to collaboration. 
+                                I'm currently seeking new opportunities and am open to collaboration.
                                 If you have a project in mind or just want to connect, feel free to reach out.
                             </p>
-                            
+
                             <!-- Enhanced Contact Links -->
                             <div class="space-y-4">
-                                <a href="mailto:sk.mubinattar@gmail.com" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Send email to sk.mubinattar@gmail.com">
-                                    <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
-                                        <i class="fas fa-envelope fa-lg text-brand-yellow group-hover:text-white" aria-hidden="true"></i>
+                                <a href="mailto:sk.mubinattar@gmail.com"
+                                    class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
+                                    aria-label="Send email to sk.mubinattar@gmail.com">
+                                    <div
+                                        class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
+                                        <i class="fas fa-envelope fa-lg text-brand-yellow group-hover:text-white"
+                                            aria-hidden="true"></i>
                                     </div>
                                     <div>
                                         <p class="text-gray-400 text-sm">Email</p>
-                                        <span class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
+                                        <span
+                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
                                             sk.mubinattar@gmail.com
                                         </span>
                                     </div>
                                 </a>
-                                
-                                <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer" 
-                                   class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Visit LinkedIn profile">
-                                    <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
-                                        <i class="fab fa-linkedin fa-lg text-brand-yellow group-hover:text-white" aria-hidden="true"></i>
+
+                                <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
+                                    aria-label="Visit LinkedIn profile">
+                                    <div
+                                        class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
+                                        <i class="fab fa-linkedin fa-lg text-brand-yellow group-hover:text-white"
+                                            aria-hidden="true"></i>
                                     </div>
                                     <div>
                                         <p class="text-gray-400 text-sm">LinkedIn</p>
-                                        <span class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
+                                        <span
+                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
                                             linkedin.com/in/mubin-attar
                                         </span>
                                     </div>
                                 </a>
-                                
-                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" 
-                                   class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Visit GitHub profile">
-                                    <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
-                                        <i class="fab fa-github fa-lg text-brand-yellow group-hover:text-white" aria-hidden="true"></i>
+
+                                <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer"
+                                    class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
+                                    aria-label="Visit GitHub profile">
+                                    <div
+                                        class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
+                                        <i class="fab fa-github fa-lg text-brand-yellow group-hover:text-white"
+                                            aria-hidden="true"></i>
                                     </div>
                                     <div>
                                         <p class="text-gray-400 text-sm">GitHub</p>
-                                        <span class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
+                                        <span
+                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
                                             github.com/Mubin-Shaikh
                                         </span>
                                     </div>
@@ -1159,13 +1414,16 @@
 
                     <!-- Enhanced Contact Form -->
                     <div data-observer-target data-animation-classes="animate-fade-in-right">
-                        <form id="contact-form" name="contact-form" data-netlify="true" method="POST" class="glassmorphism-card space-y-6" novalidate>
+                        <form id="contact-form" name="contact-form" data-netlify="true" method="POST"
+                            class="glassmorphism-card space-y-6" novalidate>
                             <input type="hidden" name="form-name" value="contact-form" />
-                            
+
                             <div class="relative">
                                 <h3 class="text-xl font-bold text-white font-heading mb-6">Send a Message</h3>
-                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                                    <span class="text-brand-yellow">message</span> <span class="text-white">=</span> <span class="text-white">{</span>
+                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
+                                    aria-hidden="true">
+                                    <span class="text-brand-yellow">message</span> <span class="text-white">=</span>
+                                    <span class="text-white">{</span>
                                 </div>
                             </div>
 
@@ -1173,7 +1431,8 @@
                                 <label class="form-label" for="name">
                                     <i class="fas fa-user mr-2 text-brand-yellow" aria-hidden="true"></i>Name
                                 </label>
-                                <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required aria-describedby="name-error">
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Your full name"
+                                    required aria-describedby="name-error">
                                 <div id="name-error" class="sr-only" aria-live="polite"></div>
                             </div>
 
@@ -1181,7 +1440,8 @@
                                 <label class="form-label" for="email">
                                     <i class="fas fa-envelope mr-2 text-brand-yellow" aria-hidden="true"></i>Email
                                 </label>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required aria-describedby="email-error">
+                                <input type="email" id="email" name="email" class="form-input"
+                                    placeholder="your.email@example.com" required aria-describedby="email-error">
                                 <div id="email-error" class="sr-only" aria-live="polite"></div>
                             </div>
 
@@ -1189,15 +1449,18 @@
                                 <label class="form-label" for="message">
                                     <i class="fas fa-comment mr-2 text-brand-yellow" aria-hidden="true"></i>Message
                                 </label>
-                                <textarea id="message" name="message" rows="5" class="form-textarea" 
-                                          placeholder="Tell me about your project or just say hello..." required aria-describedby="message-error"></textarea>
+                                <textarea id="message" name="message" rows="5" class="form-textarea"
+                                    placeholder="Tell me about your project or just say hello..." required
+                                    aria-describedby="message-error"></textarea>
                                 <div id="message-error" class="sr-only" aria-live="polite"></div>
                             </div>
 
                             <div id="form-result" class="text-center h-6" aria-live="polite"></div>
 
-                            <button type="submit" id="submit-button" class="btn btn-primary btn-shine w-full group" aria-describedby="submit-status">
-                                <i class="fas fa-paper-plane mr-2 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true"></i>
+                            <button type="submit" id="submit-button" class="btn btn-primary btn-shine w-full group"
+                                aria-describedby="submit-status">
+                                <i class="fas fa-paper-plane mr-2 group-hover:translate-x-1 transition-transform duration-300"
+                                    aria-hidden="true"></i>
                                 Send Message
                                 <span class="ml-2 opacity-60 font-mono text-sm">execute()</span>
                             </button>
@@ -1215,28 +1478,28 @@
             <!-- Social Links -->
             <div class="flex justify-center space-x-6 mb-6" role="list" aria-label="Social media links">
                 <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer"
-                   class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
-                   aria-label="GitHub Profile">
+                    class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
+                    aria-label="GitHub Profile">
                     <i class="fab fa-github fa-2x" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer"
-                   class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
-                   aria-label="LinkedIn Profile">
+                    class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
+                    aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
                 </a>
                 <a href="mailto:sk.mubinattar@gmail.com"
-                   class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
-                   aria-label="Email Contact">
+                    class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
+                    aria-label="Email Contact">
                     <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            
+
             <!-- Copyright -->
             <div class="space-y-2">
                 <p class="text-neutral-500 text-sm">© 2024 Mubin Attar. All Rights Reserved.</p>
                 <p class="text-neutral-600 text-xs font-mono">
-                    <span class="text-brand-blue">Built with</span> 
-                    <i class="fab fa-python text-brand-yellow mx-1" aria-hidden="true"></i> 
+                    <span class="text-brand-blue">Built with</span>
+                    <i class="fab fa-python text-brand-yellow mx-1" aria-hidden="true"></i>
                     <span class="text-brand-blue">and modern web technologies</span>
                 </p>
             </div>
@@ -1260,10 +1523,10 @@
     <!-- Performance and Analytics -->
     <script>
         // Simple performance monitoring
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const loadTime = performance.now();
             console.log(`Page loaded in ${Math.round(loadTime)}ms`);
-            
+
             // Hide loading screen
             const loadingScreen = document.getElementById('loading-screen');
             if (loadingScreen) {
@@ -1279,4 +1542,3 @@
 </body>
 
 </html>
-

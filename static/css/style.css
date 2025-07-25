@@ -9,7 +9,7 @@
   --brand-yellow: #FFD43B;
   --brand-yellow-light: #FFE873;
   --brand-yellow-dark: #E6C035;
-  
+
   /* Neutral Colors */
   --neutral-900: #171717;
   --neutral-800: #262626;
@@ -20,24 +20,24 @@
   --neutral-300: #d4d4d4;
   --neutral-200: #e5e5e5;
   --neutral-100: #f5f5f5;
-  
+
   /* Glassmorphism Variables */
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   --glass-backdrop: blur(8px);
-  
+
   /* Animation Variables */
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
   --transition-slow: 0.5s ease-in-out;
   --bounce-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  
+
   /* Typography */
   --font-heading: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
-  
+
   /* Spacing */
   --section-padding: 5rem 0;
   --container-padding: 1rem;
@@ -273,12 +273,12 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, 
-    rgba(48, 105, 152, 0.1) 0%, 
-    rgba(255, 212, 59, 0.05) 25%, 
-    rgba(48, 105, 152, 0.1) 50%, 
-    rgba(255, 212, 59, 0.05) 75%, 
-    rgba(48, 105, 152, 0.1) 100%);
+  background: linear-gradient(45deg,
+      rgba(48, 105, 152, 0.1) 0%,
+      rgba(255, 212, 59, 0.05) 25%,
+      rgba(48, 105, 152, 0.1) 50%,
+      rgba(255, 212, 59, 0.05) 75%,
+      rgba(48, 105, 152, 0.1) 100%);
   background-size: 400% 400%;
   animation: gradient-shift 8s ease-in-out infinite;
   opacity: 0.6;
@@ -514,7 +514,9 @@ body {
 }
 
 .swiper-pagination {
+  position: absolute !important;
   bottom: 0 !important;
+  /* Adjusted position */
 }
 
 .swiper-pagination-bullet {
@@ -539,18 +541,33 @@ body {
   -webkit-backdrop-filter: blur(8px) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   transition: all var(--transition-normal) !important;
+  /* Swiper's default top positioning ensures vertical centering */
+  top: 50% !important;
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   background: rgba(255, 212, 59, 0.2) !important;
-  transform: scale(1.1) !important;
+  /* Correctly combining transforms to keep vertical centering */
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* We need to apply the base translateY to the non-hover state as well to avoid a jump */
+.swiper-button-next,
+.swiper-button-prev {
+  transform: translateY(-50%);
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 1rem !important;
   font-weight: bold !important;
+}
+
+/* Ensure consistent gap for the skills grid */
+#technical_expertise .grid {
+  gap: 30px;
+  /* Matches the Swiper's spaceBetween for consistency */
 }
 
 /* ===== GAME STYLES ===== */
@@ -703,120 +720,171 @@ body {
 
 /* ===== ANIMATIONS ===== */
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes neural-pulse {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.6;
   }
-  50% { 
+
+  50% {
     transform: scale(1.5);
     opacity: 1;
   }
 }
 
 @keyframes data-flow {
-  0% { 
+  0% {
     transform: translateX(-100px);
     opacity: 0;
   }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { 
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
     transform: translateX(calc(100vw + 100px));
     opacity: 0;
   }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes glow-pulse {
-  0% { 
+  0% {
     box-shadow: 0 0 20px rgba(48, 105, 152, 0.5);
   }
-  100% { 
+
+  100% {
     box-shadow: 0 0 40px rgba(255, 212, 59, 0.8);
   }
 }
 
 @keyframes python-pulse {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(1);
     filter: drop-shadow(0 0 10px rgba(48, 105, 152, 0.5));
   }
-  50% { 
+
+  50% {
     transform: scale(1.1);
     filter: drop-shadow(0 0 20px rgba(255, 212, 59, 0.8));
   }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(30px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes fade-in-up {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(50px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes fade-in-down {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(-50px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes fade-in-left {
-  from { 
+  from {
     opacity: 0;
     transform: translateX(-50px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes fade-in-right {
-  from { 
+  from {
     opacity: 0;
     transform: translateX(50px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateX(0);
   }
@@ -904,7 +972,7 @@ p {
     --grid-gap: clamp(0.75rem, 2vw, 2.5rem);
     --vertical-spacing: 1.75rem;
   }
-  
+
   .glassmorphism-card {
     padding: 1.5rem;
   }
@@ -917,32 +985,32 @@ p {
     --grid-gap: clamp(0.5rem, 1.5vw, 2rem);
     --vertical-spacing: 1.5rem;
   }
-  
+
   .glassmorphism-card {
     padding: 1.25rem;
   }
-  
+
   .btn {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
   }
-  
+
   .hero-aurora {
     opacity: 0.3;
   }
-  
+
   .neural-network-bg {
     opacity: 0.2;
   }
-  
+
   .data-particles {
     opacity: 0.4;
   }
-  
+
   .timeline-item {
     margin-left: 3rem;
   }
-  
+
   .swiper-button-next,
   .swiper-button-prev {
     display: none !important;
@@ -956,17 +1024,17 @@ p {
     --grid-gap: clamp(0.25rem, 1vw, 1.5rem);
     --vertical-spacing: 1.25rem;
   }
-  
+
   .text-gradient {
     font-size: 2.5rem;
     line-height: 1.2;
   }
-  
+
   .profile-picture-glow {
     width: 200px !important;
     height: 240px !important;
   }
-  
+
   .scroll-to-top {
     bottom: 1rem;
     right: 1rem;
@@ -977,6 +1045,7 @@ p {
 
 /* ===== ACCESSIBILITY ENHANCEMENTS ===== */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -984,7 +1053,7 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .hero-aurora,
   .neural-network-bg,
   .data-particles {
@@ -993,6 +1062,7 @@ p {
 }
 
 @media (prefers-color-scheme: light) {
+
   /* Light mode adjustments if needed */
   .glassmorphism-card {
     background: rgba(255, 255, 255, 0.1);
@@ -1001,41 +1071,43 @@ p {
 }
 
 /* ===== FOCUS STYLES ===== */
-*:focus {
-  outline: 2px solid var(--brand-yellow);
-  outline-offset: 2px;
-}
-
-.btn:focus,
-.nav-link:focus {
-  outline: none;  /* Remove yellow outline on focus for nav links and buttons */
-  border-radius: var(--border-radius); /* Restore border-radius on focus */
-}
-
-/* Remove focus outline for brand name link */
-a.text-brand-blue.font-bold:focus {
-  outline: none;
+*:focus-visible {
+  outline: 3px solid var(--brand-yellow);
+  outline-offset: 3px;
   border-radius: var(--border-radius);
 }
+
+/* 
+  For key interactive elements, we create a custom focus ring using box-shadow.
+  This looks cleaner, doesn't get clipped by parent elements, and replaces the old rule that removed the outline.
+*/
+.btn:focus-visible,
+.nav-link:focus-visible,
+a.text-brand-blue.font-bold:focus-visible {
+  outline: none;
+  /* Remove the default outline to use the custom one below */
+  box-shadow: 0 0 0 2px var(--neutral-800), 0 0 0 4px var(--brand-yellow);
+}
+
 
 /* ===== PRINT STYLES ===== */
 @media print {
   .no-print {
     display: none !important;
   }
-  
+
   .hero-aurora,
   .neural-network-bg,
   .data-particles {
     display: none !important;
   }
-  
+
   .glassmorphism-card {
     background: white !important;
     border: 1px solid #ccc !important;
     box-shadow: none !important;
   }
-  
+
   body {
     background: white !important;
     color: black !important;
@@ -1048,12 +1120,12 @@ a.text-brand-blue.font-bold:focus {
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid var(--brand-yellow);
   }
-  
+
   .btn-primary {
     background: var(--brand-blue);
     border: 2px solid var(--brand-yellow);
   }
-  
+
   .btn-secondary {
     background: transparent;
     border: 2px solid var(--brand-yellow);
@@ -1119,3 +1191,216 @@ html {
   color: var(--neutral-900);
 }
 
+
+/* ===== PROFESSIONAL MOBILE & RESPONSIVE POLISH (v2 - CORRECTED) ===== */
+
+/* 
+  This block contains all the necessary refinements for a professional
+  mobile experience, addressing spacing, typography, and layout.
+*/
+
+/* --- 1. Fluid Typography & Spacing for All Screens --- */
+/* We are refining the existing :root variables for a smoother fluid transition. */
+:root {
+  --section-padding: clamp(3rem, 8vw, 5rem) 0;
+  --container-padding: clamp(1rem, 4vw, 2rem);
+  --grid-gap: clamp(1.5rem, 4vw, 2rem);
+  --vertical-spacing: clamp(1.5rem, 4vw, 2rem);
+}
+
+h1 { font-size: clamp(2.25rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.75rem, 6vw, 3.5rem); }
+h3 { font-size: clamp(1.25rem, 5vw, 2.5rem); }
+p { font-size: clamp(1rem, 2.5vw, 1.125rem); }
+
+
+/* --- 2. Tablet View Refinements (up to 1024px) --- */
+@media (max-width: 1024px) {
+  .glassmorphism-card {
+    padding: 1.75rem;
+  }
+
+  /* Ensure skills grid stacks to 2 columns for better card width */
+  #technical_expertise .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* --- 3. Mobile View Refinements (up to 768px) --- */
+@media (max-width: 768px) {
+  /* Make buttons and links have better tap sizes and proportions */
+  .btn {
+    padding: 0.8rem 1.75rem;
+    font-size: 0.95rem;
+  }
+
+  /* Single column layout for all primary grids */
+  #about .grid,
+  #technical_expertise .grid,
+  #contact .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Improve timeline readability by giving content more space */
+  .timeline-bar {
+    left: 1.5rem;
+  }
+  .timeline-item {
+    padding-left: 3.5rem;
+    margin-left: 0;
+  }
+  .timeline-dot {
+    left: 1.5rem;
+  }
+  
+  /* Reduce visual noise on mobile */
+  .hero-aurora { opacity: 0.4; }
+  .neural-network-bg { opacity: 0.2; }
+
+  /* Hide Swiper navigation buttons, as pagination is sufficient on touch devices */
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+
+/* --- 4. Small Mobile View Polish (up to 480px) --- */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1rem; /* Clean 16px from edges */
+  }
+
+  /* Compact the hero section for better above-the-fold view */
+  #hero .space-y-8 {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse)); /* <-- CORRECTED LINE */
+  }
+
+  /* Ensure CTA buttons stack cleanly */
+  #hero .flex-col {
+    gap: 0.75rem;
+  }
+
+  /* Give profile picture a bit more space */
+  .profile-picture-container {
+    margin-bottom: 2rem;
+  }
+
+  /* Tighter padding on cards to maximize content space */
+  .glassmorphism-card {
+    padding: 1.5rem;
+  }
+
+  /* Adjust timeline dot size for a more balanced look */
+  .timeline-dot {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .scroll-to-top {
+    width: 2.8rem;
+    height: 2.8rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* ===== FINAL & DEFINITIVE RESPONSIVE POLISH ===== */
+
+/* --- 1. Global Fluid Typography & Spacing --- */
+:root {
+  --section-padding: clamp(3.5rem, 8vw, 5rem) 0;
+  --container-padding: clamp(1rem, 5vw, 2rem);
+}
+h1 { font-size: clamp(2.25rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 7vw, 3rem); }
+h3 { font-size: clamp(1.4rem, 6vw, 2.25rem); }
+
+/* --- 2. Tablet View (up to 1024px) --- */
+@media (max-width: 1024px) {
+  #technical_expertise .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- 3. Core Mobile View (up to 768px) --- */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+  
+  /* CRITICAL HERO SECTION FIXES */
+  .hero-cta-and-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem; /* This creates the space between buttons and arrow */
+    margin-top: 1.5rem; /* Adds space above the buttons */
+  }
+  
+  .scroll-indicator {
+    color: var(--neutral-400);
+    transition: color var(--transition-normal);
+    animation: float 3s ease-in-out infinite; /* Re-using your float animation */
+  }
+  .scroll-indicator:hover {
+    color: var(--brand-yellow);
+  }
+
+  #hero .flex-col {
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+  #hero .btn {
+    width: 100%;
+    max-width: 320px;
+    font-size: 0.95rem;
+  }
+  
+  /* Universal single-column layouts with professional rhythm */
+  #about .grid,
+  #technical_expertise .grid,
+  #contact .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* Professional Mobile Timeline Layout */
+  .timeline-bar { left: 1.5rem; }
+  .timeline-dot { left: 1.5rem; }
+  .timeline-item {
+    padding-left: 3.5rem;
+    margin-left: 0;
+  }
+  
+  /* Hide Desktop Swiper Buttons */
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+/* --- 4. Polish for Small Phones (up to 480px) --- */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1rem;
+  }
+  
+  #hero h1 {
+    font-size: 2.1rem;
+  }
+  
+  .glassmorphism-card {
+    padding: 1.5rem;
+  }
+  
+  /* CRITICAL FIX: Center the Download CV button */
+  #about .space-y-6 > div:last-child {
+    display: flex;
+    justify-content: center;
+  }
+}

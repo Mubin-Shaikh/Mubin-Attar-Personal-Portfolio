@@ -23,7 +23,7 @@ const utils = {
   // Throttle function for scroll events
   throttle(func, limit) {
     let inThrottle;
-    return function(...args) {
+    return function (...args) {
       if (!inThrottle) {
         func.apply(this, args);
         inThrottle = true;
@@ -37,7 +37,7 @@ const utils = {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
     const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-    
+
     return (
       rect.top <= windowHeight * (1 - threshold) &&
       rect.bottom >= windowHeight * threshold &&
@@ -84,6 +84,8 @@ const utils = {
   }
 };
 
+
+
 // ===== NAVIGATION CONTROLLER =====
 class NavigationController {
   constructor() {
@@ -95,7 +97,7 @@ class NavigationController {
     this.navLinks = document.querySelectorAll('.nav-link');
     this.sections = document.querySelectorAll('section[id]');
     this.isMenuOpen = false;
-    
+
     this.init();
   }
 
@@ -142,7 +144,7 @@ class NavigationController {
 
   toggleMobileMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-    
+
     if (this.isMenuOpen) {
       this.mobileMenu.classList.remove('hidden');
       this.menuOpenIcon.classList.add('hidden');
@@ -168,9 +170,10 @@ class NavigationController {
 
   setupScrollSpy() {
     const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '-100px 0px -50% 0px'
+      rootMargin: '-40% 0px -60% 0px',
+      threshold: 0
     };
+
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -200,7 +203,7 @@ class NavigationController {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
           utils.smoothScrollTo(targetElement, 80);
           utils.announceToScreenReader(`Navigated to ${targetElement.querySelector('h1, h2, h3')?.textContent || targetId}`);
@@ -330,7 +333,7 @@ class ContactFormController {
 
   setupEventListeners() {
     this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-    
+
     // Real-time validation
     const inputs = this.form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -341,23 +344,23 @@ class ContactFormController {
 
   async handleSubmit(e) {
     e.preventDefault();
-    
+
     if (!this.validateForm()) {
       return;
     }
 
     this.setSubmitState(true);
-    
+
     try {
       const formData = new FormData(this.form);
-      
+
       // Simulate form submission (replace with actual endpoint)
       await this.simulateFormSubmission(formData);
-      
+
       this.showResult('success', 'Message sent successfully! I\'ll get back to you soon.');
       this.form.reset();
       utils.announceToScreenReader('Message sent successfully');
-      
+
     } catch (error) {
       console.error('Form submission error:', error);
       this.showResult('error', 'Failed to send message. Please try again or contact me directly.');
@@ -420,7 +423,7 @@ class ContactFormController {
   showFieldError(field, message) {
     const errorId = `${field.name}-error`;
     let errorElement = document.getElementById(errorId);
-    
+
     if (!errorElement) {
       errorElement = document.createElement('div');
       errorElement.id = errorId;
@@ -431,7 +434,7 @@ class ContactFormController {
 
     errorElement.textContent = message;
     errorElement.classList.toggle('sr-only', !message);
-    
+
     if (message) {
       field.classList.add('border-red-400');
       field.setAttribute('aria-describedby', errorId);
@@ -444,12 +447,12 @@ class ContactFormController {
   clearFieldError(field) {
     const errorId = `${field.name}-error`;
     const errorElement = document.getElementById(errorId);
-    
+
     if (errorElement) {
       errorElement.textContent = '';
       errorElement.classList.add('sr-only');
     }
-    
+
     field.classList.remove('border-red-400');
     field.removeAttribute('aria-describedby');
   }
@@ -457,7 +460,7 @@ class ContactFormController {
   setSubmitState(isSubmitting) {
     const buttonText = this.submitButton.querySelector('span:not(.opacity-60)') || this.submitButton;
     const icon = this.submitButton.querySelector('i');
-    
+
     if (isSubmitting) {
       this.submitButton.disabled = true;
       this.submitButton.classList.add('opacity-75', 'cursor-not-allowed');
@@ -478,11 +481,10 @@ class ContactFormController {
   }
 
   showResult(type, message) {
-    this.resultDiv.className = `text-center h-auto p-3 rounded ${
-      type === 'success' ? 'text-green-400 bg-green-400/10' : 'text-red-400 bg-red-400/10'
-    }`;
+    this.resultDiv.className = `text-center h-auto p-3 rounded ${type === 'success' ? 'text-green-400 bg-green-400/10' : 'text-red-400 bg-red-400/10'
+      }`;
     this.resultDiv.textContent = message;
-    
+
     setTimeout(() => {
       this.resultDiv.className = 'text-center h-6';
       this.resultDiv.textContent = '';
@@ -492,7 +494,7 @@ class ContactFormController {
   async simulateFormSubmission(formData) {
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     // In a real implementation, you would send the data to your backend
     // const response = await fetch('/api/contact', {
     //   method: 'POST',
@@ -502,7 +504,7 @@ class ContactFormController {
     // if (!response.ok) {
     //   throw new Error('Network response was not ok');
     // }
-    
+
     console.log('Form data:', Object.fromEntries(formData));
   }
 }
@@ -594,7 +596,7 @@ class PerformanceMonitor {
       if ('performance' in window) {
         const loadTime = performance.now();
         console.log(`Page loaded in ${Math.round(loadTime)}ms`);
-        
+
         // Report Core Web Vitals if available
         if ('web-vital' in window) {
           this.reportWebVitals();
@@ -610,12 +612,12 @@ class PerformanceMonitor {
     window.addEventListener('scroll', utils.throttle(() => {
       scrollCount++;
       const currentTime = performance.now();
-      
+
       // Log if scroll performance seems poor
       if (currentTime - lastScrollTime > 50) {
         console.warn('Slow scroll detected:', currentTime - lastScrollTime, 'ms');
       }
-      
+
       lastScrollTime = currentTime;
     }, 16));
   }
@@ -673,7 +675,7 @@ class AccessibilityController {
   setupReducedMotion() {
     // Respect user's motion preferences
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    
+
     if (prefersReducedMotion.matches) {
       document.body.classList.add('reduce-motion');
     }
@@ -701,7 +703,7 @@ class ThemeController {
   setupColorSchemeDetection() {
     // Detect and respond to system color scheme changes
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     darkModeQuery.addEventListener('change', (e) => {
       if (e.matches) {
         document.body.classList.add('dark-mode');
@@ -716,6 +718,57 @@ class ThemeController {
     }
   }
 }
+
+// ===== HERO ANIMATION CONTROLLER =====
+class HeroAnimationController {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    // Wait for the DOM to be ready before animating
+    document.addEventListener('DOMContentLoaded', () => {
+      this.createEntryAnimation();
+    });
+  }
+
+  createEntryAnimation() {
+    // GSAP Timeline allows us to sequence animations
+    const tl = gsap.timeline({
+      defaults: {
+        duration: 0.8,
+        ease: 'power3.out',
+        opacity: 0
+      }
+    });
+
+    // Define elements to animate
+    const heroTitleLine1 = '#hero h1 span.text-white';
+    const heroTitleLine2 = '#hero h1 span.text-gradient';
+    const heroParagraph = '#hero p';
+    const gameContainer = '#game-container';
+    const ctaButtons = '#hero .btn';
+
+    // Set initial states (instantly hidden and moved)
+    gsap.set([heroTitleLine1, heroTitleLine2, heroParagraph, gameContainer, ctaButtons], {
+      autoAlpha: 0, // GSAP's way of controlling opacity and visibility
+      y: 40 // Move everything down 40px initially
+    });
+
+    // Start the animation sequence
+    tl.to(heroTitleLine1, { autoAlpha: 1, y: 0 }, 0.5) // Start after a 0.5s delay
+      .to(heroTitleLine2, { autoAlpha: 1, y: 0 }, '-=0.6') // Overlap previous animation
+      .to(heroParagraph, { autoAlpha: 1, y: 0 }, '-=0.6')
+      .to(gameContainer, { autoAlpha: 1, y: 0, scale: 1 }, '-=0.6')
+      .to(ctaButtons, {
+        autoAlpha: 1,
+        y: 0,
+        stagger: 0.2 // Animate buttons one after the other
+      }, '-=0.6');
+  }
+}
+
+
 
 // ===== MAIN APPLICATION CONTROLLER =====
 class PortfolioApp {
@@ -734,23 +787,36 @@ class PortfolioApp {
   }
 
   initializeControllers() {
-    try {
-      // Initialize all controllers
-      this.controllers.navigation = new NavigationController();
-      this.controllers.scrollAnimation = new ScrollAnimationController();
-      this.controllers.projectsSwiper = new ProjectsSwiperController();
-      this.controllers.contactForm = new ContactFormController();
-      this.controllers.scrollToTop = new ScrollToTopController();
-      this.controllers.gameHighScore = new GameHighScoreController();
-      this.controllers.performance = new PerformanceMonitor();
-      this.controllers.accessibility = new AccessibilityController();
-      this.controllers.theme = new ThemeController();
+    const initializers = {
+      heroAnimation: () => new HeroAnimationController(),
+      navigation: () => new NavigationController(),
+      scrollAnimation: () => new ScrollAnimationController(),
+      projectsSwiper: () => new ProjectsSwiperController(),
+      contactForm: () => new ContactFormController(),
+      scrollToTop: () => new ScrollToTopController(),
+      gameHighScore: () => new GameHighScoreController(),
+      performance: () => new PerformanceMonitor(),
+      accessibility: () => new AccessibilityController(),
+      theme: () => new ThemeController(),
+    };
 
-      console.log('Portfolio app initialized successfully');
-      utils.announceToScreenReader('Portfolio loaded successfully');
-      
-    } catch (error) {
-      console.error('Error initializing portfolio app:', error);
+    let allSuccessful = true;
+
+    for (const [name, initFunc] of Object.entries(initializers)) {
+      try {
+        this.controllers[name] = initFunc();
+      } catch (error) {
+        console.error(`Error initializing ${name} controller:`, error);
+        allSuccessful = false;
+      }
+    }
+
+    if (allSuccessful) {
+      console.log('All portfolio controllers initialized successfully.');
+      utils.announceToScreenReader('Portfolio loaded successfully.');
+    } else {
+      console.warn('Portfolio initialized with one or more controller errors.');
+      utils.announceToScreenReader('Portfolio loaded with some errors.');
     }
   }
 
@@ -759,6 +825,7 @@ class PortfolioApp {
     return this.controllers[name];
   }
 }
+
 
 // ===== INITIALIZE APPLICATION =====
 const portfolioApp = new PortfolioApp();
