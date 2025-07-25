@@ -38,7 +38,6 @@
 
     <!-- External CSS Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -53,7 +52,8 @@
     <!-- PyScript for Snake Game -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    <!-- ADD GSAP HERE -->
+
+    <!-- GSAP for Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 
     <!-- Custom Stylesheet -->
@@ -145,8 +145,7 @@
 
     <!-- Header & Navigation -->
     <header id="header" class="relative">
-        <nav class="nav-backdrop fixed w-full z-50 transition-all duration-300" role="navigation"
-            aria-label="Main navigation">
+        <nav class="nav-backdrop fixed w-full z-50 transition-all duration-300" aria-label="Main navigation">
             <div class="container">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo with Python-themed animation -->
@@ -156,32 +155,27 @@
                             aria-label="Mubin Attar - Home">
                             <div class="relative">
                                 <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
-                                    viewBox="0 0 24 24" fill="currentColor" role="img" aria-hidden="true">
+                                    viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <path
                                         d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" />
                                 </svg>
                                 <div class="absolute inset-0 bg-brand-yellow opacity-0 group-hover:opacity-20 rounded-full blur-md transition-opacity duration-300"
                                     aria-hidden="true"></div>
                             </div>
-                            <span class="relative">
-                                Mubin Attar
-                                <span
-                                    class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-yellow transition-all duration-300 group-hover:w-full"
-                                    aria-hidden="true"></span>
+                            <span class="logo-text">
+                                <span class="logo-first-name">Mubin</span>
+                                <span class="logo-last-name">Attar</span>
                             </span>
                         </a>
                     </div>
 
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-1">
-                        <a href="#about" class="nav-link" aria-label="About section">About</a>
-                        <a href="#technical_expertise" class="nav-link"
-                            aria-label="Technical expertise section">Expertise</a>
-                        <a href="#featured_projects" class="nav-link"
-                            aria-label="Featured projects section">Projects</a>
-                        <a href="#experience" class="nav-link"
-                            aria-label="Professional experience section">Experience</a>
-                        <a href="#contact" class="btn btn-primary btn-shine" aria-label="Contact section">Contact</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#technical_expertise" class="nav-link">Expertise</a>
+                        <a href="#featured_projects" class="nav-link">Projects</a>
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="#contact" class="btn btn-primary btn-shine">Contact</a>
                     </div>
 
                     <!-- Mobile Menu Button -->
@@ -210,32 +204,26 @@
                 aria-labelledby="mobile-menu-button">
                 <div class="container py-4 space-y-2">
                     <a href="#about"
-                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
-                        aria-label="About section">About</a>
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300">About</a>
                     <a href="#technical_expertise"
-                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
-                        aria-label="Technical expertise section">Expertise</a>
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300">Expertise</a>
                     <a href="#featured_projects"
-                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
-                        aria-label="Featured projects section">Projects</a>
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300">Projects</a>
                     <a href="#experience"
-                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300"
-                        aria-label="Professional experience section">Experience</a>
+                        class="block px-4 py-3 text-gray-300 hover:text-brand-yellow hover:bg-neutral-800 rounded-md transition-all duration-300">Experience</a>
                     <a href="#contact"
-                        class="block w-full text-center mt-4 px-4 py-3 bg-brand-blue text-white rounded-md hover:bg-brand-blue-dark transition-colors duration-300"
-                        aria-label="Contact section">Contact</a>
+                        class="block w-full text-center mt-4 px-4 py-3 bg-brand-blue text-white rounded-md hover:bg-brand-blue-dark transition-colors duration-300">Contact</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main id="main-content" class="pt-16">
-        <!-- Hero Section with Enhanced Python Theming -->
-        <section id="hero" class="min-h-screen bg-neutral-900 relative overflow-hidden flex items-center" role="banner">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen bg-neutral-900 relative overflow-hidden flex items-center">
             <!-- Animated Background Elements -->
             <div class="hero-aurora" aria-hidden="true"></div>
             <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
-                <!-- AI/Neural Network Background Animation -->
                 <div class="neural-network-bg">
                     <div class="neural-node" style="top: 20%; left: 10%;"></div>
                     <div class="neural-node" style="top: 40%; left: 20%;"></div>
@@ -250,8 +238,6 @@
                         <path class="neural-path" d="M30,70 Q60,60 85,20" />
                     </svg>
                 </div>
-
-                <!-- Floating Python Code Snippets -->
                 <div class="absolute top-20 left-10 opacity-10 animate-float" aria-hidden="true">
                     <code class="text-brand-blue font-mono text-sm">import success</code>
                 </div>
@@ -267,8 +253,6 @@
                     aria-hidden="true">
                     <code class="text-brand-yellow font-mono text-sm">class Developer:</code>
                 </div>
-
-                <!-- Data Flow Animation -->
                 <div class="data-particles" aria-hidden="true">
                     <div class="data-particle" style="top: 25%; left: 5%; animation-delay: 0s;"></div>
                     <div class="data-particle" style="top: 45%; left: 8%; animation-delay: 1s;"></div>
@@ -281,18 +265,18 @@
             <div class="container relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
                     <div class="space-y-8">
-                        <!-- Enhanced Hero Title -->
                         <div class="relative">
                             <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold font-heading mb-6">
                                 <span class="text-white block mb-2">Software Engineer &</span>
                                 <span class="text-gradient block">AI/ML Enthusiast</span>
                             </h1>
-                            <div class="absolute -top-4 -left-4 text-brand-blue opacity-30 font-mono text-lg" aria-hidden="true">
-                                <span class="text-brand-yellow">class</span> <span class="text-brand-blue">Developer</span><span class="text-white">:</span>
+                            <div class="absolute -top-4 -left-4 text-brand-blue opacity-30 font-mono text-lg"
+                                aria-hidden="true">
+                                <span class="text-brand-yellow">class</span> <span
+                                    class="text-brand-blue">Developer</span><span class="text-white">:</span>
                             </div>
                         </div>
 
-                        <!-- Enhanced Description -->
                         <p class="text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto">
                             Engineering full-stack web platforms and intelligent solutions with
                             <span class="text-brand-yellow font-semibold">Python</span>,
@@ -300,119 +284,135 @@
                             <span class="text-brand-yellow font-semibold">Machine Learning</span>.
                         </p>
 
-                        <!-- Enhanced Snake Game Container -->
-                        <div id="game-container" class="glassmorphism-card p-4 rounded-xl text-left max-w-2xl mx-auto mb-8" role="application" aria-label="Snake game">
-                            <!-- Game UI Elements -->
-                            <div id="ingame-score-display" class="absolute top-4 left-4 text-brand-yellow font-mono z-20 hidden" aria-live="polite">
-                                <span class="text-sm opacity-75">Score:</span> <span id="score" class="text-lg font-bold">0</span>
+                        <div id="game-container"
+                            class="glassmorphism-card p-4 rounded-xl text-left max-w-2xl mx-auto mb-8"
+                            role="application" aria-label="Snake game">
+                            <div id="ingame-score-display"
+                                class="absolute top-4 left-4 text-brand-yellow font-mono z-20 hidden"
+                                aria-live="polite">
+                                <span class="text-sm opacity-75">Score:</span> <span id="score"
+                                    class="text-lg font-bold">0</span>
                             </div>
                             <div class="absolute top-4 right-4 text-gray-400 font-mono z-20 text-sm" aria-live="polite">
-                                <span class="opacity-75">High Score:</span> <span id="high-score-ingame" class="text-brand-yellow">0</span>
+                                <span class="opacity-75">High Score:</span> <span id="high-score-ingame"
+                                    class="text-brand-yellow">0</span>
                             </div>
 
-                            <!-- Game Canvas -->
-                            <canvas id="snake-canvas" class="rounded-md w-full" role="img" aria-label="Snake game canvas"></canvas>
+                            <canvas id="snake-canvas" class="rounded-md w-full" role="img"
+                                aria-label="Snake game canvas"></canvas>
 
-                            <!-- Game Overlays -->
-                            <div id="game-instructions" class="game-overlay" role="dialog" aria-labelledby="game-title" aria-describedby="game-description">
+                            <div id="game-instructions" class="game-overlay" role="dialog" aria-labelledby="game-title"
+                                aria-describedby="game-description">
                                 <div class="text-center space-y-4">
                                     <div class="flex items-center justify-center gap-3 mb-4">
                                         <i class="fas fa-gamepad text-brand-yellow text-2xl" aria-hidden="true"></i>
-                                        <h3 id="game-title" class="text-2xl font-bold font-heading text-white">Snake Xenzia</h3>
+                                        <h3 id="game-title" class="text-2xl font-bold font-heading text-white">Snake
+                                            Xenzia</h3>
                                     </div>
                                     <p class="text-gray-400 font-mono text-sm" aria-live="polite">
-                                        High Score: <span id="high-score-instructions" class="text-brand-yellow">0</span>
+                                        High Score: <span id="high-score-instructions"
+                                            class="text-brand-yellow">0</span>
                                     </p>
                                     <p id="loading-message" class="text-gray-300 text-sm animate-pulse">
                                         <i class="fab fa-python text-brand-blue mr-2" aria-hidden="true"></i>
                                         Loading Python Engine...
                                     </p>
-                                    <div id="game-controls" class="hidden space-y-3" role="group" aria-labelledby="controls-heading">
+                                    <div id="game-controls" class="hidden space-y-3" role="group"
+                                        aria-labelledby="controls-heading">
                                         <h4 id="controls-heading" class="sr-only">Game Controls</h4>
                                         <div class="flex items-center justify-center gap-2 text-sm">
-                                            <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Enter</kbd>
+                                            <kbd
+                                                class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Enter</kbd>
                                             <span class="text-gray-300">to Start</span>
                                         </div>
                                         <div class="flex items-center justify-center gap-2 text-sm">
-                                            <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Arrow Keys</kbd>
+                                            <kbd
+                                                class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Arrow
+                                                Keys</kbd>
                                             <span class="text-gray-300">to Move</span>
                                         </div>
                                         <div class="flex items-center justify-center gap-2 text-sm">
-                                            <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Space</kbd>
+                                            <kbd
+                                                class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg">Space</kbd>
                                             <span class="text-gray-300">to Pause</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="game-paused-screen" class="game-overlay hidden" role="dialog" aria-labelledby="paused-title">
+                            <div id="game-paused-screen" class="game-overlay hidden" role="dialog"
+                                aria-labelledby="paused-title">
                                 <div class="text-center">
                                     <i class="fas fa-pause text-brand-yellow text-3xl mb-4" aria-hidden="true"></i>
-                                    <h3 id="paused-title" class="text-2xl font-bold font-heading text-brand-yellow">Paused</h3>
+                                    <h3 id="paused-title" class="text-2xl font-bold font-heading text-brand-yellow">
+                                        Paused</h3>
                                     <p class="text-gray-300 mt-2 font-mono">Press Space to Resume</p>
                                 </div>
                             </div>
-                            <div id="game-over-screen" class="game-overlay hidden" role="dialog" aria-labelledby="gameover-title">
+                            <div id="game-over-screen" class="game-overlay hidden" role="dialog"
+                                aria-labelledby="gameover-title">
                                 <div class="text-center space-y-4">
-                                    <p id="new-high-score-message" class="hidden text-brand-yellow font-bold text-lg animate-glow-pulse" aria-live="assertive">
+                                    <p id="new-high-score-message"
+                                        class="hidden text-brand-yellow font-bold text-lg animate-glow-pulse"
+                                        aria-live="assertive">
                                         🎉 New High Score! 🎉
                                     </p>
                                     <i class="fas fa-skull text-red-500 text-3xl" aria-hidden="true"></i>
-                                    <h3 id="gameover-title" class="text-xl font-bold font-heading text-red-500">GameOverError: Collision Detected</h3>
+                                    <h3 id="gameover-title" class="text-xl font-bold font-heading text-red-500">
+                                        GameOverError: Collision Detected</h3>
                                     <p class="text-white font-mono text-lg">
                                         Final Score: <span id="final-score" class="text-brand-yellow font-bold">0</span>
                                     </p>
-                                    <button id="restart-button" class="btn btn-primary btn-shine mt-4" aria-label="Restart game">
+                                    <button id="restart-button" class="btn btn-primary btn-shine mt-4"
+                                        aria-label="Restart game">
                                         <i class="fas fa-sync-alt mr-2" aria-hidden="true"></i>
                                         Play Again
                                     </button>
                                 </div>
                             </div>
-                            <!-- Enhanced Mobile Controls -->
-                            <div id="mobile-controls" class="game-controls md:hidden" role="group" aria-label="Mobile game controls">
+                            <div id="mobile-controls" class="game-controls md:hidden" role="group"
+                                aria-label="Mobile game controls">
                                 <div class="mobile-dpad">
                                     <div></div>
-                                    <button id="up-btn" class="dpad-btn" aria-label="Move up"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+                                    <button id="up-btn" class="dpad-btn" aria-label="Move up"><i class="fas fa-arrow-up"
+                                            aria-hidden="true"></i></button>
                                     <div></div>
-                                    <button id="left-btn" class="dpad-btn" aria-label="Move left"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
-                                    <button id="down-btn" class="dpad-btn" aria-label="Move down"><i class="fas fa-arrow-down" aria-hidden="true"></i></button>
-                                    <button id="right-btn" class="dpad-btn" aria-label="Move right"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                                    <button id="left-btn" class="dpad-btn" aria-label="Move left"><i
+                                            class="fas fa-arrow-left" aria-hidden="true"></i></button>
+                                    <button id="down-btn" class="dpad-btn" aria-label="Move down"><i
+                                            class="fas fa-arrow-down" aria-hidden="true"></i></button>
+                                    <button id="right-btn" class="dpad-btn" aria-label="Move right"><i
+                                            class="fas fa-arrow-right" aria-hidden="true"></i></button>
                                 </div>
                                 <button id="action-btn" class="action-btn" aria-label="Start, pause, or restart game">
                                     <i id="action-btn-icon" class="fas fa-play" aria-hidden="true"></i>
                                 </button>
                             </div>
-                            <!-- PyScript Configuration -->
-                            <py-config>packages = ["numpy"]</py-config>
+                            <py-config></py-config>
                             <py-script src="./static/py/snake_game.py"></py-script>
-                            <!-- Audio Elements -->
-                            <audio id="start-sound" src="./static/audio/game_start.mp3" preload="auto" aria-label="Game start sound"></audio>
-                            <audio id="eat-sound" src="./static/audio/snake_eat.wav" preload="auto" aria-label="Snake eat sound"></audio>
-                            <audio id="gameover-sound" src="./static/audio/game_end.mp3" preload="auto" aria-label="Game over sound"></audio>
+                            <audio id="start-sound" src="./static/audio/game_start.mp3" preload="auto"></audio>
+                            <audio id="eat-sound" src="./static/audio/snake_eat.wav" preload="auto"></audio>
+                            <audio id="gameover-sound" src="./static/audio/game_end.mp3" preload="auto"></audio>
                         </div>
 
-                        <!-- NEW & CORRECTED: CTA Buttons and Scroll Indicator Wrapper -->
                         <div class="hero-cta-and-scroll">
-                            <!-- CTA Buttons -->
                             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                                <a href="#featured_projects" class="btn btn-primary btn-shine group"
-                                    aria-label="View my work and projects">
+                                <a href="#featured_projects" class="btn btn-primary btn-shine group">
                                     <i class="fas fa-code mr-2 group-hover:rotate-12 transition-transform duration-300"
                                         aria-hidden="true"></i>
                                     View My Work
                                 </a>
-                                <a href="#contact" class="btn btn-secondary group" aria-label="Get in touch with me">
+                                <a href="#contact" class="btn btn-secondary group">
                                     <i class="fas fa-handshake mr-2 group-hover:scale-110 transition-transform duration-300"
                                         aria-hidden="true"></i>
                                     Let's Connect
                                 </a>
                             </div>
-                        
-                            <!-- Scroll Indicator -->
-                            <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+
+                            <a href="#about" class="scroll-indicator animate-float" aria-label="Scroll to About section">
                                 <div class="flex flex-col items-center">
                                     <span class="text-xs font-mono mb-2 opacity-75">scroll_down()</span>
-                                    <svg class="w-6 h-6" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                                     </svg>
@@ -424,11 +424,10 @@
             </div>
         </section>
 
-        <!-- About Section with Enhanced Python Theming -->
+        <!-- About Section -->
         <section id="about" class="section bg-neutral-800">
             <div class="container">
                 <div class="max-w-6xl mx-auto">
-                    <!-- Enhanced Section Header -->
                     <header class="text-center mb-16" data-observer-target>
                         <div class="inline-block relative mb-6">
                             <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">About Me</h2>
@@ -439,28 +438,24 @@
                             </div>
                         </div>
                         <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-                            <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                            <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up"
-                                style="animation-delay: 0.2s"></div>
-                            <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right"
-                                style="animation-delay: 0.4s"></div>
+                            <div class="h-1 w-12 bg-brand-blue rounded"></div>
+                            <div class="h-1 w-12 bg-brand-yellow rounded"></div>
+                            <div class="h-1 w-12 bg-brand-blue rounded"></div>
                         </div>
                     </header>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Enhanced Profile Picture -->
                         <div class="flex justify-center items-center" data-observer-target
-                            data-animation-classes="animate-fade-in-left">
+                            data-animation-classes="animate-fade-in-up">
                             <div class="profile-picture-container">
-                                <div class="profile-picture-glow w-64 h-72 lg:w-72 lg:h-80">
+                                <div class="profile-picture-glow w-64 lg:w-72">
                                     <div class="tech-hexagon w-full h-full">
-                                        <img data-src="./static/img/temp.webp"
+                                        <img data-src="./static/img/Mubin_Profile.png"
                                             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                                             alt="Mubin Attar - Software Engineer and AI/ML Enthusiast"
-                                            class="w-full h-full object-cover">
+                                            class="w-full h-full object-cover lazy">
                                     </div>
                                 </div>
-                                <!-- Python-themed decorative elements -->
                                 <div class="absolute -top-4 -right-4 text-brand-yellow opacity-50 animate-float"
                                     aria-hidden="true">
                                     <i class="fab fa-python text-2xl"></i>
@@ -472,10 +467,10 @@
                             </div>
                         </div>
 
-                        <!-- Enhanced Content -->
-                        <div class="space-y-6" data-observer-target data-animation-classes="animate-fade-in-right">
+                        <div class="space-y-6" data-observer-target data-animation-classes="animate-fade-in-up"
+                            data-animation-delay="150">
                             <div class="relative">
-                                <h3 class="text-3xl font-bold text-brand-yellow font-heading mb-4">
+                                <h3 class="text-3xl font-bold text-brand-yellow font-heading mb-2">
                                     A Passion for Code and Intelligent Systems
                                 </h3>
                                 <div class="absolute -top-3 -left-3 text-brand-blue opacity-20 font-mono text-xs"
@@ -485,69 +480,52 @@
                                 </div>
                             </div>
 
+                            <h4 class="text-lg text-brand-blue-light font-mono -mt-2">My Story in Code</h4>
+
                             <p class="text-gray-300 leading-relaxed">
-                                I'm a results-driven Software Engineer with <span
-                                    class="text-brand-yellow font-semibold">2.6+ years</span> of experience specializing
-                                in
-                                <span class="text-brand-blue font-semibold">Python</span>, <span
-                                    class="text-brand-blue font-semibold">Django</span>, and the art of building
-                                intelligent, scalable web platforms.
-                                I thrive on transforming complex problems into clean, efficient code.
+                                I'm a results-driven Software Engineer with a deep specialization in Python, Django, and
+                                the art of building intelligent, scalable web platforms. I thrive on transforming
+                                complex problems into clean, efficient code.
                             </p>
 
-                            <!-- Enhanced Stats Grid -->
-                            <ul class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center" role="list">
-                                <li class="glassmorphism-card p-4 group">
-                                    <div
-                                        class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
-                                        2.6+</div>
-                                    <div class="text-sm text-gray-400">Years Experience</div>
-                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
-                                        aria-hidden="true">
-                                        <i class="fas fa-calendar-alt text-brand-blue"></i>
+                            <div class="stats-bar">
+                                <div class="stat-item">
+                                    <i class="fas fa-calendar-alt text-brand-blue text-2xl" aria-hidden="true"></i>
+                                    <div>
+                                        <span class="stat-number">2.6+</span>
+                                        <span class="stat-label">Years Experience</span>
                                     </div>
-                                </li>
-                                <li class="glassmorphism-card p-4 group">
-                                    <div
-                                        class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
-                                        10+</div>
-                                    <div class="text-sm text-gray-400">Projects Shipped</div>
-                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
-                                        aria-hidden="true">
-                                        <i class="fas fa-rocket text-brand-blue"></i>
-                                    </div>
-                                </li>
-                                <li class="glassmorphism-card p-4 group col-span-2 sm:col-span-1">
-                                    <div
-                                        class="text-2xl font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
-                                        AI/ML</div>
-                                    <div class="text-sm text-gray-400">Core Focus</div>
-                                    <div class="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300"
-                                        aria-hidden="true">
-                                        <i class="fas fa-brain text-brand-blue"></i>
-                                    </div>
-                                </li>
-                            </ul>
-                            <p class="text-gray-300 leading-relaxed">
-                                My journey has taken me through <span class="text-brand-yellow">sports analytics</span>,
-                                <span class="text-brand-yellow">financial trading</span>, and <span
-                                    class="text-brand-yellow">healthcare</span>,
-                                where I've architected backends, integrated machine learning models, and built robust
-                                APIs.
-                                I believe in the power of a problem-solving mindset and a love for clean architecture.
-                            </p>
-
-                            <!-- Enhanced Download Button -->
-                            <div>
-                                <div class="mt-8">
-                                    <a href="./static/docs/MubinAttarResume_2025.pdf" download
-                                        class="btn btn-secondary btn-shine group" aria-label="Download my CV as PDF">
-                                        <i class="fas fa-download mr-2 group-hover:animate-bounce"
-                                            aria-hidden="true"></i>
-                                        Download CV
-                                        <span class="ml-2 opacity-60 font-mono text-sm">.pdf</span>
-                                    </a>
                                 </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-rocket text-brand-blue text-2xl" aria-hidden="true"></i>
+                                    <div>
+                                        <span class="stat-number">10+</span>
+                                        <span class="stat-label">Projects Shipped</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-brain text-brand-blue text-2xl" aria-hidden="true"></i>
+                                    <div>
+                                        <span class="stat-number">AI/ML</span>
+                                        <span class="stat-label">Core Focus</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-300 leading-relaxed">
+                                My journey has taken me through sports analytics, financial trading, and healthcare,
+                                where I've architected backends, integrated machine learning models, and built robust
+                                APIs. I believe in the power of a problem-solving mindset and a love for clean
+                                architecture.
+                            </p>
+
+                            <div class="pt-4">
+                                <a href="./static/docs/MubinAttarResume_2025.pdf" download
+                                    class="btn btn-secondary btn-shine group">
+                                    <i class="fas fa-download mr-2 group-hover:animate-bounce" aria-hidden="true"></i>
+                                    Download CV
+                                    <span class="ml-2 opacity-60 font-mono text-sm">.pdf</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -555,10 +533,9 @@
             </div>
         </section>
 
-        <!-- Technical Expertise Section with Enhanced Python Theming -->
+        <!-- Technical Expertise Section -->
         <section id="technical_expertise" class="section bg-neutral-900">
             <div class="container">
-                <!-- Enhanced Section Header -->
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Technical Expertise</h2>
@@ -568,17 +545,13 @@
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
-                        </div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
-                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded"></div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
                     </div>
                 </header>
 
-                <!-- Enhanced Skills Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-                    <!-- Backend & Programming -->
                     <article class="glassmorphism-card group" data-observer-target
                         data-animation-classes="animate-fade-in-up">
                         <div class="relative">
@@ -596,28 +569,18 @@
                             Programming & Backend
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Python, JavaScript, SQL
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Django, DRF, Flask, FastAPI
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                REST APIs, Web Scraping
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                PostgreSQL, MySQL, SQLite
-                            </li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Python, JavaScript, SQL</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Django, DRF, Flask, FastAPI</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> REST APIs, Web Scraping</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> PostgreSQL, MySQL, SQLite</li>
                         </ul>
                     </article>
-
-                    <!-- Frontend & UI -->
                     <article class="glassmorphism-card group" data-observer-target
-                        data-animation-classes="animate-fade-in-up" style="animation-delay: 0.1s">
+                        data-animation-classes="animate-fade-in-up" data-animation-delay="100">
                         <div class="relative">
                             <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
                                 aria-hidden="true">
@@ -633,28 +596,18 @@
                             Frontend & UI Basics
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                HTML5, CSS3, JavaScript
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Bootstrap, Tailwind CSS
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Responsive UI Design
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Basic DOM Manipulation
-                            </li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> HTML5, CSS3, JavaScript</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Bootstrap, Tailwind CSS</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Responsive UI Design</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Basic DOM Manipulation</li>
                         </ul>
                     </article>
-
-                    <!-- AI/ML & Data Science -->
                     <article class="glassmorphism-card group" data-observer-target
-                        data-animation-classes="animate-fade-in-up" style="animation-delay: 0.2s">
+                        data-animation-classes="animate-fade-in-up" data-animation-delay="200">
                         <div class="relative">
                             <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
                                 aria-hidden="true">
@@ -670,28 +623,18 @@
                             AI / ML & Data Science
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                TensorFlow, PyTorch, Scikit-learn
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                XGBoost, Neural Networks
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Pandas, NumPy, Matplotlib
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Model Deployment, Feature Engineering
-                            </li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> TensorFlow, PyTorch, Scikit-learn</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> XGBoost, Neural Networks</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Pandas, NumPy, Matplotlib</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Model Deployment, Feature Engineering</li>
                         </ul>
                     </article>
-
-                    <!-- DevOps & Cloud -->
                     <article class="glassmorphism-card group" data-observer-target
-                        data-animation-classes="animate-fade-in-up" style="animation-delay: 0.3s">
+                        data-animation-classes="animate-fade-in-up" data-animation-delay="300">
                         <div class="relative">
                             <div class="text-brand-yellow mb-4 group-hover:scale-110 transition-transform duration-300"
                                 aria-hidden="true">
@@ -707,32 +650,23 @@
                             DevOps & Cloud
                         </h3>
                         <ul class="space-y-2 text-gray-300" role="list">
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Git, GitHub, GitHub Actions
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                Docker, Jenkins, CI/CD
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                AWS (EC2, S3), Linux
-                            </li>
-                            <li class="flex items-center">
-                                <span class="text-brand-blue mr-2 font-mono" aria-hidden="true">></span>
-                                VSCode, PyCharm
-                            </li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Git, GitHub, GitHub Actions</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> Docker, Jenkins, CI/CD</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> AWS (EC2, S3), Linux</li>
+                            <li class="flex items-center"><span class="text-brand-blue mr-2 font-mono"
+                                    aria-hidden="true">></span> VSCode, PyCharm</li>
                         </ul>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Projects Section with Enhanced Theming -->
+        <!-- Featured Projects Section -->
         <section id="featured_projects" class="section bg-neutral-800">
             <div class="container">
-                <!-- Enhanced Section Header -->
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Featured Projects</h2>
@@ -744,66 +678,50 @@
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
-                        </div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
-                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded"></div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
                     </div>
                 </header>
 
-                <!-- Enhanced Swiper Container -->
                 <div class="max-w-7xl mx-auto relative" data-observer-target
                     data-animation-classes="animate-fade-in-up">
                     <div class="swiper px-4" role="region" aria-label="Featured projects carousel">
                         <div class="swiper-wrapper pb-16 pt-5">
-                            <!-- Project Card 1 - AI Sports Bot -->
+
+                            <!-- RESTORED: All 6 project cards are here -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-
                                             <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                alt="AI Sports Betting Bot Project - Machine learning prediction system"
-                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-
+                                                alt="AI Sports Betting Bot Project"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy">
                                             <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                                 aria-label="Project links">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label="View AI Sports Bot source code on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                                                 <a href="#" aria-label="View AI Sports Bot live demo"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fas fa-external-link-alt fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fas fa-external-link-alt fa-2x"
+                                                        aria-hidden="true"></i></a>
                                             </nav>
                                             <div
                                                 class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                                                <i class="fab fa-python mr-1" aria-hidden="true"></i>Python
-                                            </div>
+                                                <i class="fab fa-python mr-1" aria-hidden="true"></i>Python</div>
                                         </div>
                                         <div
                                             class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                                            <div class="relative mb-3">
-                                                <h3
-                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                                    AI Sports Betting Bot
-                                                </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                                    aria-hidden="true">
-                                                    <span class="text-brand-yellow">class</span> <span
-                                                        class="text-brand-blue">AIBot</span><span
-                                                        class="text-white">:</span>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Backend for ML predictions using XGBoost & neural networks. Built
-                                                RESTful APIs for serving results with high accuracy predictions.
-                                            </p>
+                                            <h3
+                                                class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">
+                                                AI Sports Betting Bot</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Backend for ML predictions
+                                                using XGBoost & neural networks. Built RESTful APIs for serving results
+                                                with high accuracy predictions.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto" role="list"
                                                 aria-label="Technologies used">
                                                 <span
@@ -820,50 +738,34 @@
                                     </div>
                                 </article>
                             </div>
-
-                            <!-- Project Card 2 - Hospital Management -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-
                                             <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                alt="Hospital Management System - Healthcare platform for patient and staff management"
-                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-
+                                                alt="Hospital Management System"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy">
                                             <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                                 aria-label="Project links">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label="View Hospital Management System source code on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                                             </nav>
                                             <div
                                                 class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                                                <i class="fas fa-hospital mr-1" aria-hidden="true"></i>Healthcare
-                                            </div>
+                                                <i class="fas fa-hospital mr-1" aria-hidden="true"></i>Healthcare</div>
                                         </div>
                                         <div
                                             class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                                            <div class="relative mb-3">
-                                                <h3
-                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                                    Hospital Management System
-                                                </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                                    aria-hidden="true">
-                                                    <span class="text-brand-yellow">def</span> <span
-                                                        class="text-brand-blue">manage_hospital</span><span
-                                                        class="text-white">():</span>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Contributed to a modular, enterprise-scale system for a healthcare
-                                                provider, covering scheduling, records, and reporting.
-                                            </p>
+                                            <h3
+                                                class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">
+                                                Hospital Management System</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Contributed to a modular,
+                                                enterprise-scale system for a healthcare provider, covering scheduling,
+                                                records, and reporting.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto" role="list"
                                                 aria-label="Technologies used">
                                                 <span
@@ -880,50 +782,34 @@
                                     </div>
                                 </article>
                             </div>
-
-                            <!-- Project Card 3 - B2B Platforms -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-
                                             <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                alt="B2B Platforms - Business-to-business web applications and integrations"
-                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-
-
+                                                alt="B2B Platforms"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy">
                                             <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                                 aria-label="Project links">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label="View B2B Platforms source code on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                                             </nav>
                                             <div
                                                 class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                                                <i class="fas fa-building mr-1" aria-hidden="true"></i>B2B
-                                            </div>
+                                                <i class="fas fa-building mr-1" aria-hidden="true"></i>B2B</div>
                                         </div>
                                         <div
                                             class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                                            <div class="relative mb-3">
-                                                <h3
-                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                                    B2B Web Platforms
-                                                </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                                    aria-hidden="true">
-                                                    <span class="text-brand-yellow">import</span> <span
-                                                        class="text-brand-blue">business_logic</span>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Developed features for 3+ B2B platforms in healthcare & e-commerce.
-                                                Built responsive UIs and integrated third-party APIs.
-                                            </p>
+                                            <h3
+                                                class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">
+                                                B2B Web Platforms</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Developed features for 3+
+                                                B2B platforms in healthcare & e-commerce. Built responsive UIs and
+                                                integrated third-party APIs.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto" role="list"
                                                 aria-label="Technologies used">
                                                 <span
@@ -938,26 +824,21 @@
                                     </div>
                                 </article>
                             </div>
-
-                            <!-- Project Card 4 - E-commerce API -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-
                                             <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                alt="E-commerce Backend API - RESTful API for online shopping platform"
-                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-
+                                                alt="E-commerce Backend API"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy">
                                             <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                                 aria-label="Project links">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label="View E-commerce API source code on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                                             </nav>
                                             <div
                                                 class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
@@ -966,22 +847,12 @@
                                         </div>
                                         <div
                                             class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                                            <div class="relative mb-3">
-                                                <h3
-                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                                    E-commerce Backend API
-                                                </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                                    aria-hidden="true">
-                                                    <span class="text-brand-yellow">class</span> <span
-                                                        class="text-brand-blue">EcommerceAPI</span><span
-                                                        class="text-white">:</span>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Designed a RESTful API with DRF for an e-commerce site, handling users,
-                                                products, and orders with secure authentication.
-                                            </p>
+                                            <h3
+                                                class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">
+                                                E-commerce Backend API</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Designed a RESTful API with
+                                                DRF for an e-commerce site, handling users, products, and orders with
+                                                secure authentication.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto" role="list"
                                                 aria-label="Technologies used">
                                                 <span
@@ -995,48 +866,34 @@
                                     </div>
                                 </article>
                             </div>
-
-                            <!-- Project Card 5 - Cloud Automation -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
                                             <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                alt="Cloud Deployment Automation - DevOps scripts and CI/CD pipelines"
-                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                                alt="Cloud Deployment Automation"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy">
                                             <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                                 aria-label="Project links">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label="View Cloud Automation source code on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                                             </nav>
                                             <div
                                                 class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                                                <i class="fas fa-cloud mr-1" aria-hidden="true"></i>DevOps
-                                            </div>
+                                                <i class="fas fa-cloud mr-1" aria-hidden="true"></i>DevOps</div>
                                         </div>
                                         <div
                                             class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                                            <div class="relative mb-3">
-                                                <h3
-                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                                    Cloud Deployment Automation
-                                                </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                                    aria-hidden="true">
-                                                    <span class="text-brand-yellow">def</span> <span
-                                                        class="text-brand-blue">deploy_to_cloud</span><span
-                                                        class="text-white">():</span>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Scripts to automate deploying Django apps to AWS EC2, including S3
-                                                integration for static files and CI/CD pipelines.
-                                            </p>
+                                            <h3
+                                                class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">
+                                                Cloud Deployment Automation</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Scripts to automate
+                                                deploying Django apps to AWS EC2, including S3 integration for static
+                                                files and CI/CD pipelines.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto" role="list"
                                                 aria-label="Technologies used">
                                                 <span
@@ -1050,25 +907,21 @@
                                     </div>
                                 </article>
                             </div>
-
-                            <!-- Project Card 6 - Data Pipeline -->
                             <div class="swiper-slide h-auto">
                                 <article class="glassmorphism-card h-full border border-neutral-700 group">
                                     <div class="h-full flex flex-col">
                                         <div class="relative overflow-hidden rounded-t-xl">
-                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=AI+Sports+Bot"
+                                            <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                alt="AI Sports Betting Bot Project - Machine learning prediction system"
-                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110">
-
+                                                alt="Data Analysis Pipeline"
+                                                class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy">
                                             <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                                 aria-label="Project links">
                                                 <a href="https://github.com/Mubin-Shaikh" target="_blank"
                                                     rel="noopener noreferrer"
                                                     aria-label="View Data Pipeline source code on GitHub"
-                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm">
-                                                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                                                </a>
+                                                    class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i
+                                                        class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                                             </nav>
                                             <div
                                                 class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
@@ -1077,23 +930,12 @@
                                         </div>
                                         <div
                                             class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                                            <div class="relative mb-3">
-                                                <h3
-                                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                                    Data Analysis Pipeline
-                                                </h3>
-                                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                                    aria-hidden="true">
-                                                    <span class="text-brand-yellow">import</span> <span
-                                                        class="text-brand-blue">pandas</span> <span
-                                                        class="text-brand-yellow">as</span> <span
-                                                        class="text-brand-blue">pd</span>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-400 mb-4 text-sm flex-grow">
-                                                Web scraping tool to gather data, processed with Pandas, and visualized
-                                                to highlight key trends and insights.
-                                            </p>
+                                            <h3
+                                                class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">
+                                                Data Analysis Pipeline</h3>
+                                            <p class="text-gray-400 mb-4 text-sm flex-grow">Web scraping tool to gather
+                                                data, processed with Pandas, and visualized to highlight key trends and
+                                                insights.</p>
                                             <div class="flex flex-wrap gap-2 mt-auto" role="list"
                                                 aria-label="Technologies used">
                                                 <span
@@ -1108,9 +950,10 @@
                                     </div>
                                 </article>
                             </div>
+
                         </div>
 
-                        <!-- Correctly placed Swiper Controls -->
+                        <!-- Swiper Controls -->
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-next" aria-label="Next project"></div>
                         <div class="swiper-button-prev" aria-label="Previous project"></div>
@@ -1119,10 +962,9 @@
             </div>
         </section>
 
-        <!-- Experience Section with Enhanced Timeline -->
+        <!-- Experience Section -->
         <section id="experience" class="section bg-neutral-900">
             <div class="container">
-                <!-- Enhanced Section Header -->
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Professional Experience</h2>
@@ -1133,180 +975,103 @@
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
-                        </div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
-                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded"></div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
                     </div>
                 </header>
 
-                <!-- Enhanced Timeline -->
                 <div class="timeline-container max-w-4xl mx-auto relative space-y-12">
                     <div class="timeline-bar" aria-hidden="true"></div>
 
-                    <!-- Current Position -->
+                    <!-- Sevina Technologies - Enhanced Description -->
                     <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target
                         data-animation-classes="animate-fade-in-up">
                         <div class="hidden md:block w-1/2 text-right pt-1">
-                            <div class="inline-block bg-brand-blue/20 px-3 py-1 rounded-full">
-                                <time class="font-bold text-brand-yellow font-mono" datetime="2024-04">Apr 2024 -
-                                    Present</time>
-                            </div>
+                            <div class="inline-block bg-brand-blue/20 px-3 py-1 rounded-full"><time
+                                    class="font-bold text-brand-yellow font-mono" datetime="2024-04">Apr 2024 -
+                                    Present</time></div>
                         </div>
-                        <div class="timeline-dot" aria-hidden="true">
-                            <i class="fas fa-briefcase text-white"></i>
-                        </div>
+                        <div class="timeline-dot" aria-hidden="true"><i class="fas fa-briefcase text-white"></i></div>
                         <div class="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
                             <div class="glassmorphism-card group">
-                                <div class="relative">
-                                    <h3
-                                        class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                        Software Engineer
-                                    </h3>
-                                    <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                        aria-hidden="true">
-                                        <span class="text-brand-yellow">current_role</span> <span
-                                            class="text-white">=</span> <span class="text-green-400">"Senior"</span>
-                                    </div>
-                                </div>
+                                <h3
+                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                    Software Engineer</h3>
                                 <p class="text-brand-blue-dark font-semibold mb-2">Sevina Technologies</p>
-                                <div class="md:hidden mb-2">
-                                    <time
+                                <div class="md:hidden mb-2"><time
                                         class="inline-block bg-brand-blue/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono"
-                                        datetime="2024-04">
-                                        Apr 2024 - Present
-                                    </time>
-                                </div>
+                                        datetime="2024-04">Apr 2024 - Present</time></div>
                                 <p class="text-gray-400 text-sm">
-                                    Designing and building end-to-end AI/ML-powered systems for sports and financial
-                                    prediction platforms,
-                                    achieving up to <span class="text-brand-yellow font-semibold">65% accuracy</span> in
-                                    NBA/MLB sports models
-                                    and <span class="text-brand-yellow font-semibold">60%</span> in binary stock trading
-                                    signals, while actively
-                                    exploring new GenAI use cases.
+                                    Architecting and deploying end-to-end <span
+                                        class="text-brand-yellow font-semibold">AI/ML solutions for predictive sports
+                                        analytics and financial trading signals.</span> Pioneering automation
+                                    initiatives by leveraging modern AI frameworks to streamline internal workflows and
+                                    enhance productivity. <span class="text-brand-yellow">Actively engaged in R&D of
+                                        emerging tech, including Generative AI, to build proof-of-concept
+                                        solutions.</span>
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-3" role="list" aria-label="Skills used">
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">AI/ML</span>
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Python</span>
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Sports
-                                        Analytics</span>
-                                </div>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Previous Position -->
+                    <!-- Linescripts - Enhanced Description -->
                     <article
                         class="timeline-item relative flex items-start md:flex-row-reverse md:space-x-reverse md:space-x-8"
                         data-observer-target data-animation-classes="animate-fade-in-up">
                         <div class="hidden md:block w-1/2 text-left pt-1 pl-8">
-                            <div class="inline-block bg-brand-blue/20 px-3 py-1 rounded-full">
-                                <time class="font-bold text-brand-yellow font-mono" datetime="2022-11">Nov 2022 - Apr
-                                    2024</time>
-                            </div>
+                            <div class="inline-block bg-brand-blue/20 px-3 py-1 rounded-full"><time
+                                    class="font-bold text-brand-yellow font-mono" datetime="2022-11">Nov 2022 - Apr
+                                    2024</time></div>
                         </div>
-                        <div class="timeline-dot" aria-hidden="true">
-                            <i class="fas fa-code text-white"></i>
-                        </div>
+                        <div class="timeline-dot" aria-hidden="true"><i class="fas fa-code text-white"></i></div>
                         <div class="w-full md:w-1/2 md:pr-8 ml-16 md:ml-0 md:text-right">
                             <div class="glassmorphism-card group">
-                                <div class="relative">
-                                    <h3
-                                        class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                        Junior Python Developer
-                                    </h3>
-                                    <div class="absolute -top-2 -right-2 md:-right-2 text-brand-blue opacity-20 font-mono text-xs"
-                                        aria-hidden="true">
-                                        <span class="text-brand-yellow">experience</span><span
-                                            class="text-white">++</span>
-                                    </div>
-                                </div>
+                                <h3
+                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                    Junior Python Developer</h3>
                                 <p class="text-brand-blue-dark font-semibold mb-2">Linescripts Software Pvt Ltd</p>
-                                <div class="md:hidden mb-2">
-                                    <time
+                                <div class="md:hidden mb-2"><time
                                         class="inline-block bg-brand-blue/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono"
-                                        datetime="2022-11">
-                                        Nov 2022 - Apr 2024
-                                    </time>
-                                </div>
+                                        datetime="2022-11">Nov 2022 - Apr 2024</time></div>
                                 <p class="text-gray-400 text-sm">
-                                    Contributed to development of scalable Django-based applications across domains like
-                                    <span class="text-brand-yellow">e-commerce</span>, <span
-                                        class="text-brand-yellow">healthcare</span>,
-                                    and <span class="text-brand-yellow">aviation management</span>, handling API
-                                    integrations,
-                                    backend logic, and responsive UI workflows.
+                                    Engineered and delivered full-stack features for multiple enterprise-grade
+                                    applications across the <span class="text-brand-yellow">e-commerce,
+                                        healthcare</span>, and <span class="text-brand-yellow">aviation</span> sectors.
+                                    Specialized in building scalable backend systems with Django and developing robust
+                                    RESTful APIs to drive core application functionality.
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-3 md:justify-end" role="list"
-                                    aria-label="Skills used">
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Django</span>
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">APIs</span>
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded border border-brand-blue/30">Full
-                                        Stack</span>
-                                </div>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Education -->
+                    <!-- Education - Enhanced Description -->
                     <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target
                         data-animation-classes="animate-fade-in-up">
                         <div class="hidden md:block w-1/2 text-right pt-1">
-                            <div class="inline-block bg-brand-yellow/20 px-3 py-1 rounded-full">
-                                <time class="font-bold text-brand-yellow font-mono" datetime="2018">2018 - 2021</time>
+                            <div class="inline-block bg-brand-yellow/20 px-3 py-1 rounded-full"><time
+                                    class="font-bold text-brand-yellow font-mono" datetime="2018">2018 - 2021</time>
                             </div>
                         </div>
-                        <div class="timeline-dot bg-brand-yellow" aria-hidden="true">
-                            <i class="fas fa-graduation-cap text-neutral-900"></i>
-                        </div>
+                        <div class="timeline-dot bg-brand-yellow" aria-hidden="true"><i
+                                class="fas fa-graduation-cap text-neutral-900"></i></div>
                         <div class="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
                             <div class="glassmorphism-card group">
-                                <div class="relative">
-                                    <h3
-                                        class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
-                                        Master of Computer Application
-                                    </h3>
-                                    <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                        aria-hidden="true">
-                                        <span class="text-brand-yellow">education</span><span
-                                            class="text-white">.</span><span
-                                            class="text-brand-blue">complete</span><span class="text-white">()</span>
-                                    </div>
-                                </div>
+                                <h3
+                                    class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300">
+                                    Master of Computer Application</h3>
                                 <p class="text-brand-blue-dark font-semibold mb-2">Savitribai Phule University of Pune
                                 </p>
-                                <div class="md:hidden mb-2">
-                                    <time
+                                <div class="md:hidden mb-2"><time
                                         class="inline-block bg-brand-yellow/20 px-2 py-1 rounded text-brand-yellow text-xs font-mono"
-                                        datetime="2018">
-                                        2018 - 2021
-                                    </time>
-                                </div>
+                                        datetime="2018">2018 - 2021</time></div>
                                 <p class="text-gray-400 text-sm">
-                                    Graduated with a CGPA of <span class="text-brand-yellow font-semibold">8.01 (A
-                                        Grade)</span>,
-                                    building a strong foundation in computer science and software engineering
-                                    principles.
+                                    Achieved a First-Class distinction (A Grade) with an <span
+                                        class="text-brand-yellow font-semibold">8.01 CGPA</span>. Developed a deep,
+                                    practical understanding of core computer science concepts, including data
+                                    structures, algorithms, and software design patterns, preparing for a career in
+                                    professional software engineering.
                                 </p>
-                                <div class="flex flex-wrap gap-2 mt-3" role="list" aria-label="Academic focus">
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">Computer
-                                        Science</span>
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">A
-                                        Grade</span>
-                                    <span
-                                        class="px-2 py-1 text-xs bg-brand-yellow/20 text-brand-yellow rounded border border-brand-yellow/30">Software
-                                        Engineering</span>
-                                </div>
                             </div>
                         </div>
                     </article>
@@ -1314,10 +1079,9 @@
             </div>
         </section>
 
-        <!-- Contact Section with Enhanced Form -->
+        <!-- Contact Section -->
         <section id="contact" class="section bg-neutral-800">
             <div class="container">
-                <!-- Enhanced Section Header -->
                 <header class="text-center mb-16" data-observer-target>
                     <div class="inline-block relative mb-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
@@ -1330,50 +1094,36 @@
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-left"></div>
-                        <div class="h-1 w-12 bg-brand-yellow rounded animate-fade-in-up" style="animation-delay: 0.2s">
-                        </div>
-                        <div class="h-1 w-12 bg-brand-blue rounded animate-fade-in-right" style="animation-delay: 0.4s">
-                        </div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
+                        <div class="h-1 w-12 bg-brand-yellow rounded"></div>
+                        <div class="h-1 w-12 bg-brand-blue rounded"></div>
                     </div>
                 </header>
 
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <!-- Enhanced Contact Info -->
-                    <div data-observer-target data-animation-classes="animate-fade-in-left" class="space-y-6">
+                    <div data-observer-target data-animation-classes="animate-fade-in-up" class="space-y-6">
                         <div class="glassmorphism-card">
-                            <div class="relative mb-6">
-                                <h3 class="text-2xl font-bold text-white font-heading">Let's Connect</h3>
-                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                    aria-hidden="true">
-                                    <span class="text-brand-yellow">contact_info</span> <span
-                                        class="text-white">=</span> <span class="text-white">{</span>
-                                </div>
-                            </div>
+                            <h3 class="text-2xl font-bold text-white font-heading mb-6">Let's Connect</h3>
                             <p class="text-gray-400 mb-8">
                                 I'm currently seeking new opportunities and am open to collaboration.
                                 If you have a project in mind or just want to connect, feel free to reach out.
                             </p>
 
-                            <!-- Enhanced Contact Links -->
+                            <!-- RESTORED: All 3 contact cards are here -->
                             <div class="space-y-4">
                                 <a href="mailto:sk.mubinattar@gmail.com"
                                     class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
-                                    aria-label="Send email to sk.mubinattar@gmail.com">
+                                    aria-label="Send email">
                                     <div
                                         class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
                                         <i class="fas fa-envelope fa-lg text-brand-yellow group-hover:text-white"
-                                            aria-hidden="true"></i>
-                                    </div>
+                                            aria-hidden="true"></i></div>
                                     <div>
                                         <p class="text-gray-400 text-sm">Email</p>
                                         <span
-                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
-                                            sk.mubinattar@gmail.com
-                                        </span>
+                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">sk.mubinattar@gmail.com</span>
                                     </div>
                                 </a>
-
                                 <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank"
                                     rel="noopener noreferrer"
                                     class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
@@ -1381,30 +1131,43 @@
                                     <div
                                         class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
                                         <i class="fab fa-linkedin fa-lg text-brand-yellow group-hover:text-white"
-                                            aria-hidden="true"></i>
-                                    </div>
+                                            aria-hidden="true"></i></div>
                                     <div>
                                         <p class="text-gray-400 text-sm">LinkedIn</p>
                                         <span
-                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
-                                            linkedin.com/in/mubin-attar
-                                        </span>
+                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">linkedin.com/in/mubin-attar</span>
                                     </div>
                                 </a>
-
                                 <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer"
                                     class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
                                     aria-label="Visit GitHub profile">
                                     <div
                                         class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
                                         <i class="fab fa-github fa-lg text-brand-yellow group-hover:text-white"
-                                            aria-hidden="true"></i>
-                                    </div>
+                                            aria-hidden="true"></i></div>
                                     <div>
                                         <p class="text-gray-400 text-sm">GitHub</p>
                                         <span
+                                            class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">github.com/Mubin-Shaikh</span>
+                                    </div>
+                                </a>
+                                <!-- LeetCode Contact Card (Corrected) -->
+                                <a href="https://leetcode.com/mubin-attar/" target="_blank" rel="noopener noreferrer"
+                                    class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105"
+                                    aria-label="Visit LeetCode profile">
+                                    <div
+                                        class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
+                                        <!-- Custom SVG for LeetCode Icon -->
+                                        <svg class="leetcode-icon w-6 h-6 text-brand-yellow group-hover:text-white transition-colors duration-300"
+                                            role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                            <path d="M13.483 0a1.374 1.374 0 0 0-1.374 1.374v10.5h3.018v-3.097h-1.644V1.374A1.374 1.374 0 0 0 13.483 0zM4.738 5.485v6.388h1.644V8.582h1.374v3.29h1.644V5.485h-1.644v2.09h-1.374V5.485H4.738zM21.93 15.393l-2.48-2.48-2.48 2.48h1.643v3.097h1.674v-3.097h1.643zM15.127 15.89v2.59h-1.644v-5.688l2.928-2.928h2.2L15.127 13.35v2.54z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-sm">LeetCode</p>
+                                        <span
                                             class="text-brand-yellow hover:underline break-all group-hover:text-white transition-colors duration-300">
-                                            github.com/Mubin-Shaikh
+                                            leetcode.com/mubin-attar
                                         </span>
                                     </div>
                                 </a>
@@ -1412,51 +1175,32 @@
                         </div>
                     </div>
 
-                    <!-- Enhanced Contact Form -->
-                    <div data-observer-target data-animation-classes="animate-fade-in-right">
-                        <form id="contact-form" name="contact-form" data-netlify="true" method="POST"
-                            class="glassmorphism-card space-y-6" novalidate>
-                            <input type="hidden" name="form-name" value="contact-form" />
-
-                            <div class="relative">
-                                <h3 class="text-xl font-bold text-white font-heading mb-6">Send a Message</h3>
-                                <div class="absolute -top-2 -left-2 text-brand-blue opacity-20 font-mono text-xs"
-                                    aria-hidden="true">
-                                    <span class="text-brand-yellow">message</span> <span class="text-white">=</span>
-                                    <span class="text-white">{</span>
-                                </div>
-                            </div>
-
+                    <div data-observer-target data-animation-classes="animate-fade-in-up" data-animation-delay="150">
+                        <form id="contact-form" name="contact-form" class="glassmorphism-card space-y-6" novalidate>
+                            <h3 class="text-xl font-bold text-white font-heading mb-6">Send a Message</h3>
                             <div class="form-group">
-                                <label class="form-label" for="name">
-                                    <i class="fas fa-user mr-2 text-brand-yellow" aria-hidden="true"></i>Name
-                                </label>
+                                <label class="form-label" for="name"><i class="fas fa-user mr-2 text-brand-yellow"
+                                        aria-hidden="true"></i>Name</label>
                                 <input type="text" id="name" name="name" class="form-input" placeholder="Your full name"
                                     required aria-describedby="name-error">
                                 <div id="name-error" class="sr-only" aria-live="polite"></div>
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label" for="email">
-                                    <i class="fas fa-envelope mr-2 text-brand-yellow" aria-hidden="true"></i>Email
-                                </label>
+                                <label class="form-label" for="email"><i class="fas fa-envelope mr-2 text-brand-yellow"
+                                        aria-hidden="true"></i>Email</label>
                                 <input type="email" id="email" name="email" class="form-input"
                                     placeholder="your.email@example.com" required aria-describedby="email-error">
                                 <div id="email-error" class="sr-only" aria-live="polite"></div>
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label" for="message">
-                                    <i class="fas fa-comment mr-2 text-brand-yellow" aria-hidden="true"></i>Message
-                                </label>
+                                <label class="form-label" for="message"><i class="fas fa-comment mr-2 text-brand-yellow"
+                                        aria-hidden="true"></i>Message</label>
                                 <textarea id="message" name="message" rows="5" class="form-textarea"
                                     placeholder="Tell me about your project or just say hello..." required
                                     aria-describedby="message-error"></textarea>
                                 <div id="message-error" class="sr-only" aria-live="polite"></div>
                             </div>
-
                             <div id="form-result" class="text-center h-6" aria-live="polite"></div>
-
                             <button type="submit" id="submit-button" class="btn btn-primary btn-shine w-full group"
                                 aria-describedby="submit-status">
                                 <i class="fas fa-paper-plane mr-2 group-hover:translate-x-1 transition-transform duration-300"
@@ -1472,31 +1216,22 @@
         </section>
     </main>
 
-    <!-- Enhanced Footer -->
-    <footer id="footer" class="bg-neutral-900 py-12 border-t border-neutral-800" role="contentinfo">
+    <!-- Footer -->
+    <footer id="footer" class="bg-neutral-900 py-12 border-t border-neutral-800">
         <div class="container text-center">
-            <!-- Social Links -->
             <div class="flex justify-center space-x-6 mb-6" role="list" aria-label="Social media links">
                 <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer"
                     class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
-                    aria-label="GitHub Profile">
-                    <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-                </a>
+                    aria-label="GitHub Profile"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
                 <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer"
                     class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
-                    aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
-                </a>
+                    aria-label="LinkedIn Profile"><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i></a>
                 <a href="mailto:sk.mubinattar@gmail.com"
                     class="text-neutral-400 hover:text-brand-yellow transition-all duration-300 hover:scale-110 p-2 rounded-full hover:bg-neutral-800"
-                    aria-label="Email Contact">
-                    <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
-                </a>
+                    aria-label="Email Contact"><i class="fas fa-envelope fa-2x" aria-hidden="true"></i></a>
             </div>
-
-            <!-- Copyright -->
             <div class="space-y-2">
-                <p class="text-neutral-500 text-sm">© 2024 Mubin Attar. All Rights Reserved.</p>
+                <p class="text-neutral-500 text-sm">© 2025 Mubin Attar. All Rights Reserved.</p>
                 <p class="text-neutral-600 text-xs font-mono">
                     <span class="text-brand-blue">Built with</span>
                     <i class="fab fa-python text-brand-yellow mx-1" aria-hidden="true"></i>
@@ -1506,7 +1241,7 @@
         </div>
     </footer>
 
-    <!-- Enhanced Scroll to Top Button -->
+    <!-- Scroll to Top Button -->
     <button id="scroll-to-top" class="scroll-to-top hidden no-print" aria-label="Scroll to top of page">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
@@ -1522,12 +1257,7 @@
 
     <!-- Performance and Analytics -->
     <script>
-        // Simple performance monitoring
         window.addEventListener('load', function () {
-            const loadTime = performance.now();
-            console.log(`Page loaded in ${Math.round(loadTime)}ms`);
-
-            // Hide loading screen
             const loadingScreen = document.getElementById('loading-screen');
             if (loadingScreen) {
                 setTimeout(() => {

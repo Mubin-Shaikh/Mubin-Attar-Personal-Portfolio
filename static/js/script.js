@@ -32,19 +32,6 @@ const utils = {
     };
   },
 
-  // Check if element is in viewport
-  isInViewport(element, threshold = 0.1) {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-
-    return (
-      rect.top <= windowHeight * (1 - threshold) &&
-      rect.bottom >= windowHeight * threshold &&
-      rect.left <= windowWidth * (1 - threshold) &&
-      rect.right >= windowWidth * threshold
-    );
-  },
 
   // Smooth scroll to element
   smoothScrollTo(element, offset = 0) {
@@ -230,10 +217,12 @@ class ScrollAnimationController {
       rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.animateElement(entry.target);
+          // --- IMPROVEMENT: Unobserve the element after animation for performance ---
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -388,11 +377,18 @@ class ContactFormController {
     const fieldName = field.name;
     let isValid = true;
     let errorMessage = '';
+    const htmlTagRegex = /<[^>]*>/; // --- SECURITY: Regex to detect HTML tags ---
 
     // Required field validation
     if (field.hasAttribute('required') && !value) {
       errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
       isValid = false;
+    }
+    
+    // --- SECURITY: Prevent HTML injection in text fields ---
+    if (['name', 'message'].includes(fieldName) && htmlTagRegex.test(value)) {
+        errorMessage = 'HTML tags are not allowed in this field.';
+        isValid = false;
     }
 
     // Email validation
@@ -494,17 +490,6 @@ class ContactFormController {
   async simulateFormSubmission(formData) {
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1500));
-
-    // In a real implementation, you would send the data to your backend
-    // const response = await fetch('/api/contact', {
-    //   method: 'POST',
-    //   body: formData
-    // });
-    // 
-    // if (!response.ok) {
-    //   throw new Error('Network response was not ok');
-    // }
-
     console.log('Form data:', Object.fromEntries(formData));
   }
 }
@@ -596,21 +581,14 @@ class PerformanceMonitor {
       if ('performance' in window) {
         const loadTime = performance.now();
         console.log(`Page loaded in ${Math.round(loadTime)}ms`);
-
-        // Report Core Web Vitals if available
-        if ('web-vital' in window) {
-          this.reportWebVitals();
-        }
       }
     });
   }
 
   monitorScrollPerformance() {
-    let scrollCount = 0;
     let lastScrollTime = performance.now();
 
     window.addEventListener('scroll', utils.throttle(() => {
-      scrollCount++;
       const currentTime = performance.now();
 
       // Log if scroll performance seems poor
@@ -620,15 +598,6 @@ class PerformanceMonitor {
 
       lastScrollTime = currentTime;
     }, 16));
-  }
-
-  reportWebVitals() {
-    // This would integrate with web-vitals library if included
-    // getCLS(console.log);
-    // getFID(console.log);
-    // getFCP(console.log);
-    // getLCP(console.log);
-    // getTTFB(console.log);
   }
 }
 
@@ -704,18 +673,16 @@ class ThemeController {
     // Detect and respond to system color scheme changes
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-    darkModeQuery.addEventListener('change', (e) => {
-      if (e.matches) {
-        document.body.classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode');
-      }
-    });
+    const applyTheme = (e) => {
+        if (e.matches) {
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+        }
+    };
 
-    // Set initial state
-    if (darkModeQuery.matches) {
-      document.body.classList.add('dark-mode');
-    }
+    darkModeQuery.addEventListener('change', applyTheme);
+    applyTheme(darkModeQuery); // Set initial state
   }
 }
 
@@ -726,11 +693,10 @@ class HeroAnimationController {
   }
 
   init() {
-    // Wait for the DOM to be ready before animating
-    document.addEventListener('DOMContentLoaded', () => {
-      this.createEntryAnimation();
-    });
+    // The PortfolioApp already ensures the DOM is ready, so we can call this directly.
+    this.createEntryAnimation();
   }
+//
 
   createEntryAnimation() {
     // GSAP Timeline allows us to sequence animations
@@ -801,6 +767,8 @@ class PortfolioApp {
     };
 
     let allSuccessful = true;
+    // --- IMPROVEMENT: Differentiate error handling for dev vs. prod ---
+    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
     for (const [name, initFunc] of Object.entries(initializers)) {
       try {
@@ -808,6 +776,10 @@ class PortfolioApp {
       } catch (error) {
         console.error(`Error initializing ${name} controller:`, error);
         allSuccessful = false;
+        if (isDevelopment) {
+          // Make errors obvious in development
+          throw new Error(`Failed to initialize ${name}: ${error.message}`);
+        }
       }
     }
 
@@ -838,13 +810,13 @@ window.portfolioApp = portfolioApp;
 // Lazy loading for images
 function setupLazyLoading() {
   if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
           img.src = img.dataset.src;
           img.classList.remove('lazy');
-          imageObserver.unobserve(img);
+          observer.unobserve(img); // --- PERFORMANCE: Unobserve after loading ---
         }
       });
     });
@@ -891,4 +863,3 @@ window.addEventListener('unhandledrejection', (e) => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { PortfolioApp, utils };
 }
-
