@@ -1,8 +1,3 @@
-/**
- * Modern Portfolio JavaScript - 2025 Edition
- * Enhanced with scroll animations, smooth interactions, and accessibility
- */
-
 // ===== UTILITY FUNCTIONS =====
 const utils = {
   // Debounce function for performance optimization
@@ -73,7 +68,7 @@ const utils = {
 
 
 
-// ===== NAVIGATION CONTROLLER =====
+// ===== NAVIGATION CONTROLLER (CORRECTED FOR NATIVE SCROLLING) =====
 class NavigationController {
   constructor() {
     this.nav = document.querySelector('.nav-backdrop');
@@ -81,7 +76,8 @@ class NavigationController {
     this.mobileMenu = document.getElementById('mobile-menu');
     this.menuOpenIcon = document.getElementById('menu-open-icon');
     this.menuCloseIcon = document.getElementById('menu-close-icon');
-    this.navLinks = document.querySelectorAll('.nav-link');
+    // CORRECTED: Select ALL navigation links, including mobile and buttons
+    this.navLinks = document.querySelectorAll('a[href^="#"]');
     this.sections = document.querySelectorAll('section[id]');
     this.isMenuOpen = false;
 
@@ -91,16 +87,15 @@ class NavigationController {
   init() {
     this.setupEventListeners();
     this.setupScrollSpy();
-    this.setupSmoothScroll();
+    this.setupSmoothScroll(); // This function will now be much simpler
   }
 
   setupEventListeners() {
-    // Mobile menu toggle
     if (this.mobileMenuButton) {
       this.mobileMenuButton.addEventListener('click', () => this.toggleMobileMenu());
     }
 
-    // Close mobile menu when clicking on links
+    // This listener is now on ALL links, ensuring the mobile menu closes correctly
     this.navLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (this.isMenuOpen) {
@@ -109,21 +104,18 @@ class NavigationController {
       });
     });
 
-    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
       if (this.isMenuOpen && !this.mobileMenu.contains(e.target) && !this.mobileMenuButton.contains(e.target)) {
         this.toggleMobileMenu();
       }
     });
 
-    // Escape key to close mobile menu
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.isMenuOpen) {
         this.toggleMobileMenu();
       }
     });
 
-    // Scroll event for navbar styling
     window.addEventListener('scroll', utils.throttle(() => {
       this.updateNavbarOnScroll();
     }, 16));
@@ -161,7 +153,6 @@ class NavigationController {
       threshold: 0
     };
 
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -176,30 +167,22 @@ class NavigationController {
   }
 
   updateActiveNavLink(activeId) {
-    this.navLinks.forEach(link => {
+    // Target the specific links in the main nav for the 'active' class
+    const mainNavLinks = document.querySelectorAll('.nav-link');
+    mainNavLinks.forEach(link => {
       link.classList.remove('active');
+      // Check if the link's href matches the section's ID
       if (link.getAttribute('href') === `#${activeId}`) {
         link.classList.add('active');
       }
     });
   }
 
+  // This function is now empty as the browser handles scrolling. We keep it for structure.
   setupSmoothScroll() {
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-          utils.smoothScrollTo(targetElement, 80);
-          utils.announceToScreenReader(`Navigated to ${targetElement.querySelector('h1, h2, h3')?.textContent || targetId}`);
-        }
-      });
-    });
+    // No custom JS needed. The CSS `scroll-behavior: smooth` and `scroll-padding-top` handle this.
   }
 }
-
 // ===== SCROLL ANIMATION CONTROLLER =====
 class ScrollAnimationController {
   constructor() {
@@ -305,7 +288,7 @@ class ProjectsSwiperController {
   }
 }
 
-// ===== CONTACT FORM CONTROLLER =====
+// ===== CONTACT FORM CONTROLLER (RESTORED ORIGINAL) =====
 class ContactFormController {
   constructor() {
     this.form = document.getElementById('contact-form');
@@ -384,11 +367,11 @@ class ContactFormController {
       errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
       isValid = false;
     }
-    
+
     // --- SECURITY: Prevent HTML injection in text fields ---
     if (['name', 'message'].includes(fieldName) && htmlTagRegex.test(value)) {
-        errorMessage = 'HTML tags are not allowed in this field.';
-        isValid = false;
+      errorMessage = 'HTML tags are not allowed in this field.';
+      isValid = false;
     }
 
     // Email validation
@@ -564,7 +547,7 @@ class GameHighScoreController {
   }
 }
 
-// ===== PERFORMANCE MONITOR =====
+// ===== PERFORMANCE MONITOR (RESTORED) =====
 class PerformanceMonitor {
   constructor() {
     this.init();
@@ -601,7 +584,7 @@ class PerformanceMonitor {
   }
 }
 
-// ===== ACCESSIBILITY ENHANCEMENTS =====
+// ===== ACCESSIBILITY ENHANCEMENTS (RESTORED) =====
 class AccessibilityController {
   constructor() {
     this.init();
@@ -659,7 +642,7 @@ class AccessibilityController {
   }
 }
 
-// ===== THEME CONTROLLER =====
+// ===== THEME CONTROLLER (RESTORED) =====
 class ThemeController {
   constructor() {
     this.init();
@@ -674,11 +657,11 @@ class ThemeController {
     const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     const applyTheme = (e) => {
-        if (e.matches) {
-            document.documentElement.classList.add('dark-mode');
-        } else {
-            document.documentElement.classList.remove('dark-mode');
-        }
+      if (e.matches) {
+        document.documentElement.classList.add('dark-mode');
+      } else {
+        document.documentElement.classList.remove('dark-mode');
+      }
     };
 
     darkModeQuery.addEventListener('change', applyTheme);
@@ -686,55 +669,198 @@ class ThemeController {
   }
 }
 
-// ===== HERO ANIMATION CONTROLLER =====
-class HeroAnimationController {
-  constructor() {
-    this.init();
+// ===== NEURAL GRID BACKGROUND CONTROLLER (PERFORMANCE OPTIMIZED) =====
+class NeuralGridController {
+    constructor() {
+        this.canvas = document.getElementById('neural-canvas');
+        if (!this.canvas) return;
+
+        this.ctx = this.canvas.getContext('2d');
+        this.mouse = { x: null, y: null, radius: 150 };
+        this.points = [];
+        this.animationFrameId = null; // To control the animation loop
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.resizeCanvas();
+        this.setupIntersectionObserver();
+    }
+
+    setupEventListeners() {
+        window.addEventListener('mousemove', e => {
+            this.mouse.x = e.clientX;
+            this.mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseout', () => {
+            this.mouse.x = null;
+            this.mouse.y = null;
+        });
+        window.addEventListener('resize', utils.debounce(() => this.resizeCanvas(), 250));
+    }
+    
+    setupIntersectionObserver() {
+        const heroSection = document.getElementById('hero');
+        if (!heroSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.startAnimation();
+                } else {
+                    this.stopAnimation();
+                }
+            });
+        }, { threshold: 0 });
+
+        observer.observe(heroSection);
+    }
+
+    startAnimation() {
+        if (!this.animationFrameId) {
+            this.animate();
+        }
+    }
+
+    stopAnimation() {
+        if (this.animationFrameId) {
+            cancelAnimationFrame(this.animationFrameId);
+            this.animationFrameId = null;
+            console.log("Neural canvas animation paused.");
+        }
+    }
+
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = this.canvas.parentElement.offsetHeight;
+        this.createPoints();
+    }
+
+    createPoints() {
+        this.points = [];
+        const density = 25;
+        for (let x = 0; x < this.canvas.width; x += density) {
+            for (let y = 0; y < this.canvas.height; y += density) {
+                this.points.push(new Point(x + Math.random() * density, y + Math.random() * density, this.ctx));
+            }
+        }
+    }
+
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.points.forEach(point => point.update(this.mouse));
+        this.connectPoints();
+        this.animationFrameId = requestAnimationFrame(() => this.animate());
+    }
+
+    connectPoints() {
+        for (let i = 0; i < this.points.length; i++) {
+            for (let j = i; j < this.points.length; j++) {
+                const distance = Math.hypot(this.points[i].x - this.points[j].x, this.points[i].y - this.points[j].y);
+                if (distance < 40) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = `rgba(48, 105, 152, ${1 - distance / 40})`;
+                    this.ctx.lineWidth = 0.5;
+                    this.ctx.moveTo(this.points[i].x, this.points[i].y);
+                    this.ctx.lineTo(this.points[j].x, this.points[j].y);
+                    this.ctx.stroke();
+                }
+            }
+        }
+    }
+}
+
+class Point {
+  constructor(x, y, ctx) {
+    this.x = x; this.y = y;
+    this.originX = x; this.originY = y;
+    this.ctx = ctx;
+    this.size = 2;
+    this.density = (Math.random() * 30) + 1;
+    this.color = 'rgba(255, 212, 59, 0.8)';
   }
-
-  init() {
-    // The PortfolioApp already ensures the DOM is ready, so we can call this directly.
-    this.createEntryAnimation();
+  draw() {
+    this.ctx.fillStyle = this.color;
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    this.ctx.closePath();
+    this.ctx.fill();
   }
-//
-
-  createEntryAnimation() {
-    // GSAP Timeline allows us to sequence animations
-    const tl = gsap.timeline({
-      defaults: {
-        duration: 0.8,
-        ease: 'power3.out',
-        opacity: 0
-      }
-    });
-
-    // Define elements to animate
-    const heroTitleLine1 = '#hero h1 span.text-white';
-    const heroTitleLine2 = '#hero h1 span.text-gradient';
-    const heroParagraph = '#hero p';
-    const gameContainer = '#game-container';
-    const ctaButtons = '#hero .btn';
-
-    // Set initial states (instantly hidden and moved)
-    gsap.set([heroTitleLine1, heroTitleLine2, heroParagraph, gameContainer, ctaButtons], {
-      autoAlpha: 0, // GSAP's way of controlling opacity and visibility
-      y: 40 // Move everything down 40px initially
-    });
-
-    // Start the animation sequence
-    tl.to(heroTitleLine1, { autoAlpha: 1, y: 0 }, 0.5) // Start after a 0.5s delay
-      .to(heroTitleLine2, { autoAlpha: 1, y: 0 }, '-=0.6') // Overlap previous animation
-      .to(heroParagraph, { autoAlpha: 1, y: 0 }, '-=0.6')
-      .to(gameContainer, { autoAlpha: 1, y: 0, scale: 1 }, '-=0.6')
-      .to(ctaButtons, {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.2 // Animate buttons one after the other
-      }, '-=0.6');
+  update(mouse) {
+    if (mouse.x === null) {
+        if (this.x !== this.originX) this.x -= (this.x - this.originX) / 10;
+        if (this.y !== this.originY) this.y -= (this.y - this.originY) / 10;
+    } else {
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.hypot(dx, dy);
+        if (distance < mouse.radius) {
+          const force = (mouse.radius - distance) / mouse.radius;
+          this.x -= (dx / distance) * force * this.density * 0.6;
+          this.y -= (dy / distance) * force * this.density * 0.6;
+        } else {
+          if (this.x !== this.originX) this.x -= (this.x - this.originX) / 10;
+          if (this.y !== this.originY) this.y -= (this.y - this.originY) / 10;
+        }
+    }
+    this.draw();
   }
 }
 
+// ===== GSAP HERO ANIMATION CONTROLLER =====
+class HeroAnimationController {
+    constructor() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+            return;
+        }
+        this.init();
+    }
 
+    init() {
+        gsap.registerPlugin(ScrollTrigger);
+        this.setupIntroAnimation();
+        this.setupParallaxAnimation();
+    }
+
+    setupIntroAnimation() {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                gsap.to(".gsap-reveal", {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    ease: "power3.out"
+                });
+            }, 1000); 
+        });
+    }
+
+    setupParallaxAnimation() {
+        gsap.to("#hero-content-left", {
+            y: -100,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1
+            },
+        });
+
+        gsap.to("#hero-content-right", {
+            y: 50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1.5
+            },
+        });
+    }
+}
 
 // ===== MAIN APPLICATION CONTROLLER =====
 class PortfolioApp {
@@ -744,7 +870,6 @@ class PortfolioApp {
   }
 
   init() {
-    // Wait for DOM to be ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => this.initializeControllers());
     } else {
@@ -754,7 +879,10 @@ class PortfolioApp {
 
   initializeControllers() {
     const initializers = {
+      // MODIFICATION: Full list of controllers, new and restored
       heroAnimation: () => new HeroAnimationController(),
+      theme: () => new ThemeController(),
+      neuralGrid: () => new NeuralGridController(),
       navigation: () => new NavigationController(),
       scrollAnimation: () => new ScrollAnimationController(),
       projectsSwiper: () => new ProjectsSwiperController(),
@@ -763,11 +891,9 @@ class PortfolioApp {
       gameHighScore: () => new GameHighScoreController(),
       performance: () => new PerformanceMonitor(),
       accessibility: () => new AccessibilityController(),
-      theme: () => new ThemeController(),
     };
 
     let allSuccessful = true;
-    // --- IMPROVEMENT: Differentiate error handling for dev vs. prod ---
     const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
     for (const [name, initFunc] of Object.entries(initializers)) {
@@ -777,7 +903,6 @@ class PortfolioApp {
         console.error(`Error initializing ${name} controller:`, error);
         allSuccessful = false;
         if (isDevelopment) {
-          // Make errors obvious in development
           throw new Error(`Failed to initialize ${name}: ${error.message}`);
         }
       }
@@ -863,3 +988,43 @@ window.addEventListener('unhandledrejection', (e) => {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { PortfolioApp, utils };
 }
+
+// At the bottom of script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupLazyLoading();
+
+  // --- ADD THIS NEW CODE FOR THE LOADING SCREEN ---
+  const loadingTextElement = document.querySelector('#loading-screen .typing-text');
+  if (loadingTextElement) {
+    const messages = [
+      'Initializing Python Environment...',
+      'Compiling Pyodide Modules...',
+      'Loading Game Assets...',
+      'Starting Neural Engine...',
+      'Finalizing... Almost there!'
+    ];
+    let messageIndex = 0;
+    setInterval(() => {
+      messageIndex = (messageIndex + 1) % messages.length;
+      loadingTextElement.textContent = messages[messageIndex];
+    }, 1500); // Change message every 1.5 seconds
+  }
+  // --- END OF NEW CODE ---
+
+  // Initialize TypeIt Animation for the new hero
+  if (typeof TypeIt !== 'undefined') {
+    new TypeIt('#typing-target', {
+      // KEY CHANGE: Update strings to your new, longer versions
+      strings: [
+        "Robust Web Platforms.",
+        "AI-Powered Solutions.",
+        "Intelligent Automation Tools.",
+      ],
+      speed: 75,
+      breakLines: false,
+      autoStart: true,
+      loop: true,
+    }).go();
+  }
+});
