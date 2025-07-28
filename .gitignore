@@ -1,0 +1,84 @@
+# ============================================
+# OS-Specific Files
+# ============================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ============================================
+# Node / Vite / Frontend Build Tools
+# ============================================
+node_modules/
+dist/
+.vite/
+.cache/
+*.log
+*.lock
+*.tsbuildinfo
+
+# Vite Env Files
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# Python (for backend or scripting)
+# ============================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+.env/
+.venv/
+venv/
+ENV/
+env.bak/
+pip-log.txt
+
+# ============================================
+# IDEs / Editors
+# ============================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# Compiled / Minified Output
+# ============================================
+*.min.js
+*.min.css
+build/
+public/
+*.map
+
+# ============================================
+# Logs / Reports / Coverage
+# ============================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+coverage/
+*.pid
+
+# ============================================
+# Misc / Temporary Files
+# ============================================
+*.bak
+*.old
+*.tmp
+*.swp
+*.seed
+*.orig
+*.gz
+*.tgz
+
+# ============================================
+# Asset / Cache (Optional)
+# ============================================
+.cache/
+*.webp

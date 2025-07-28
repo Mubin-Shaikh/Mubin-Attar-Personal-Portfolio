@@ -1,0 +1,24 @@
+{
+  "name": "mubinattar",
+  "version": "1.0.0",
+  "description": "A professional and modern Python-themed portfolio showcasing enhanced visual appeal, responsiveness, performance, accessibility, and code quality. This portfolio includes a Snake game and a contact form, all designed with a consistent Python branding and developer aesthetic.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mubin-Shaikh/mubinattar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mubin-Shaikh/mubinattar/issues"
+  },
+  "homepage": "https://github.com/Mubin-Shaikh/mubinattar#readme",
+  "devDependencies": {
+    "vite": "^7.0.6"
+  }
+}
