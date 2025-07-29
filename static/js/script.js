@@ -63,7 +63,37 @@ const utils = {
         liveRegion.textContent = '';
       }, 1000);
     }
-  }
+  },
+  // ADD THIS NEW FUNCTION
+  copyToClipboard(text, successMessage = 'Copied to clipboard!') {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                utils.announceToScreenReader(successMessage);
+                console.log(successMessage); // For debugging
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    } else {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            utils.announceToScreenReader(successMessage);
+            console.log(successMessage); // For debugging
+        } catch (err) {
+            console.error('Fallback: Failed to copy: ', err);
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+  },
 };
 
 
@@ -312,6 +342,23 @@ class ContactFormController {
       input.addEventListener('blur', () => this.validateField(input));
       input.addEventListener('input', () => this.clearFieldError(input));
     });
+
+    // ADD THIS NEW CODE BLOCK FOR THE EMAIL LINK
+    const emailLink = document.querySelector('a[data-email]');
+    if (emailLink) {
+        emailLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop the browser from immediately opening the mail client
+            const email = emailLink.dataset.email;
+            
+            // Call our new utility function
+            utils.copyToClipboard(email, `Email address copied!`);
+            
+            // Now, open the mail client after a very short delay
+            setTimeout(() => {
+                window.location.href = `mailto:${email}`;
+            }, 100);
+        });
+    }
   }
 
   async handleSubmit(e) {
@@ -861,6 +908,79 @@ class HeroAnimationController {
         });
     }
 }
+// ===== HERO TYPING CONTROLLER (TYPEWRITER EFFECT) =====
+class HeroTypingController {
+    constructor() {
+        this.element = document.getElementById('typing-target');
+        if (!this.element) {
+            console.error('Typing target element not found!');
+            return;
+        }
+
+        this.phrases = [
+            "Robust Web Platforms.",
+            "AI-Powered Solutions.",
+            "Intelligent Automation."
+        ];
+        
+        // Control the speed of the animation
+        this.typingSpeed = 50; // ms per character
+        this.deletingSpeed = 25;  // ms per character
+        this.pauseAfterTyping = 1500; // ms pause before deleting
+        this.pauseAfterDeleting = 500;  // ms pause before typing next phrase
+
+        this.currentIndex = 0;
+        this.isLooping = false;
+        
+        // Delay initialization to let the page settle
+        setTimeout(() => this.init(), 1500);
+    }
+
+    init() {
+        if (this.isLooping || !this.element) return;
+        this.isLooping = true;
+        this.loop();
+    }
+
+    loop() {
+        const phrase = this.phrases[this.currentIndex];
+        
+        this.typePhrase(phrase, () => {
+            setTimeout(() => {
+                this.deletePhrase(() => {
+                    this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+                    setTimeout(() => this.loop(), this.pauseAfterDeleting);
+                });
+            }, this.pauseAfterTyping);
+        });
+    }
+
+    typePhrase(phrase, callback) {
+        let charIndex = 0;
+        const intervalId = setInterval(() => {
+            if (charIndex < phrase.length) {
+                this.element.textContent += phrase.charAt(charIndex);
+                charIndex++;
+            } else {
+                clearInterval(intervalId);
+                callback();
+            }
+        }, this.typingSpeed);
+    }
+
+    deletePhrase(callback) {
+        const intervalId = setInterval(() => {
+            const currentText = this.element.textContent;
+            if (currentText.length > 0) {
+                this.element.textContent = currentText.slice(0, -1);
+            } else {
+                clearInterval(intervalId);
+                callback();
+            }
+        }, this.deletingSpeed);
+    }
+}
+
 
 // ===== MAIN APPLICATION CONTROLLER =====
 class PortfolioApp {
@@ -881,6 +1001,7 @@ class PortfolioApp {
     const initializers = {
       // MODIFICATION: Full list of controllers, new and restored
       heroAnimation: () => new HeroAnimationController(),
+      heroTyping: () => new HeroTypingController(), 
       theme: () => new ThemeController(),
       neuralGrid: () => new NeuralGridController(),
       navigation: () => new NavigationController(),
@@ -1012,19 +1133,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // --- END OF NEW CODE ---
 
-  // Initialize TypeIt Animation for the new hero
-  if (typeof TypeIt !== 'undefined') {
-    new TypeIt('#typing-target', {
-      // KEY CHANGE: Update strings to your new, longer versions
-      strings: [
-        "Robust Web Platforms.",
-        "AI-Powered Solutions.",
-        "Intelligent Automation Tools.",
-      ],
-      speed: 75,
-      breakLines: false,
-      autoStart: true,
-      loop: true,
-    }).go();
-  }
 });

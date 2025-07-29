@@ -276,12 +276,13 @@ body {
 .btn-primary {
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
   color: white;
-  box-shadow: 0 4px 15px rgba(48, 105, 152, 0.4);
+box-shadow: 0 4px 15px rgba(48, 105, 152, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(48, 105, 152, 0.6);
+  box-shadow: 0 8px 25px rgba(48, 105, 152, 0.6),
+              0 0 40px rgba(48, 105, 152, 0.4);
   background: linear-gradient(135deg, var(--brand-blue-dark), var(--brand-blue-light));
 }
 
@@ -425,22 +426,17 @@ p {
   color: var(--neutral-300);
 }
 
-#typing-target::after {
-  content: '|';
-  color: var(--brand-yellow);
-  animation: blink 1s infinite;
-  display: inline-block;
-  vertical-align: bottom;
-}
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--brand-yellow), var(--brand-yellow-light), var(--brand-blue-light));
-  background-size: 200% 200%;
+  background: linear-gradient(125deg, #FFE973, #FFD43B, #5A9BD4, #4B8BBE);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 6s ease-in-out infinite;
+  text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
+  animation: gradient-shift 8s ease-in-out infinite;
 }
+
 
 /* --- About Section --- */
 .profile-picture-container {
@@ -632,11 +628,21 @@ p {
 /* MODIFICATION: Added styles for contact icon hover effect */
 .contact-icon-wrapper {
   transition: all var(--transition-normal);
+  /* Ensure this has a base background to transition from */
+  background: var(--neutral-900); /* Ensure a base background exists */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Add a subtle shadow */
 }
 
 a.glassmorphism-card:hover .contact-icon-wrapper {
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
-  transform: scale(1.1) rotate(-8deg);
+  transform: scale(1.1) rotate(-8deg); /* Keep this dynamic hover */
+  box-shadow: 0 8px 25px rgba(48, 105, 152, 0.6); /* Enhanced shadow */
+}
+
+/* Add hover effect for the icon itself */
+a.glassmorphism-card:hover .contact-icon-wrapper i,
+a.glassmorphism-card:hover .contact-icon-wrapper svg {
+    color: white; /* Change icon color to white on hover */
 }
 
 
