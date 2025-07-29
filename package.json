@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Mubin-Shaikh/mubinattar#readme",
   "devDependencies": {
     "vite": "^7.0.6"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.8.1"
   }
 }

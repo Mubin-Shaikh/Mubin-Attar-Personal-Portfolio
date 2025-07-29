@@ -1,3 +1,5 @@
+import { contentController } from './contentController.js';
+
 // ===== UTILITY FUNCTIONS =====
 const utils = {
   // Debounce function for performance optimization
@@ -259,10 +261,11 @@ class ScrollAnimationController {
   }
 }
 
-// ===== PROJECTS SWIPER CONTROLLER =====
+// ===== PROJECTS SWIPER CONTROLLER (CORRECTED SELECTOR) =====
 class ProjectsSwiperController {
   constructor() {
-    this.swiperContainer = document.querySelector('.swiper');
+    // USE A SPECIFIC CLASS
+    this.swiperContainer = document.querySelector('.projects-swiper');
     this.init();
   }
 
@@ -273,7 +276,8 @@ class ProjectsSwiperController {
   }
 
   initializeSwiper() {
-    new Swiper('.swiper', {
+    // USE A SPECIFIC CLASS
+    new Swiper('.projects-swiper', {
       slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
@@ -292,23 +296,11 @@ class ProjectsSwiperController {
         prevEl: '.swiper-button-prev',
       },
       breakpoints: {
-        640: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
+        640: { slidesPerView: 1, spaceBetween: 20 },
+        768: { slidesPerView: 2, spaceBetween: 30 },
+        1024: { slidesPerView: 3, spaceBetween: 30 },
       },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
+      keyboard: { enabled: true, onlyInViewport: true },
       a11y: {
         prevSlideMessage: 'Previous project',
         nextSlideMessage: 'Next project',
@@ -555,41 +547,6 @@ class ScrollToTopController {
       this.button.classList.remove('hidden');
     } else {
       this.button.classList.add('hidden');
-    }
-  }
-}
-
-// ===== GAME HIGH SCORE CONTROLLER =====
-class GameHighScoreController {
-  constructor() {
-    this.storageKey = 'snake-game-high-score';
-    this.init();
-  }
-
-  init() {
-    // Make functions available globally for PyScript
-    window.getHighScore = () => this.getHighScore();
-    window.setHighScore = (score) => this.setHighScore(score);
-  }
-
-  getHighScore() {
-    try {
-      return parseInt(localStorage.getItem(this.storageKey)) || 0;
-    } catch (error) {
-      console.warn('Could not access localStorage:', error);
-      return 0;
-    }
-  }
-
-  setHighScore(score) {
-    try {
-      const currentHigh = this.getHighScore();
-      if (score > currentHigh) {
-        localStorage.setItem(this.storageKey, score.toString());
-        utils.announceToScreenReader(`New high score: ${score}`);
-      }
-    } catch (error) {
-      console.warn('Could not save to localStorage:', error);
     }
   }
 }
@@ -858,19 +815,11 @@ class Point {
 // ===== GSAP HERO ANIMATION CONTROLLER =====
 class HeroAnimationController {
     constructor() {
-        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-            return;
-        }
+        if (typeof gsap === 'undefined') return;
         this.init();
     }
 
     init() {
-        gsap.registerPlugin(ScrollTrigger);
-        this.setupIntroAnimation();
-        this.setupParallaxAnimation();
-    }
-
-    setupIntroAnimation() {
         window.addEventListener('load', () => {
             setTimeout(() => {
                 gsap.to(".gsap-reveal", {
@@ -883,31 +832,9 @@ class HeroAnimationController {
             }, 1000); 
         });
     }
-
-    setupParallaxAnimation() {
-        gsap.to("#hero-content-left", {
-            y: -100,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: 1
-            },
-        });
-
-        gsap.to("#hero-content-right", {
-            y: 50,
-            ease: "none",
-            scrollTrigger: {
-                trigger: "#hero",
-                start: "top top",
-                end: "bottom top",
-                scrub: 1.5
-            },
-        });
-    }
 }
+
+
 // ===== HERO TYPING CONTROLLER (TYPEWRITER EFFECT) =====
 class HeroTypingController {
     constructor() {
@@ -981,6 +908,100 @@ class HeroTypingController {
     }
 }
 
+// ===== INTERACTIVE CODE SNIPPET CONTROLLER =====
+class CodeSnippetController {
+  constructor() {
+    // Check if highlight.js is available
+    if (typeof hljs === 'undefined') {
+      console.warn('highlight.js not found. Skipping code snippet initialization.');
+      return;
+    }
+    this.init();
+  }
+
+  init() {
+    this.applySyntaxHighlighting();
+    this.createCopyButtons();
+  }
+
+  applySyntaxHighlighting() {
+    // Tell highlight.js to find and highlight all code blocks
+    hljs.highlightAll();
+  }
+
+  createCopyButtons() {
+    const snippets = document.querySelectorAll('pre > code');
+    snippets.forEach((snippet, index) => {
+      const parent = snippet.parentNode; // This is the <pre> tag
+      if (parent.parentNode.classList.contains('code-snippet-container')) {
+        return; // Avoid adding a button if it's already there
+      }
+      
+      const container = document.createElement('div');
+      container.className = 'code-snippet-container';
+      
+      const button = document.createElement('button');
+      button.className = 'copy-code-btn';
+      button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+      button.setAttribute('aria-label', `Copy code snippet ${index + 1}`);
+
+      // Replace the <pre> with the new container that holds both
+      parent.parentNode.replaceChild(container, parent);
+      container.appendChild(parent);
+      container.appendChild(button);
+
+      this.addCopyEventListener(button, snippet);
+    });
+  }
+
+  addCopyEventListener(button, snippet) {
+    button.addEventListener('click', () => {
+      const codeText = snippet.innerText;
+      utils.copyToClipboard(codeText, 'Code copied to clipboard!');
+      
+      // Provide visual feedback
+      button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      button.style.backgroundColor = '#A3BE8C'; // A nice green color
+      button.style.color = '#171717';
+
+      setTimeout(() => {
+        button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        button.style.backgroundColor = '';
+        button.style.color = '';
+      }, 2000);
+    });
+  }
+}
+
+// ===== SKILLS SWIPER CONTROLLER (V2 - SMOOTH SCROLL) =====
+class SkillsSwiperController {
+  constructor() {
+    this.swiperContainer = document.querySelector('.skills-swiper');
+    if (this.swiperContainer && typeof Swiper !== 'undefined') {
+      this.initializeSwiper();
+    }
+  }
+
+  initializeSwiper() {
+    new Swiper('.skills-swiper', {
+      // Configuration for a seamless, continuous loop
+      loop: true,
+      allowTouchMove: true,      // Allow manual interaction
+      pauseOnMouseEnter: true,   // Crucial for usability
+      slidesPerView: 'auto',   // Show as many slides as fit
+      spaceBetween: 30,          // Space between the cards
+
+      // The core of the continuous scroll animation
+      autoplay: {
+        delay: 0, // No delay, starts the next transition immediately
+        disableOnInteraction: false, // Continue scrolling after user interaction
+      },
+      
+      // Speed of the transition (in ms). A higher number = a slower scroll.
+      speed: 10000, // Increased for a slower, more professional scroll
+    });
+  }
+}
 
 // ===== MAIN APPLICATION CONTROLLER =====
 class PortfolioApp {
@@ -1009,9 +1030,10 @@ class PortfolioApp {
       projectsSwiper: () => new ProjectsSwiperController(),
       contactForm: () => new ContactFormController(),
       scrollToTop: () => new ScrollToTopController(),
-      gameHighScore: () => new GameHighScoreController(),
       performance: () => new PerformanceMonitor(),
       accessibility: () => new AccessibilityController(),
+      codeSnippets: () => new CodeSnippetController(),
+      skillsSwiper: () => new SkillsSwiperController(),
     };
 
     let allSuccessful = true;

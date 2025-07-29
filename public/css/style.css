@@ -1172,3 +1172,118 @@ a.text-brand-blue.font-bold:focus-visible {
     right: 1rem;
   }
 }
+
+
+/* ===== INTERACTIVE CODE SNIPPETS===== */
+
+/* Overrides to make highlight.js fit the glassmorphism theme */
+.hljs {
+  background: rgba(13, 17, 23, 0.5) !important; /* Dark, slightly transparent background */
+  color: #d4d4d4;
+  border-radius: var(--border-radius);
+  padding: 1.5rem !important;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container for the code block to position the copy button */
+.code-snippet-container {
+  position: relative;
+  margin-top: 1rem;
+}
+
+/* Styling for the copy button */
+.copy-code-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--neutral-300);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all var(--transition-normal);
+}
+
+/* Show and style the button on hover of the container */
+.code-snippet-container:hover .copy-code-btn {
+  opacity: 1;
+}
+
+.copy-code-btn:hover {
+  background-color: var(--brand-yellow);
+  color: var(--neutral-900);
+  transform: scale(1.05);
+}
+
+.copy-code-btn .fas {
+  margin-right: 0.5em;
+}
+
+
+/* ===== SKILLS SCROLLER ===== */
+.skills-swiper {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.skills-swiper .swiper-wrapper {
+  /* This is the magic for the smooth, continuous animation! */
+  transition-timing-function: linear !important;
+  /* Add a gap that matches the spaceBetween for seamless looping */
+  gap: 30px;
+}
+
+.skills-swiper .swiper-slide {
+  /* Define the width of the cards */
+  width: 500px !important;
+  max-width: 80vw; /* Prevent cards from being too wide on small screens */
+  
+  /* Set a fixed height for a uniform look */
+  height: 480px !important; 
+  display: flex;
+}
+
+.skills-swiper .glassmorphism-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This new rule targets our wrapper and makes IT scrollable */
+.skills-swiper .code-wrapper {
+  flex-grow: 1; /* Allows the wrapper to fill available vertical space */
+  min-height: 0;  /* The critical fix for flexbox overflow */
+  overflow-y: auto; /* Show vertical scrollbar only when needed */
+  
+  /* Custom scrollbar styling for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-yellow) transparent;
+}
+
+/* We simplify the <pre> tag's styling */
+.skills-swiper pre {
+  white-space: pre-wrap; /* Allow text to wrap */
+  overflow-x: hidden;    /* Prevent horizontal scroll */
+}
+
+/* Custom scrollbar for Webkit browsers (Chrome, Safari) applied to the wrapper */
+.skills-swiper .code-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+.skills-swiper .code-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.skills-swiper .code-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--brand-yellow);
+  border-radius: 6px;
+  border: 2px solid rgba(0,0,0,0.1);
+}
