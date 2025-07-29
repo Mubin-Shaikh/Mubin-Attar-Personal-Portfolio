@@ -1,84 +1,70 @@
-# ============================================
-# OS-Specific Files
-# ============================================
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# -------------------------------------------------------------
+# GENERATED ARTIFACTS / DEPENDENCIES / BUILD OUTPUT
+# -------------------------------------------------------------
+# Node.js / npm / Vite
+node_modules/           # All installed Node.js packages
+dist/                   # Vite's production build output directory
+.vite/                  # Vite's development server cache
+package-lock.json       # Keep this file to ensure consistent installs across environments
+# yarn.lock             # Uncomment if you are using Yarn and want to commit your lockfile
+# pnpm-lock.yaml        # Uncomment if you are using pnpm and want to commit your lockfile
 
-# ============================================
-# Node / Vite / Frontend Build Tools
-# ============================================
-node_modules/
-dist/
-.vite/
-.cache/
-*.log
-*.lock
-*.tsbuildinfo
-
-# Vite Env Files
-.env
-.env.local
-.env.*.local
-
-# ============================================
-# Python (for backend or scripting)
-# ============================================
-__pycache__/
-*.py[cod]
+# Python
+__pycache__/            # Python compiled bytecode cache
+*.py[cod]               # Compiled Python files
 *.pyo
 *.pyd
-*.pyc
-*.env
-.env/
-.venv/
-venv/
-ENV/
-env.bak/
-pip-log.txt
+.venv/                  # Generic virtual environment directory (used by pipenv, poetry, venv)
+venv/                   # Another common virtual environment directory name
+env/                    # Another common virtual environment directory name
+ENV/                    # Another common virtual environment directory name
+# *Note: Your project currently doesn't use a Python backend, but keep these if you add one later.*
 
-# ============================================
-# IDEs / Editors
-# ============================================
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
+# Sanity.io Studio (local development artifacts for the CMS itself)
+.sanity/                # Sanity local cache and temporary files
+.env.development        # Sanity Studio might create local .env files
+.env.production
+.env.local
 
-# ============================================
-# Compiled / Minified Output
-# ============================================
-*.min.js
-*.min.css
-build/
-public/
-*.map
+# -------------------------------------------------------------
+# SENSITIVE FILES / ENVIRONMENT VARIABLES
+# -------------------------------------------------------------
+.env                    # Generic .env file for environment variables (sensitive data)
+.env.local              # Local environment variables specific to your machine
+.env.*.local            # Other local environment variable files
 
-# ============================================
-# Logs / Reports / Coverage
-# ============================================
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-coverage/
-*.pid
+# -------------------------------------------------------------
+# LOGS / TEMP FILES / CACHE
+# -------------------------------------------------------------
+*.log                   # All log files
+npm-debug.log*          # npm debug logs
+yarn-debug.log*         # Yarn debug logs
+yarn-error.log*         # Yarn error logs
+*.pid                   # Process ID files
+.cache/                 # Generic cache directory (e.g., from tools like browserslist)
+coverage/               # Test coverage reports (if you add testing)
 
-# ============================================
-# Misc / Temporary Files
-# ============================================
-*.bak
-*.old
-*.tmp
-*.swp
-*.seed
-*.orig
-*.gz
-*.tgz
+# -------------------------------------------------------------
+# OPERATING SYSTEM / IDE SPECIFIC FILES
+# -------------------------------------------------------------
+.DS_Store               # macOS specific files
+Thumbs.db               # Windows specific files
+ehthumbs.db             # Windows specific files
+Desktop.ini             # Windows specific files
+.vscode/                # VS Code editor specific settings (often includes user preferences)
+.idea/                  # JetBrains IDEs (PyCharm, WebStorm, etc.)
+*.sublime-project       # Sublime Text project files
+*.sublime-workspace     # Sublime Text workspace files
+# .settings/            # Eclipse IDE
 
-# ============================================
-# Asset / Cache (Optional)
-# ============================================
-.cache/
-*.webp
+# -------------------------------------------------------------
+# BACKUP / TEMPORARY FILES (Generic)
+# -------------------------------------------------------------
+*.bak                   # Backup files
+*.old                   # Old versions of files
+*.tmp                   # Temporary files
+*.swp                   # Swap files (from editors like Vim)
+*.seed                  # Seed files
+*.orig                  # Original files from merges/patches
+*.gz                    # Gzip archives (if not intended for distribution)
+*.tgz                   # Tar Gzip archives (if not intended for distribution)
