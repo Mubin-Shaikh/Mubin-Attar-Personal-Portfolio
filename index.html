@@ -9,54 +9,41 @@
     <meta name="theme-color" content="#306998" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Mubin Attar | Software Engineer & AI/ML Enthusiast" />
     <meta property="og:description" content="Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mubinattar.dev" />
     <meta property="og:image" content="/img/og-image.jpg" />
-
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Mubin Attar | Software Engineer & AI/ML Enthusiast" />
     <meta name="twitter:description" content="Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning." />
     <meta name="twitter:image" content="/img/og-image.jpg" />
-
     <title>Mubin Attar | Software Engineer & AI/ML Enthusiast</title>
-    <link rel="icon" type="image/gif" href="/img/favpython.png" />
-
-    <!-- Preload Critical Resources -->
+    <link rel="icon" type="image/png" href="/img/favpython.png" />
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" as="style" />
     <link rel="preload" href="/css/style.css" as="style" />
-
-    <!-- External CSS Libraries -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
-    
-    <!-- External JS Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet" />
-
-    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="/css/style.css" />
-
-    <!-- Tailwind CSS & Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'brand-blue': '#306998', 'brand-blue-dark': '#4B8BBE', 'brand-blue-light': '#5A9BD4',
-              'brand-yellow': '#FFD43B', 'brand-yellow-light': '#FFE873', 'brand-yellow-dark': '#E6C035'
+              'brand-blue': '#306998',
+              'brand-blue-dark': '#4B8BBE',
+              'brand-blue-light': '#5A9BD4',
+              'brand-yellow': '#FFD43B',
+              'brand-yellow-light': '#FFE873',
+              'brand-yellow-dark': '#E6C035'
             },
             fontFamily: {
               sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -64,55 +51,31 @@
               heading: ['Fira Code', 'Monaco', 'Cascadia Code', 'monospace']
             },
             animation: {
-              'python-pulse': 'python-pulse 2s ease-in-out infinite', 'float': 'float 6s ease-in-out infinite',
-              'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate', 'gradient-shift': 'gradient-shift 8s ease-in-out infinite',
+              'python-pulse': 'python-pulse 2s ease-in-out infinite',
+              float: 'float 6s ease-in-out infinite',
+              'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
+              'gradient-shift': 'gradient-shift 8s ease-in-out infinite'
             }
           }
         }
       }
     </script>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org", "@type": "Person", "name": "Mubin Attar", "jobTitle": "Software Engineer & AI/ML Enthusiast",
-        "description": "Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.",
-        "url": "https://mubinattar.dev",
-        "sameAs": ["https://www.linkedin.com/in/mubin-attar/", "https://github.com/Mubin-Shaikh"],
-        "knowsAbout": ["Python", "Django", "Machine Learning", "AI", "Full Stack Development", "Web Development"]
-    }
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mubin Attar","jobTitle":"Software Engineer & AI/ML Enthusiast","description":"Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.","url":"https://mubinattar.dev","sameAs":["https://www.linkedin.com/in/mubin-attar/","https://github.com/Mubin-Shaikh"],"knowsAbout":["Python","Django","Machine Learning","AI","Full Stack Development","Web Development"]}</script>
   </head>
-
   <body class="bg-neutral-900 text-gray-300 antialiased">
-    <!-- ===== NEW: BACKGROUND CANVAS ===== -->
-
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 z-50 p-4 bg-white text-black rounded-md">Skip to main content</a>
-
-    <!-- Python-themed loading animation -->
-    <div id="loading-screen" class="fixed inset-0 bg-neutral-900 z-50 flex items-center justify-center" role="dialog" aria-labelledby="loading-title" aria-describedby="loading-description">
-      <div class="text-center">
-        <h2 id="loading-title" class="sr-only">Loading Portfolio</h2>
-        <p id="loading-description" class="sr-only">Please wait while the portfolio loads</p>
-        <div class="python-logo-animation mb-4">
-          <svg class="w-16 h-16 mx-auto animate-python-pulse" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Python logo">
-            <path class="text-brand-blue" d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z" />
-            <path class="text-brand-yellow" d="M21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" />
-          </svg>
+        <!-- ... Loading Screen ... -->
+        <!-- REPLACE with this new Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-neutral-900 z-50 flex flex-col items-center justify-center transition-opacity duration-300">
+        <div class="relative w-16 h-16 mb-4">
+            <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" stroke="var(--brand-blue)" stroke-width="5" stroke-dasharray="282.74" stroke-dashoffset="212.06" stroke-linecap="round"/>
+                <circle cx="50" cy="50" r="35" stroke="var(--brand-yellow)" stroke-width="5" stroke-dasharray="219.91" stroke-dashoffset="164.93" stroke-linecap="round" style="animation-direction: reverse;"/>
+            </svg>
+            <i class="fab fa-python absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-brand-yellow text-2xl"></i>
         </div>
-        <div class="text-brand-yellow font-mono text-lg animate-pulse">
-          <span class="typing-text">Initializing Python Environment...</span>
-        </div>
-        <div class="mt-4 flex justify-center space-x-1" role="progressbar" aria-label="Loading progress">
-          <div class="w-2 h-2 bg-brand-blue rounded-full animate-bounce"></div>
-          <div class="w-2 h-2 bg-brand-yellow rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-          <div class="w-2 h-2 bg-brand-blue rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-        </div>
-      </div>
+        <p id="loading-text" class="font-mono text-neutral-400"></p>
     </div>
-
-    <!-- Header & Navigation -->
+    <!-- ... Header and Nav ... -->
     <header id="header" class="relative">
       <nav class="nav-backdrop fixed w-full z-50 transition-all duration-300" aria-label="Main navigation">
         <div class="container">
@@ -170,499 +133,254 @@
     </header>
 
     <main id="main-content" class="pt-16">
-      <!-- ============= HERO SECTION (REDESIGNED & FOCUSED) ============== -->
+      <!-- HERO SECTION -->
       <section id="hero" class="min-h-screen relative overflow-hidden flex items-center justify-center text-center py-16">
-          <!-- Canvas for the Neural Grid -->
-          <canvas id="neural-canvas" aria-hidden="true"></canvas>
-
-          <!-- This container centers the content -->
-          <div class="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-8">
-              <div id="hero-content" class="gsap-reveal">
-                  <h1 class="font-heading mb-8">
-                      <span class="block text-white text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter">I Engineer</span>
-                      <span id="typing-target" class="block text-gradient text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter h-auto min-h-[7rem] sm:min-h-[8rem] lg:min-h-[9rem] w-full"></span>
-                  </h1>
-
-                  <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-neutral-300">
-                      A Software Engineer specializing in building robust, scalable web platforms and AI-powered solutions with Python and Django.
-                  </p>
-                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                      <a href="#featured_projects" class="btn btn-primary btn-shine group"><i class="fas fa-code mr-2 group-hover:rotate-12 transition-transform duration-300"></i>View My Work</a>
-                      <a href="#contact" class="btn btn-secondary group"><i class="fas fa-handshake mr-2 group-hover:scale-110 transition-transform duration-300"></i>Let's Connect</a>
-                  </div>
-              </div>
-          </div>
-      </section>
-
-      <!-- About Section -->
-      <section id="about" class="section bg-neutral-800">
-        <div class="container">
-          <div class="max-w-6xl mx-auto">
-            <header class="text-center mb-16" data-observer-target>
-              <div class="inline-block relative mb-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">About Me</h2>
-                <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                  <span class="text-brand-yellow">#</span> <span class="text-gray-500">About section</span>
-                </div>
-              </div>
-              <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-                <div class="h-1 w-12 bg-brand-blue rounded"></div>
-                <div class="h-1 w-12 bg-brand-yellow rounded"></div>
-                <div class="h-1 w-12 bg-brand-blue rounded"></div>
-              </div>
-            </header>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div class="flex justify-center items-center" data-observer-target data-animation-classes="animate-fade-in-up">
-                <div class="profile-picture-container">
-                  <div class="profile-picture-glow w-64 lg:w-72">
-                    <div class="tech-hexagon w-full h-full">
-                      <img data-src="/img/Mubin_Profile.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Mubin Attar - Software Engineer and AI/ML Enthusiast" class="w-full h-full object-cover lazy" />
-                    </div>
-                  </div>
-                  <div class="absolute -top-4 -right-4 text-brand-yellow opacity-50 animate-float" aria-hidden="true">
-                    <i class="fab fa-python text-2xl"></i>
-                  </div>
-                  <div class="absolute -bottom-4 -left-4 text-brand-blue opacity-50 animate-float" style="animation-delay: 1s" aria-hidden="true">
-                    <i class="fas fa-brain text-xl"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div class="space-y-6" data-observer-target data-animation-classes="animate-fade-in-up" data-animation-delay="150">
-                <div class="relative">
-                  <h3 class="text-3xl font-bold text-brand-yellow font-heading mb-2">A Passion for Code and Intelligent Systems</h3>
-                  <div class="absolute -top-3 -left-3 text-brand-blue opacity-20 font-mono text-xs" aria-hidden="true">
-                    <span class="text-brand-yellow">class</span> <span class="text-brand-blue">Passion</span><span class="text-white">:</span>
-                  </div>
-                </div>
-
-                <h4 class="text-lg text-brand-blue-light font-mono -mt-2">My Story in Code</h4>
-
-                <p class="text-gray-300 leading-relaxed">I'm a results-driven Software Engineer with a deep specialization in Python, Django, and the art of building intelligent, scalable web platforms. I thrive on transforming complex problems into clean, efficient code.</p>
-
-                <div class="stats-bar">
-                  <div class="stat-item">
-                    <i class="fas fa-calendar-alt text-brand-blue text-2xl" aria-hidden="true"></i>
-                    <div>
-                      <span class="stat-number">2.6+</span>
-                      <span class="stat-label">Years Experience</span>
-                    </div>
-                  </div>
-                  <div class="stat-item">
-                    <i class="fas fa-rocket text-brand-blue text-2xl" aria-hidden="true"></i>
-                    <div>
-                      <span class="stat-number">10+</span>
-                      <span class="stat-label">Projects Shipped</span>
-                    </div>
-                  </div>
-                  <div class="stat-item">
-                    <i class="fas fa-brain text-brand-blue text-2xl" aria-hidden="true"></i>
-                    <div>
-                      <span class="stat-number">AI/ML</span>
-                      <span class="stat-label">Core Focus</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p class="text-gray-300 leading-relaxed">My journey has taken me through sports analytics, financial trading, and healthcare, where I've architected backends, integrated machine learning models, and built robust APIs. I believe in the power of a problem-solving mindset and a love for clean architecture.</p>
-
-                <div class="pt-4">
-                  <a href="/docs/MubinAttarResume_2025.pdf" download class="btn btn-secondary btn-shine group">
-                    <i class="fas fa-download mr-2 group-hover:animate-bounce" aria-hidden="true"></i>
-                    Download CV
-                    <span class="ml-2 opacity-60 font-mono text-sm">.pdf</span>
-                  </a>
-                </div>
-              </div>
+        <canvas id="neural-canvas" aria-hidden="true"></canvas>
+        <div class="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-8">
+          <div id="hero-content" class="gsap-reveal">
+            <h1 class="font-heading mb-8">
+              <span class="block text-white text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter">I Engineer</span>
+              <span id="typing-target" class="block text-gradient text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter h-auto min-h-[7rem] sm:min-h-[8rem] lg:min-h-[9rem] w-full"></span>
+            </h1>
+            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-neutral-300">A Software Engineer specializing in building robust, scalable web platforms and AI-powered solutions with Python and Django.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#featured_projects" class="btn btn-primary btn-shine group"><i class="fas fa-code mr-2 group-hover:rotate-12 transition-transform duration-300"></i>View My Work</a>
+              <a href="#contact" class="btn btn-secondary group"><i class="fas fa-handshake mr-2 group-hover:scale-110 transition-transform duration-300"></i>Let's Connect</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Technical Expertise Section -->
-      <section id="technical_expertise" class="section bg-neutral-900 overflow-hidden">
-          <div class="container">
+      <!-- TECHNICAL EXPERTISE SECTION (FINAL POLISHED VERSION) -->
+      <section id="technical_expertise" class="section bg-neutral-900 overflow-hidden relative">
+          <div class="section-background-glow" aria-hidden="true"></div>
+          <div class="container relative z-10">
               <header class="text-center mb-16" data-observer-target>
-                  <div class="inline-block relative mb-6">
-                      <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">My Technical Arsenal</h2>
-                      <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm"
-                          aria-hidden="true">
-                          <span class="text-brand-yellow">from</span> <span class="text-brand-blue">skills</span> <span class="text-brand-yellow">import</span> <span class="text-brand-blue">*</span>
-                      </div>
+                  <!-- NEW THEMED HEADER -->
+                  <div class="skills-header-wrapper">
+                      <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                          <span class="text-brand-blue">def</span>
+                          <span class="text-brand-yellow">get_skills</span><span class="text-white">():</span>
+                      </h2>
                   </div>
-                  <p class="text-neutral-400 max-w-2xl mx-auto">
-                      A continuous reel of the tools and technologies I use to build modern, scalable applications.
-                  </p>
+                  <p class="text-neutral-400 max-w-2xl mx-auto mt-6">A continuous reel of the tools and technologies I use to build modern, scalable applications.</p>
               </header>
           </div>
 
-          <!-- THIS IS THE CORRECT SWIPER WRAPPER FOR THE SKILLS SECTION -->
-          <div class="swiper skills-swiper" data-observer-target data-animation-classes="animate-fade-in-up">
+          <div class="swiper skills-swiper" data-observer-target>
               <div class="swiper-wrapper">
-
-                  <!-- Slide 1: Core Programming & Python Expertise -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-star fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">Core Python Expertise</h3>
+                  <!-- Card 1: Core Python -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">Core Python & Patterns</div>
+                              <div class="code-editor-tag python-tag">Python</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-python"># Deep understanding of Python's idioms and constructs.
-      # My focus is on writing clean, efficient, and maintainable code.
-
-      - Object-Oriented Programming (OOP) & Design Patterns
-      - Functional constructs: map, filter, reduce, functools
-      - Advanced features: Decorators, Generators, Context Managers
-      - Asynchronous programming with AsyncIO
-      - Multithreading for I/O-bound tasks
-      - Testing with Pytest, Mocking, and Coverage
-      - Packaging with Poetry and Pipenv
-      </code></pre>
+                              <pre><code class="language-python">class PythonExpertise:
+          def __init__(self):
+              self.paradigms = [
+                  "OOP & Design Patterns",
+                  "Functional Constructs"
+              ]
+              self.features = {
+                  "concurrency": "AsyncIO & Multithreading",
+                  "metaprogramming": "Decorators, Generators",
+                  "testing": "Pytest, Mocking & Coverage",
+                  "packaging": "Poetry & Pipenv"
+              }</code></pre>
                           </div>
                       </article>
                   </div>
-
-                  <!-- ... (The other 7 skill slides as you had them) ... -->
-                  
-                  <!-- Slide 2: Backend Frameworks & API Design -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-cogs fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">Backend & API Design</h3>
+                  <!-- Card 2: Backend & APIs -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">Backend & API Design</div>
+                              <div class="code-editor-tag python-tag">Python</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-python"># Architecting scalable and secure server-side solutions.
-      # Expertise in modern API design and asynchronous task processing.
-
-      - Django: ORM, Admin, Signals, Class-Based Views
-      - FastAPI & Django Rest Framework for high-performance APIs
-      - RESTful API design principles and best practices
-      - Authentication: JWT, OAuth2, and session-based
-      - Asynchronous task queues with Celery and Redis
-      - Microservices architecture principles
-      </code></pre>
+                              <pre><code class="language-python"># High-performance, scalable backend services
+      config = {
+          "frameworks": ["Django", "FastAPI", "Flask"],
+          "api_design": ["REST", "GraphQL"],
+          "authentication": ["JWT", "OAuth2"],
+          "async_tasks": {
+              "broker": "Redis",
+              "worker": "Celery"
+          },
+          "version_control": True
+      }</code></pre>
                           </div>
                       </article>
                   </div>
-
-                  <!-- Slide 3: AI / ML Integration -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-brain fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">AI/ML Integration</h3>
+                  <!-- Card 3: Databases & Data -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">Databases & Data Modeling</div>
+                              <div class="code-editor-tag sql-tag">SQL</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-python"># Bridging the gap between data science and production software.
-      # Full lifecycle experience from model training to deployment.
+                              <pre><code class="language-sql">CREATE TABLE skills (
+          id SERIAL PRIMARY KEY,
+          category VARCHAR(50) NOT NULL,
+          skill_name VARCHAR(100) NOT NULL,
+          is_advanced BOOLEAN DEFAULT false
+      );
 
-      - Model Building: Scikit-learn, XGBoost, LightGBM
-      - Deep Learning: PyTorch for neural network development
-      - Feature Engineering and data preprocessing pipelines
-      - Model Serving: Deploying models via FastAPI endpoints
-      - MLOps: Monitoring, versioning, and rollback strategies
-      - Data Analysis: Pandas, NumPy, Matplotlib
-      </code></pre>
+      -- Proficient in PostgreSQL, MySQL
+      -- Django ORM & Query Optimization
+      -- Advanced SQL (Window Functions, CTEs)
+      -- Caching with Redis</code></pre>
                           </div>
                       </article>
                   </div>
-                  
-                  <!-- Slide 4: Databases & Data Modeling -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-database fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">Databases & Data Modeling</h3>
+                  <!-- Card 4: AI/ML Integration -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">AI / ML Integration</div>
+                              <div class="code-editor-tag python-tag">AI/ML</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-sql">-- Designing efficient data models and writing optimized queries.
-      -- Proficient in both relational and caching systems.
-
-      - Relational Databases: PostgreSQL (primary), MySQL, SQLite
-      - Advanced SQL: Window functions, CTEs, complex joins
-      - ORM Mastery: Django ORM query optimization
-      - Database Migrations: Django Migrations, Alembic
-      - Caching Strategies with Redis for performance enhancement
-      - NoSQL fundamentals (MongoDB)
-      </code></pre>
+                              <pre><code class="language-python">class ML_Pipeline:
+          """End-to-end ML workflows."""
+          
+          libs = ["Scikit-learn", "PyTorch", "Pandas"]
+          
+          def process(self, data):
+              # 1. Feature Engineering
+              # 2. Model Building (XGBoost, NNs)
+              # 3. Model Serialization (ONNX)
+              # 4. Serving via FastAPI
+              pass</code></pre>
                           </div>
                       </article>
                   </div>
-
-                  <!-- Slide 5: DevOps & Deployment -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-cloud-upload-alt fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">DevOps & Deployment</h3>
+                  <!-- Card 5: DevOps & Deployment -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">DevOps & Deployment</div>
+                              <div class="code-editor-tag devops-tag">DevOps</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-yaml"># Automating the path from code to production.
-      # I implement CI/CD and containerization for reliable deployments.
+                              <pre><code class="language-yaml"># Automating the path to production
+      services:
+        app:
+          build: .
+          image: my-django-app
+          command: gunicorn --bind 0.0.0.0:8000 app.wsgi
+          
+        nginx:
+          image: nginx:latest
+          ports:
+            - "80:80"
 
-      - Containerization: Docker, Docker Compose, multi-stage builds
-      - CI/CD Pipelines: GitHub Actions, Jenkins fundamentals
-      - Version Control: Git, GitHub, and best practices (pre-commit hooks)
-      - Cloud Providers: AWS (EC2, S3, RDS, IAM)
-      - Web Servers: Nginx for reverse proxying, Gunicorn/Uvicorn for serving
-      - Infrastructure as Code (IaC) principles
-      </code></pre>
+      # CI/CD with GitHub Actions
+      # Cloud: AWS (EC2, S3, RDS)</code></pre>
                           </div>
                       </article>
                   </div>
-                  
-                  <!-- Slide 6: Frontend & UI Integration -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-desktop fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">Frontend Integration</h3>
+                  <!-- Card 6: Frontend Integration -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">Frontend Integration</div>
+                              <div class="code-editor-tag frontend-tag">Frontend</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-javascript">// While my focus is backend, I am proficient in bringing
-      // designs to life with clean, responsive, and interactive code.
+                              <pre><code class="language-javascript">const skills = {
+        core: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+        styling: "Tailwind CSS",
+        interactivity: {
+          dom_scripting: true,
+          api_integration: "Fetch API, Axios"
+        },
+        templating: ["Jinja2", "Django Templates"]
+      };
 
-      - Core Web Tech: HTML5, CSS3, JavaScript (ES6+)
-      - Responsive Design: Tailwind CSS, Bootstrap, Flexbox, Grid
-      - Interactivity: DOM manipulation, event handling
-      - API Integration: Fetch API, Axios
-      - Templating Engines: Jinja2, Django Templates
-      - Animation: GSAP, CSS Transitions
-      </code></pre>
+      console.log("Connecting Python to the browser.");</code></pre>
                           </div>
                       </article>
                   </div>
-                  
-                  <!-- Slide 7: Security & Best Practices -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-shield-alt fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">Security & Best Practices</h3>
+                  <!-- Card 7: Security & Best Practices -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">Security & Best Practices</div>
+                              <div class="code-editor-tag python-tag">Security</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-python"># Building software with a security-first mindset.
-      # I follow industry best practices to protect applications and users.
+                              <pre><code class="language-python"># Writing secure and robust code
+      from django.middleware.csrf import CsrfViewMiddleware
+      from django.contrib.auth.hashers import make_password
 
-      - Aware of OWASP Top 10 vulnerabilities (XSS, SQLi, etc.)
-      - Secure password hashing with Bcrypt or Argon2
-      - Implementing CORS and CSRF protection
-      - Secrets Management via environment variables and vaults
-      - Dependency vulnerability scanning
-      - Principle of Least Privilege in system design
-      </code></pre>
+      class SecurityMindset:
+          awareness = [
+              "XSS, CSRF, SQL Injection",
+              "Secrets Management (env vars)"
+          ]
+          implementation = {
+              "password_hashing": "bcrypt, Argon2",
+              "https_setup": "Let's Encrypt"
+          }</code></pre>
                           </div>
                       </article>
                   </div>
-                  
-                  <!-- Slide 8: Tooling & Productivity -->
-                  <div class="swiper-slide h-auto">
-                      <article class="glassmorphism-card h-full">
-                          <div class="flex items-center gap-4 mb-3">
-                              <div class="text-brand-yellow" aria-hidden="true"><i class="fas fa-tools fa-2x"></i></div>
-                              <h3 class="text-xl font-bold text-white font-heading">Tooling & Productivity</h3>
+                  <!-- Card 8: Tooling -->
+                  <div class="swiper-slide">
+                      <article class="code-editor-card">
+                          <div class="code-editor-header">
+                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                              <div class="code-editor-title">Tooling & Productivity</div>
+                              <div class="code-editor-tag devops-tag">Tools</div>
                           </div>
                           <div class="code-wrapper">
-                              <pre><code class="language-ini">[development_environment]
-      editor = VS Code
-      # Key extensions: Pylance, GitLens, Docker, ThunderClient
-      ide_for_debugging = PyCharm Professional
+                              <pre><code class="language-bash"># My Development Environment
+      IDES="VS Code, PyCharm"
+      LINTERS="black, flake8, isort"
+      VERSION_CONTROL="Git, GitLens"
+      API_CLIENTS="Postman, Insomnia"
 
-      [code_quality]
-      linters = Flake8, Black, isort
-      hooks = pre-commit
-
-      [api_clients]
-      manual_testing = Postman
-      in_editor_testing = ThunderClient
-
-      [version_control]
-      vcs = Git
-      hosting = GitHub
-
-      [terminal]
-      shell = Windows Terminal / zsh on Linux
-      </code></pre>
+      # Mastering the tools of the trade for
+      # maximum efficiency and code quality.</code></pre>
                           </div>
                       </article>
                   </div>
               </div>
           </div>
       </section>
-
-      <!-- Featured Projects Section -->
+      <!-- FEATURED PROJECTS SECTION -->
       <section id="featured_projects" class="section bg-neutral-800">
+        <div class="section-background-glow" aria-hidden="true"></div>
         <div class="container">
           <header class="text-center mb-16" data-observer-target>
-            <div class="inline-block relative mb-6">
-              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Featured Projects</h2>
-              <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                <span class="text-brand-yellow">for</span> <span class="text-brand-blue">project</span>
-                <span class="text-brand-yellow">in</span> <span class="text-brand-blue">portfolio</span><span class="text-white">:</span>
+              <div class="section-header-wrapper">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                      <span class="text-brand-yellow">for</span>
+                      <span class="text-white">project</span>
+                      <span class="text-brand-yellow">in</span>
+                      <span class="text-brand-blue">portfolio</span><span class="text-white">:</span>
+                  </h2>
               </div>
-            </div>
-            <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-              <div class="h-1 w-12 bg-brand-blue rounded"></div>
-              <div class="h-1 w-12 bg-brand-yellow rounded"></div>
-              <div class="h-1 w-12 bg-brand-blue rounded"></div>
-            </div>
+              <p class="text-neutral-400 max-w-2xl mx-auto mt-6">A selection of recent projects showcasing my skills in backend development, AI, and more.</p>
           </header>
 
           <div class="max-w-7xl mx-auto relative" data-observer-target data-animation-classes="animate-fade-in-up">
-            <!-- MODIFICATION: Added card-container class for :has() hover effect -->
-            <div class="swiper skills-swiper" data-observer-target data-animation-classes="animate-fade-in-up">
+            <!-- The 'projects-swiper' class is the hook for our JS -->
+            <div class="swiper projects-swiper card-container px-4" role="region" aria-label="Featured projects carousel">
+              <!-- This wrapper will be populated by contentController.js -->
               <div class="swiper-wrapper pb-16 pt-5">
-                <!-- Project cards remain unchanged -->
-                <div class="swiper-slide h-auto">
-                  <article class="glassmorphism-card h-full border border-neutral-700 group">
-                    <div class="h-full flex flex-col">
-                      <div class="relative overflow-hidden rounded-t-xl">
-                        <img data-src="/img/Mubin_Profile.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="AI Sports Betting Bot Project" class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy" />
-                        <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Project links">
-                          <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" aria-label="View AI Sports Bot source code on GitHub" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-                          <a href="#" aria-label="View AI Sports Bot live demo" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fas fa-external-link-alt fa-2x" aria-hidden="true"></i></a>
-                        </nav>
-                        <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                          <i class="fab fa-python mr-1" aria-hidden="true"></i>Python
-                        </div>
-                      </div>
-                      <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                        <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">AI Sports Betting Bot</h3>
-                        <p class="text-gray-400 mb-4 text-sm flex-grow">Backend for ML predictions using XGBoost & neural networks. Built RESTful APIs for serving results with high accuracy predictions.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">RESTful APIs</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">XGBoost</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide h-auto">
-                  <article class="glassmorphism-card h-full border border-neutral-700 group">
-                    <div class="h-full flex flex-col">
-                      <div class="relative overflow-hidden rounded-t-xl">
-                        <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Hospital+System" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hospital Management System" class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy" />
-                        <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Project links">
-                          <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" aria-label="View Hospital Management System source code on GitHub" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-                        </nav>
-                        <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                          <i class="fas fa-hospital mr-1" aria-hidden="true"></i>Healthcare
-                        </div>
-                      </div>
-                      <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                        <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">Hospital Management System</h3>
-                        <p class="text-gray-400 mb-4 text-sm flex-grow">Contributed to a modular, enterprise-scale system for a healthcare provider, covering scheduling, records, and reporting.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Web Dev</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">PostgreSQL</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide h-auto">
-                  <article class="glassmorphism-card h-full border border-neutral-700 group">
-                    <div class="h-full flex flex-col">
-                      <div class="relative overflow-hidden rounded-t-xl">
-                        <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=B2B+Platform" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="B2B Platforms" class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy" />
-                        <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Project links">
-                          <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" aria-label="View B2B Platforms source code on GitHub" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-                        </nav>
-                        <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                          <i class="fas fa-building mr-1" aria-hidden="true"></i>B2B
-                        </div>
-                      </div>
-                      <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                        <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">B2B Web Platforms</h3>
-                        <p class="text-gray-400 mb-4 text-sm flex-grow">Developed features for 3+ B2B platforms in healthcare & e-commerce. Built responsive UIs and integrated third-party APIs.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">JavaScript</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Bootstrap</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">API Integration</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide h-auto">
-                  <article class="glassmorphism-card h-full border border-neutral-700 group">
-                    <div class="h-full flex flex-col">
-                      <div class="relative overflow-hidden rounded-t-xl">
-                        <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=E-Commerce+API" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="E-commerce Backend API" class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy" />
-                        <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Project links">
-                          <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" aria-label="View E-commerce API source code on GitHub" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-                        </nav>
-                        <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                          <i class="fas fa-shopping-cart mr-1" aria-hidden="true"></i>E-commerce
-                        </div>
-                      </div>
-                      <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                        <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">E-commerce Backend API</h3>
-                        <p class="text-gray-400 mb-4 text-sm flex-grow">Designed a RESTful API with DRF for an e-commerce site, handling users, products, and orders with secure authentication.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Django</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">DRF</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">PostgreSQL</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide h-auto">
-                  <article class="glassmorphism-card h-full border border-neutral-700 group">
-                    <div class="h-full flex flex-col">
-                      <div class="relative overflow-hidden rounded-t-xl">
-                        <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Cloud+Automation" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Cloud Deployment Automation" class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy" />
-                        <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Project links">
-                          <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" aria-label="View Cloud Automation source code on GitHub" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-                        </nav>
-                        <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                          <i class="fas fa-cloud mr-1" aria-hidden="true"></i>DevOps
-                        </div>
-                      </div>
-                      <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                        <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">Cloud Deployment Automation</h3>
-                        <p class="text-gray-400 mb-4 text-sm flex-grow">Scripts to automate deploying Django apps to AWS EC2, including S3 integration for static files and CI/CD pipelines.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">AWS</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Boto3</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="swiper-slide h-auto">
-                  <article class="glassmorphism-card h-full border border-neutral-700 group">
-                    <div class="h-full flex flex-col">
-                      <div class="relative overflow-hidden rounded-t-xl">
-                        <img data-src="https://placehold.co/600x400/0a0a0a/306998?text=Data+Pipeline" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Data Analysis Pipeline" class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110 lazy" />
-                        <nav class="absolute inset-0 bg-black/70 flex items-center justify-center space-x-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-label="Project links">
-                          <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" aria-label="View Data Pipeline source code on GitHub" class="text-white hover:text-brand-yellow transform hover:scale-110 transition-all duration-300 p-3 rounded-full bg-black/50 backdrop-blur-sm"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a>
-                        </nav>
-                        <div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-mono">
-                          <i class="fas fa-chart-line mr-1" aria-hidden="true"></i>Data Science
-                        </div>
-                      </div>
-                      <div class="p-6 flex-grow flex flex-col bg-neutral-900/50 backdrop-blur-sm rounded-b-xl">
-                        <h3 class="text-xl font-bold text-white font-heading group-hover:text-brand-yellow transition-colors duration-300 mb-3">Data Analysis Pipeline</h3>
-                        <p class="text-gray-400 mb-4 text-sm flex-grow">Web scraping tool to gather data, processed with Pandas, and visualized to highlight key trends and insights.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto" role="list" aria-label="Technologies used">
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Python</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Pandas</span>
-                          <span class="px-3 py-1 text-xs bg-brand-blue/20 text-brand-yellow rounded-full border border-brand-blue/30">Web Scraping</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+                <!-- Fallback content or dynamic content goes here -->
               </div>
 
               <!-- Swiper Controls -->
@@ -676,116 +394,38 @@
 
       <!-- Experience Section -->
       <section id="experience" class="section bg-neutral-900">
+        <div class="section-background-glow" aria-hidden="true"></div>
         <div class="container">
           <header class="text-center mb-16" data-observer-target>
-            <div class="inline-block relative mb-6">
-              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Professional Experience</h2>
-              <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                <span class="text-brand-yellow">while</span> <span class="text-brand-blue">career.growing</span><span class="text-white">:</span>
+              <div class="section-header-wrapper">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                      <span class="text-brand-yellow">while</span>
+                      <span class="text-brand-blue">career.is_active</span><span class="text-white">:</span>
+                  </h2>
               </div>
-            </div>
-            <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-              <div class="h-1 w-12 bg-brand-blue rounded"></div>
-              <div class="h-1 w-12 bg-brand-yellow rounded"></div>
-              <div class="h-1 w-12 bg-brand-blue rounded"></div>
-            </div>
+              <p class="text-neutral-400 max-w-2xl mx-auto mt-6">Tracing my professional journey and key milestones in software engineering.</p>
           </header>
 
-          <!-- DEFINITIVE HTML FOR EXPERIENCE SECTION -->
-          <div class="timeline-container max-w-4xl mx-auto relative space-y-12" data-observer-target data-animation-classes="animate-fade-in-up">
-            <div class="timeline-bar" aria-hidden="true"></div>
-
-            <!-- Sevina Technologies -->
-            <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target data-animation-classes="animate-fade-in-up">
-              <div class="hidden md:block w-1/2 text-right pt-1">
-                <div class="inline-block bg-neutral-700/50 px-3 py-1 rounded-full">
-                  <time class="font-bold text-brand-yellow font-mono" datetime="2024-04">Apr 2024 - Present</time>
-                </div>
-              </div>
-              <div class="timeline-dot" aria-hidden="true">
-                <i class="fas fa-briefcase text-white"></i>
-              </div>
-              <div class="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
-                <div class="glassmorphism-card">
-                  <h3 class="text-xl font-bold text-white font-heading">Software Engineer</h3>
-                  <p class="text-brand-blue-light font-semibold mb-2">Sevina Technologies</p>
-                  <div class="md:hidden mb-2">
-                    <time class="inline-block bg-neutral-700/50 px-2 py-1 rounded text-brand-yellow text-xs font-mono" datetime="2024-04">Apr 2024 - Present</time>
-                  </div>
-                  <p class="text-neutral-300 text-sm">
-                    Architecting and deploying end-to-end <span class="text-brand-yellow font-semibold">AI/ML solutions for predictive sports analytics and financial trading signals.</span> Pioneering automation initiatives by leveraging modern AI frameworks to streamline internal workflows.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <!-- Linescripts -->
-            <article class="timeline-item relative flex items-start md:flex-row-reverse md:space-x-reverse md:space-x-8" data-observer-target data-animation-classes="animate-fade-in-up">
-              <div class="hidden md:block w-1/2 text-left pt-1 pl-8">
-                <div class="inline-block bg-neutral-700/50 px-3 py-1 rounded-full">
-                  <time class="font-bold text-brand-yellow font-mono" datetime="2022-11">Nov 2022 - Apr 2024</time>
-                </div>
-              </div>
-              <div class="timeline-dot" aria-hidden="true">
-                <i class="fas fa-code text-white"></i>
-              </div>
-              <div class="w-full md:w-1/2 md:pr-8 ml-16 md:ml-0 md:text-right">
-                <div class="glassmorphism-card">
-                  <h3 class="text-xl font-bold text-white font-heading">Junior Python Developer</h3>
-                  <p class="text-brand-blue-light font-semibold mb-2">Linescripts Software Pvt Ltd</p>
-                  <div class="md-hidden mb-2">
-                    <time class="inline-block bg-neutral-700/50 px-2 py-1 rounded text-brand-yellow text-xs font-mono" datetime="2022-11">Nov 2022 - Apr 2024</time>
-                  </div>
-                  <p class="text-neutral-300 text-sm">
-                    Engineered and delivered full-stack features for multiple enterprise-grade applications across the <span class="text-brand-yellow">e-commerce and healthcare</span>
-                    sectors, specializing in building scalable backend systems with Django.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <!-- Education -->
-            <article class="timeline-item relative flex items-start md:space-x-8" data-observer-target data-animation-classes="animate-fade-in-up">
-              <div class="hidden md:block w-1/2 text-right pt-1">
-                <div class="inline-block bg-neutral-700/50 px-3 py-1 rounded-full">
-                  <time class="font-bold text-brand-yellow font-mono" datetime="2018">2018 - 2021</time>
-                </div>
-              </div>
-              <div class="timeline-dot bg-brand-yellow" aria-hidden="true">
-                <i class="fas fa-graduation-cap text-neutral-900"></i>
-              </div>
-              <div class="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
-                <div class="glassmorphism-card">
-                  <h3 class="text-xl font-bold text-white font-heading">Master of Computer Application</h3>
-                  <p class="text-brand-blue-light font-semibold mb-2">Savitribai Phule University of Pune</p>
-                  <div class="md:hidden mb-2">
-                    <time class="inline-block bg-neutral-700/50 px-2 py-1 rounded text-brand-yellow text-xs font-mono" datetime="2018">2018 - 2021</time>
-                  </div>
-                  <p class="text-neutral-300 text-sm">
-                    Achieved a First-Class distinction (A Grade) with an <span class="text-brand-yellow font-semibold">8.01 CGPA</span>. Focused on core computer science concepts, including data structures, algorithms, and software design patterns.
-                  </p>
-                </div>
-              </div>
-            </article>
+          <!-- The 'timeline-container' is the hook for our JS. It will be populated by contentController.js -->
+          <div class="timeline-container max-w-4xl mx-auto relative">
+              <!-- Fallback content or dynamic content goes here -->
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
       <section id="contact" class="section bg-neutral-800">
+        
         <div class="container">
+          <div class="section-background-glow" aria-hidden="true"></div>
           <header class="text-center mb-16" data-observer-target>
-            <div class="inline-block relative mb-6">
-              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">Get in <span class="text-brand-yellow">Touch</span></h2>
-              <div class="absolute -top-2 -left-2 text-brand-blue opacity-30 font-mono text-sm" aria-hidden="true">
-                <span class="text-brand-yellow">def</span> <span class="text-brand-blue">connect</span><span class="text-white">():</span>
+              <div class="section-header-wrapper">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                      <span class="text-brand-yellow">def</span>
+                      <span class="text-brand-blue">connect</span><span class="text-white">():</span>
+                  </h2>
               </div>
-            </div>
-            <div class="flex justify-center items-center gap-2 mb-6" aria-hidden="true">
-              <div class="h-1 w-12 bg-brand-blue rounded"></div>
-              <div class="h-1 w-12 bg-brand-yellow rounded"></div>
-              <div class="h-1 w-12 bg-brand-blue rounded"></div>
-            </div>
+              <p class="text-neutral-400 max-w-2xl mx-auto mt-6">Have a project in mind or just want to say hello? Let's get in touch.</p>
           </header>
 
           <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -795,7 +435,7 @@
                 <h3 class="text-2xl font-bold text-white font-heading mb-6">Let's Connect</h3>
                 <p class="text-gray-400 mb-8">I'm currently seeking new opportunities and am open to collaboration. If you have a project in mind or just want to connect, feel free to reach out.</p>
 
-                <ul class="space-y-4">
+                <ul class="space-y-4" data-stagger-group>
                   <li>
                     <a href="mailto:sk.mubinattar@gmail.com" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Send email" data-email="sk.mubinattar@gmail.com">
                       <!-- MODIFICATION: Removed hover classes, added contact-icon-wrapper -->
@@ -907,7 +547,7 @@
     <!-- Live region for screen reader announcements -->
     <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-        <!-- External JS Libraries -->
+    <!-- External JS Libraries -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
 
     <!-- Main Application Script -->

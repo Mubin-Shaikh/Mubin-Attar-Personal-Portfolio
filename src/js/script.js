@@ -69,31 +69,31 @@ const utils = {
   // ADD THIS NEW FUNCTION
   copyToClipboard(text, successMessage = 'Copied to clipboard!') {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                utils.announceToScreenReader(successMessage);
-                console.log(successMessage); // For debugging
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          utils.announceToScreenReader(successMessage);
+          console.log(successMessage); // For debugging
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+        });
     } else {
-        // Fallback for older browsers
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        try {
-            document.execCommand('copy');
-            utils.announceToScreenReader(successMessage);
-            console.log(successMessage); // For debugging
-        } catch (err) {
-            console.error('Fallback: Failed to copy: ', err);
-        } finally {
-            document.body.removeChild(textarea);
-        }
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        utils.announceToScreenReader(successMessage);
+        console.log(successMessage); // For debugging
+      } catch (err) {
+        console.error('Fallback: Failed to copy: ', err);
+      } finally {
+        document.body.removeChild(textarea);
+      }
     }
   },
 };
@@ -338,18 +338,18 @@ class ContactFormController {
     // ADD THIS NEW CODE BLOCK FOR THE EMAIL LINK
     const emailLink = document.querySelector('a[data-email]');
     if (emailLink) {
-        emailLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop the browser from immediately opening the mail client
-            const email = emailLink.dataset.email;
-            
-            // Call our new utility function
-            utils.copyToClipboard(email, `Email address copied!`);
-            
-            // Now, open the mail client after a very short delay
-            setTimeout(() => {
-                window.location.href = `mailto:${email}`;
-            }, 100);
-        });
+      emailLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Stop the browser from immediately opening the mail client
+        const email = emailLink.dataset.email;
+
+        // Call our new utility function
+        utils.copyToClipboard(email, `Email address copied!`);
+
+        // Now, open the mail client after a very short delay
+        setTimeout(() => {
+          window.location.href = `mailto:${email}`;
+        }, 100);
+      });
     }
   }
 
@@ -675,104 +675,104 @@ class ThemeController {
 
 // ===== NEURAL GRID BACKGROUND CONTROLLER (PERFORMANCE OPTIMIZED) =====
 class NeuralGridController {
-    constructor() {
-        this.canvas = document.getElementById('neural-canvas');
-        if (!this.canvas) return;
+  constructor() {
+    this.canvas = document.getElementById('neural-canvas');
+    if (!this.canvas) return;
 
-        this.ctx = this.canvas.getContext('2d');
-        this.mouse = { x: null, y: null, radius: 150 };
-        this.points = [];
-        this.animationFrameId = null; // To control the animation loop
-        this.init();
-    }
+    this.ctx = this.canvas.getContext('2d');
+    this.mouse = { x: null, y: null, radius: 150 };
+    this.points = [];
+    this.animationFrameId = null; // To control the animation loop
+    this.init();
+  }
 
-    init() {
-        this.setupEventListeners();
-        this.resizeCanvas();
-        this.setupIntersectionObserver();
-    }
+  init() {
+    this.setupEventListeners();
+    this.resizeCanvas();
+    this.setupIntersectionObserver();
+  }
 
-    setupEventListeners() {
-        window.addEventListener('mousemove', e => {
-            this.mouse.x = e.clientX;
-            this.mouse.y = e.clientY;
-        });
-        window.addEventListener('mouseout', () => {
-            this.mouse.x = null;
-            this.mouse.y = null;
-        });
-        window.addEventListener('resize', utils.debounce(() => this.resizeCanvas(), 250));
-    }
-    
-    setupIntersectionObserver() {
-        const heroSection = document.getElementById('hero');
-        if (!heroSection) return;
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.startAnimation();
-                } else {
-                    this.stopAnimation();
-                }
-            });
-        }, { threshold: 0 });
+  setupEventListeners() {
+    window.addEventListener('mousemove', e => {
+      this.mouse.x = e.clientX;
+      this.mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseout', () => {
+      this.mouse.x = null;
+      this.mouse.y = null;
+    });
+    window.addEventListener('resize', utils.debounce(() => this.resizeCanvas(), 250));
+  }
 
-        observer.observe(heroSection);
-    }
+  setupIntersectionObserver() {
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
 
-    startAnimation() {
-        if (!this.animationFrameId) {
-            this.animate();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.startAnimation();
+        } else {
+          this.stopAnimation();
         }
-    }
+      });
+    }, { threshold: 0 });
 
-    stopAnimation() {
-        if (this.animationFrameId) {
-            cancelAnimationFrame(this.animationFrameId);
-            this.animationFrameId = null;
-            console.log("Neural canvas animation paused.");
+    observer.observe(heroSection);
+  }
+
+  startAnimation() {
+    if (!this.animationFrameId) {
+      this.animate();
+    }
+  }
+
+  stopAnimation() {
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
+      console.log("Neural canvas animation paused.");
+    }
+  }
+
+  resizeCanvas() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = this.canvas.parentElement.offsetHeight;
+    this.createPoints();
+  }
+
+  createPoints() {
+    this.points = [];
+    const density = 25;
+    for (let x = 0; x < this.canvas.width; x += density) {
+      for (let y = 0; y < this.canvas.height; y += density) {
+        this.points.push(new Point(x + Math.random() * density, y + Math.random() * density, this.ctx));
+      }
+    }
+  }
+
+  animate() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.points.forEach(point => point.update(this.mouse));
+    this.connectPoints();
+    this.animationFrameId = requestAnimationFrame(() => this.animate());
+  }
+
+  connectPoints() {
+    for (let i = 0; i < this.points.length; i++) {
+      for (let j = i; j < this.points.length; j++) {
+        const distance = Math.hypot(this.points[i].x - this.points[j].x, this.points[i].y - this.points[j].y);
+        if (distance < 40) {
+          this.ctx.beginPath();
+          this.ctx.strokeStyle = `rgba(48, 105, 152, ${1 - distance / 40})`;
+          this.ctx.lineWidth = 0.5;
+          this.ctx.moveTo(this.points[i].x, this.points[i].y);
+          this.ctx.lineTo(this.points[j].x, this.points[j].y);
+          this.ctx.stroke();
         }
+      }
     }
-
-    resizeCanvas() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = this.canvas.parentElement.offsetHeight;
-        this.createPoints();
-    }
-
-    createPoints() {
-        this.points = [];
-        const density = 25;
-        for (let x = 0; x < this.canvas.width; x += density) {
-            for (let y = 0; y < this.canvas.height; y += density) {
-                this.points.push(new Point(x + Math.random() * density, y + Math.random() * density, this.ctx));
-            }
-        }
-    }
-
-    animate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.points.forEach(point => point.update(this.mouse));
-        this.connectPoints();
-        this.animationFrameId = requestAnimationFrame(() => this.animate());
-    }
-
-    connectPoints() {
-        for (let i = 0; i < this.points.length; i++) {
-            for (let j = i; j < this.points.length; j++) {
-                const distance = Math.hypot(this.points[i].x - this.points[j].x, this.points[i].y - this.points[j].y);
-                if (distance < 40) {
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(48, 105, 152, ${1 - distance / 40})`;
-                    this.ctx.lineWidth = 0.5;
-                    this.ctx.moveTo(this.points[i].x, this.points[i].y);
-                    this.ctx.lineTo(this.points[j].x, this.points[j].y);
-                    this.ctx.stroke();
-                }
-            }
-        }
-    }
+  }
 }
 
 class Point {
@@ -793,20 +793,20 @@ class Point {
   }
   update(mouse) {
     if (mouse.x === null) {
+      if (this.x !== this.originX) this.x -= (this.x - this.originX) / 10;
+      if (this.y !== this.originY) this.y -= (this.y - this.originY) / 10;
+    } else {
+      let dx = mouse.x - this.x;
+      let dy = mouse.y - this.y;
+      let distance = Math.hypot(dx, dy);
+      if (distance < mouse.radius) {
+        const force = (mouse.radius - distance) / mouse.radius;
+        this.x -= (dx / distance) * force * this.density * 0.6;
+        this.y -= (dy / distance) * force * this.density * 0.6;
+      } else {
         if (this.x !== this.originX) this.x -= (this.x - this.originX) / 10;
         if (this.y !== this.originY) this.y -= (this.y - this.originY) / 10;
-    } else {
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.hypot(dx, dy);
-        if (distance < mouse.radius) {
-          const force = (mouse.radius - distance) / mouse.radius;
-          this.x -= (dx / distance) * force * this.density * 0.6;
-          this.y -= (dy / distance) * force * this.density * 0.6;
-        } else {
-          if (this.x !== this.originX) this.x -= (this.x - this.originX) / 10;
-          if (this.y !== this.originY) this.y -= (this.y - this.originY) / 10;
-        }
+      }
     }
     this.draw();
   }
@@ -814,194 +814,171 @@ class Point {
 
 // ===== GSAP HERO ANIMATION CONTROLLER =====
 class HeroAnimationController {
-    constructor() {
-        if (typeof gsap === 'undefined') return;
-        this.init();
-    }
+  constructor() {
+    if (typeof gsap === 'undefined') return;
+    this.init();
+  }
 
-    init() {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                gsap.to(".gsap-reveal", {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    stagger: 0.2,
-                    ease: "power3.out"
-                });
-            }, 1000); 
+  init() {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        gsap.to(".gsap-reveal", {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out"
         });
-    }
+      }, 1000);
+    });
+  }
 }
 
 
 // ===== HERO TYPING CONTROLLER (TYPEWRITER EFFECT) =====
 class HeroTypingController {
-    constructor() {
-        this.element = document.getElementById('typing-target');
-        if (!this.element) {
-            console.error('Typing target element not found!');
-            return;
-        }
-
-        this.phrases = [
-            "Robust Web Platforms.",
-            "AI-Powered Solutions.",
-            "Intelligent Automation."
-        ];
-        
-        // Control the speed of the animation
-        this.typingSpeed = 50; // ms per character
-        this.deletingSpeed = 25;  // ms per character
-        this.pauseAfterTyping = 1500; // ms pause before deleting
-        this.pauseAfterDeleting = 500;  // ms pause before typing next phrase
-
-        this.currentIndex = 0;
-        this.isLooping = false;
-        
-        // Delay initialization to let the page settle
-        setTimeout(() => this.init(), 1500);
-    }
-
-    init() {
-        if (this.isLooping || !this.element) return;
-        this.isLooping = true;
-        this.loop();
-    }
-
-    loop() {
-        const phrase = this.phrases[this.currentIndex];
-        
-        this.typePhrase(phrase, () => {
-            setTimeout(() => {
-                this.deletePhrase(() => {
-                    this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
-                    setTimeout(() => this.loop(), this.pauseAfterDeleting);
-                });
-            }, this.pauseAfterTyping);
-        });
-    }
-
-    typePhrase(phrase, callback) {
-        let charIndex = 0;
-        const intervalId = setInterval(() => {
-            if (charIndex < phrase.length) {
-                this.element.textContent += phrase.charAt(charIndex);
-                charIndex++;
-            } else {
-                clearInterval(intervalId);
-                callback();
-            }
-        }, this.typingSpeed);
-    }
-
-    deletePhrase(callback) {
-        const intervalId = setInterval(() => {
-            const currentText = this.element.textContent;
-            if (currentText.length > 0) {
-                this.element.textContent = currentText.slice(0, -1);
-            } else {
-                clearInterval(intervalId);
-                callback();
-            }
-        }, this.deletingSpeed);
-    }
-}
-
-// ===== INTERACTIVE CODE SNIPPET CONTROLLER =====
-class CodeSnippetController {
   constructor() {
-    // Check if highlight.js is available
-    if (typeof hljs === 'undefined') {
-      console.warn('highlight.js not found. Skipping code snippet initialization.');
+    this.element = document.getElementById('typing-target');
+    if (!this.element) {
+      console.error('Typing target element not found!');
       return;
     }
+
+    this.phrases = [
+      "Robust Web Platforms.",
+      "AI-Powered Solutions.",
+      "Intelligent Automation."
+    ];
+
+    // Control the speed of the animation
+    this.typingSpeed = 50; // ms per character
+    this.deletingSpeed = 25;  // ms per character
+    this.pauseAfterTyping = 1500; // ms pause before deleting
+    this.pauseAfterDeleting = 500;  // ms pause before typing next phrase
+
+    this.currentIndex = 0;
+    this.isLooping = false;
+
+    // Delay initialization to let the page settle
+    setTimeout(() => this.init(), 1500);
+  }
+
+  init() {
+    if (this.isLooping || !this.element) return;
+    this.isLooping = true;
+    this.loop();
+  }
+
+  loop() {
+    const phrase = this.phrases[this.currentIndex];
+
+    this.typePhrase(phrase, () => {
+      setTimeout(() => {
+        this.deletePhrase(() => {
+          this.currentIndex = (this.currentIndex + 1) % this.phrases.length;
+          setTimeout(() => this.loop(), this.pauseAfterDeleting);
+        });
+      }, this.pauseAfterTyping);
+    });
+  }
+
+  typePhrase(phrase, callback) {
+    let charIndex = 0;
+    const intervalId = setInterval(() => {
+      if (charIndex < phrase.length) {
+        this.element.textContent += phrase.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(intervalId);
+        callback();
+      }
+    }, this.typingSpeed);
+  }
+
+  deletePhrase(callback) {
+    const intervalId = setInterval(() => {
+      const currentText = this.element.textContent;
+      if (currentText.length > 0) {
+        this.element.textContent = currentText.slice(0, -1);
+      } else {
+        clearInterval(intervalId);
+        callback();
+      }
+    }, this.deletingSpeed);
+  }
+}
+
+
+// ===== SKILLS SWIPER CONTROLLER (FINAL - PERFECTED MARQUEE) =====
+class SkillsSwiperController {
+  constructor() {
+    this.swiperContainer = document.querySelector('.skills-swiper');
+  }
+
+  initializeSwiper() {
+    if (this.swiperContainer && typeof Swiper !== 'undefined') {
+      new Swiper('.skills-swiper', {
+        loop: true,
+        freeMode: true,
+        allowTouchMove: true,
+        pauseOnMouseEnter: true,
+        slidesPerView: 'auto',
+        spaceBetween: 40,
+
+        autoplay: {
+          delay: 0, // CRUCIAL for continuous movement
+          disableOnInteraction: false,
+        },
+
+        speed: 10000, // This controls the speed. Higher is slower.
+      });
+    }
+  }
+}
+
+// ===== STAGGER ANIMATION CONTROLLER =====
+class StaggerAnimationController {
+  constructor() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
     this.init();
   }
 
   init() {
-    this.applySyntaxHighlighting();
-    this.createCopyButtons();
-  }
-
-  applySyntaxHighlighting() {
-    // Tell highlight.js to find and highlight all code blocks
-    hljs.highlightAll();
-  }
-
-  createCopyButtons() {
-    const snippets = document.querySelectorAll('pre > code');
-    snippets.forEach((snippet, index) => {
-      const parent = snippet.parentNode; // This is the <pre> tag
-      if (parent.parentNode.classList.contains('code-snippet-container')) {
-        return; // Avoid adding a button if it's already there
-      }
-      
-      const container = document.createElement('div');
-      container.className = 'code-snippet-container';
-      
-      const button = document.createElement('button');
-      button.className = 'copy-code-btn';
-      button.innerHTML = '<i class="fas fa-copy"></i> Copy';
-      button.setAttribute('aria-label', `Copy code snippet ${index + 1}`);
-
-      // Replace the <pre> with the new container that holds both
-      parent.parentNode.replaceChild(container, parent);
-      container.appendChild(parent);
-      container.appendChild(button);
-
-      this.addCopyEventListener(button, snippet);
+    // Stagger items within the Experience Timeline
+    gsap.utils.toArray('.gsap-timeline-item').forEach((item, index) => {
+      gsap.from(item, {
+        opacity: 0,
+        y: 50,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+        },
+        delay: index * 0.1 // Stagger delay
+      });
     });
-  }
 
-  addCopyEventListener(button, snippet) {
-    button.addEventListener('click', () => {
-      const codeText = snippet.innerText;
-      utils.copyToClipboard(codeText, 'Code copied to clipboard!');
-      
-      // Provide visual feedback
-      button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-      button.style.backgroundColor = '#A3BE8C'; // A nice green color
-      button.style.color = '#171717';
-
-      setTimeout(() => {
-        button.innerHTML = '<i class="fas fa-copy"></i> Copy';
-        button.style.backgroundColor = '';
-        button.style.color = '';
-      }, 2000);
+    // Stagger items in any group with the data-stagger-group attribute
+    gsap.utils.toArray('[data-stagger-group]').forEach(group => {
+      const items = group.children;
+      gsap.from(items, {
+        opacity: 0,
+        y: 30,
+        duration: 0.5,
+        stagger: 0.1, // Stagger the children of the group
+        scrollTrigger: {
+          trigger: group,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
+      });
     });
   }
 }
 
-// ===== SKILLS SWIPER CONTROLLER (V2 - SMOOTH SCROLL) =====
-class SkillsSwiperController {
-  constructor() {
-    this.swiperContainer = document.querySelector('.skills-swiper');
-    if (this.swiperContainer && typeof Swiper !== 'undefined') {
-      this.initializeSwiper();
-    }
-  }
-
-  initializeSwiper() {
-    new Swiper('.skills-swiper', {
-      // Configuration for a seamless, continuous loop
-      loop: true,
-      allowTouchMove: true,      // Allow manual interaction
-      pauseOnMouseEnter: true,   // Crucial for usability
-      slidesPerView: 'auto',   // Show as many slides as fit
-      spaceBetween: 30,          // Space between the cards
-
-      // The core of the continuous scroll animation
-      autoplay: {
-        delay: 0, // No delay, starts the next transition immediately
-        disableOnInteraction: false, // Continue scrolling after user interaction
-      },
-      
-      // Speed of the transition (in ms). A higher number = a slower scroll.
-      speed: 10000, // Increased for a slower, more professional scroll
-    });
-  }
-}
 
 // ===== MAIN APPLICATION CONTROLLER =====
 class PortfolioApp {
@@ -1018,22 +995,23 @@ class PortfolioApp {
     }
   }
 
+  // START OF NEW METHOD to replace in script.js
   initializeControllers() {
     const initializers = {
-      // MODIFICATION: Full list of controllers, new and restored
       heroAnimation: () => new HeroAnimationController(),
-      heroTyping: () => new HeroTypingController(), 
+      heroTyping: () => new HeroTypingController(),
       theme: () => new ThemeController(),
       neuralGrid: () => new NeuralGridController(),
       navigation: () => new NavigationController(),
       scrollAnimation: () => new ScrollAnimationController(),
       projectsSwiper: () => new ProjectsSwiperController(),
+      skillsSwiper: () => new SkillsSwiperController(),
       contactForm: () => new ContactFormController(),
       scrollToTop: () => new ScrollToTopController(),
       performance: () => new PerformanceMonitor(),
       accessibility: () => new AccessibilityController(),
-      codeSnippets: () => new CodeSnippetController(),
-      skillsSwiper: () => new SkillsSwiperController(),
+      staggerAnimation: () => new StaggerAnimationController(),
+      // The general code snippet controller is not needed if you only have snippets in the skills section
     };
 
     let allSuccessful = true;
@@ -1051,6 +1029,16 @@ class PortfolioApp {
       }
     }
 
+    // --- NEW LOGIC ---
+    // Manually initialize syntax highlighting and the skills swiper.
+    // This ensures highlighting is applied before the swiper is created.
+    if (typeof hljs !== 'undefined') {
+      hljs.highlightAll();
+    }
+    // Now, initialize the swiper for the skills section
+    this.getController('skillsSwiper')?.initializeSwiper();
+    // --- END NEW LOGIC ---
+
     if (allSuccessful) {
       console.log('All portfolio controllers initialized successfully.');
       utils.announceToScreenReader('Portfolio loaded successfully.');
@@ -1059,6 +1047,7 @@ class PortfolioApp {
       utils.announceToScreenReader('Portfolio loaded with some errors.');
     }
   }
+  // END OF NEW METHOD
 
   // Public method to get controller instances
   getController(name) {
