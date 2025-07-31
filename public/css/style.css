@@ -136,33 +136,45 @@ body {
 
 /* ===== NEW: THEMED SECTION STYLES ===== */
 .section-background-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 80vh;
-    background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.1) 0%, rgba(23, 23, 23, 0) 70%);
-    z-index: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.1) 0%, rgba(23, 23, 23, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 /* Make the glow more prominent on the darker background sections */
 #featured_projects .section-background-glow,
 #contact .section-background-glow {
-    background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(38, 38, 38, 0) 70%);
+  background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(38, 38, 38, 0) 70%);
 }
 
 .section-header-wrapper {
-    display: inline-block;
-    border: 1px solid var(--neutral-700);
-    padding: 0.75rem 2rem;
-    border-radius: var(--border-radius-lg);
-    background: rgba(38, 38, 38, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: inline-block;
+  border: 1px solid var(--neutral-700);
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius-lg);
+  background: rgba(38, 38, 38, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Add these rules in style.css */
+
+#featured_projects .swiper-wrapper {
+    /* Prevents layout shift by reserving space for project cards */
+    min-height: 480px; 
+}
+
+#experience .timeline-container {
+    /* Prevents layout shift by reserving space for experience items */
+    min-height: 600px;
 }
 
 /* ===== GLASSMORPHISM COMPONENTS (DEFINITIVE PROFESSIONAL VERSION) ===== */
@@ -196,10 +208,11 @@ body {
 .glassmorphism-card:hover,
 .skills-swiper .swiper-slide:hover .code-editor-card,
 .project-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--brand-yellow);
-    box-shadow: 0 12px 40px 0 rgba(255, 212, 59, 0.3);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--brand-yellow);
+  box-shadow: 0 12px 40px 0 rgba(255, 212, 59, 0.3);
 }
+
 
 .glassmorphism-card:hover::before {
   opacity: 1;
@@ -311,13 +324,13 @@ body {
 .btn-primary {
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
   color: white;
-box-shadow: 0 4px 15px rgba(48, 105, 152, 0.4);
+  box-shadow: 0 4px 15px rgba(48, 105, 152, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(48, 105, 152, 0.6),
-              0 0 40px rgba(48, 105, 152, 0.4);
+    0 0 40px rgba(48, 105, 152, 0.4);
   background: linear-gradient(135deg, var(--brand-blue-dark), var(--brand-blue-light));
 }
 
@@ -418,77 +431,167 @@ p {
 }
 
 
-/* --- About Section --- */
-.profile-picture-container {
+/* --- ABOUT SECTION (DEFINITIVE HYBRID V2) --- */
+
+/* Left Column: Image Styles */
+.about-image-wrapper {
   position: relative;
+  width: clamp(280px, 80vw, 380px);
+  height: clamp(280px, 80vw, 380px);
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.profile-picture-glow {
-  position: relative;
+  background: radial-gradient(circle at center, rgba(38, 38, 38, 0.8), var(--neutral-900) 70%);
   border-radius: var(--border-radius-xl);
-  overflow: hidden;
-  background: linear-gradient(45deg, var(--brand-blue), var(--brand-yellow));
-  padding: 4px;
-  animation: glow-pulse 3s ease-in-out infinite alternate;
 }
 
-.tech-hexagon {
+.about-image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="%23262626" fill-opacity="0.4" fill-rule="evenodd"><path d="M0 40L40 0H20L0 20M40 40V20L20 40"/></g></svg>');
+  background-size: 20px;
+  border-radius: var(--border-radius-xl);
+}
+
+.about-image-border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-xl);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-yellow));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.about-image-wrapper:hover .about-image-border {
+  opacity: 1;
+}
+
+.about-image-glow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(ellipse at center, var(--brand-blue), transparent 60%);
+  filter: blur(25px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.about-image-wrapper:hover .about-image-glow {
+  opacity: 0.3;
+  transform: scale(1);
+}
+
+.about-profile-image {
+  width: calc(100% - 1.5rem);
+  height: calc(100% - 1.5rem);
+  object-fit: cover;
+  border-radius: calc(var(--border-radius-xl) - 0.75rem);
   position: relative;
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  background: var(--neutral-900);
+  z-index: 2;
+  filter: saturate(1.1) contrast(1.05);
+  transition: transform var(--transition-normal);
 }
 
-.tech-hexagon img {
-  border-radius: var(--border-radius-lg);
-  transition: transform var(--transition-slow);
+.about-image-wrapper:hover .about-profile-image {
+  transform: scale(1.03);
 }
 
-.profile-picture-glow:hover img {
-  transform: scale(1.05);
+/* Right Column: Thematic Text Styles */
+.code-comment {
+  color: var(--neutral-500);
+  font-style: italic;
 }
 
-#about h4 {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.5rem;
+.code-string {
+  color: var(--brand-yellow);
+}
+
+.code-block-item {
+  background-color: rgba(38, 38, 38, 0.5);
+  border: 1px solid var(--neutral-700);
+  border-left: 3px solid var(--brand-blue);
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.code-variable {
+  color: var(--brand-blue-light);
+}
+
+.code-operator {
+  color: white;
+  margin: 0 0.5rem;
+}
+
+/* --- ABOUT SECTION - STATS BAR --- */
+.stats-bar-container {
+  padding-top: 1.5rem;
+  /* Add some space from the button above */
+  border-top: 1px solid var(--neutral-700);
 }
 
 .stats-bar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 1.5rem;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 1rem 1.5rem;
-  border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
 }
 
 .stat-item {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
+  background: rgba(38, 38, 38, 0.4);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
   text-align: left;
+  transition: all var(--transition-normal);
 }
 
-.stat-item .stat-number {
-  display: block;
+.stat-item:hover {
+  transform: translateY(-5px);
+  background: rgba(48, 105, 152, 0.2);
+  border-color: var(--brand-blue);
+}
+
+.stat-icon {
+  font-size: 1.75rem;
+  color: var(--brand-yellow);
+  flex-shrink: 0;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: white;
   line-height: 1.2;
 }
 
-.stat-item .stat-label {
-  display: block;
+.stat-label {
   font-size: 0.8rem;
   color: var(--neutral-400);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  line-height: 1.2;
 }
+
+/* Responsive styles for the stats bar */
+@media (max-width: 768px) {
+  .stats-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
+
+
+/*-- Experience Section */
 
 @keyframes fill-timeline {
   from {
@@ -609,20 +712,41 @@ p {
 .contact-icon-wrapper {
   transition: all var(--transition-normal);
   /* Ensure this has a base background to transition from */
-  background: var(--neutral-900); /* Ensure a base background exists */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Add a subtle shadow */
+  background: var(--neutral-900);
+  /* Ensure a base background exists */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* Add a subtle shadow */
 }
 
 a.glassmorphism-card:hover .contact-icon-wrapper {
   background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
-  transform: scale(1.1) rotate(-8deg); /* Keep this dynamic hover */
-  box-shadow: 0 8px 25px rgba(48, 105, 152, 0.6); /* Enhanced shadow */
+  transform: scale(1.1) rotate(-8deg);
+  /* Keep this dynamic hover */
+  box-shadow: 0 8px 25px rgba(48, 105, 152, 0.6);
+  /* Enhanced shadow */
 }
 
 /* Add hover effect for the icon itself */
 a.glassmorphism-card:hover .contact-icon-wrapper i,
 a.glassmorphism-card:hover .contact-icon-wrapper svg {
-    color: white; /* Change icon color to white on hover */
+  color: white;
+  /* Change icon color to white on hover */
+}
+
+/* In style.css - A potential refinement */
+.contact-link-card {
+  /* Add this class to your <a> tags in the contact list */
+  background: transparent;
+  border: 1px solid transparent;
+  /* No border at rest */
+  transition: all var(--transition-normal);
+}
+
+.contact-link-card:hover {
+  background: var(--glass-bg);
+  /* Apply glass effect only on hover */
+  border-color: var(--glass-border);
+  transform: scale(1.03);
 }
 
 
@@ -677,103 +801,104 @@ a.glassmorphism-card:hover .contact-icon-wrapper svg {
 
 /* ===== FEATURED PROJECTS SECTION (V3 - POLISHED) ===== */
 .project-card {
-    background: #1e1e1e;
-    border: 1px solid #3a3a3a;
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    /* The unified hover effect will be applied by the .glassmorphism-card:hover rule */
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* The unified hover effect will be applied by the .glassmorphism-card:hover rule */
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project-image-container {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-image {
-    aspect-ratio: 16 / 10;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease, filter 0.4s ease;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .project-card:hover .project-image {
-    transform: scale(1.05);
-    filter: brightness(0.9);
+  transform: scale(1.05);
+  filter: brightness(0.9);
 }
 
 .project-category-badge {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background-color: rgba(23, 23, 23, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 0.35rem 0.85rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    font-weight: 500;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(23, 23, 23, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
 }
 
 .project-card-body {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .project-card-header h3 {
-    transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .project-card:hover .project-card-header h3 {
-    color: var(--brand-yellow);
+  color: var(--brand-yellow);
 }
 
 .project-links {
-    display: flex;
-    gap: 0.75rem;
-    flex-shrink: 0;
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .project-link-btn {
-    color: var(--neutral-400);
-    transition: color 0.3s ease, transform 0.3s ease;
+  color: var(--neutral-400);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .project-link-btn:hover {
-    color: var(--brand-yellow);
-    transform: scale(1.1);
+  color: var(--brand-yellow);
+  transform: scale(1.1);
 }
 
 .project-tech-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto; /* Pushes badges to the bottom */
-    padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  /* Pushes badges to the bottom */
+  padding-top: 1rem;
 }
 
 .tech-badge {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    background-color: rgba(48, 105, 152, 0.2);
-    color: var(--brand-yellow);
-    border-radius: 9999px;
-    border: 1px solid rgba(48, 105, 152, 0.3);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  background-color: rgba(48, 105, 152, 0.2);
+  color: var(--brand-yellow);
+  border-radius: 9999px;
+  border: 1px solid rgba(48, 105, 152, 0.3);
 }
 
 
@@ -1175,7 +1300,8 @@ a.text-brand-blue.font-bold:focus-visible {
 
 /* Overrides to make highlight.js fit the glassmorphism theme */
 .hljs {
-  background: rgba(13, 17, 23, 0.5) !important; /* Dark, slightly transparent background */
+  background: rgba(13, 17, 23, 0.5) !important;
+  /* Dark, slightly transparent background */
   color: #d4d4d4;
   border-radius: var(--border-radius);
   padding: 1.5rem !important;
@@ -1226,34 +1352,33 @@ a.text-brand-blue.font-bold:focus-visible {
 
 
 /* ===== SKILLS SCROLLER (V6 - FINAL THEME & HOVER) ===== */
-/* --- NEW: Themed background for the entire section --- */
 .section-background-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 80vh;
-    background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(23, 23, 23, 0) 70%);
-    z-index: 0;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(23, 23, 23, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* --- NEW: Themed header styles --- */
 .skills-header-wrapper {
-    display: inline-block;
-    border: 1px solid var(--neutral-700);
-    padding: 0.75rem 2rem;
-    border-radius: var(--border-radius-lg);
-    background: rgba(38, 38, 38, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  display: inline-block;
+  border: 1px solid var(--neutral-700);
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius-lg);
+  background: rgba(38, 38, 38, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .skills-swiper {
-    padding: 1rem 0 !important;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  padding: 1rem 0 !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .skills-swiper .swiper-wrapper {
@@ -1263,7 +1388,7 @@ a.text-brand-blue.font-bold:focus-visible {
 }
 
 .skills-swiper .swiper-slide {
-  width: calc((100% / 3) - 40px) !important; 
+  width: calc((100% / 3) - 40px) !important;
   min-width: 380px;
   max-width: 90vw;
   height: auto;
@@ -1275,28 +1400,38 @@ a.text-brand-blue.font-bold:focus-visible {
 .skills-swiper .code-editor-card {
   width: 100%;
   height: 100%;
-  padding: 0; 
+  padding: 0;
   display: flex;
   flex-direction: column;
   background: #1e1e1e;
   border: 1px solid #3a3a3a;
   border-radius: var(--border-radius-lg);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   max-height: 420px;
 }
 
+
 /* --- MODIFIED: Unified Hover Effect --- */
 .skills-swiper .swiper-slide:hover .code-editor-card {
-    transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.skills-swiper .swiper-slide:not(.swiper-slide-double):hover .code-editor-card {
     border-color: var(--brand-yellow);
-    /* This shadow now exactly matches the .glassmorphism-card hover */
     box-shadow: 0 12px 40px 0 rgba(255, 212, 59, 0.3); 
 }
 
-.skills-swiper:hover .swiper-slide:not(:hover) {
+.skills-swiper:hover .swiper-slide:not(:hover):not(.swiper-slide-double) {
     opacity: 0.4;
     transform: scale(0.97);
+}
+
+.skills-swiper .swiper-slide-double {
+  /* Set a width that is roughly double the standard card width */
+  width: 780px !important;
+  /* Ensure it doesn't overflow on smaller screens */
+  max-width: 95vw !important;
 }
 
 /* --- HEADER AND TAG STYLES --- */
@@ -1312,18 +1447,37 @@ a.text-brand-blue.font-bold:focus-visible {
 }
 
 .code-editor-tag {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 5px;
-    border-width: 1px;
-    font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  border-width: 1px;
+  font-weight: 500;
 }
 
-.python-tag { background-color: rgba(48, 105, 152, 0.2); border-color: rgba(48, 105, 152, 0.5); color: #5A9BD4; }
-.sql-tag { background-color: rgba(204, 119, 0, 0.2); border-color: rgba(204, 119, 0, 0.5); color: #FF9933; }
-.devops-tag { background-color: rgba(214, 73, 55, 0.2); border-color: rgba(214, 73, 55, 0.5); color: #f06529; }
-.frontend-tag { background-color: rgba(240, 219, 79, 0.2); border-color: rgba(240, 219, 79, 0.5); color: #f7df1e; }
+.python-tag {
+  background-color: rgba(48, 105, 152, 0.2);
+  border-color: rgba(48, 105, 152, 0.5);
+  color: #5A9BD4;
+}
+
+.sql-tag {
+  background-color: rgba(204, 119, 0, 0.2);
+  border-color: rgba(204, 119, 0, 0.5);
+  color: #FF9933;
+}
+
+.devops-tag {
+  background-color: rgba(214, 73, 55, 0.2);
+  border-color: rgba(214, 73, 55, 0.5);
+  color: #f06529;
+}
+
+.frontend-tag {
+  background-color: rgba(240, 219, 79, 0.2);
+  border-color: rgba(240, 219, 79, 0.5);
+  color: #f7df1e;
+}
 
 .skills-swiper .code-wrapper {
   flex-grow: 1;
@@ -1334,14 +1488,21 @@ a.text-brand-blue.font-bold:focus-visible {
   scrollbar-color: var(--brand-yellow) transparent;
 }
 
-.skills-swiper .code-wrapper::-webkit-scrollbar { width: 8px; }
-.skills-swiper .code-wrapper::-webkit-scrollbar-track { background: transparent; }
+.skills-swiper .code-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.skills-swiper .code-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .skills-swiper .code-wrapper::-webkit-scrollbar-thumb {
   background-color: rgba(255, 212, 59, 0.5);
   border-radius: 8px;
   border: 2px solid #1e1e1e;
   background-clip: padding-box;
 }
+
 .skills-swiper .code-wrapper::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 212, 59, 1);
 }
@@ -1378,54 +1539,290 @@ a.text-brand-blue.font-bold:focus-visible {
 
 /* --- Themed Loading Screen --- */
 @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .animate-spin-slow {
-    animation: spin-slow 2s linear infinite;
+  animation: spin-slow 2s linear infinite;
 }
 
 /* --- Polished Mobile Navigation Links --- */
 .mobile-nav-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    color: var(--neutral-300);
-    border-radius: var(--border-radius);
-    transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--neutral-300);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-normal);
 }
+
 .mobile-nav-link:hover {
-    color: var(--brand-yellow);
-    background-color: rgba(255, 255, 255, 0.05);
+  color: var(--brand-yellow);
+  background-color: rgba(255, 255, 255, 0.05);
 }
+
 .mobile-nav-link .fa-fw {
-    width: 1.25em;
-    text-align: center;
-    color: var(--brand-blue-light);
+  width: 1.25em;
+  text-align: center;
+  color: var(--brand-blue-light);
 }
 
 /* --- Polished Scroll-to-Top Button --- */
 .scroll-to-top {
-    /* Keep existing styles, but add these for smooth transition */
-    opacity: 0;
-    transform: translateY(20px);
-    visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  /* Keep existing styles, but add these for smooth transition */
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
+
 .scroll-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 /* --- Footer Social Link Hover --- */
 #footer a[aria-label*="Profile"],
 #footer a[aria-label*="Contact"] {
-    transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
+
 #footer a[aria-label*="Profile"]:hover,
 #footer a[aria-label*="Contact"]:hover {
-    transform: scale(1.1);
-    color: var(--brand-yellow);
+  transform: scale(1.1);
+  color: var(--brand-yellow);
+}
+
+
+
+/* ===== PYODIDE INTERACTIVE CARD (2-COLUMN) ===== */
+#pyodide-card .code-editor-header {
+  /* Enable flex to position title and controls */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-body {
+  /* This is the core of the 2-column layout */
+  display: flex;
+  flex-grow: 1;
+  min-height: 320px;
+  /* Ensure a minimum height */
+}
+
+/* --- Left Column: Code Editor --- */
+#pyodide-card .code-wrapper {
+  flex: 6;
+  /* Take up 60% of the space */
+  border-right: 1px solid #444;
+  /* Separator line */
+  display: flex;
+}
+
+#pyodide-input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  color: var(--neutral-300);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* --- Right Column: Output --- */
+#pyodide-card .output-wrapper {
+  flex: 4;
+  /* Take up 40% of the space */
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(13, 17, 23, 0.7);
+  padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-yellow) transparent;
+}
+
+#pyodide-output {
+  white-space: pre-wrap;
+  word-break: break-word;
+  /* Use break-word for better wrapping */
+  color: var(--neutral-300);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* --- Top-Right Controls --- */
+.pyodide-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.run-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--brand-blue);
+  color: white;
+  border: 1px solid var(--brand-blue-dark);
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all var(--transition-normal);
+}
+
+.run-btn:hover:not(:disabled) {
+  background: var(--brand-blue-dark);
+  transform: scale(1.05);
+}
+
+.run-btn:disabled {
+  background: var(--neutral-600);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--neutral-400);
+  transition: color 0.3s ease;
+  padding-right: 0.5rem;
+  position: relative;
+}
+
+.status-text.running::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--brand-yellow);
+  margin-right: 8px;
+  animation: blink 1.5s infinite;
+}
+
+.status-text.success {
+  color: #4ade80;
+}
+
+.status-text.error {
+  color: #f87171;
+}
+
+/* Responsive adjustment for the double-wide card */
+@media (max-width: 820px) {
+  .editor-body {
+    flex-direction: column;
+  }
+
+  #pyodide-card .code-wrapper {
+    border-right: none;
+    border-bottom: 1px solid #444;
+    min-height: 250px;
+    /* Give it a fixed height on mobile */
+  }
+}
+
+/* ===== PYODIDE INTERACTIVE CARD - ANIMATED HIGHLIGHT (FINAL) ===== */
+
+@keyframes rotate-border {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#pyodide-card {
+    position: relative;
+    border: none; /* Remove any default border */
+    padding: 3px; /* THIS CREATES THE SPACE FOR THE BORDER */
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* This is the spinning gradient that sits BEHIND the card */
+#pyodide-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1; /* Sits behind the content wrapper */
+    
+    /* --- THIS IS THE UPDATED GRADIENT --- */
+    background-image: conic-gradient(
+        from 180deg,
+        var(--brand-yellow), 
+        var(--brand-blue-dark), 
+        var(--brand-blue-light),
+        var(--brand-yellow-light),
+        var(--brand-yellow) /* End with the start color for a seamless loop */
+    );
+    
+    animation: rotate-border 4s linear infinite;
+}
+
+/* This new wrapper holds all the content */
+.card-content-wrapper {
+    background-color: #1e1e1e; /* This is the actual card background */
+    border-radius: calc(var(--border-radius-lg) - 2px); /* Slightly smaller radius to fit inside */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Important: keeps child corners rounded */
+    display: flex; /* Re-apply flexbox to arrange header and body */
+    flex-direction: column;
+}
+
+/* Make sure the header background is now transparent */
+#pyodide-card .code-editor-header {
+    background-color: transparent;
+}
+
+/* A unique, subtle glow on hover for the Pyodide card */
+#pyodide-card:hover {
+    box-shadow: 0 0 30px rgba(75, 139, 190, 0.6);
+}
+
+/* --- Styling for the "LIVE" tag --- */
+.live-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    padding: 0.25rem 0.6rem;
+    border-radius: 99px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    animation: live-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.8); opacity: 0.7; }
 }

@@ -33,6 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js" defer></script>
     <script>
       tailwind.config = {
         theme: {
@@ -63,17 +64,17 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mubin Attar","jobTitle":"Software Engineer & AI/ML Enthusiast","description":"Engineering full-stack web platforms and intelligent solutions with Python, Django, and Machine Learning.","url":"https://mubinattar.dev","sameAs":["https://www.linkedin.com/in/mubin-attar/","https://github.com/Mubin-Shaikh"],"knowsAbout":["Python","Django","Machine Learning","AI","Full Stack Development","Web Development"]}</script>
   </head>
   <body class="bg-neutral-900 text-gray-300 antialiased">
-        <!-- ... Loading Screen ... -->
-        <!-- REPLACE with this new Loading Screen -->
+    <!-- ... Loading Screen ... -->
+    <!-- REPLACE with this new Loading Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-neutral-900 z-50 flex flex-col items-center justify-center transition-opacity duration-300">
-        <div class="relative w-16 h-16 mb-4">
-            <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="45" stroke="var(--brand-blue)" stroke-width="5" stroke-dasharray="282.74" stroke-dashoffset="212.06" stroke-linecap="round"/>
-                <circle cx="50" cy="50" r="35" stroke="var(--brand-yellow)" stroke-width="5" stroke-dasharray="219.91" stroke-dashoffset="164.93" stroke-linecap="round" style="animation-direction: reverse;"/>
-            </svg>
-            <i class="fab fa-python absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-brand-yellow text-2xl"></i>
-        </div>
-        <p id="loading-text" class="font-mono text-neutral-400"></p>
+      <div class="relative w-16 h-16 mb-4">
+        <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" stroke="var(--brand-blue)" stroke-width="5" stroke-dasharray="282.74" stroke-dashoffset="212.06" stroke-linecap="round" />
+          <circle cx="50" cy="50" r="35" stroke="var(--brand-yellow)" stroke-width="5" stroke-dasharray="219.91" stroke-dashoffset="164.93" stroke-linecap="round" style="animation-direction: reverse;" />
+        </svg>
+        <i class="fab fa-python absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-brand-yellow text-2xl"></i>
+      </div>
+      <p id="loading-text" class="font-mono text-neutral-400"></p>
     </div>
     <!-- ... Header and Nav ... -->
     <header id="header" class="relative">
@@ -84,7 +85,8 @@
             <div class="flex-shrink-0">
               <a href="#hero" class="text-brand-blue font-bold text-xl flex items-center gap-2 font-heading group" aria-label="Mubin Attar - Home">
                 <div class="relative">
-                  <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <svg class="w-8 h-8 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" role="img" aria-labelledby="logo-title">
+                    <title id="logo-title">Python-themed Logo</title>
                     <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22zM21.1 6.11l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11-.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01.21.03zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08-.33.23z" />
                   </svg>
                   <div class="absolute inset-0 bg-brand-yellow opacity-0 group-hover:opacity-20 rounded-full blur-md transition-opacity duration-300" aria-hidden="true"></div>
@@ -151,228 +153,407 @@
         </div>
       </section>
 
+      <!-- ABOUT SECTION (DEFINITIVE HYBRID V2) -->
+      <section id="about" class="section bg-neutral-800 overflow-hidden relative">
+        <div class="section-background-glow" aria-hidden="true"></div>
+        <div class="container relative z-10">
+          <header class="text-center mb-16" data-observer-target>
+            <div class="section-header-wrapper">
+              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                <span class="text-brand-blue">def</span>
+                <span class="text-brand-yellow">get_intro</span><span class="text-white">():</span>
+              </h2>
+            </div>
+          </header>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-16 items-center">
+            <!-- Left Column: Professional Profile Picture -->
+            <div class="lg:col-span-5 flex justify-center items-center" data-observer-target data-animation-classes="animate-fade-in-up">
+              <div class="about-image-wrapper">
+                <div class="about-image-border"></div>
+                <div class="about-image-glow"></div>
+                <img src="/img/Mubin_Profile.png" alt="A professional portrait of Mubin Attar, Software Engineer" class="about-profile-image" loading="lazy" width="400" height="400" />
+              </div>
+            </div>
+
+            <!-- Right Column: Thematic Bio Card -->
+            <div class="lg:col-span-7" data-observer-target data-animation-classes="animate-fade-in-up" data-animation-delay="200">
+              <div class="font-mono text-lg text-neutral-300 space-y-6">
+                <!-- ... existing bio paragraphs and code block ... -->
+                <p class="code-comment">// A passion for architecting intelligent systems.</p>
+                <p>
+                  Hello! I'm Mubin, a Software Engineer who thrives at the intersection of <span class="code-string">AI/ML</span> and robust <span class="code-string">backend development</span>. My work is centered on transforming complex business requirements into clean, scalable, and production-ready code.
+                </p>
+
+                <div class="code-block-item">
+                  <span class="code-variable">self.core_focus</span>
+                  <span class="code-operator">=</span>
+                  <span class="code-string">"Building data-driven applications with Python, Django, and modern cloud infrastructure."</span>
+                </div>
+
+                <p>From designing enterprise systems in healthcare to pioneering predictive analytics, I specialize in the full development lifecycle. I believe the best solutions are not just functional, but are also maintainable, efficient, and built for the future.</p>
+
+                <div class="pt-4">
+                  <a href="/Mubin-Attar-Resume.pdf" target="_blank" class="btn btn-primary btn-shine group">
+                    <i class="fas fa-file-alt mr-2 group-hover:text-brand-yellow transition-colors"></i>
+                    View Full Resume
+                  </a>
+                </div>
+
+                <!-- START: ADD THIS NEW STATS BAR BLOCK -->
+                <div class="stats-bar-container mt-10">
+                  <div class="stats-bar" data-stagger-group>
+                    <div class="stat-item">
+                      <i class="fas fa-calendar-alt stat-icon"></i>
+                      <div>
+                        <p class="stat-value">3+</p>
+                        <p class="stat-label">Years of Experience</p>
+                      </div>
+                    </div>
+                    <div class="stat-item">
+                      <i class="fas fa-check-double stat-icon"></i>
+                      <div>
+                        <p class="stat-value">15+</p>
+                        <p class="stat-label">Projects Completed</p>
+                      </div>
+                    </div>
+                    <div class="stat-item">
+                      <i class="fab fa-python stat-icon"></i>
+                      <div>
+                        <p class="stat-value">Python</p>
+                        <p class="stat-label">Core Technology</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END: NEW STATS BAR BLOCK -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- TECHNICAL EXPERTISE SECTION (FINAL POLISHED VERSION) -->
       <section id="technical_expertise" class="section bg-neutral-900 overflow-hidden relative">
-          <div class="section-background-glow" aria-hidden="true"></div>
-          <div class="container relative z-10">
-              <header class="text-center mb-16" data-observer-target>
-                  <!-- NEW THEMED HEADER -->
-                  <div class="skills-header-wrapper">
-                      <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
-                          <span class="text-brand-blue">def</span>
-                          <span class="text-brand-yellow">get_skills</span><span class="text-white">():</span>
-                      </h2>
+        <div class="section-background-glow" aria-hidden="true"></div>
+        <div class="container relative z-10">
+          <header class="text-center mb-16" data-observer-target>
+            <!-- NEW THEMED HEADER -->
+            <div class="skills-header-wrapper">
+              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                <span class="text-brand-blue">def</span>
+                <span class="text-brand-yellow">get_skills</span><span class="text-white">():</span>
+              </h2>
+            </div>
+            <p class="text-neutral-400 max-w-2xl mx-auto mt-6">A continuous reel of the tools and technologies I use to build modern, scalable applications.</p>
+          </header>
+        </div>
+
+        <div class="swiper skills-swiper" data-observer-target>
+          <div class="swiper-wrapper">
+            <!-- Card 0: LIVE Python with Pyodide (2-Column Layout) -->
+            <div class="swiper-slide swiper-slide-double">
+              <!-- In index.html, inside the #pyodide-card article -->
+              <article class="code-editor-card" id="pyodide-card">
+                  <!-- START: Add this new wrapper -->
+                  <div class="card-content-wrapper">
+                      <!-- Header with Title and Controls -->
+                      <div class="code-editor-header">
+                          <!-- ... header content is unchanged ... -->
+                          <div class="code-editor-title">
+                              Live Python Sandbox 
+                              <span class="text-neutral-400 font-normal text-sm">(Powered by Pyodide)</span>
+                          </div>
+                          <div class="pyodide-controls">
+                              <div class="live-tag">
+                                  <span class="live-dot"></span>LIVE
+                              </div>
+                              <div id="pyodide-status" class="status-text">Ready.</div>
+                              <button id="run-python-btn" class="run-btn" aria-label="Run Python code">
+                                  <i class="fas fa-play run-icon"></i>
+                                  <i class="fas fa-spinner fa-spin loading-icon" style="display: none;"></i>
+                                  <span class="run-btn-text">Run</span>
+                              </button>
+                          </div>
+                      </div>
+
+                      <!-- Two-column Body -->
+                      <div class="editor-body">
+                          <!-- ... editor body is unchanged ... -->
+                          <div class="code-wrapper pyodide-code-wrapper">
+                              <textarea id="pyodide-input" aria-label="Python code input">
+# 🧘‍♂️ Try out your first Python code. 
+# 🔍 Curious minds explore deeper. 
+# This single line reveals Python's guiding principles... 
+
+print("Hello World!")
+
+import this
+                              </textarea>
+                          </div>
+                          <div id="pyodide-output-wrapper" class="output-wrapper">
+                              <pre id="pyodide-output" aria-live="polite"># Output will appear here...</pre>
+                          </div>
+                      </div>
                   </div>
-                  <p class="text-neutral-400 max-w-2xl mx-auto mt-6">A continuous reel of the tools and technologies I use to build modern, scalable applications.</p>
-              </header>
+                  <!-- END: New wrapper -->
+              </article>
+            </div>
+            <!-- Card 1: Core Python -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">Core Python & Patterns</div>
+                  <div class="code-editor-tag python-tag">Python</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-python">
+class PythonExpertise:
+    def __init__(self):
+        self.paradigms = [
+            "OOP & Design Patterns",
+            "Functional Constructs"
+        ]
+        self.features = {
+            "concurrency": "AsyncIO & Multithreading",
+            "metaprogramming": "Decorators, Generators",
+            "testing": "Pytest, Mocking & Coverage",
+            "packaging": "Poetry & Pipenv"
+        }
+                    </code>
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 2: Backend & APIs -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">Backend & API Design</div>
+                  <div class="code-editor-tag python-tag">Python</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-python">
+# High-performance, scalable backend services
+
+config = {
+    "frameworks": ["Django", "FastAPI", "Flask"],
+    "api_design": ["REST", "GraphQL"],
+    "authentication": ["JWT", "OAuth2"],
+    "async_tasks": {
+        "broker": "Redis",
+        "worker": "Celery"
+    },
+    "version_control": True
+}
+                    </code>
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 3: Databases & Data -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">Databases & Data Modeling</div>
+                  <div class="code-editor-tag sql-tag">SQL</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-sql">
+  CREATE TABLE skills (
+    id SERIAL PRIMARY KEY,
+    category VARCHAR(50) NOT NULL,
+    skill_name VARCHAR(100) NOT NULL,
+    is_advanced BOOLEAN DEFAULT false
+  );
+
+  -- Proficient in PostgreSQL, MySQL
+  -- Django ORM & Query Optimization
+  -- Advanced SQL (Window Functions, CTEs)
+  -- Caching with Redis
+                    </code>
+
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 4: AI/ML Integration -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">AI / ML Integration</div>
+                  <div class="code-editor-tag python-tag">AI/ML</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-python">
+  class ML_Pipeline:
+      """End-to-end ML workflows."""
+
+      libs = ["Scikit-learn", "PyTorch", "Pandas"]
+
+      def process(self, data):
+          # 1. Feature Engineering
+          # 2. Model Building (XGBoost, NNs)
+          # 3. Model Serialization (ONNX)
+          # 4. Serving via FastAPI
+          pass
+                    </code>
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 5: DevOps & Deployment -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">DevOps & Deployment</div>
+                  <div class="code-editor-tag devops-tag">DevOps</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-yaml">
+  # Automating the path to production services
+
+  app:
+    build: .
+    image: my-django-app
+    command: gunicorn --bind 0.0.0.0:8000 app.wsgi
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+
+  # CI/CD with GitHub Actions
+  # Cloud: AWS (EC2, S3, RDS)
+                    </code>
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 6: Frontend Integration -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">Frontend Integration</div>
+                  <div class="code-editor-tag frontend-tag">Frontend</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-javascript">
+  const skills = {
+    core: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+    styling: "Tailwind CSS",
+    interactivity: {
+      dom_scripting: true,
+      api_integration: ["Fetch API", "Axios"]
+    },
+    templating: ["Jinja2", "Django Templates"]
+  };
+
+  console.log("Connecting Python to the browser.");
+                    </code>
+
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 7: Security & Best Practices -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">Security & Best Practices</div>
+                  <div class="code-editor-tag python-tag">Security</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-python">
+  # Writing secure and robust code
+  from django.middleware.csrf import CsrfViewMiddleware
+  from django.contrib.auth.hashers import make_password
+
+  class SecurityMindset:
+      awareness = [
+          "XSS", "CSRF", "SQL Injection",
+          "Secrets Management (env vars)"
+      ]
+      implementation = {
+          "password_hashing": ["bcrypt", "Argon2"],
+          "https_setup": "Let's Encrypt"
+      }
+                    </code>
+                  </pre>
+                </div>
+              </article>
+            </div>
+            <!-- Card 8: Tooling -->
+            <div class="swiper-slide">
+              <article class="code-editor-card">
+                <div class="code-editor-header">
+                  <div class="code-editor-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                  </div>
+                  <div class="code-editor-title">Tooling & Productivity</div>
+                  <div class="code-editor-tag devops-tag">Tools</div>
+                </div>
+                <div class="code-wrapper">
+                  <pre>
+                    <code class="language-bash">
+  # My Development Environment
+  IDES="VS Code, PyCharm"
+  LINTERS="black, flake8, isort"
+  VERSION_CONTROL="Git, GitLens"
+  API_CLIENTS="Postman, Insomnia"
+
+  echo "⚙️ Mastering tools of the trade for maximum efficiency and code quality."
+                    </code>
+
+                  </pre>
+                </div>
+              </article>
+            </div>
           </div>
-
-          <div class="swiper skills-swiper" data-observer-target>
-              <div class="swiper-wrapper">
-                  <!-- Card 1: Core Python -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">Core Python & Patterns</div>
-                              <div class="code-editor-tag python-tag">Python</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-python">class PythonExpertise:
-          def __init__(self):
-              self.paradigms = [
-                  "OOP & Design Patterns",
-                  "Functional Constructs"
-              ]
-              self.features = {
-                  "concurrency": "AsyncIO & Multithreading",
-                  "metaprogramming": "Decorators, Generators",
-                  "testing": "Pytest, Mocking & Coverage",
-                  "packaging": "Poetry & Pipenv"
-              }</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 2: Backend & APIs -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">Backend & API Design</div>
-                              <div class="code-editor-tag python-tag">Python</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-python"># High-performance, scalable backend services
-      config = {
-          "frameworks": ["Django", "FastAPI", "Flask"],
-          "api_design": ["REST", "GraphQL"],
-          "authentication": ["JWT", "OAuth2"],
-          "async_tasks": {
-              "broker": "Redis",
-              "worker": "Celery"
-          },
-          "version_control": True
-      }</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 3: Databases & Data -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">Databases & Data Modeling</div>
-                              <div class="code-editor-tag sql-tag">SQL</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-sql">CREATE TABLE skills (
-          id SERIAL PRIMARY KEY,
-          category VARCHAR(50) NOT NULL,
-          skill_name VARCHAR(100) NOT NULL,
-          is_advanced BOOLEAN DEFAULT false
-      );
-
-      -- Proficient in PostgreSQL, MySQL
-      -- Django ORM & Query Optimization
-      -- Advanced SQL (Window Functions, CTEs)
-      -- Caching with Redis</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 4: AI/ML Integration -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">AI / ML Integration</div>
-                              <div class="code-editor-tag python-tag">AI/ML</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-python">class ML_Pipeline:
-          """End-to-end ML workflows."""
-          
-          libs = ["Scikit-learn", "PyTorch", "Pandas"]
-          
-          def process(self, data):
-              # 1. Feature Engineering
-              # 2. Model Building (XGBoost, NNs)
-              # 3. Model Serialization (ONNX)
-              # 4. Serving via FastAPI
-              pass</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 5: DevOps & Deployment -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">DevOps & Deployment</div>
-                              <div class="code-editor-tag devops-tag">DevOps</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-yaml"># Automating the path to production
-      services:
-        app:
-          build: .
-          image: my-django-app
-          command: gunicorn --bind 0.0.0.0:8000 app.wsgi
-          
-        nginx:
-          image: nginx:latest
-          ports:
-            - "80:80"
-
-      # CI/CD with GitHub Actions
-      # Cloud: AWS (EC2, S3, RDS)</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 6: Frontend Integration -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">Frontend Integration</div>
-                              <div class="code-editor-tag frontend-tag">Frontend</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-javascript">const skills = {
-        core: ["HTML5", "CSS3", "JavaScript (ES6+)"],
-        styling: "Tailwind CSS",
-        interactivity: {
-          dom_scripting: true,
-          api_integration: "Fetch API, Axios"
-        },
-        templating: ["Jinja2", "Django Templates"]
-      };
-
-      console.log("Connecting Python to the browser.");</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 7: Security & Best Practices -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">Security & Best Practices</div>
-                              <div class="code-editor-tag python-tag">Security</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-python"># Writing secure and robust code
-      from django.middleware.csrf import CsrfViewMiddleware
-      from django.contrib.auth.hashers import make_password
-
-      class SecurityMindset:
-          awareness = [
-              "XSS, CSRF, SQL Injection",
-              "Secrets Management (env vars)"
-          ]
-          implementation = {
-              "password_hashing": "bcrypt, Argon2",
-              "https_setup": "Let's Encrypt"
-          }</code></pre>
-                          </div>
-                      </article>
-                  </div>
-                  <!-- Card 8: Tooling -->
-                  <div class="swiper-slide">
-                      <article class="code-editor-card">
-                          <div class="code-editor-header">
-                              <div class="code-editor-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-                              <div class="code-editor-title">Tooling & Productivity</div>
-                              <div class="code-editor-tag devops-tag">Tools</div>
-                          </div>
-                          <div class="code-wrapper">
-                              <pre><code class="language-bash"># My Development Environment
-      IDES="VS Code, PyCharm"
-      LINTERS="black, flake8, isort"
-      VERSION_CONTROL="Git, GitLens"
-      API_CLIENTS="Postman, Insomnia"
-
-      # Mastering the tools of the trade for
-      # maximum efficiency and code quality.</code></pre>
-                          </div>
-                      </article>
-                  </div>
-              </div>
-          </div>
+        </div>
       </section>
       <!-- FEATURED PROJECTS SECTION -->
       <section id="featured_projects" class="section bg-neutral-800">
         <div class="section-background-glow" aria-hidden="true"></div>
         <div class="container">
           <header class="text-center mb-16" data-observer-target>
-              <div class="section-header-wrapper">
-                  <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
-                      <span class="text-brand-yellow">for</span>
-                      <span class="text-white">project</span>
-                      <span class="text-brand-yellow">in</span>
-                      <span class="text-brand-blue">portfolio</span><span class="text-white">:</span>
-                  </h2>
-              </div>
-              <p class="text-neutral-400 max-w-2xl mx-auto mt-6">A selection of recent projects showcasing my skills in backend development, AI, and more.</p>
+            <div class="section-header-wrapper">
+              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                <span class="text-brand-yellow">for</span>
+                <span class="text-white">project</span>
+                <span class="text-brand-yellow">in</span>
+                <span class="text-brand-blue">portfolio</span><span class="text-white">:</span>
+              </h2>
+            </div>
+            <p class="text-neutral-400 max-w-2xl mx-auto mt-6">A selection of recent projects showcasing my skills in backend development, AI, and more.</p>
           </header>
 
           <div class="max-w-7xl mx-auto relative" data-observer-target data-animation-classes="animate-fade-in-up">
@@ -397,35 +578,34 @@
         <div class="section-background-glow" aria-hidden="true"></div>
         <div class="container">
           <header class="text-center mb-16" data-observer-target>
-              <div class="section-header-wrapper">
-                  <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
-                      <span class="text-brand-yellow">while</span>
-                      <span class="text-brand-blue">career.is_active</span><span class="text-white">:</span>
-                  </h2>
-              </div>
-              <p class="text-neutral-400 max-w-2xl mx-auto mt-6">Tracing my professional journey and key milestones in software engineering.</p>
+            <div class="section-header-wrapper">
+              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                <span class="text-brand-yellow">while</span>
+                <span class="text-brand-blue">career.is_active</span><span class="text-white">:</span>
+              </h2>
+            </div>
+            <p class="text-neutral-400 max-w-2xl mx-auto mt-6">Tracing my professional journey and key milestones in software engineering.</p>
           </header>
 
           <!-- The 'timeline-container' is the hook for our JS. It will be populated by contentController.js -->
           <div class="timeline-container max-w-4xl mx-auto relative">
-              <!-- Fallback content or dynamic content goes here -->
+            <!-- Fallback content or dynamic content goes here -->
           </div>
         </div>
       </section>
 
       <!-- Contact Section -->
       <section id="contact" class="section bg-neutral-800">
-        
         <div class="container">
           <div class="section-background-glow" aria-hidden="true"></div>
           <header class="text-center mb-16" data-observer-target>
-              <div class="section-header-wrapper">
-                  <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
-                      <span class="text-brand-yellow">def</span>
-                      <span class="text-brand-blue">connect</span><span class="text-white">():</span>
-                  </h2>
-              </div>
-              <p class="text-neutral-400 max-w-2xl mx-auto mt-6">Have a project in mind or just want to say hello? Let's get in touch.</p>
+            <div class="section-header-wrapper">
+              <h2 class="text-3xl md:text-4xl font-bold text-white font-heading">
+                <span class="text-brand-yellow">def</span>
+                <span class="text-brand-blue">connect</span><span class="text-white">():</span>
+              </h2>
+            </div>
+            <p class="text-neutral-400 max-w-2xl mx-auto mt-6">Have a project in mind or just want to say hello? Let's get in touch.</p>
           </header>
 
           <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -437,7 +617,7 @@
 
                 <ul class="space-y-4" data-stagger-group>
                   <li>
-                    <a href="mailto:sk.mubinattar@gmail.com" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Send email" data-email="sk.mubinattar@gmail.com">
+                    <a href="mailto:sk.mubinattar@gmail.com" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105 contact-link-card" aria-label="Send email" data-email="sk.mubinattar@gmail.com">
                       <!-- MODIFICATION: Removed hover classes, added contact-icon-wrapper -->
                       <div class="contact-icon-wrapper w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
                         <i class="fas fa-envelope fa-lg text-brand-yellow group-hover:text-white" aria-hidden="true"></i>
@@ -449,7 +629,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Visit LinkedIn profile">
+                    <a href="https://www.linkedin.com/in/mubin-attar/" target="_blank" rel="noopener noreferrer" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105 contact-link-card" aria-label="Visit LinkedIn profile">
                       <!-- MODIFICATION: Removed hover classes, added contact-icon-wrapper -->
                       <div class="contact-icon-wrapper w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
                         <i class="fab fa-linkedin fa-lg text-brand-yellow group-hover:text-white" aria-hidden="true"></i>
@@ -461,7 +641,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Visit GitHub profile">
+                    <a href="https://github.com/Mubin-Shaikh" target="_blank" rel="noopener noreferrer" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105 contact-link-card" aria-label="Visit GitHub profile">
                       <!-- MODIFICATION: Removed hover classes, added contact-icon-wrapper -->
                       <div class="contact-icon-wrapper w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
                         <i class="fab fa-github fa-lg text-brand-yellow group-hover:text-white" aria-hidden="true"></i>
@@ -473,10 +653,12 @@
                     </a>
                   </li>
                   <li>
-                    <a href="https://leetcode.com/mubin-attar/" target="_blank" rel="noopener noreferrer" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105" aria-label="Visit LeetCode profile">
+                    <a href="https://leetcode.com/mubin-attar/" target="_blank" rel="noopener noreferrer" class="glassmorphism-card group flex items-center gap-4 p-4 transition-all duration-300 hover:scale-105 contact-link-card" aria-label="Visit LeetCode profile">
                       <!-- MODIFICATION: Removed hover classes, added contact-icon-wrapper -->
                       <div class="contact-icon-wrapper w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg class="leetcode-icon w-6 h-6 text-brand-yellow group-hover:text-white transition-colors duration-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                        <svg class="leetcode-icon w-6 h-6 text-brand-yellow group-hover:text-white transition-colors duration-300" role="img" aria-labelledby="leetcode-title" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                          <title id="leetcode-title">LeetCode Profile Icon</title>
+
                           <path d="M13.483 0a1.374 1.374 0 0 0-1.374 1.374v10.5h3.018v-3.097h-1.644V1.374A1.374 1.374 0 0 0 13.483 0zM4.738 5.485v6.388h1.644V8.582h1.374v3.29h1.644V5.485h-1.644v2.09h-1.374V5.485H4.738zM21.93 15.393l-2.48-2.48-2.48 2.48h1.643v3.097h1.674v-3.097h1.643zM15.127 15.89v2.59h-1.644v-5.688l2.928-2.928h2.2L15.127 13.35v2.54z" />
                         </svg>
                       </div>
@@ -491,7 +673,7 @@
             </div>
 
             <div data-observer-target data-animation-classes="animate-fade-in-up" data-animation-delay="150">
-              <form id="contact-form" name="contact-form" class="glassmorphism-card space-y-6" novalidate>
+              <form id="contact-form" name="contact-form" class="space-y-6" novalidate>
                 <h3 class="text-xl font-bold text-white font-heading mb-6">Send a Message</h3>
                 <div class="form-group">
                   <label class="form-label" for="name"><i class="fas fa-user mr-2 text-brand-yellow" aria-hidden="true"></i>Name</label>

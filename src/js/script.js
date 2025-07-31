@@ -1,4 +1,5 @@
 import { contentController } from './contentController.js';
+import { PyodideController } from './pyodideController.js';
 
 // ===== UTILITY FUNCTIONS =====
 const utils = {
@@ -1010,6 +1011,7 @@ class PortfolioApp {
       scrollToTop: () => new ScrollToTopController(),
       performance: () => new PerformanceMonitor(),
       accessibility: () => new AccessibilityController(),
+      pyodide: () => new PyodideController(), 
       staggerAnimation: () => new StaggerAnimationController(),
       // The general code snippet controller is not needed if you only have snippets in the skills section
     };
