@@ -1,4 +1,6 @@
-/* ===== MODERN PORTFOLIO CSS - 2025 EDITION ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
