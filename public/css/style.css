@@ -148,9 +148,7 @@ body {
   transition: opacity 0.5s ease;
 }
 
-/* Make the glow more prominent on the darker background sections */
-#featured_projects .section-background-glow,
-#contact .section-background-glow {
+.section-background-glow--enhanced {
   background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(38, 38, 38, 0) 70%);
 }
 
@@ -733,21 +731,7 @@ a.glassmorphism-card:hover .contact-icon-wrapper svg {
   /* Change icon color to white on hover */
 }
 
-/* In style.css - A potential refinement */
-.contact-link-card {
-  /* Add this class to your <a> tags in the contact list */
-  background: transparent;
-  border: 1px solid transparent;
-  /* No border at rest */
-  transition: all var(--transition-normal);
-}
 
-.contact-link-card:hover {
-  background: var(--glass-bg);
-  /* Apply glass effect only on hover */
-  border-color: var(--glass-border);
-  transform: scale(1.03);
-}
 
 
 /* ===== 3RD PARTY LIBRARY CUSTOMIZATION (SWIPER) ===== */

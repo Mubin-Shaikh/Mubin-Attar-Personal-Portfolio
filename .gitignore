@@ -2,32 +2,37 @@
 # Dependencies, Build Artifacts, and Cache
 # ===================================================================
 
-# Node.js dependencies for the main project
-node_modules/
+# Node.js dependencies for ALL projects (Vite, Sanity, etc.)
+**/node_modules/
 
 # Vite build output and cache
-dist/
-.vite/
+**/dist/
+**/.vite/
 
-# Sanity Studio dependencies and local cache
-# This is crucial for your nested Sanity project
-personal_portfolio_cms/node_modules/
-personal_portfolio_cms/.sanity/
+# Sanity Studio local cache and build output
+**/personal_portfolio_cms/.sanity/
+**/personal_portfolio_cms/dist/
+
 
 # ===================================================================
 # Sensitive Information
 # ===================================================================
+
 # Never commit environment variables, which can contain secret keys
 .env
 .env.local
 .env.*.local
+
+# Specific environment files for the Sanity Studio
 personal_portfolio_cms/.env.development
 personal_portfolio_cms/.env.production
 personal_portfolio_cms/.env.local
 
+
 # ===================================================================
 # Log Files and System Files
 # ===================================================================
+
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -39,9 +44,11 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+
 # ===================================================================
 # IDE and Editor Configuration
 # ===================================================================
+
 .vscode/
 .idea/
 *.sublime-project
