@@ -1,5 +1,13 @@
+// At the top of script.js
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle'; // Import swiper styles
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger); // Register the plugin
+
 import { contentController } from './contentController.js';
-import { PyodideController } from './pyodideController.js';
+// import { PyodideController } from './pyodideController.js';
 
 // ===== UTILITY FUNCTIONS =====
 const utils = {
@@ -267,7 +275,6 @@ class ProjectsSwiperController {
   constructor() {
     // USE A SPECIFIC CLASS
     this.swiperContainer = document.querySelector('.projects-swiper');
-    this.init();
   }
 
   init() {
@@ -282,6 +289,10 @@ class ProjectsSwiperController {
       slidesPerView: 1,
       spaceBetween: 30,
       loop: true,
+      
+      // ADD THIS NEW PROPERTY
+      overflow: 'visible',
+
       autoplay: {
         delay: 5000,
         disableOnInteraction: false,
@@ -759,13 +770,19 @@ class NeuralGridController {
     this.animationFrameId = requestAnimationFrame(() => this.animate());
   }
 
+  // THIS METHOD IS NOW HIGHLY OPTIMIZED
   connectPoints() {
+    const maxDistance = 40;
+    const maxNeighborsToCheck = 12; // Crucial optimization parameter
+
     for (let i = 0; i < this.points.length; i++) {
-      for (let j = i; j < this.points.length; j++) {
+      // Check against a limited number of subsequent points in the array
+      for (let j = i + 1; j < Math.min(i + maxNeighborsToCheck, this.points.length); j++) {
         const distance = Math.hypot(this.points[i].x - this.points[j].x, this.points[i].y - this.points[j].y);
-        if (distance < 40) {
+        
+        if (distance < maxDistance) {
           this.ctx.beginPath();
-          this.ctx.strokeStyle = `rgba(48, 105, 152, ${1 - distance / 40})`;
+          this.ctx.strokeStyle = `rgba(48, 105, 152, ${1 - distance / maxDistance})`;
           this.ctx.lineWidth = 0.5;
           this.ctx.moveTo(this.points[i].x, this.points[i].y);
           this.ctx.lineTo(this.points[j].x, this.points[j].y);
@@ -820,17 +837,17 @@ class HeroAnimationController {
     this.init();
   }
 
+  // Inside HeroAnimationController
   init() {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        gsap.to(".gsap-reveal", {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power3.out"
-        });
-      }, 1000);
+    document.addEventListener('DOMContentLoaded', () => { // <-- THE FIX
+      // No more artificial delay, start the animation immediately.
+      gsap.to(".gsap-reveal", {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out"
+      });
     });
   }
 }
@@ -852,8 +869,8 @@ class HeroTypingController {
     ];
 
     // Control the speed of the animation
-    this.typingSpeed = 50; // ms per character
-    this.deletingSpeed = 25;  // ms per character
+    this.typingSpeed = 100; // ms per character
+    this.deletingSpeed = 100;  // ms per character
     this.pauseAfterTyping = 1500; // ms pause before deleting
     this.pauseAfterDeleting = 500;  // ms pause before typing next phrase
 
@@ -1011,7 +1028,7 @@ class PortfolioApp {
       scrollToTop: () => new ScrollToTopController(),
       performance: () => new PerformanceMonitor(),
       accessibility: () => new AccessibilityController(),
-      pyodide: () => new PyodideController(), 
+      // pyodide: () => new PyodideController(), 
       staggerAnimation: () => new StaggerAnimationController(),
       // The general code snippet controller is not needed if you only have snippets in the skills section
     };

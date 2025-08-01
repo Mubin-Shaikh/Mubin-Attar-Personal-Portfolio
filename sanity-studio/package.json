@@ -1,5 +1,5 @@
 {
-  "name": "personal_portfolio_cms",
+  "name": "pythonicportfolio",
   "private": true,
   "version": "1.0.0",
   "main": "package.json",
@@ -15,10 +15,10 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^4.1.1",
+    "@sanity/vision": "^4.2.0",
     "react": "^19.1",
     "react-dom": "^19.1",
-    "sanity": "^4.1.1",
+    "sanity": "^4.2.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {

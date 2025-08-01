@@ -64,8 +64,7 @@ body {
 a,
 button,
 .projects-swiper-button-next,
-.projects-swiper-button-prev,
-.dpad-btn {
+.projects-swiper-button-prev {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="font-size:20px;" fill="rgba(255, 255, 255, 0.9)"><circle cx="10" cy="10" r="10" fill="%23ffd43b" fill-opacity="0.3" stroke="%23ffd43b" stroke-width="2"/><circle cx="10" cy="10" r="1.5" fill="%23ffd43b"/></svg>') 10 10, pointer;
 }
 
@@ -148,6 +147,7 @@ body {
   transition: opacity 0.5s ease;
 }
 
+/* REFACTORED: New modifier class for the enhanced glow */
 .section-background-glow--enhanced {
   background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(38, 38, 38, 0) 70%);
 }
@@ -589,13 +589,12 @@ p {
 }
 
 
-/*-- Experience Section */
+/*-- Experience Section --*/
 
 @keyframes fill-timeline {
   from {
     transform: scaleY(0);
   }
-
   to {
     transform: scaleY(1);
   }
@@ -631,31 +630,57 @@ p {
   animation: fill-timeline 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
+/* Main flex container for each timeline row */
 .timeline-item {
   position: relative;
   margin-bottom: var(--vertical-spacing);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Use flex-start for top alignment */
 }
 
-.timeline-dot {
+/* The content card and the date spacer */
+.timeline-item__content,
+.timeline-item__spacer {
+  width: calc(50% - 2.5rem);
+}
+
+/* This is the key: Add padding to the top of the spacer to push the date down */
+.timeline-item__spacer {
+  padding-top: 1rem;
+}
+
+/* The wrapper that centers the dot */
+.timeline-dot-wrapper {
   position: absolute;
   left: 50%;
-  top: 1rem;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Aligns the date text correctly for items on the right */
+.timeline-item:nth-child(even) .timeline-item__spacer {
+  text-align: right;
+}
+
+/* The dot itself, now positioned simply within its wrapper */
+.timeline-dot {
+  position: relative;
+  /* top property is removed as padding on spacer handles alignment */
   width: 3rem;
   height: 3rem;
   background: var(--brand-blue);
   border: 4px solid var(--neutral-900);
   border-radius: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
   box-shadow: 0 0 20px rgba(48, 105, 152, 0.5);
   transition: all var(--transition-normal);
 }
 
 .timeline-dot:hover {
-  transform: translateX(-50%) scale(1.1);
+  transform: scale(1.1);
   box-shadow: 0 0 30px rgba(48, 105, 152, 0.8);
 }
 
@@ -731,13 +756,11 @@ a.glassmorphism-card:hover .contact-icon-wrapper svg {
   /* Change icon color to white on hover */
 }
 
-
-
-
 /* ===== 3RD PARTY LIBRARY CUSTOMIZATION (SWIPER) ===== */
-/* NOTE: The class name for the container is now '.projects-swiper' */
 .projects-swiper {
   padding-bottom: 3rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .projects-swiper .swiper-pagination {
@@ -1336,17 +1359,6 @@ a.text-brand-blue.font-bold:focus-visible {
 
 
 /* ===== SKILLS SCROLLER (V6 - FINAL THEME & HOVER) ===== */
-.section-background-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 80vh;
-  background: radial-gradient(ellipse at center, rgba(48, 105, 152, 0.15) 0%, rgba(23, 23, 23, 0) 70%);
-  z-index: 0;
-  pointer-events: none;
-}
 
 /* --- NEW: Themed header styles --- */
 .skills-header-wrapper {
@@ -1360,7 +1372,7 @@ a.text-brand-blue.font-bold:focus-visible {
 }
 
 .skills-swiper {
-  padding: 1rem 0 !important;
+  padding: 1rem 1rem !important;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
@@ -1589,26 +1601,21 @@ a.text-brand-blue.font-bold:focus-visible {
 
 /* ===== PYODIDE INTERACTIVE CARD (2-COLUMN) ===== */
 #pyodide-card .code-editor-header {
-  /* Enable flex to position title and controls */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .editor-body {
-  /* This is the core of the 2-column layout */
   display: flex;
   flex-grow: 1;
   min-height: 320px;
-  /* Ensure a minimum height */
 }
 
 /* --- Left Column: Code Editor --- */
 #pyodide-card .code-wrapper {
   flex: 6;
-  /* Take up 60% of the space */
   border-right: 1px solid #444;
-  /* Separator line */
   display: flex;
 }
 
@@ -1629,7 +1636,6 @@ a.text-brand-blue.font-bold:focus-visible {
 /* --- Right Column: Output --- */
 #pyodide-card .output-wrapper {
   flex: 4;
-  /* Take up 40% of the space */
   display: flex;
   flex-direction: column;
   background-color: rgba(13, 17, 23, 0.7);
@@ -1680,6 +1686,20 @@ a.text-brand-blue.font-bold:focus-visible {
   background: var(--neutral-600);
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+/* ADDED: Styles for the new Pyodide reset button */
+.reset-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--neutral-300);
+  border-color: rgba(255, 255, 255, 0.15);
+  padding: 0.35rem 0.6rem; /* Make it more compact */
+}
+
+.reset-btn:hover:not(:disabled) {
+  background: var(--neutral-700);
+  transform: scale(1.05) rotate(-45deg); /* Add a nice spin */
+  color: var(--brand-yellow);
 }
 
 .status-text {

@@ -5,9 +5,9 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'Personal_Portfolio_CMS',
+  title: 'pythonic_portfolio',
 
-  projectId: '9koh6yu9',
+  projectId: 'uer1oa8t',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
